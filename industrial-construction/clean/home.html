@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bell Industrial Construction | Industrial Construction - Home | Precision</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--precision-white: #FAFAF8;
+			--precision-navy: #0A1628;
+			--precision-brass: #B08D57;
+			--precision-gray: #F2F1EE;
+			--precision-text: #1a1a1a;
+			--font-display: 'Playfair Display', serif;
+			--font-body: 'DM Sans', sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: var(--font-body);
+			background: var(--precision-white);
+			color: var(--precision-text);
+			line-height: 1.6;
+		}
+
+		/* Skip link */
+		.skip-link {
+			position: absolute;
+			top: -100%;
+			left: 0;
+			padding: 0.5rem 1rem;
+			background: var(--precision-navy);
+			color: #fff;
+			z-index: 9999;
+			font-family: var(--font-body);
+		}
+		.skip-link:focus {
+			top: 0;
+		}
+
+		/* Focus visible */
+		:focus-visible {
+			outline: 2px solid var(--precision-brass);
+			outline-offset: 3px;
+		}
+
+
+		/* ---- NAV ---- */
+		.site-header {
+			background: #fff;
+			border-bottom: 1px solid #e5e5e3;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.site-header nav {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 1.25rem 2rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.nav-brand {
+			font-family: var(--font-display);
+			font-size: 1.35rem;
+			font-weight: 700;
+			color: var(--precision-navy);
+			text-decoration: none;
+			letter-spacing: 0.01em;
+		}
+		.nav-brand:hover {
+			color: var(--precision-brass);
+		}
+		.nav-links {
+			list-style: none;
+			display: flex;
+			gap: 2.5rem;
+			align-items: center;
+		}
+		.nav-links a {
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			font-weight: 500;
+			color: var(--precision-navy);
+			text-decoration: none;
+			background: linear-gradient(var(--precision-brass), var(--precision-brass)) no-repeat left bottom / 0% 1px;
+			transition: background-size 0.4s ease;
+			padding-bottom: 2px;
+		}
+		.nav-links a:hover,
+		.nav-links a[aria-current="page"] {
+			background-size: 100% 1px;
+		}
+
+		/* Mobile nav toggle */
+		.nav-toggle {
+			display: none;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0.5rem;
+		}
+		.nav-toggle span {
+			display: block;
+			width: 24px;
+			height: 2px;
+			background: var(--precision-navy);
+			margin: 5px 0;
+			transition: 0.3s;
+		}
+
+		/* ---- HERO ---- */
+		.hero {
+			display: grid;
+			grid-template-columns: 60% 40%;
+			min-height: 85vh;
+		}
+		.hero-image {
+			position: relative;
+			overflow: hidden;
+		}
+		.hero-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter: saturate(0.7);
+			display: block;
+		}
+		.hero-content {
+			background: var(--precision-navy);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 4rem 3.5rem;
+		}
+		.hero-content h1 {
+			font-family: var(--font-display);
+			font-size: clamp(2rem, 3.5vw, 3.2rem);
+			font-weight: 700;
+			color: #fff;
+			line-height: 1.15;
+			margin-bottom: 1.5rem;
+		}
+		.hero-content p {
+			color: rgba(255, 255, 255, 0.75);
+			font-size: 1.05rem;
+			line-height: 1.7;
+			margin-bottom: 2.5rem;
+			max-width: 38ch;
+		}
+		.btn-brass {
+			display: inline-block;
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			font-weight: 600;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--precision-brass);
+			border: 1px solid var(--precision-brass);
+			padding: 1rem 2rem;
+			text-decoration: none;
+			transition: background 0.3s, color 0.3s;
+			align-self: flex-start;
+		}
+		.btn-brass:hover {
+			background: var(--precision-brass);
+			color: #fff;
+		}
+
+		/* ---- CAPABILITIES ---- */
+		.capabilities {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 6rem 2rem;
+		}
+		.capabilities .section-label {
+			font-family: var(--font-body);
+			font-size: 0.75rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			color: var(--precision-brass);
+			margin-bottom: 1rem;
+		}
+		.capabilities h2 {
+			font-family: var(--font-display);
+			font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 3.5rem;
+			max-width: 28ch;
+		}
+		.capabilities-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 3rem;
+		}
+		.capability-card {
+			border-top: 2px solid var(--precision-brass);
+			padding-top: 1.5rem;
+		}
+		.capability-card h3 {
+			font-family: var(--font-display);
+			font-size: 1.3rem;
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 0.75rem;
+		}
+		.capability-card p {
+			color: var(--precision-text);
+			font-size: 0.95rem;
+			line-height: 1.7;
+		}
+
+		/* ---- TESTIMONIAL ---- */
+		.testimonial {
+			background: var(--precision-navy);
+			padding: 6rem 2rem;
+			text-align: center;
+		}
+		.testimonial-inner {
+			max-width: 800px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.testimonial-inner::before {
+			content: '\201C';
+			font-family: var(--font-display);
+			font-size: 8rem;
+			color: var(--precision-brass);
+			position: absolute;
+			top: -3rem;
+			left: -1rem;
+			line-height: 1;
+			opacity: 0.6;
+		}
+		.testimonial blockquote {
+			font-family: var(--font-display);
+			font-style: italic;
+			font-size: clamp(1.3rem, 2vw, 1.7rem);
+			color: #fff;
+			line-height: 1.6;
+			margin-bottom: 2rem;
+			position: relative;
+		}
+		.testimonial cite {
+			font-family: var(--font-body);
+			font-style: normal;
+			font-size: 0.85rem;
+			font-weight: 500;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--precision-brass);
+		}
+
+		/* ---- FEATURED WORK ---- */
+		.featured-work {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 6rem 2rem;
+		}
+		.featured-work h2 {
+			font-family: var(--font-display);
+			font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 3rem;
+		}
+		.work-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1.5rem;
+		}
+		.work-item {
+			position: relative;
+			overflow: hidden;
+			border: 1px solid transparent;
+			transition: border-color 0.4s ease;
+		}
+		.work-item:hover {
+			border-color: var(--precision-brass);
+		}
+		.work-item img {
+			width: 100%;
+			height: 320px;
+			object-fit: cover;
+			display: block;
+			filter: saturate(0.7);
+			transition: transform 0.6s ease;
+		}
+		.work-item:hover img {
+			transform: scale(1.03);
+		}
+		.work-item figcaption {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 1.5rem;
+			background: linear-gradient(transparent, rgba(10, 22, 40, 0.85));
+			color: #fff;
+		}
+		.work-item figcaption h3 {
+			font-family: var(--font-display);
+			font-size: 1.15rem;
+			font-weight: 700;
+			margin-bottom: 0.25rem;
+		}
+		.work-item figcaption p {
+			font-size: 0.8rem;
+			opacity: 0.8;
+		}
+
+		/* ---- FOOTER ---- */
+		footer {
+			background: var(--precision-navy);
+			color: rgba(255, 255, 255, 0.6);
+			padding: 3rem 2rem;
+			text-align: center;
+			font-size: 0.85rem;
+		}
+		footer a {
+			color: var(--precision-brass);
+			text-decoration: none;
+		}
+
+		/* ---- SCROLL FADE-IN ---- */
+		.fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+		}
+		.fade-in.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* ---- RESPONSIVE ---- */
+		@media (max-width: 1023px) {
+			main::before {
+				display: none;
+			}
+			.hero {
+				grid-template-columns: 1fr;
+				min-height: auto;
+			}
+			.hero-image {
+				height: 50vh;
+			}
+			.hero-content {
+				padding: 3rem 2rem;
+			}
+			.capabilities-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.site-header nav {
+				padding: 1rem 1.25rem;
+			}
+			.nav-links {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				right: 0;
+				background: #fff;
+				padding: 1.5rem 2rem;
+				border-bottom: 1px solid #e5e5e3;
+				gap: 1.25rem;
+			}
+			.nav-links.open {
+				display: flex;
+			}
+			.nav-toggle {
+				display: block;
+			}
+			.capabilities-grid {
+				grid-template-columns: 1fr;
+			}
+			.work-grid {
+				grid-template-columns: 1fr;
+			}
+			.work-item img {
+				height: 240px;
+			}
+			.hero-content {
+				padding: 2.5rem 1.5rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header class="site-header">
+		<nav>
+			<a href="../../corporate/clean/index.html" class="nav-brand">Bell Industrial Construction</a>
+			<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="nav-links">
+				<li><a href="home.html" aria-current="page">Home</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="about.html">About &amp; Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<!-- Hero -->
+		<section class="hero">
+			<div class="hero-image">
+				<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80" alt="Steel frame structure under construction with cranes against an overcast sky">
+			</div>
+			<div class="hero-content">
+				<h1>Industrial Construction Services</h1>
+				<p>Delivering precision-engineered industrial facilities with uncompromising quality standards and decades of structural expertise.</p>
+				<a href="about.html" class="btn-brass">Request a Consultation</a>
+			</div>
+		</section>
+
+		<!-- Capabilities -->
+		<section class="capabilities fade-in">
+			<p class="section-label">What We Do</p>
+			<h2>Building the Infrastructure That Powers Industry</h2>
+			<div class="capabilities-grid">
+				<article class="capability-card">
+					<h3>Structural Steel</h3>
+					<p>Full-service structural steel erection for industrial facilities, warehouses, and heavy manufacturing plants. Precision placement with certified welding teams.</p>
+				</article>
+				<article class="capability-card">
+					<h3>Concrete &amp; Foundations</h3>
+					<p>Engineered foundations, reinforced concrete structures, and specialized industrial flooring systems designed to bear extraordinary loads.</p>
+				</article>
+				<article class="capability-card">
+					<h3>Facility Construction</h3>
+					<p>Complete industrial facility construction from ground-up, integrating structural, mechanical, and electrical systems under one management team.</p>
+				</article>
+			</div>
+		</section>
+
+		<!-- Testimonial -->
+		<section class="testimonial fade-in">
+			<div class="testimonial-inner">
+				<blockquote>
+					Bell Industrial delivered our 120,000 sq ft manufacturing facility three weeks ahead of schedule and under budget. Their attention to structural detail is unmatched in the industry.
+				</blockquote>
+				<cite>James Harrington &mdash; VP Operations, Meridian Manufacturing</cite>
+			</div>
+		</section>
+
+		<!-- Featured Work -->
+		<section class="featured-work fade-in">
+			<h2>Featured Projects</h2>
+			<div class="work-grid">
+				<figure class="work-item">
+					<img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="Large industrial warehouse with steel trusses during construction">
+					<figcaption>
+						<h3>Meridian Distribution Center</h3>
+						<p>180,000 sq ft warehouse &mdash; Miami, FL</p>
+					</figcaption>
+				</figure>
+				<figure class="work-item">
+					<img src="https://images.unsplash.com/photo-1590644365607-1c5a0716a023?w=800&q=80" alt="Concrete foundation work with rebar grid in place for industrial building">
+					<figcaption>
+						<h3>Coastal Chemical Plant</h3>
+						<p>Reinforced foundation system &mdash; Tampa, FL</p>
+					</figcaption>
+				</figure>
+				<figure class="work-item">
+					<img src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=800&q=80" alt="Steel structural framework of an industrial facility at sunset">
+					<figcaption>
+						<h3>Atlas Energy Facility</h3>
+						<p>Steel erection &amp; facility build &mdash; Orlando, FL</p>
+					</figcaption>
+				</figure>
+				<figure class="work-item">
+					<img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" alt="Modern industrial building exterior with metal cladding">
+					<figcaption>
+						<h3>Vanguard Logistics Hub</h3>
+						<p>Complete facility construction &mdash; Jacksonville, FL</p>
+					</figcaption>
+				</figure>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2026 Bell Industrial Construction. All rights reserved. <a href="about.html">Contact Us</a></p>
+	</footer>
+
+	<script>
+		// Scroll fade-in
+		const observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.fade-in').forEach(function(el) {
+			observer.observe(el);
+		});
+
+		// Mobile nav toggle
+		var toggle = document.querySelector('.nav-toggle');
+		var links = document.querySelector('.nav-links');
+		toggle.addEventListener('click', function() {
+			var expanded = toggle.getAttribute('aria-expanded') === 'true';
+			toggle.setAttribute('aria-expanded', !expanded);
+			links.classList.toggle('open');
+		});
+	</script>
+</body>
+</html>

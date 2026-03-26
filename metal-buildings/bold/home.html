@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bell Industrial Construction | Metal Buildings - Home | Forge</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--forge-black: #0D0D0D;
+			--forge-charcoal: #2A2A2A;
+			--forge-orange: #FF4D00;
+			--forge-white: #FFFFFF;
+			--forge-steel: #3A3A3A;
+			--font-display: 'Bebas Neue', sans-serif;
+			--font-body: 'IBM Plex Mono', monospace;
+		}
+
+		*, *::before, *::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: var(--forge-black);
+			color: var(--forge-white);
+			font-family: var(--font-body);
+			font-size: 16px;
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		/* Noise grain overlay */
+		body::after {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+			opacity: 0.05;
+			pointer-events: none;
+			z-index: 9998;
+		}
+
+
+		/* Skip link */
+		.skip-link {
+			position: absolute;
+			top: -100%;
+			left: 0;
+			padding: 0.5rem 1rem;
+			background: var(--forge-orange);
+			color: var(--forge-black);
+			font-family: var(--font-display);
+			font-size: 1.2rem;
+			z-index: 9999;
+			text-decoration: none;
+		}
+		.skip-link:focus {
+			top: 0;
+		}
+
+		:focus-visible {
+			outline: 2px solid var(--forge-orange);
+			outline-offset: 3px;
+		}
+
+		/* Nav */
+		header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1000;
+			background: var(--forge-black);
+			border-bottom: 2px solid var(--forge-charcoal);
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 1rem 2rem;
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		.nav-brand {
+			font-family: var(--font-display);
+			font-size: 1.5rem;
+			color: var(--forge-white);
+			text-decoration: none;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+		}
+		.nav-brand:hover {
+			color: var(--forge-orange);
+		}
+
+		nav ul {
+			list-style: none;
+			display: flex;
+			gap: 2rem;
+		}
+
+		nav ul a {
+			font-family: var(--font-display);
+			font-size: 1.2rem;
+			color: var(--forge-white);
+			text-decoration: none;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			position: relative;
+			padding-bottom: 4px;
+		}
+		nav ul a::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: var(--forge-orange);
+			transition: width 0.3s ease;
+		}
+		nav ul a:hover::after {
+			width: 100%;
+		}
+		nav ul a:hover {
+			color: var(--forge-orange);
+		}
+
+		/* Hero */
+		.hero {
+			position: relative;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--forge-black);
+			overflow: hidden;
+		}
+
+		.hero-svg-wrap {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.hero-svg-wrap svg {
+			width: 80%;
+			max-width: 900px;
+			height: auto;
+		}
+
+		.hero-title {
+			position: relative;
+			z-index: 2;
+			font-family: var(--font-display);
+			font-size: clamp(4rem, 12vw, 14rem);
+			line-height: 0.9;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			color: var(--forge-white);
+			text-align: center;
+		}
+
+		.hero-subtitle {
+			position: relative;
+			z-index: 2;
+			font-family: var(--font-body);
+			font-size: clamp(0.7rem, 1.2vw, 1rem);
+			font-weight: 500;
+			letter-spacing: 0.4em;
+			text-transform: uppercase;
+			color: var(--forge-orange);
+			margin-top: 1.5rem;
+			text-align: center;
+		}
+
+		/* Product Category Bands */
+		.category-band {
+			position: relative;
+			min-height: 40vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 4rem 4rem;
+			background-size: cover;
+			background-position: center;
+			clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), 0 100%);
+			margin-bottom: -2rem;
+		}
+
+		.category-band:last-of-type {
+			clip-path: none;
+			margin-bottom: 0;
+		}
+
+		.category-band::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(rgba(13,13,13,0.82), rgba(13,13,13,0.82));
+		}
+
+		.category-band-content {
+			position: relative;
+			z-index: 1;
+			max-width: 1400px;
+			margin: 0 auto;
+			width: 100%;
+		}
+
+		.category-band h2 {
+			font-family: var(--font-display);
+			font-size: clamp(2.5rem, 5vw, 4rem);
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+			color: var(--forge-white);
+			margin-bottom: 0.5rem;
+		}
+
+		.category-band p {
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			color: rgba(255,255,255,0.75);
+			max-width: 50ch;
+			margin-bottom: 1.5rem;
+		}
+
+		.category-arrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.75rem;
+			font-family: var(--font-body);
+			font-size: 0.8rem;
+			font-weight: 700;
+			color: var(--forge-orange);
+			text-decoration: none;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			padding: 0.6rem 1.2rem;
+			background: var(--forge-black);
+			box-shadow: 8px 8px 0 var(--forge-orange);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+		.category-arrow:hover {
+			transform: translate(-4px, -4px);
+			box-shadow: 12px 12px 0 var(--forge-orange);
+		}
+		.category-arrow svg {
+			width: 20px;
+			height: 20px;
+			fill: var(--forge-orange);
+		}
+
+		.band-commercial {
+			background-image: url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600&q=80');
+		}
+		.band-agricultural {
+			background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80');
+		}
+		.band-residential {
+			background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80');
+		}
+
+		/* Stats Strip */
+		.stats-strip {
+			background: var(--forge-steel);
+			padding: 4rem 2rem;
+		}
+
+		.stats-grid {
+			display: flex;
+			justify-content: center;
+			gap: 4rem;
+			max-width: 1200px;
+			margin: 0 auto;
+			flex-wrap: wrap;
+		}
+
+		.stat-item {
+			text-align: center;
+		}
+
+		.stat-number {
+			font-family: var(--font-body);
+			font-size: clamp(2.5rem, 5vw, 4rem);
+			font-weight: 700;
+			color: var(--forge-orange);
+			line-height: 1;
+		}
+
+		.stat-label {
+			font-family: var(--font-body);
+			font-size: 0.8rem;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			color: rgba(255,255,255,0.7);
+			margin-top: 0.5rem;
+		}
+
+		/* CTA Section */
+		.cta-section {
+			padding: 6rem 2rem;
+			text-align: center;
+		}
+
+		.cta-section h2 {
+			font-family: var(--font-display);
+			font-size: clamp(2rem, 5vw, 4rem);
+			text-transform: uppercase;
+			color: var(--forge-white);
+			margin-bottom: 1rem;
+		}
+
+		.cta-section p {
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			color: rgba(255,255,255,0.7);
+			max-width: 50ch;
+			margin: 0 auto 2rem;
+		}
+
+		.cta-button {
+			display: inline-block;
+			background: var(--forge-orange);
+			color: var(--forge-black);
+			font-family: var(--font-body);
+			font-size: 1rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			text-decoration: none;
+			padding: 1.25rem 3rem;
+			box-shadow: 8px 8px 0 var(--forge-charcoal);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+		.cta-button:hover {
+			transform: translate(-4px, -4px);
+			box-shadow: 12px 12px 0 var(--forge-charcoal);
+		}
+
+		/* Footer */
+		footer {
+			border-top: 2px solid var(--forge-charcoal);
+			padding: 2rem;
+			text-align: center;
+			font-family: var(--font-body);
+			font-size: 0.75rem;
+			color: rgba(255,255,255,0.5);
+		}
+
+		/* Scroll Reveal */
+		.reveal {
+			opacity: 0;
+			transform: translateY(40px);
+			transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+						transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		.reveal.revealed {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* Responsive: Tablet */
+		@media (max-width: 1023px) {
+			.category-band {
+				padding: 3rem 2rem;
+				clip-path: none;
+				margin-bottom: 0;
+			}
+			.stats-grid {
+				gap: 2rem;
+			}
+		}
+
+		/* Responsive: Mobile */
+		@media (max-width: 767px) {
+			nav {
+				flex-direction: column;
+				gap: 0.75rem;
+			}
+			nav ul {
+				gap: 1rem;
+			}
+			.hero {
+				padding-top: 5rem;
+			}
+			.hero-svg-wrap svg {
+				width: 95%;
+			}
+			.category-band {
+				padding: 3rem 1.5rem;
+				min-height: 30vh;
+			}
+			.stats-grid {
+				flex-direction: column;
+				align-items: center;
+				gap: 2rem;
+			}
+			.cta-button {
+				padding: 1rem 2rem;
+				font-size: 0.85rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header>
+		<nav>
+			<a href="../../corporate/bold/index.html" class="nav-brand">Bell Industrial Construction</a>
+			<ul>
+				<li><a href="home.html">Home</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="about.html">About &amp; Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<!-- Hero with SVG wireframe building -->
+		<section class="hero">
+			<div class="hero-svg-wrap" aria-hidden="true">
+				<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+					<!-- Ground line -->
+					<line x1="50" y1="350" x2="750" y2="350" stroke="#FF4D00" stroke-width="2" fill="none"/>
+					<!-- Left wall -->
+					<line x1="120" y1="350" x2="120" y2="160" stroke="#FF4D00" stroke-width="2" fill="none"/>
+					<!-- Right wall -->
+					<line x1="680" y1="350" x2="680" y2="160" stroke="#FF4D00" stroke-width="2" fill="none"/>
+					<!-- Roof peak (gable) -->
+					<line x1="120" y1="160" x2="400" y2="60" stroke="#FF4D00" stroke-width="2" fill="none"/>
+					<line x1="400" y1="60" x2="680" y2="160" stroke="#FF4D00" stroke-width="2" fill="none"/>
+					<!-- Eave lines -->
+					<line x1="100" y1="160" x2="700" y2="160" stroke="#FF4D00" stroke-width="1.5" fill="none" opacity="0.5"/>
+					<!-- Internal rafters left -->
+					<line x1="200" y1="350" x2="200" y2="140" stroke="#FF4D00" stroke-width="1" fill="none" opacity="0.4"/>
+					<line x1="200" y1="140" x2="400" y2="60" stroke="#FF4D00" stroke-width="1" fill="none" opacity="0.4"/>
+					<!-- Internal rafters center-left -->
+					<line x1="310" y1="350" x2="310" y2="107" stroke="#FF4D00" stroke-width="1" fill="none" opacity="0.4"/>
+					<line x1="310" y1="107" x2="400" y2="60" stroke="#FF4D00" stroke-width="1" fill="none" opacity="0.4"/>
+					<!-- Internal rafters center-right -->
+					<line x1="490" y1="350" x2="490" y2="107" stroke="#FF4D00" stroke-width="1" fill="none" opacity="0.4"/>
+					<line x1="490" y1="107" x2="400" y2="60" stroke="#FF4D00" stroke-width="1" fill="none" opacity="0.4"/>
+					<!-- Internal rafters right -->
+					<line x1="600" y1="350" x2="600" y2="140" stroke="#FF4D00" stroke-width="1" fill="none" opacity="0.4"/>
+					<line x1="600" y1="140" x2="400" y2="60" stroke="#FF4D00" stroke-width="1" fill="none" opacity="0.4"/>
+					<!-- Cross bracing left -->
+					<line x1="120" y1="350" x2="200" y2="200" stroke="#FF4D00" stroke-width="0.8" fill="none" opacity="0.3"/>
+					<line x1="200" y1="350" x2="120" y2="200" stroke="#FF4D00" stroke-width="0.8" fill="none" opacity="0.3"/>
+					<!-- Cross bracing right -->
+					<line x1="600" y1="350" x2="680" y2="200" stroke="#FF4D00" stroke-width="0.8" fill="none" opacity="0.3"/>
+					<line x1="680" y1="350" x2="600" y2="200" stroke="#FF4D00" stroke-width="0.8" fill="none" opacity="0.3"/>
+					<!-- Door opening -->
+					<rect x="360" y="260" width="80" height="90" stroke="#FF4D00" stroke-width="1.5" fill="none" opacity="0.6"/>
+					<!-- Foundation markers -->
+					<line x1="110" y1="355" x2="130" y2="355" stroke="#FF4D00" stroke-width="2" fill="none" opacity="0.6"/>
+					<line x1="670" y1="355" x2="690" y2="355" stroke="#FF4D00" stroke-width="2" fill="none" opacity="0.6"/>
+				</svg>
+			</div>
+			<div>
+				<h1 class="hero-title">Metal Buildings</h1>
+				<p class="hero-subtitle">Engineered Steel Structures -- Built to Endure</p>
+			</div>
+		</section>
+
+		<!-- Product Category Bands -->
+		<section class="category-band band-commercial reveal" role="img" aria-label="Commercial metal building exterior">
+			<div class="category-band-content">
+				<h2>Commercial</h2>
+				<p>Warehouses, retail centers, and office structures built with pre-engineered steel for maximum clear-span flexibility.</p>
+				<a href="services.html" class="category-arrow">
+					Explore Services
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+				</a>
+			</div>
+		</section>
+
+		<section class="category-band band-agricultural reveal" role="img" aria-label="Agricultural metal barn in open field">
+			<div class="category-band-content">
+				<h2>Agricultural</h2>
+				<p>Barns, equipment storage, and livestock shelters designed to withstand harsh conditions while remaining cost-efficient.</p>
+				<a href="services.html" class="category-arrow">
+					Explore Services
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+				</a>
+			</div>
+		</section>
+
+		<section class="category-band band-residential reveal" role="img" aria-label="Residential metal workshop structure">
+			<div class="category-band-content">
+				<h2>Residential</h2>
+				<p>Personal workshops, garages, and hobby buildings crafted from steel for homeowners seeking durability and clean design.</p>
+				<a href="services.html" class="category-arrow">
+					Explore Services
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+				</a>
+			</div>
+		</section>
+
+		<!-- Stats Strip -->
+		<section class="stats-strip reveal">
+			<div class="stats-grid">
+				<div class="stat-item">
+					<div class="stat-number" data-target="10000" data-suffix="+">0</div>
+					<div class="stat-label">Sq Ft Average Build</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-number" data-target="750" data-suffix="+">0</div>
+					<div class="stat-label">Tons Fabricated</div>
+				</div>
+				<div class="stat-item">
+					<div class="stat-number" data-target="12" data-suffix="">0</div>
+					<div class="stat-label">States Served</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section class="cta-section reveal">
+			<h2>Configure Your Building</h2>
+			<p>Tell us your specifications and we will engineer a steel structure tailored to your exact requirements.</p>
+			<a href="about.html" class="cta-button">Configure Your Building</a>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2026 Bell Industrial Construction. All rights reserved.</p>
+	</footer>
+
+	<script>
+		/* Scroll Reveal */
+		const observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('revealed');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.reveal').forEach(function(el) {
+			observer.observe(el);
+		});
+
+		/* Count-Up Animation */
+		const statsObserver = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					const counters = entry.target.querySelectorAll('.stat-number');
+					counters.forEach(function(counter) {
+						const target = parseInt(counter.getAttribute('data-target'));
+						const suffix = counter.getAttribute('data-suffix') || '';
+						const duration = 2000;
+						const steps = 60;
+						const increment = target / steps;
+						let current = 0;
+						const timer = setInterval(function() {
+							current += increment;
+							if (current >= target) {
+								counter.textContent = target.toLocaleString() + suffix;
+								clearInterval(timer);
+							} else {
+								counter.textContent = Math.floor(current).toLocaleString() + suffix;
+							}
+						}, duration / steps);
+					});
+					statsObserver.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.3 });
+
+		document.querySelectorAll('.stats-strip').forEach(function(el) {
+			statsObserver.observe(el);
+		});
+	</script>
+</body>
+</html>

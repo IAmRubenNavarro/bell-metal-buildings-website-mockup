@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bell Industrial Construction | Metal Buildings - About &amp; Contact | Precision</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--precision-white: #FAFAF8;
+			--precision-navy: #0A1628;
+			--precision-brass: #B08D57;
+			--precision-gray: #F2F1EE;
+			--precision-text: #1a1a1a;
+			--font-display: 'Playfair Display', serif;
+			--font-body: 'DM Sans', sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: var(--font-body);
+			background-color: var(--precision-white);
+			color: var(--precision-navy);
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		/* Skip link */
+		.skip-link {
+			position: absolute;
+			top: -100%;
+			left: 0;
+			padding: 0.5rem 1rem;
+			background: var(--precision-navy);
+			color: var(--precision-white);
+			z-index: 9999;
+			font-family: var(--font-body);
+			text-decoration: none;
+		}
+
+		.skip-link:focus {
+			top: 0;
+		}
+
+		/* Focus-visible */
+		:focus-visible {
+			outline: 2px solid var(--precision-brass);
+			outline-offset: 3px;
+		}
+
+
+		/* Nav */
+		.site-nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1.25rem 3rem;
+			background: var(--precision-white);
+			border-bottom: 1px solid var(--precision-gray);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.nav-brand {
+			font-family: var(--font-display);
+			font-size: 1.25rem;
+			font-weight: 700;
+			color: var(--precision-navy);
+			text-decoration: none;
+		}
+
+		.nav-links {
+			list-style: none;
+			display: flex;
+			gap: 2rem;
+			align-items: center;
+		}
+
+		.nav-links a {
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			font-weight: 500;
+			color: var(--precision-navy);
+			text-decoration: none;
+			background: linear-gradient(var(--precision-brass), var(--precision-brass)) no-repeat left bottom / 0% 1px;
+			transition: background-size 0.4s ease;
+			padding-bottom: 2px;
+		}
+
+		.nav-links a:hover {
+			background-size: 100% 1px;
+		}
+
+		.nav-cta {
+			font-family: var(--font-body);
+			font-size: 0.85rem;
+			font-weight: 600;
+			color: var(--precision-white) !important;
+			background: var(--precision-navy);
+			border: 1px solid var(--precision-brass);
+			padding: 0.5rem 1.25rem;
+			text-decoration: none !important;
+			letter-spacing: 0.02em;
+			transition: background 0.3s ease;
+		}
+
+		.nav-cta:hover {
+			background: var(--precision-brass);
+		}
+
+		/* Why Choose Us */
+		.why-us {
+			padding: 5rem 3rem;
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+
+		.why-us h1 {
+			font-family: var(--font-display);
+			font-size: clamp(2rem, 4vw, 3rem);
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 3rem;
+			text-align: center;
+		}
+
+		.value-props {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 3rem;
+		}
+
+		.value-prop {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+		}
+
+		.value-prop.revealed {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.value-prop-number {
+			font-family: var(--font-display);
+			font-size: 4rem;
+			font-weight: 700;
+			color: var(--precision-brass);
+			line-height: 1;
+			margin-bottom: 0.75rem;
+		}
+
+		.value-prop h2 {
+			font-family: var(--font-display);
+			font-size: 1.35rem;
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 0.75rem;
+		}
+
+		.value-prop p {
+			font-family: var(--font-body);
+			font-size: 0.95rem;
+			color: var(--precision-text);
+			line-height: 1.7;
+		}
+
+		/* Story */
+		.story {
+			padding: 3rem 3rem 5rem;
+			max-width: 55ch;
+			margin: 0 auto;
+		}
+
+		.story-inner {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+		}
+
+		.story-inner.revealed {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.story h2 {
+			font-family: var(--font-display);
+			font-size: 1.75rem;
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 1.5rem;
+		}
+
+		.story p {
+			font-family: var(--font-body);
+			font-size: 1rem;
+			color: var(--precision-text);
+			line-height: 1.8;
+			margin-bottom: 1.25rem;
+		}
+
+		.pull-quote {
+			font-family: var(--font-display);
+			font-style: italic;
+			font-size: 1.25rem;
+			color: var(--precision-navy);
+			line-height: 1.6;
+			border-left: 3px solid var(--precision-brass);
+			padding-left: 1.5rem;
+			margin: 2rem 0;
+		}
+
+		/* Contact */
+		.contact {
+			background: var(--precision-gray);
+			padding: 5rem 3rem;
+		}
+
+		.contact-inner {
+			max-width: 1100px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 4rem;
+		}
+
+		.contact h2 {
+			font-family: var(--font-display);
+			font-size: 1.75rem;
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 2rem;
+		}
+
+		.contact-details {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+		}
+
+		.contact-details.revealed {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.contact-info {
+			list-style: none;
+			margin-bottom: 2rem;
+		}
+
+		.contact-info li {
+			font-family: var(--font-body);
+			font-size: 0.95rem;
+			color: var(--precision-text);
+			padding: 0.6rem 0;
+			border-bottom: 1px solid rgba(176, 141, 87, 0.2);
+		}
+
+		.contact-info strong {
+			color: var(--precision-navy);
+			display: inline-block;
+			width: 5rem;
+		}
+
+		.map-frame {
+			border: 1px solid var(--precision-brass);
+			padding: 4px;
+		}
+
+		.map-frame iframe {
+			display: block;
+		}
+
+		/* Form */
+		.contact-form-wrap {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+		}
+
+		.contact-form-wrap.revealed {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.contact-form label {
+			display: block;
+			font-family: var(--font-body);
+			font-size: 0.85rem;
+			font-weight: 600;
+			color: var(--precision-navy);
+			margin-bottom: 0.35rem;
+			margin-top: 1.25rem;
+		}
+
+		.contact-form label:first-of-type {
+			margin-top: 0;
+		}
+
+		.contact-form input,
+		.contact-form select,
+		.contact-form textarea {
+			width: 100%;
+			font-family: var(--font-body);
+			font-size: 0.95rem;
+			color: var(--precision-navy);
+			background: transparent;
+			border: none;
+			border-bottom: 1px solid rgba(10, 22, 40, 0.2);
+			padding: 0.6rem 0;
+			transition: border-color 0.3s ease;
+		}
+
+		.contact-form input:focus,
+		.contact-form select:focus,
+		.contact-form textarea:focus {
+			outline: none;
+			border-bottom-color: var(--precision-brass);
+		}
+
+		.contact-form textarea {
+			resize: vertical;
+			min-height: 100px;
+		}
+
+		.contact-form select {
+			cursor: pointer;
+		}
+
+		.contact-form button[type="submit"] {
+			margin-top: 2rem;
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			font-weight: 600;
+			color: var(--precision-white);
+			background: var(--precision-navy);
+			border: 1px solid var(--precision-brass);
+			padding: 0.75rem 2rem;
+			cursor: pointer;
+			letter-spacing: 0.03em;
+			transition: background 0.3s ease;
+		}
+
+		.contact-form button[type="submit"]:hover {
+			background: var(--precision-brass);
+		}
+
+		.contact-form button[type="submit"]:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+
+		.form-confirmation {
+			font-family: var(--font-body);
+			font-size: 0.95rem;
+			color: var(--precision-brass);
+			margin-top: 1rem;
+			font-weight: 500;
+		}
+
+		/* Footer */
+		.site-footer {
+			text-align: center;
+			padding: 2rem 3rem;
+			border-top: 1px solid var(--precision-gray);
+			font-size: 0.85rem;
+			color: var(--precision-text);
+		}
+
+		/* Responsive - Tablet */
+		@media (max-width: 1023px) {
+			main::before {
+				display: none;
+			}
+
+			.value-props {
+				grid-template-columns: 1fr;
+				gap: 2.5rem;
+			}
+
+			.contact-inner {
+				grid-template-columns: 1fr;
+				gap: 3rem;
+			}
+		}
+
+		/* Responsive - Mobile */
+		@media (max-width: 767px) {
+			.site-nav {
+				flex-direction: column;
+				gap: 1rem;
+				padding: 1rem 1.5rem;
+			}
+
+			.nav-links {
+				gap: 1rem;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.why-us {
+				padding: 3rem 1.5rem;
+			}
+
+			.story {
+				padding: 2rem 1.5rem 3rem;
+			}
+
+			.contact {
+				padding: 3rem 1.5rem;
+			}
+
+			.site-footer {
+				padding: 1.5rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header>
+		<nav class="site-nav" aria-label="Main navigation">
+			<a href="../../corporate/clean/index.html" class="nav-brand">Bell Industrial Construction</a>
+			<ul class="nav-links">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="about.html">About &amp; Contact</a></li>
+				<li><a href="about.html" class="nav-cta">Get a Quote</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<!-- Why Choose Us -->
+		<section class="why-us">
+			<h1>Why Choose Us</h1>
+			<div class="value-props">
+				<article class="value-prop">
+					<span class="value-prop-number" aria-hidden="true">01</span>
+					<h2>Engineering Excellence</h2>
+					<p>Our in-house structural engineers bring decades of experience in metal building design. Every project is optimized for structural integrity, energy efficiency, and code compliance -- ensuring buildings that perform for generations.</p>
+				</article>
+				<article class="value-prop">
+					<span class="value-prop-number" aria-hidden="true">02</span>
+					<h2>Turnkey Delivery</h2>
+					<p>From initial site analysis through final inspection, we manage every phase of your metal building project. One point of contact, one accountable team, and a commitment to delivering on time and within budget.</p>
+				</article>
+				<article class="value-prop">
+					<span class="value-prop-number" aria-hidden="true">03</span>
+					<h2>Proven Track Record</h2>
+					<p>Over 500 metal buildings erected across the Southeast. Our portfolio includes distribution centers, manufacturing plants, agricultural facilities, and custom structures -- each completed to the highest standard.</p>
+				</article>
+			</div>
+		</section>
+
+		<!-- Our Story -->
+		<section class="story">
+			<div class="story-inner">
+				<h2>Our Story</h2>
+				<p>Bell Industrial Construction began in 1987 with a single crew and a conviction that metal buildings deserved the same precision and care as any other construction discipline. In an industry often characterized by speed over quality, we chose a different path.</p>
+
+				<blockquote class="pull-quote">
+					We do not simply erect buildings -- we engineer solutions that protect our clients' investments for decades to come.
+				</blockquote>
+
+				<p>Over nearly four decades, that commitment has shaped every aspect of our operation. We invested early in engineering capabilities, building an in-house team that could design structures optimized for each client's specific requirements rather than relying on generic catalog plans.</p>
+
+				<p>Today, we operate from a 60,000 square foot fabrication facility with the capacity to produce custom components for the most demanding projects. Our field crews are OSHA-certified and trained in the latest erection techniques, and our project managers maintain direct communication with every client from contract through completion.</p>
+
+				<p>The result is a company built on repeat business and referrals -- clients who have seen firsthand that our buildings stand the test of time, and that our word is as reliable as our steel.</p>
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<section class="contact">
+			<div class="contact-inner">
+				<div class="contact-details">
+					<h2>Get in Touch</h2>
+					<ul class="contact-info">
+						<li><strong>Phone</strong> (305) 555-0172</li>
+						<li><strong>Email</strong> info@bellindustrial.com</li>
+						<li><strong>Address</strong> 4200 NW 72nd Avenue, Miami, FL 33166</li>
+						<li><strong>Hours</strong> Monday - Friday, 7:00 AM - 5:00 PM</li>
+					</ul>
+					<div class="map-frame">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925855064!2d-80.29949920266am54!3d25.782390733498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1sen!2sus!4v1"
+							width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"
+							title="Bell Industrial Construction office location on Google Maps">
+						</iframe>
+					</div>
+				</div>
+				<div class="contact-form-wrap">
+					<h2>Submit an Inquiry</h2>
+					<form class="contact-form">
+						<label for="name">Name</label>
+						<input type="text" id="name" name="name" required>
+
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" required>
+
+						<label for="phone">Phone</label>
+						<input type="tel" id="phone" name="phone">
+
+						<label for="project-type">Project Type</label>
+						<select id="project-type" name="project-type">
+							<option value="">Select...</option>
+							<option value="new">New Construction</option>
+							<option value="renovation">Renovation</option>
+							<option value="metal-building">Metal Building</option>
+							<option value="other">Other</option>
+						</select>
+
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="5"></textarea>
+
+						<button type="submit">Submit Inquiry</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<p>&copy; 2026 Bell Industrial Construction. All rights reserved.</p>
+	</footer>
+
+	<script>
+		/* Scroll fade-in reveal */
+		const observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('revealed');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.value-prop, .story-inner, .contact-details, .contact-form-wrap').forEach(function(el) {
+			observer.observe(el);
+		});
+
+		/* Contact form submission */
+		document.querySelector('form').addEventListener('submit', function(e) {
+			e.preventDefault();
+			const btn = this.querySelector('button[type="submit"]');
+			const msg = document.createElement('p');
+			msg.className = 'form-confirmation';
+			msg.textContent = "Thank you. We'll be in touch within 24 hours.";
+			btn.parentNode.insertBefore(msg, btn.nextSibling);
+			btn.disabled = true;
+		});
+	</script>
+</body>
+</html>

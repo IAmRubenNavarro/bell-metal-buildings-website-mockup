@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bell Industrial Construction | Industrial Construction - About & Contact | Grit</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--grit-paper: #E8E0D4;
+			--grit-wood: #1E1108;
+			--grit-red: #A63D2F;
+			--grit-green: #4A6741;
+			--grit-parchment: #D9D0C2;
+			--font-display: 'Arvo', serif;
+			--font-body: 'Source Serif 4', serif;
+		}
+
+		*, *::before, *::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: var(--font-body);
+			color: var(--grit-wood);
+			background-color: var(--grit-paper);
+			line-height: 1.7;
+			overflow-x: hidden;
+			position: relative;
+		}
+
+		/* Paper grain */
+		body::after {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			z-index: 9998;
+			opacity: 0.03;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+		}
+
+		/* Blueprint grid */
+		body::before {
+			content: '';
+			position: fixed;
+			top: -10%;
+			left: -10%;
+			width: 120%;
+			height: 120%;
+			pointer-events: none;
+			z-index: 9997;
+			opacity: 0.04;
+			transform: rotate(-2deg);
+			background-image:
+				linear-gradient(rgba(30,17,8,0.3) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(30,17,8,0.3) 1px, transparent 1px);
+			background-size: 60px 60px;
+		}
+
+		.skip-link {
+			position: absolute;
+			top: -100%;
+			left: 0;
+			padding: 0.5rem 1rem;
+			background: var(--grit-red);
+			color: #fff;
+			font-family: var(--font-body);
+			z-index: 9999;
+			text-decoration: none;
+		}
+		.skip-link:focus {
+			top: 0;
+		}
+
+		:focus-visible {
+			outline: 2px dashed var(--grit-red);
+			outline-offset: 3px;
+		}
+
+		/* Nav */
+		nav {
+			background: var(--grit-paper);
+			border-bottom: 2px solid var(--grit-wood);
+			padding: 1rem 2rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			position: relative;
+			z-index: 100;
+		}
+
+		.nav-brand {
+			font-family: var(--font-display);
+			font-size: 1.3rem;
+			font-weight: 700;
+			color: var(--grit-wood);
+			text-decoration: none;
+		}
+		.nav-brand:hover {
+			color: var(--grit-red);
+		}
+
+		nav ul {
+			list-style: none;
+			display: flex;
+			gap: 1.5rem;
+		}
+
+		nav ul a {
+			font-family: var(--font-body);
+			font-size: 1rem;
+			color: var(--grit-wood);
+			text-decoration: none;
+			padding-bottom: 2px;
+			border-bottom: 2px solid transparent;
+			transition: border-color 0.2s;
+		}
+		nav ul a:hover,
+		nav ul a.active {
+			border-bottom-color: var(--grit-red);
+		}
+
+		/* Company story / letter */
+		.story-section {
+			max-width: 750px;
+			margin: 0 auto;
+			padding: 3rem 2rem;
+		}
+
+		.story-section h1 {
+			font-family: var(--font-display);
+			font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+			color: var(--grit-wood);
+			margin-bottom: 2rem;
+		}
+
+		.story-section p {
+			font-family: var(--font-body);
+			font-size: 1.05rem;
+			line-height: 1.8;
+			margin-bottom: 1.5rem;
+		}
+
+		.story-section p:first-of-type::first-letter {
+			font-size: 3.5em;
+			float: left;
+			line-height: 0.8;
+			margin-right: 0.1em;
+			margin-top: 0.05em;
+			color: var(--grit-red);
+			font-family: var(--font-display);
+			font-weight: 700;
+		}
+
+		/* Timeline */
+		.timeline-section {
+			padding: 3rem 2rem;
+			max-width: 900px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+
+		.timeline-section h2 {
+			font-family: var(--font-display);
+			font-size: 1.8rem;
+			color: var(--grit-wood);
+			margin-bottom: 2rem;
+			text-align: center;
+		}
+
+		.timeline {
+			position: relative;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			padding: 2rem 0;
+		}
+
+		/* Wobbly hand-drawn SVG line */
+		.timeline-line {
+			position: absolute;
+			top: 28px;
+			left: 0;
+			width: 100%;
+			height: 20px;
+			z-index: 0;
+		}
+
+		.timeline-item {
+			position: relative;
+			z-index: 1;
+			text-align: center;
+			flex: 1;
+			padding: 0 0.5rem;
+		}
+
+		.timeline-dot {
+			width: 16px;
+			height: 16px;
+			background: var(--grit-red);
+			border-radius: 50%;
+			border: 3px solid var(--grit-wood);
+			margin: 20px auto 0.75rem;
+		}
+
+		.timeline-year {
+			font-family: var(--font-display);
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: var(--grit-red);
+			margin-bottom: 0.3rem;
+		}
+
+		.timeline-desc {
+			font-family: var(--font-body);
+			font-size: 0.85rem;
+			line-height: 1.5;
+			color: var(--grit-wood);
+		}
+
+		/* Contact form */
+		.contact-section {
+			background: var(--grit-parchment);
+			padding: 3rem 2rem;
+		}
+
+		.contact-inner {
+			max-width: 700px;
+			margin: 0 auto;
+		}
+
+		.contact-section h2 {
+			font-family: var(--font-display);
+			font-size: 1.8rem;
+			color: var(--grit-wood);
+			margin-bottom: 1.5rem;
+		}
+
+		.contact-section form {
+			display: flex;
+			flex-direction: column;
+			gap: 1.25rem;
+		}
+
+		.contact-section label {
+			font-family: var(--font-display);
+			font-size: 0.95rem;
+			font-weight: 700;
+			color: var(--grit-wood);
+			display: block;
+			margin-bottom: 0.3rem;
+		}
+
+		.contact-section input,
+		.contact-section select,
+		.contact-section textarea {
+			width: 100%;
+			padding: 0.65rem 0.75rem;
+			font-family: var(--font-body);
+			font-size: 1rem;
+			color: var(--grit-wood);
+			background: var(--grit-paper);
+			border: 2px solid var(--grit-wood);
+			border-radius: 0;
+			-webkit-appearance: none;
+			appearance: none;
+		}
+		.contact-section input:focus,
+		.contact-section select:focus,
+		.contact-section textarea:focus {
+			outline: 2px dashed var(--grit-red);
+			outline-offset: 2px;
+		}
+
+		.contact-section select {
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%231E1108'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: right 0.75rem center;
+			padding-right: 2rem;
+		}
+
+		.submit-btn {
+			font-family: var(--font-display);
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: var(--grit-paper);
+			background: var(--grit-wood);
+			border: 2px solid var(--grit-wood);
+			padding: 0.8rem 2rem;
+			cursor: pointer;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			transition: transform 0.15s, background 0.15s;
+			align-self: flex-start;
+		}
+		.submit-btn:hover {
+			transform: translateY(2px);
+			background: #0a0804;
+		}
+		.submit-btn:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+
+		.form-confirmation {
+			font-family: var(--font-body);
+			font-size: 1rem;
+			color: var(--grit-green);
+			font-weight: 600;
+			margin-top: 0.5rem;
+		}
+
+		/* Map */
+		.map-section {
+			position: relative;
+		}
+
+		.map-torn-edge {
+			clip-path: polygon(0 3%, 5% 1%, 15% 3%, 25% 0, 35% 2%, 45% 0, 55% 3%, 65% 1%, 75% 2%, 85% 0, 95% 2%, 100% 0, 100% 100%, 0 100%);
+			filter: sepia(0.3) saturate(0.8);
+		}
+
+		.map-torn-edge iframe {
+			display: block;
+			width: 100%;
+			height: 300px;
+			border: 0;
+		}
+
+		/* Hours table */
+		.hours-section {
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 3rem 2rem;
+		}
+
+		.hours-section h2 {
+			font-family: var(--font-display);
+			font-size: 1.5rem;
+			color: var(--grit-wood);
+			margin-bottom: 1rem;
+		}
+
+		.hours-table {
+			width: 100%;
+			border-collapse: collapse;
+			font-family: var(--font-body);
+		}
+
+		.hours-table thead th {
+			background: var(--grit-red);
+			color: #fff;
+			font-family: var(--font-display);
+			font-weight: 700;
+			font-size: 1rem;
+			padding: 0.6rem 0.75rem;
+			text-align: left;
+			border: 3px solid var(--grit-wood);
+		}
+
+		.hours-table tbody td {
+			padding: 0.5rem 0.75rem;
+			border: 3px solid var(--grit-wood);
+			font-size: 0.95rem;
+		}
+
+		.hours-table tbody tr:nth-child(even) {
+			background: rgba(30, 17, 8, 0.04);
+		}
+
+		/* Footer */
+		footer {
+			background: var(--grit-wood);
+			color: var(--grit-paper);
+			padding: 2rem;
+			text-align: center;
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+		}
+		footer a {
+			color: var(--grit-paper);
+		}
+
+		/* Scroll reveal */
+		.reveal {
+			opacity: 0;
+			transition: opacity 0.8s ease;
+		}
+		.reveal.revealed {
+			opacity: 1;
+		}
+
+		/* Tablet */
+		@media (max-width: 1023px) {
+			.timeline {
+				flex-wrap: wrap;
+				gap: 1rem;
+				justify-content: center;
+			}
+			.timeline-line {
+				display: none;
+			}
+			.timeline-item {
+				flex: 0 0 30%;
+			}
+		}
+
+		/* Mobile */
+		@media (max-width: 767px) {
+			nav {
+				flex-direction: column;
+				gap: 0.75rem;
+				padding: 1rem;
+			}
+			nav ul {
+				gap: 1rem;
+			}
+
+			.timeline {
+				flex-direction: column;
+				align-items: flex-start;
+				padding-left: 2rem;
+			}
+			.timeline-line {
+				display: none;
+			}
+			.timeline-item {
+				flex: 0 0 auto;
+				text-align: left;
+				display: flex;
+				align-items: flex-start;
+				gap: 0.75rem;
+				padding: 0;
+				margin-bottom: 1.5rem;
+			}
+			.timeline-dot {
+				margin: 0.2rem 0 0;
+				flex-shrink: 0;
+			}
+
+			.hours-section {
+				padding: 2rem 1rem;
+			}
+			.hours-table {
+				font-size: 0.9rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header>
+		<nav>
+			<a href="../../corporate/rugged/index.html" class="nav-brand">Bell Industrial Construction</a>
+			<ul>
+				<li><a href="home.html">Home</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="about.html" class="active">About &amp; Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<!-- Company Story -->
+		<section class="story-section reveal">
+			<h1>Our Story</h1>
+			<p>Bell Industrial Construction started with a handshake, a flatbed truck, and a crew of five in 1987. Our founder, Harold Bell, had spent twenty years working steel on rigs and refineries across the Gulf Coast before deciding he could do it better on his own. He was right. That first year we completed three small jobs and earned a reputation for showing up early, working clean, and finishing on time.</p>
+			<p>Through the 1990s we grew steadily, adding concrete and foundation capabilities and expanding into full-facility construction. We never chased growth for its own sake. Every new service line came from a client asking us to do more because they trusted the work we had already done.</p>
+			<p>Today we operate across the southern United States with a workforce of over two hundred skilled tradespeople. Our equipment yard holds cranes, excavators, and concrete pumps that we own outright -- no rental markups, no scheduling delays. The company is still family-led, and the values have not changed: honest work, fair pricing, and buildings that last.</p>
+		</section>
+
+		<!-- Timeline -->
+		<section class="timeline-section reveal">
+			<h2>Milestones</h2>
+			<div class="timeline">
+				<!-- Wobbly SVG line -->
+				<svg class="timeline-line" viewBox="0 0 900 20" preserveAspectRatio="none" aria-hidden="true">
+					<path d="M0,10 Q50,4 100,10 T200,10 T300,12 T400,8 T500,10 T600,12 T700,9 T800,11 T900,10" fill="none" stroke="#1E1108" stroke-width="2.5" stroke-linecap="round"/>
+				</svg>
+
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div>
+						<div class="timeline-year">1987</div>
+						<div class="timeline-desc">Company founded by Harold Bell in Houston, TX</div>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div>
+						<div class="timeline-year">1994</div>
+						<div class="timeline-desc">Added concrete and foundation services</div>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div>
+						<div class="timeline-year">2003</div>
+						<div class="timeline-desc">First full-facility industrial build completed</div>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div>
+						<div class="timeline-year">2012</div>
+						<div class="timeline-desc">Expanded to multi-state operations</div>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div>
+						<div class="timeline-year">2024</div>
+						<div class="timeline-desc">200+ employees, 500+ completed projects</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Form -->
+		<section class="contact-section reveal">
+			<div class="contact-inner">
+				<h2>Get in Touch</h2>
+				<form>
+					<div>
+						<label for="name">Name</label>
+						<input type="text" id="name" name="name" required>
+					</div>
+
+					<div>
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" required>
+					</div>
+
+					<div>
+						<label for="phone">Phone</label>
+						<input type="tel" id="phone" name="phone">
+					</div>
+
+					<div>
+						<label for="project-type">Project Type</label>
+						<select id="project-type" name="project-type">
+							<option value="">Select...</option>
+							<option value="new">New Construction</option>
+							<option value="renovation">Renovation</option>
+							<option value="metal-building">Metal Building</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+
+					<div>
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="5"></textarea>
+					</div>
+
+					<button type="submit" class="submit-btn">Send Message</button>
+				</form>
+			</div>
+		</section>
+
+		<!-- Map -->
+		<section class="map-section">
+			<div class="map-torn-edge">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925855064!2d-80.29949920266am54!3d25.782390733498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1sen!2sus!4v1"
+					width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"
+					title="Bell Industrial Construction office location on Google Maps">
+				</iframe>
+			</div>
+		</section>
+
+		<!-- Business Hours -->
+		<section class="hours-section reveal">
+			<h2>Business Hours</h2>
+			<table class="hours-table">
+				<thead>
+					<tr>
+						<th>Day</th>
+						<th>Hours</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Monday - Friday</td>
+						<td>6:00 AM - 5:00 PM</td>
+					</tr>
+					<tr>
+						<td>Saturday</td>
+						<td>7:00 AM - 12:00 PM</td>
+					</tr>
+					<tr>
+						<td>Sunday</td>
+						<td>Closed</td>
+					</tr>
+					<tr>
+						<td>Emergency Line</td>
+						<td>24/7</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2026 Bell Industrial Construction. All rights reserved.</p>
+	</footer>
+
+	<script>
+		// Scroll reveal - opacity only
+		const observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('revealed');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.reveal').forEach(function(el) {
+			observer.observe(el);
+		});
+
+		// Contact form submission
+		document.querySelector('form').addEventListener('submit', function(e) {
+			e.preventDefault();
+			var btn = this.querySelector('button[type="submit"]');
+			var msg = document.createElement('p');
+			msg.className = 'form-confirmation';
+			msg.textContent = "Thank you. We'll be in touch within 24 hours.";
+			btn.parentNode.insertBefore(msg, btn.nextSibling);
+			btn.disabled = true;
+		});
+	</script>
+</body>
+</html>

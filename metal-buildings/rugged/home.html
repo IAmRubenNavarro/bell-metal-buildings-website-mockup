@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bell Industrial Construction | Metal Buildings - Home | Grit</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--grit-paper: #E8E0D4;
+			--grit-wood: #1E1108;
+			--grit-red: #A63D2F;
+			--grit-green: #4A6741;
+			--grit-parchment: #D9D0C2;
+			--font-display: 'Arvo', serif;
+			--font-body: 'Source Serif 4', serif;
+		}
+
+		*, *::before, *::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: var(--font-body);
+			color: var(--grit-wood);
+			background-color: var(--grit-paper);
+			line-height: 1.7;
+			overflow-x: hidden;
+			position: relative;
+		}
+
+		/* Paper grain texture */
+		body::after {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			z-index: 9998;
+			opacity: 0.03;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+		}
+
+		/* Blueprint grid */
+		body::before {
+			content: '';
+			position: fixed;
+			top: -10%;
+			left: -10%;
+			width: 120%;
+			height: 120%;
+			pointer-events: none;
+			z-index: 9997;
+			opacity: 0.04;
+			transform: rotate(-2deg);
+			background-image:
+				linear-gradient(rgba(30,17,8,0.3) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(30,17,8,0.3) 1px, transparent 1px);
+			background-size: 60px 60px;
+		}
+
+		/* Skip link */
+		.skip-link {
+			position: absolute;
+			top: -100%;
+			left: 0;
+			padding: 0.5rem 1rem;
+			background: var(--grit-green);
+			color: #fff;
+			font-family: var(--font-body);
+			z-index: 9999;
+			text-decoration: none;
+		}
+		.skip-link:focus {
+			top: 0;
+		}
+
+		:focus-visible {
+			outline: 2px dashed var(--grit-red);
+			outline-offset: 3px;
+		}
+
+		/* Nav */
+		nav {
+			background: var(--grit-paper);
+			border-bottom: 2px solid var(--grit-wood);
+			padding: 1rem 2rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			position: relative;
+			z-index: 100;
+		}
+
+		.nav-brand {
+			font-family: var(--font-display);
+			font-size: 1.25rem;
+			font-weight: 700;
+			color: var(--grit-wood);
+			text-decoration: none;
+		}
+
+		nav ul {
+			list-style: none;
+			display: flex;
+			gap: 2rem;
+			align-items: center;
+		}
+
+		nav ul a {
+			font-family: var(--font-body);
+			color: var(--grit-wood);
+			text-decoration: none;
+			font-size: 0.95rem;
+			position: relative;
+			padding-bottom: 4px;
+		}
+
+		nav ul a:hover,
+		nav ul a.active {
+			color: var(--grit-green);
+		}
+
+		nav ul a.active::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 3px;
+			background: var(--grit-green);
+		}
+
+		/* Hero */
+		.hero {
+			position: relative;
+			padding: 4rem 2rem 6rem;
+			overflow: hidden;
+		}
+
+		.hero-image-wrapper {
+			position: relative;
+			width: 100%;
+			max-width: 1100px;
+			margin: 0 auto;
+			transform: rotate(-1.5deg);
+		}
+
+		.hero-image-wrapper img {
+			width: 100%;
+			height: 450px;
+			object-fit: cover;
+			display: block;
+			filter: sepia(0.15) saturate(0.85) brightness(0.95);
+			clip-path: polygon(0 0, 5% 2%, 15% 0, 25% 1%, 35% 0, 45% 2%, 55% 0, 65% 1%, 75% 0, 85% 2%, 95% 0, 100% 1%, 100% 100%, 95% 98%, 85% 100%, 75% 99%, 65% 100%, 55% 98%, 45% 100%, 35% 99%, 25% 100%, 15% 98%, 5% 100%, 0 99%);
+		}
+
+		.hero-title {
+			position: absolute;
+			bottom: -1rem;
+			left: 2rem;
+			background: var(--grit-green);
+			color: #fff;
+			font-family: var(--font-display);
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			padding: 0.5rem 1.5rem;
+			z-index: 10;
+			line-height: 1.2;
+		}
+
+		/* What We Build - Polaroids */
+		.products {
+			padding: 5rem 2rem;
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+
+		.products h2 {
+			font-family: var(--font-display);
+			font-size: 2rem;
+			margin-bottom: 3rem;
+			position: relative;
+			display: inline-block;
+		}
+
+		.products h2::after {
+			content: '';
+			position: absolute;
+			bottom: -8px;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background: var(--grit-green);
+		}
+
+		.polaroid-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 3rem;
+			margin-top: 2rem;
+		}
+
+		.polaroid {
+			background: #fff;
+			padding: 8px 8px 32px;
+			box-shadow: 2px 3px 8px rgba(0,0,0,0.2);
+			transition: transform 0.3s ease;
+		}
+
+		.polaroid:nth-child(1) { transform: rotate(2deg); }
+		.polaroid:nth-child(2) { transform: rotate(-1.5deg); }
+		.polaroid:nth-child(3) { transform: rotate(1deg); }
+
+		.polaroid img {
+			width: 100%;
+			height: 220px;
+			object-fit: cover;
+			display: block;
+			filter: sepia(0.1) saturate(0.9);
+		}
+
+		.polaroid-caption {
+			font-family: var(--font-body);
+			font-style: italic;
+			font-size: 0.9rem;
+			text-align: center;
+			margin-top: 10px;
+			color: var(--grit-wood);
+		}
+
+		/* From Our Yard */
+		.yard {
+			padding: 4rem 2rem 5rem;
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+
+		.yard h2 {
+			font-family: var(--font-display);
+			font-size: 2rem;
+			margin-bottom: 2rem;
+			position: relative;
+			display: inline-block;
+		}
+
+		.yard h2::after {
+			content: '';
+			position: absolute;
+			bottom: -8px;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background: var(--grit-green);
+		}
+
+		.yard-content {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
+			align-items: center;
+			margin-top: 2rem;
+		}
+
+		.yard-photo-frame {
+			border: 4px solid var(--grit-wood);
+			padding: 6px;
+			background: var(--grit-parchment);
+			position: relative;
+		}
+
+		.yard-photo-frame img {
+			width: 100%;
+			height: 360px;
+			object-fit: cover;
+			display: block;
+			filter: sepia(0.12) saturate(0.85);
+		}
+
+		.yard-photo-frame::after {
+			content: '';
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			right: 6px;
+			bottom: 6px;
+			box-shadow: inset 0 0 40px rgba(30, 17, 8, 0.4);
+			pointer-events: none;
+		}
+
+		.yard-narrative {
+			font-size: 1.05rem;
+			line-height: 1.85;
+		}
+
+		.yard-narrative p {
+			margin-bottom: 1.2rem;
+		}
+
+		/* CTA */
+		.cta-section {
+			text-align: center;
+			padding: 3rem 2rem 5rem;
+		}
+
+		.cta-stamped {
+			display: inline-block;
+			font-family: var(--font-display);
+			font-size: 1.1rem;
+			color: var(--grit-green);
+			border: 2px solid var(--grit-green);
+			padding: 0.75rem 2rem;
+			text-decoration: none;
+			transform: rotate(-1deg);
+			transition: transform 0.15s, background 0.15s, color 0.15s;
+		}
+
+		.cta-stamped:hover {
+			background: var(--grit-green);
+			color: #fff;
+			transform: rotate(-1deg) translateY(2px);
+		}
+
+		/* Scroll reveal */
+		.reveal {
+			opacity: 0;
+			transition: opacity 0.8s ease;
+		}
+
+		.reveal.revealed {
+			opacity: 1;
+		}
+
+		/* Footer */
+		footer {
+			background: var(--grit-wood);
+			color: var(--grit-paper);
+			padding: 2rem;
+			text-align: center;
+			font-family: var(--font-body);
+			font-size: 0.85rem;
+		}
+
+		footer a {
+			color: var(--grit-paper);
+		}
+
+		/* Tablet */
+		@media (max-width: 1023px) {
+			.polaroid-grid {
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2rem;
+			}
+
+			.yard-content {
+				grid-template-columns: 1fr;
+			}
+
+			.hero-image-wrapper img {
+				height: 350px;
+			}
+		}
+
+		/* Mobile */
+		@media (max-width: 767px) {
+			nav {
+				flex-direction: column;
+				gap: 0.75rem;
+				padding: 1rem;
+			}
+
+			nav ul {
+				gap: 1rem;
+			}
+
+			.hero {
+				padding: 2rem 1rem 4rem;
+			}
+
+			.hero-image-wrapper {
+				transform: none;
+			}
+
+			.hero-image-wrapper img {
+				height: 250px;
+			}
+
+			.hero-title {
+				font-size: 1.75rem;
+				left: 1rem;
+			}
+
+			.polaroid-grid {
+				grid-template-columns: 1fr;
+				gap: 2rem;
+			}
+
+			.polaroid:nth-child(1),
+			.polaroid:nth-child(2),
+			.polaroid:nth-child(3) {
+				transform: none;
+			}
+
+			.yard-content {
+				grid-template-columns: 1fr;
+				gap: 2rem;
+			}
+
+			.products,
+			.yard {
+				padding: 3rem 1rem;
+			}
+
+			.cta-stamped {
+				transform: none;
+			}
+
+			.cta-stamped:hover {
+				transform: translateY(2px);
+			}
+		}
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header>
+		<nav>
+			<a href="../../corporate/rugged/index.html" class="nav-brand">Bell Industrial Construction</a>
+			<ul>
+				<li><a href="home.html" class="active">Home</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="about.html">About &amp; Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<!-- Hero -->
+		<section class="hero">
+			<div class="hero-image-wrapper">
+				<img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1200&q=80" alt="Large metal building in a rural field under warm sunlight">
+				<h1 class="hero-title">Metal Buildings</h1>
+			</div>
+		</section>
+
+		<!-- What We Build -->
+		<section class="products reveal">
+			<h2>What We Build</h2>
+			<div class="polaroid-grid">
+				<article class="polaroid">
+					<img src="https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=600&q=80" alt="Modern commercial metal building with large bay doors">
+					<p class="polaroid-caption">Commercial Buildings</p>
+				</article>
+				<article class="polaroid">
+					<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="Red agricultural barn set against green countryside">
+					<p class="polaroid-caption">Agricultural Barns</p>
+				</article>
+				<article class="polaroid">
+					<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Steel workshop building with open roll-up doors">
+					<p class="polaroid-caption">Workshops &amp; Garages</p>
+				</article>
+			</div>
+		</section>
+
+		<!-- From Our Yard -->
+		<section class="yard reveal">
+			<h2>From Our Yard</h2>
+			<div class="yard-content">
+				<div class="yard-photo-frame">
+					<img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?auto=format&fit=crop&w=800&q=80" alt="Craftsman welding steel beams inside a metal building frame">
+				</div>
+				<div class="yard-narrative">
+					<p>Every building that leaves our yard carries decades of knowledge in its bones. We cut, weld, and bolt with the same care our founders brought to every joint and every seam.</p>
+					<p>We source American steel, prep it with our own hands, and raise it on your land. No middlemen, no shortcuts. Just honest metal work that stands for generations.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA -->
+		<section class="cta-section reveal">
+			<a href="about.html" class="cta-stamped">Get a Quote on Your Building</a>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2026 Bell Industrial Construction. All rights reserved.</p>
+	</footer>
+
+	<script>
+		/* Opacity-only scroll reveals */
+		(function() {
+			var targets = document.querySelectorAll('.reveal');
+			if (!('IntersectionObserver' in window)) {
+				targets.forEach(function(t) { t.classList.add('revealed'); });
+				return;
+			}
+			var observer = new IntersectionObserver(function(entries) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.1 });
+			targets.forEach(function(t) { observer.observe(t); });
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bell Industrial Construction | Industrial Construction - About &amp; Contact | Forge</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--forge-black: #0D0D0D;
+			--forge-charcoal: #2A2A2A;
+			--forge-orange: #FF4D00;
+			--forge-white: #FFFFFF;
+			--forge-steel: #3A3A3A;
+			--font-display: 'Bebas Neue', sans-serif;
+			--font-body: 'IBM Plex Mono', monospace;
+		}
+
+		*, *::before, *::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: var(--forge-black);
+			color: var(--forge-white);
+			font-family: var(--font-body);
+			font-size: 16px;
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		/* Noise grain overlay */
+		body::after {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+			opacity: 0.05;
+			pointer-events: none;
+			z-index: 9998;
+		}
+
+
+		.skip-link {
+			position: absolute;
+			top: -100%;
+			left: 0;
+			padding: 0.5rem 1rem;
+			background: var(--forge-orange);
+			color: var(--forge-black);
+			font-family: var(--font-display);
+			font-size: 1.2rem;
+			z-index: 9999;
+			text-decoration: none;
+		}
+		.skip-link:focus {
+			top: 0;
+		}
+
+		:focus-visible {
+			outline: 2px solid var(--forge-orange);
+			outline-offset: 3px;
+		}
+
+		/* Nav */
+		header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1000;
+			background: var(--forge-black);
+			border-bottom: 2px solid var(--forge-charcoal);
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 1rem 2rem;
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		.nav-brand {
+			font-family: var(--font-display);
+			font-size: 1.5rem;
+			color: var(--forge-white);
+			text-decoration: none;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+		}
+		.nav-brand:hover {
+			color: var(--forge-orange);
+		}
+
+		nav ul {
+			list-style: none;
+			display: flex;
+			gap: 2rem;
+		}
+
+		nav ul a {
+			font-family: var(--font-display);
+			font-size: 1.2rem;
+			color: var(--forge-white);
+			text-decoration: none;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			position: relative;
+			padding-bottom: 4px;
+		}
+		nav ul a::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: var(--forge-orange);
+			transition: width 0.3s ease;
+		}
+		nav ul a:hover::after {
+			width: 100%;
+		}
+		nav ul a:hover {
+			color: var(--forge-orange);
+		}
+
+		/* Diagonal split section */
+		.split-section {
+			display: flex;
+			min-height: 100vh;
+			padding-top: 5rem;
+			position: relative;
+		}
+
+		.split-left {
+			flex: 1;
+			background: var(--forge-black);
+			padding: 4rem 3rem 4rem 2rem;
+			clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+			position: relative;
+			z-index: 2;
+		}
+
+		.split-right {
+			flex: 1;
+			background: var(--forge-charcoal);
+			padding: 4rem 2rem 4rem 5rem;
+			position: relative;
+			z-index: 1;
+		}
+
+		/* Company story */
+		.story h1 {
+			font-family: var(--font-display);
+			font-size: clamp(2.5rem, 5vw, 4.5rem);
+			text-transform: uppercase;
+			margin-bottom: 2rem;
+			color: var(--forge-white);
+		}
+
+		.story p {
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			line-height: 1.8;
+			color: rgba(255, 255, 255, 0.85);
+			margin-bottom: 1.5rem;
+			max-width: 500px;
+		}
+
+		/* Timeline */
+		.timeline {
+			margin-top: 3rem;
+			position: relative;
+			padding-left: 2rem;
+		}
+
+		.timeline::before {
+			content: '';
+			position: absolute;
+			left: 6px;
+			top: 0;
+			bottom: 0;
+			width: 2px;
+			background: var(--forge-steel);
+		}
+
+		.timeline-item {
+			position: relative;
+			padding-bottom: 2rem;
+			padding-left: 1.5rem;
+		}
+
+		.timeline-item::before {
+			content: '';
+			position: absolute;
+			left: -2rem;
+			top: 0.35rem;
+			width: 14px;
+			height: 14px;
+			border-radius: 50%;
+			background: var(--forge-orange);
+			border: 2px solid var(--forge-black);
+		}
+
+		.timeline-year {
+			font-family: var(--font-display);
+			font-size: 1.5rem;
+			color: var(--forge-orange);
+			line-height: 1;
+		}
+
+		.timeline-event {
+			font-family: var(--font-body);
+			font-size: 0.85rem;
+			color: rgba(255, 255, 255, 0.7);
+			margin-top: 0.25rem;
+		}
+
+		/* Contact form */
+		.contact-section h2 {
+			font-family: var(--font-display);
+			font-size: clamp(2rem, 4vw, 3.5rem);
+			text-transform: uppercase;
+			margin-bottom: 2rem;
+			color: var(--forge-white);
+		}
+
+		.contact-form label {
+			display: block;
+			font-family: var(--font-display);
+			font-size: 1.1rem;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			color: var(--forge-white);
+			margin-bottom: 0.25rem;
+			margin-top: 1.25rem;
+		}
+		.contact-form label:first-child {
+			margin-top: 0;
+		}
+
+		.contact-form input,
+		.contact-form select,
+		.contact-form textarea {
+			width: 100%;
+			padding: 0.75rem 0;
+			background: transparent;
+			border: none;
+			border-bottom: 2px solid var(--forge-orange);
+			color: var(--forge-white);
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			transition: border-color 0.3s ease;
+		}
+
+		.contact-form input:focus,
+		.contact-form select:focus,
+		.contact-form textarea:focus {
+			border-bottom-color: var(--forge-white);
+			outline: none;
+		}
+
+		.contact-form select {
+			cursor: pointer;
+		}
+		.contact-form select option {
+			background: var(--forge-charcoal);
+			color: var(--forge-white);
+		}
+
+		.contact-form textarea {
+			resize: vertical;
+			min-height: 100px;
+		}
+
+		.contact-form button[type="submit"] {
+			display: block;
+			margin-top: 2rem;
+			padding: 1rem 3rem;
+			background: var(--forge-orange);
+			color: var(--forge-black);
+			border: none;
+			font-family: var(--font-display);
+			font-size: 1.5rem;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			cursor: pointer;
+			box-shadow: 8px 8px 0 var(--forge-black);
+			transition: transform 0.15s ease, box-shadow 0.15s ease;
+		}
+		.contact-form button[type="submit"]:hover {
+			transform: translate(4px, 4px);
+			box-shadow: 4px 4px 0 var(--forge-black);
+		}
+		.contact-form button[type="submit"]:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+
+		.form-confirmation {
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			color: var(--forge-orange);
+			margin-top: 1rem;
+			padding: 1rem;
+			border: 1px solid var(--forge-orange);
+		}
+
+		/* Map section */
+		.map-section {
+			padding: 0;
+		}
+
+		.map-wrapper {
+			filter: invert(0.9) hue-rotate(180deg) saturate(0.3);
+		}
+
+		.map-wrapper iframe {
+			display: block;
+			width: 100%;
+			height: 350px;
+			border: 0;
+		}
+
+		/* Business hours */
+		.hours-section {
+			padding: 4rem 2rem;
+			background: var(--forge-charcoal);
+		}
+
+		.hours-section h2 {
+			font-family: var(--font-display);
+			font-size: clamp(2rem, 4vw, 3rem);
+			text-transform: uppercase;
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+
+		.hours-table {
+			max-width: 500px;
+			margin: 0 auto;
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		.hours-table tr {
+			border-bottom: 1px solid var(--forge-steel);
+		}
+
+		.hours-table td {
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			padding: 0.75rem 0;
+		}
+
+		.hours-table td:first-child {
+			color: var(--forge-white);
+			font-weight: 500;
+		}
+
+		.hours-table td:last-child {
+			text-align: right;
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		.hours-table .closed td:last-child {
+			color: var(--forge-orange);
+		}
+
+		/* Footer */
+		footer {
+			background: var(--forge-black);
+			border-top: 2px solid var(--forge-charcoal);
+			padding: 2rem;
+			text-align: center;
+		}
+
+		footer p {
+			font-family: var(--font-body);
+			font-size: 0.85rem;
+			color: rgba(255, 255, 255, 0.5);
+		}
+
+		/* Scroll reveal */
+		.reveal {
+			opacity: 0;
+			transform: translateY(40px);
+			transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+				transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		.reveal.revealed {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* Tablet */
+		@media (max-width: 1023px) {
+			.split-section {
+				flex-direction: column;
+			}
+			.split-left {
+				clip-path: none;
+				padding: 6rem 2rem 3rem;
+			}
+			.split-right {
+				padding: 3rem 2rem;
+			}
+			.story p {
+				max-width: 100%;
+			}
+		}
+
+		/* Mobile */
+		@media (max-width: 767px) {
+			nav {
+				flex-direction: column;
+				gap: 1rem;
+				padding: 0.75rem 1rem;
+			}
+			nav ul {
+				gap: 1rem;
+			}
+			.split-section {
+				flex-direction: column;
+			}
+			.split-left {
+				clip-path: none;
+				padding: 6rem 1.5rem 2rem;
+			}
+			.split-right {
+				padding: 2rem 1.5rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header>
+		<nav>
+			<a href="../../corporate/bold/index.html" class="nav-brand">Bell Industrial Construction</a>
+			<ul>
+				<li><a href="home.html">Home</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="about.html">About &amp; Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<section class="split-section">
+			<div class="split-left">
+				<div class="story">
+					<h1>Our Story</h1>
+					<p>Bell Industrial Construction was forged in the field -- not in a boardroom. We started with a single crew, a welder, and the conviction that industrial construction should be done right the first time.</p>
+					<p>Twenty-five years later, we have built over 2 million square feet of industrial space across the Southeast. Our crews are the backbone of every project -- experienced, certified, and relentless about quality.</p>
+					<p>We do not subcontract our core trades. When you hire Bell, you get Bell people on your site, with Bell standards, delivering Bell results.</p>
+				</div>
+
+				<div class="timeline reveal">
+					<div class="timeline-item">
+						<p class="timeline-year">2001</p>
+						<p class="timeline-event">Founded in Miami with a 5-person crew</p>
+					</div>
+					<div class="timeline-item">
+						<p class="timeline-year">2006</p>
+						<p class="timeline-event">Completed first $10M industrial project</p>
+					</div>
+					<div class="timeline-item">
+						<p class="timeline-year">2012</p>
+						<p class="timeline-event">Expanded to full-service general contracting</p>
+					</div>
+					<div class="timeline-item">
+						<p class="timeline-year">2018</p>
+						<p class="timeline-event">Surpassed 1 million sq ft built</p>
+					</div>
+					<div class="timeline-item">
+						<p class="timeline-year">2023</p>
+						<p class="timeline-event">Crossed 500 completed projects milestone</p>
+					</div>
+					<div class="timeline-item">
+						<p class="timeline-year">2026</p>
+						<p class="timeline-event">25 years of industrial excellence</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="split-right">
+				<div class="contact-section">
+					<h2>Get In Touch</h2>
+					<form class="contact-form">
+						<label for="name">Name</label>
+						<input type="text" id="name" name="name" required>
+
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" required>
+
+						<label for="phone">Phone</label>
+						<input type="tel" id="phone" name="phone">
+
+						<label for="project-type">Project Type</label>
+						<select id="project-type" name="project-type">
+							<option value="">Select...</option>
+							<option value="new">New Construction</option>
+							<option value="renovation">Renovation</option>
+							<option value="metal-building">Metal Building</option>
+							<option value="other">Other</option>
+						</select>
+
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="5"></textarea>
+
+						<button type="submit">Send Message</button>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<section class="map-section">
+			<div class="map-wrapper">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925855064!2d-80.29949920266am54!3d25.782390733498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1sen!2sus!4v1"
+					width="100%" height="350" style="border:0;" allowfullscreen loading="lazy"
+					title="Map showing Bell Industrial Construction location in Miami, FL">
+				</iframe>
+			</div>
+		</section>
+
+		<section class="hours-section reveal">
+			<h2>Business Hours</h2>
+			<table class="hours-table">
+				<tr>
+					<td>Monday</td>
+					<td>6:00 AM - 5:00 PM</td>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td>6:00 AM - 5:00 PM</td>
+				</tr>
+				<tr>
+					<td>Wednesday</td>
+					<td>6:00 AM - 5:00 PM</td>
+				</tr>
+				<tr>
+					<td>Thursday</td>
+					<td>6:00 AM - 5:00 PM</td>
+				</tr>
+				<tr>
+					<td>Friday</td>
+					<td>6:00 AM - 4:00 PM</td>
+				</tr>
+				<tr>
+					<td>Saturday</td>
+					<td>7:00 AM - 12:00 PM</td>
+				</tr>
+				<tr class="closed">
+					<td>Sunday</td>
+					<td>Closed</td>
+				</tr>
+			</table>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2026 Bell Industrial Construction. All rights reserved.</p>
+	</footer>
+
+	<script>
+		/* Form submission */
+		document.querySelector('form').addEventListener('submit', function(e) {
+			e.preventDefault();
+			var btn = this.querySelector('button[type="submit"]');
+			var msg = document.createElement('p');
+			msg.className = 'form-confirmation';
+			msg.textContent = "Thank you. We'll be in touch within 24 hours.";
+			btn.parentNode.insertBefore(msg, btn.nextSibling);
+			btn.disabled = true;
+		});
+
+		/* Scroll reveal */
+		var revealObserver = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('revealed');
+					revealObserver.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.reveal').forEach(function(el) {
+			revealObserver.observe(el);
+		});
+	</script>
+</body>
+</html>

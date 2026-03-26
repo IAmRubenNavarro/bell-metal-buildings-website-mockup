@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bell Industrial Construction | Industrial Construction - Services | Precision</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--precision-white: #FAFAF8;
+			--precision-navy: #0A1628;
+			--precision-brass: #B08D57;
+			--precision-gray: #F2F1EE;
+			--precision-text: #1a1a1a;
+			--font-display: 'Playfair Display', serif;
+			--font-body: 'DM Sans', sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: var(--font-body);
+			background: var(--precision-white);
+			color: var(--precision-text);
+			line-height: 1.6;
+		}
+
+		.skip-link {
+			position: absolute;
+			top: -100%;
+			left: 0;
+			padding: 0.5rem 1rem;
+			background: var(--precision-navy);
+			color: #fff;
+			z-index: 9999;
+			font-family: var(--font-body);
+		}
+		.skip-link:focus {
+			top: 0;
+		}
+
+		:focus-visible {
+			outline: 2px solid var(--precision-brass);
+			outline-offset: 3px;
+		}
+
+
+		/* ---- NAV ---- */
+		.site-header {
+			background: #fff;
+			border-bottom: 1px solid #e5e5e3;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.site-header nav {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 1.25rem 2rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.nav-brand {
+			font-family: var(--font-display);
+			font-size: 1.35rem;
+			font-weight: 700;
+			color: var(--precision-navy);
+			text-decoration: none;
+			letter-spacing: 0.01em;
+		}
+		.nav-brand:hover {
+			color: var(--precision-brass);
+		}
+		.nav-links {
+			list-style: none;
+			display: flex;
+			gap: 2.5rem;
+			align-items: center;
+		}
+		.nav-links a {
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			font-weight: 500;
+			color: var(--precision-navy);
+			text-decoration: none;
+			background: linear-gradient(var(--precision-brass), var(--precision-brass)) no-repeat left bottom / 0% 1px;
+			transition: background-size 0.4s ease;
+			padding-bottom: 2px;
+		}
+		.nav-links a:hover,
+		.nav-links a[aria-current="page"] {
+			background-size: 100% 1px;
+		}
+
+		.nav-toggle {
+			display: none;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0.5rem;
+		}
+		.nav-toggle span {
+			display: block;
+			width: 24px;
+			height: 2px;
+			background: var(--precision-navy);
+			margin: 5px 0;
+			transition: 0.3s;
+		}
+
+		/* ---- PAGE HEADER ---- */
+		.page-header {
+			text-align: center;
+			padding: 5rem 2rem 4rem;
+		}
+		.page-header .brass-rule {
+			display: block;
+			width: 60px;
+			height: 1px;
+			background: var(--precision-brass);
+			margin: 0 auto 1.5rem;
+		}
+		.page-header h1 {
+			font-family: var(--font-display);
+			font-size: clamp(2.2rem, 3.5vw, 3rem);
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 1.5rem;
+		}
+		.page-header .brass-rule-bottom {
+			display: block;
+			width: 60px;
+			height: 1px;
+			background: var(--precision-brass);
+			margin: 0 auto;
+		}
+
+		/* ---- SERVICE BLOCKS ---- */
+		.services-list {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 0 2rem 4rem;
+		}
+		.service-block {
+			display: grid;
+			grid-template-columns: 55% 1fr;
+			gap: 3rem;
+			align-items: center;
+			margin-bottom: 6rem;
+		}
+		.service-block:nth-child(even) {
+			grid-template-columns: 1fr 55%;
+		}
+		.service-block:nth-child(even) .service-image {
+			order: 2;
+		}
+		.service-block:nth-child(even) .service-text {
+			order: 1;
+		}
+		.service-image img {
+			width: 100%;
+			height: 380px;
+			object-fit: cover;
+			display: block;
+			filter: saturate(0.7);
+		}
+		.service-text h2 {
+			font-family: var(--font-display);
+			font-size: clamp(1.5rem, 2vw, 1.9rem);
+			font-weight: 700;
+			color: var(--precision-navy);
+			margin-bottom: 1rem;
+		}
+		.service-text p {
+			font-size: 0.95rem;
+			line-height: 1.75;
+			color: var(--precision-text);
+			margin-bottom: 1.5rem;
+		}
+		.link-brass {
+			font-family: var(--font-body);
+			font-size: 0.85rem;
+			font-weight: 600;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--precision-navy);
+			text-decoration: none;
+			background: linear-gradient(var(--precision-brass), var(--precision-brass)) no-repeat left bottom / 0% 1px;
+			transition: background-size 0.4s ease;
+			padding-bottom: 3px;
+		}
+		.link-brass:hover {
+			background-size: 100% 1px;
+		}
+
+		/* ---- CTA ---- */
+		.cta-section {
+			background: var(--precision-navy);
+			text-align: center;
+			padding: 5rem 2rem;
+		}
+		.cta-section h2 {
+			font-family: var(--font-display);
+			font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+			font-weight: 700;
+			color: #fff;
+			margin-bottom: 1.5rem;
+		}
+		.cta-section p {
+			color: rgba(255, 255, 255, 0.7);
+			max-width: 50ch;
+			margin: 0 auto 2.5rem;
+			font-size: 1rem;
+			line-height: 1.7;
+		}
+		.btn-brass {
+			display: inline-block;
+			font-family: var(--font-body);
+			font-size: 0.9rem;
+			font-weight: 600;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--precision-brass);
+			border: 1px solid var(--precision-brass);
+			padding: 1rem 2rem;
+			text-decoration: none;
+			transition: background 0.3s, color 0.3s;
+		}
+		.btn-brass:hover {
+			background: var(--precision-brass);
+			color: #fff;
+		}
+
+		/* ---- FOOTER ---- */
+		footer {
+			background: var(--precision-navy);
+			color: rgba(255, 255, 255, 0.6);
+			padding: 3rem 2rem;
+			text-align: center;
+			font-size: 0.85rem;
+		}
+		footer a {
+			color: var(--precision-brass);
+			text-decoration: none;
+		}
+
+		/* ---- SCROLL FADE-IN ---- */
+		.fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+		}
+		.fade-in.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* ---- RESPONSIVE ---- */
+		@media (max-width: 1023px) {
+			main::before {
+				display: none;
+			}
+			.service-block,
+			.service-block:nth-child(even) {
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+			.service-block:nth-child(even) .service-image {
+				order: 0;
+			}
+			.service-block:nth-child(even) .service-text {
+				order: 0;
+			}
+			.service-image img {
+				height: 300px;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.site-header nav {
+				padding: 1rem 1.25rem;
+			}
+			.nav-links {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				right: 0;
+				background: #fff;
+				padding: 1.5rem 2rem;
+				border-bottom: 1px solid #e5e5e3;
+				gap: 1.25rem;
+			}
+			.nav-links.open {
+				display: flex;
+			}
+			.nav-toggle {
+				display: block;
+			}
+			.service-block {
+				margin-bottom: 4rem;
+			}
+			.service-image img {
+				height: 240px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header class="site-header">
+		<nav>
+			<a href="../../corporate/clean/index.html" class="nav-brand">Bell Industrial Construction</a>
+			<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="nav-links">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="services.html" aria-current="page">Services</a></li>
+				<li><a href="about.html">About &amp; Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<!-- Page Header -->
+		<section class="page-header">
+			<span class="brass-rule"></span>
+			<h1>Our Services</h1>
+			<span class="brass-rule-bottom"></span>
+		</section>
+
+		<!-- Service Blocks -->
+		<div class="services-list">
+			<article class="service-block fade-in">
+				<div class="service-image">
+					<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80" alt="Structural steel beams being erected by crane on an industrial construction site">
+				</div>
+				<div class="service-text">
+					<h2>Structural Steel Erection</h2>
+					<p>Our certified ironworkers and welding teams deliver precision steel erection for industrial facilities of any scale. From heavy structural framing to complex multi-story configurations, we maintain tolerances that exceed industry standards while meeting aggressive schedules.</p>
+					<a href="about.html" class="link-brass">Learn More</a>
+				</div>
+			</article>
+
+			<article class="service-block fade-in">
+				<div class="service-image">
+					<img src="https://images.unsplash.com/photo-1590644365607-1c5a0716a023?w=900&q=80" alt="Concrete foundation with rebar reinforcement grid ready for pour">
+				</div>
+				<div class="service-text">
+					<h2>Concrete &amp; Foundation Work</h2>
+					<p>Engineered foundation systems designed for the extraordinary loads industrial facilities demand. Our concrete division handles deep foundations, reinforced slabs, equipment pads, and elevated structures with rigorous quality control at every pour.</p>
+					<a href="about.html" class="link-brass">Learn More</a>
+				</div>
+			</article>
+
+			<article class="service-block fade-in">
+				<div class="service-image">
+					<img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80" alt="Large industrial facility under construction with steel framework and partial cladding">
+				</div>
+				<div class="service-text">
+					<h2>Industrial Facility Construction</h2>
+					<p>Complete design-build and general contracting for manufacturing plants, warehouses, distribution centers, and processing facilities. We integrate structural, mechanical, and electrical systems under unified project management to eliminate coordination failures.</p>
+					<a href="about.html" class="link-brass">Learn More</a>
+				</div>
+			</article>
+
+			<article class="service-block fade-in">
+				<div class="service-image">
+					<img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?w=900&q=80" alt="Heavy earth-moving equipment preparing an industrial construction site">
+				</div>
+				<div class="service-text">
+					<h2>Site Preparation &amp; Development</h2>
+					<p>Comprehensive site work including grading, excavation, utilities infrastructure, stormwater management, and access road construction. We transform raw land into build-ready industrial sites with proper drainage and environmental compliance.</p>
+					<a href="about.html" class="link-brass">Learn More</a>
+				</div>
+			</article>
+
+			<article class="service-block fade-in">
+				<div class="service-image">
+					<img src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=900&q=80" alt="Engineer inspecting structural steel connections during a facility assessment">
+				</div>
+				<div class="service-text">
+					<h2>Structural Assessment &amp; Retrofit</h2>
+					<p>Expert evaluation of existing industrial structures for load capacity, seismic readiness, and code compliance. Our engineering team designs and executes targeted retrofits that extend facility lifespan while minimizing operational disruption.</p>
+					<a href="about.html" class="link-brass">Learn More</a>
+				</div>
+			</article>
+		</div>
+
+		<!-- CTA Section -->
+		<section class="cta-section fade-in">
+			<h2>Discuss Your Project</h2>
+			<p>Whether you need a new facility built from the ground up or structural upgrades to an existing plant, our team is ready to deliver.</p>
+			<a href="about.html" class="btn-brass">Get in Touch</a>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2026 Bell Industrial Construction. All rights reserved. <a href="about.html">Contact Us</a></p>
+	</footer>
+
+	<script>
+		// Scroll fade-in
+		var observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.fade-in').forEach(function(el) {
+			observer.observe(el);
+		});
+
+		// Mobile nav toggle
+		var toggle = document.querySelector('.nav-toggle');
+		var links = document.querySelector('.nav-links');
+		toggle.addEventListener('click', function() {
+			var expanded = toggle.getAttribute('aria-expanded') === 'true';
+			toggle.setAttribute('aria-expanded', !expanded);
+			links.classList.toggle('open');
+		});
+	</script>
+</body>
+</html>
