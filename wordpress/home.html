@@ -711,36 +711,87 @@
 								<input type="text" id="qf-name" name="name" required autocomplete="name">
 							</div>
 							<div>
-								<label for="qf-phone">Phone</label>
-								<input type="tel" id="qf-phone" name="phone" required autocomplete="tel">
+								<label for="qf-email">Email</label>
+								<input type="email" id="qf-email" name="email" required autocomplete="email">
 							</div>
 						</div>
 						<div class="form-row">
 							<div>
+								<label for="qf-phone">Phone</label>
+								<input type="tel" id="qf-phone" name="phone" required autocomplete="tel">
+							</div>
+							<div>
 								<label for="qf-zip">ZIP</label>
 								<input type="text" id="qf-zip" name="zip" inputmode="numeric" maxlength="5" required autocomplete="postal-code">
 							</div>
+						</div>
+						<div>
+							<label for="qf-use">Building use</label>
+							<select id="qf-use" name="useCase" required>
+								<option value="">Select…</option>
+								<option value="cattle-hay">Cattle / Hay</option>
+								<option value="equestrian">Equestrian</option>
+								<option value="commercial">Commercial</option>
+								<option value="mini-storage">Mini-Storage</option>
+								<option value="rv-boat">RV / Boat</option>
+								<option value="workshop-garage">Workshop / Garage</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
+						<div class="form-row" style="grid-template-columns: repeat(3, 1fr);">
 							<div>
-								<label for="qf-use">Use case</label>
-								<select id="qf-use" name="useCase" required>
+								<label for="qf-width">Width (ft)</label>
+								<input type="number" id="qf-width" name="width" min="20" max="200" step="5" placeholder="60" required>
+							</div>
+							<div>
+								<label for="qf-length">Length (ft)</label>
+								<input type="number" id="qf-length" name="length" min="20" max="500" step="5" placeholder="100" required>
+							</div>
+							<div>
+								<label for="qf-height">Height (ft)</label>
+								<input type="number" id="qf-height" name="height" min="8" max="40" step="1" placeholder="16" required>
+							</div>
+						</div>
+						<div class="form-row">
+							<div>
+								<label for="qf-roof">Roof type</label>
+								<select id="qf-roof" name="roofType" required>
 									<option value="">Select…</option>
-									<option value="cattle-hay">Cattle / Hay</option>
-									<option value="equestrian">Equestrian</option>
-									<option value="commercial">Commercial</option>
-									<option value="mini-storage">Mini-Storage</option>
-									<option value="rv-boat">RV / Boat</option>
-									<option value="workshop-garage">Workshop / Garage</option>
-									<option value="other">Other</option>
+									<option value="gable">Gable</option>
+									<option value="single-slope">Single slope</option>
+									<option value="american-barn">American barn</option>
+									<option value="gambrel">Gambrel</option>
+									<option value="industrial">Industrial</option>
+								</select>
+							</div>
+							<div>
+								<label for="qf-pitch">Roof pitch</label>
+								<select id="qf-pitch" name="roofPitch" required>
+									<option value="">Select…</option>
+									<option value="1-12">1:12 (low)</option>
+									<option value="2-12">2:12</option>
+									<option value="3-12">3:12 (standard)</option>
+									<option value="4-12">4:12</option>
+									<option value="5-12">5:12</option>
+									<option value="6-12">6:12 (steep)</option>
 								</select>
 							</div>
 						</div>
 						<div>
-							<label for="qf-dim">Approximate dimensions</label>
-							<input type="text" id="qf-dim" name="dimensions" placeholder="60×100×16" required>
+							<label for="qf-color">Wall color</label>
+							<select id="qf-color" name="wallColor" required>
+								<option value="">Select…</option>
+								<option value="light-stone">Light Stone</option>
+								<option value="polar-white">Polar White</option>
+								<option value="charcoal-gray">Charcoal Gray</option>
+								<option value="burnished-slate">Burnished Slate</option>
+								<option value="pacific-blue">Pacific Blue</option>
+								<option value="rustic-red">Rustic Red</option>
+							</select>
 						</div>
 						<div>
-							<label for="qf-desc">Project description (optional)</label>
-							<textarea id="qf-desc" name="description" rows="3"></textarea>
+							<label for="qf-notes">Notes (optional)</label>
+							<textarea id="qf-notes" name="notes" rows="3" placeholder="Lean-tos, doors, windows, special requirements…"></textarea>
 						</div>
 						<button type="submit" class="btn-primary">Request my quote</button>
 					</form>

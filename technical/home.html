@@ -905,29 +905,68 @@
 		<section class="quote-cta" id="quote-cta" data-reveal aria-labelledby="quote-cta-heading">
 			<div class="container">
 				<h2 id="quote-cta-heading">Request quote.</h2>
-				<p class="mono">USE CASE · DIMENSIONS · ZIP. WE RESPOND WITH SEALED DRAWINGS AND A PRICE WITHIN 5 BUSINESS DAYS.</p>
+				<p class="mono">USE · DIMENSIONS · ROOF · COLOR · ZIP. SEALED DRAWINGS AND A PRICE WITHIN 5 BUSINESS DAYS.</p>
 				<form class="quote-form" data-quote-form>
 					<div class="form-row">
-						<label>Name <input type="text" name="name" required></label>
-						<label>Phone <input type="tel" name="phone" required></label>
+						<label>Name <input type="text" name="name" required autocomplete="name"></label>
+						<label>Email <input type="email" name="email" required autocomplete="email"></label>
 					</div>
 					<div class="form-row">
-						<label>ZIP <input type="text" name="zip" inputmode="numeric" maxlength="5" required></label>
-						<label>Use case
-							<select name="useCase" required>
+						<label>Phone <input type="tel" name="phone" required autocomplete="tel"></label>
+						<label>ZIP <input type="text" name="zip" inputmode="numeric" maxlength="5" required autocomplete="postal-code"></label>
+					</div>
+					<label>Building use
+						<select name="useCase" required>
+							<option value="">Select…</option>
+							<option value="cattle-hay">Cattle / Hay</option>
+							<option value="equestrian">Equestrian</option>
+							<option value="commercial">Commercial</option>
+							<option value="mini-storage">Mini-Storage</option>
+							<option value="rv-boat">RV / Boat</option>
+							<option value="workshop-garage">Workshop / Garage</option>
+							<option value="other">Other</option>
+						</select>
+					</label>
+					<div class="form-row" style="grid-template-columns: repeat(3, 1fr);">
+						<label>Width (ft) <input type="number" name="width" min="20" max="200" step="5" placeholder="60" required></label>
+						<label>Length (ft) <input type="number" name="length" min="20" max="500" step="5" placeholder="100" required></label>
+						<label>Height (ft) <input type="number" name="height" min="8" max="40" step="1" placeholder="16" required></label>
+					</div>
+					<div class="form-row">
+						<label>Roof type
+							<select name="roofType" required>
 								<option value="">Select…</option>
-								<option value="cattle-hay">Cattle / Hay</option>
-								<option value="equestrian">Equestrian</option>
-								<option value="commercial">Commercial</option>
-								<option value="mini-storage">Mini-Storage</option>
-								<option value="rv-boat">RV / Boat</option>
-								<option value="workshop-garage">Workshop / Garage</option>
-								<option value="other">Other</option>
+								<option value="gable">Gable</option>
+								<option value="single-slope">Single slope</option>
+								<option value="american-barn">American barn</option>
+								<option value="gambrel">Gambrel</option>
+								<option value="industrial">Industrial</option>
+							</select>
+						</label>
+						<label>Roof pitch
+							<select name="roofPitch" required>
+								<option value="">Select…</option>
+								<option value="1-12">1:12 (low)</option>
+								<option value="2-12">2:12</option>
+								<option value="3-12">3:12 (standard)</option>
+								<option value="4-12">4:12</option>
+								<option value="5-12">5:12</option>
+								<option value="6-12">6:12 (steep)</option>
 							</select>
 						</label>
 					</div>
-					<label>Approximate dimensions <input type="text" name="dimensions" placeholder="60×100×16" required></label>
-					<label>Project description <textarea name="description" rows="3"></textarea></label>
+					<label>Wall color
+						<select name="wallColor" required>
+							<option value="">Select…</option>
+							<option value="light-stone">Light Stone</option>
+							<option value="polar-white">Polar White</option>
+							<option value="charcoal-gray">Charcoal Gray</option>
+							<option value="burnished-slate">Burnished Slate</option>
+							<option value="pacific-blue">Pacific Blue</option>
+							<option value="rustic-red">Rustic Red</option>
+						</select>
+					</label>
+					<label>Notes (optional) <textarea name="notes" rows="3" placeholder="Lean-tos, doors, windows, special requirements…"></textarea></label>
 					<button type="submit" class="btn-primary">Request my quote</button>
 				</form>
 			</div>
