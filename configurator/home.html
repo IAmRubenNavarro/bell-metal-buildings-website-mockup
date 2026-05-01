@@ -530,9 +530,10 @@
 		/* === Quick-Pick Handlers === */
 		document.querySelectorAll('.quick-pick').forEach((btn) => {
 			btn.addEventListener('click', () => {
-				const useCase = btn.dataset.use;
-				document.getElementById('useCase').value = useCase;
-				document.getElementById('useCase').dispatchEvent(new Event('change'));
+				const select = document.getElementById('useCase');
+				if (!select) return; /* Form was already submitted and removed; quick-picks are no-ops post-submit */
+				select.value = btn.dataset.use;
+				select.dispatchEvent(new Event('change'));
 				document.querySelectorAll('.quick-pick').forEach(b => b.classList.remove('active'));
 				btn.classList.add('active');
 			});
