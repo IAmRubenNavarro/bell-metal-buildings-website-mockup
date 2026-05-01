@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bell Industrial Construction | Florida Steel Buildings &amp; Metal Structures</title>
+	<meta name="description" content="Florida-engineered metal buildings. 1,400+ buildings across 14 west coast counties since 2006.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+	<style>
+		/* === Tokens === */
+		:root {
+			--navy: #0A1F3D;
+			--red: #D8362F;
+			--red-hover: #b82822;
+			--charcoal: #2A2A2A;
+			--white: #FFFFFF;
+			--off-white: #F8F9FA;
+			--soft-gray: #F5F5F5;
+			--border-gray: #E5E7EB;
+			--text-muted: #6B7280;
+			--text-primary: #1F2937;
+			--font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+			--font-body: 'Poppins', system-ui, -apple-system, sans-serif;
+		}
+		:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+		/* === Universal Reset === */
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+		body { min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+		img { max-width: 100%; height: auto; display: block; }
+		button, input, select, textarea { font: inherit; color: inherit; }
+		.skip-link {
+			position: absolute; top: -100%; left: 0; padding: 0.75rem 1rem;
+			background: var(--white); color: var(--navy);
+			text-decoration: none; font-weight: 600; z-index: 9999; transition: top 0.2s;
+		}
+		.skip-link:focus { top: 0; outline: 2px solid currentColor; outline-offset: 2px; }
+		.sr-only {
+			position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+			overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+		}
+
+		/* === Base Typography === */
+		body {
+			font-family: var(--font-body); color: var(--text-primary);
+			background: var(--white); padding-bottom: 64px; /* room for sticky bar on mobile */
+		}
+		h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; color: var(--navy); }
+		h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 800; }
+		h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+		h3 { font-size: clamp(1.125rem, 2vw, 1.375rem); font-weight: 600; }
+		h4 { font-size: 1rem; font-weight: 600; }
+		p { font-size: 1rem; line-height: 1.7; color: var(--text-primary); }
+		a { color: var(--red); text-decoration: none; }
+		a:hover { color: var(--red-hover); }
+
+		.btn-primary, .btn-ghost {
+			display: inline-flex; align-items: center; justify-content: center;
+			padding: 0.875rem 1.75rem; font-family: var(--font-display);
+			font-weight: 600; font-size: 0.9375rem;
+			text-decoration: none; cursor: pointer; min-height: 44px;
+			border: 2px solid transparent; transition: background 0.15s, color 0.15s, transform 0.15s;
+		}
+		.btn-primary { background: var(--red); color: var(--white); }
+		.btn-primary:hover { background: var(--red-hover); color: var(--white); transform: translateY(-1px); }
+		.btn-ghost { background: transparent; color: var(--white); border-color: var(--white); }
+		.btn-ghost:hover { background: var(--white); color: var(--navy); }
+
+		.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+		/* === Header (sticky) === */
+		.site-header {
+			position: sticky; top: 0; z-index: 100;
+			background: var(--white); border-bottom: 1px solid var(--border-gray);
+			box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+		}
+		.header-inner {
+			display: flex; align-items: center; justify-content: space-between;
+			gap: 1.5rem; padding: 0.875rem 1.5rem; max-width: 1200px; margin: 0 auto;
+		}
+		.brand {
+			color: var(--navy); font-family: var(--font-display);
+			font-weight: 800; font-size: 1.125rem; text-decoration: none;
+			display: flex; align-items: center; gap: 0.5rem;
+		}
+		.brand-mark {
+			background: var(--red); color: var(--white);
+			padding: 0.25rem 0.5rem; font-size: 0.75rem; letter-spacing: 0.05em;
+		}
+		.site-header nav { display: none; gap: 1.5rem; align-items: center; }
+		@media (min-width: 1024px) { .site-header nav { display: flex; } }
+		.site-header nav a {
+			color: var(--charcoal); font-weight: 500; font-size: 0.9375rem;
+			text-decoration: none;
+		}
+		.site-header nav a:hover { color: var(--red); }
+		.header-cta { display: flex; align-items: center; gap: 1rem; }
+		.header-phone {
+			color: var(--navy); font-weight: 700; font-size: 0.9375rem;
+			text-decoration: none; display: none;
+		}
+		@media (min-width: 768px) { .header-phone { display: inline; } }
+		.header-cta .btn-primary { padding: 0.625rem 1.25rem; font-size: 0.875rem; }
+
+		/* === Hero === */
+		.hero {
+			position: relative;
+			min-height: 70vh; display: flex; align-items: center;
+			padding: 6rem 1.5rem;
+			background-image:
+				linear-gradient(rgba(10, 31, 61, 0.82), rgba(10, 31, 61, 0.65)),
+				url("https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1920&q=80");
+			background-size: cover; background-position: center;
+			color: var(--white);
+		}
+		.hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
+		.hero h1 { color: var(--white); margin-bottom: 1.25rem; }
+		.hero-subhead { font-size: 1.125rem; line-height: 1.6; margin-bottom: 2rem; opacity: 0.95; max-width: 640px; margin-left: auto; margin-right: auto; }
+		.hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+		/* === Trust strip === */
+		.trust-strip { background: var(--navy); color: var(--white); padding: 1.5rem 0; }
+		.trust-grid {
+			display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+			text-align: center;
+		}
+		@media (min-width: 768px) { .trust-grid { grid-template-columns: repeat(4, 1fr); } }
+		.trust-item strong {
+			display: block; font-family: var(--font-display); font-weight: 800;
+			font-size: 1.75rem; color: var(--red); line-height: 1;
+		}
+		.trust-item span { font-size: 0.8125rem; opacity: 0.85; letter-spacing: 0.03em; }
+
+		/* === Feature row (4 icons) === */
+		.features { padding: 4rem 0; background: var(--white); }
+		.features h2 { text-align: center; margin-bottom: 0.75rem; }
+		.features-intro { text-align: center; color: var(--text-muted); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+		.features-grid {
+			display: grid; grid-template-columns: 1fr; gap: 2rem;
+		}
+		@media (min-width: 640px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+		@media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
+		.feature-item { text-align: center; }
+		.feature-icon {
+			display: inline-flex; align-items: center; justify-content: center;
+			width: 64px; height: 64px; border-radius: 50%;
+			background: rgba(216, 54, 47, 0.08); color: var(--red);
+			margin-bottom: 1rem;
+		}
+		.feature-icon svg { width: 32px; height: 32px; }
+		.feature-item h3 { margin-bottom: 0.5rem; font-size: 1.125rem; }
+		.feature-item p { font-size: 0.9375rem; color: var(--text-muted); }
+
+		/* === Building Types === */
+		.building-types { padding: 4rem 0; background: var(--soft-gray); }
+		.building-types h2 { text-align: center; margin-bottom: 0.75rem; }
+		.section-intro { text-align: center; color: var(--text-muted); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+		.types-grid {
+			display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+		}
+		@media (min-width: 640px) { .types-grid { grid-template-columns: repeat(2, 1fr); } }
+		@media (min-width: 1024px) { .types-grid { grid-template-columns: repeat(3, 1fr); } }
+		.type-card {
+			background: var(--white); border-radius: 4px; overflow: hidden;
+			box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+			transition: transform 0.2s, box-shadow 0.2s;
+			display: flex; flex-direction: column;
+		}
+		.type-card:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.08); }
+		.type-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+		.type-card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+		.type-card h3 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1.125rem; }
+		.type-spec { color: var(--text-muted); font-size: 0.8125rem; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+		.type-price { color: var(--red); font-weight: 700; font-size: 1rem; margin-bottom: 0.75rem; }
+		.type-card p { font-size: 0.9375rem; color: var(--text-primary); margin-bottom: 1rem; flex-grow: 1; }
+		.type-link { color: var(--red); font-weight: 600; font-size: 0.875rem; }
+		.type-link::after { content: ' →'; }
+
+		/* === Why Choose Us === */
+		.why-us { padding: 4rem 0; background: var(--white); }
+		.why-us-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+		@media (min-width: 1024px) { .why-us-grid { grid-template-columns: 5fr 7fr; } }
+		.why-us-text h2 { margin-bottom: 1rem; }
+		.why-us-text p { color: var(--text-muted); margin-bottom: 0; }
+		.why-us-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+		@media (min-width: 640px) { .why-us-list { grid-template-columns: repeat(2, 1fr); } }
+		.why-us-list li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9375rem; }
+		.why-us-check {
+			flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+			background: var(--red); color: var(--white);
+			display: flex; align-items: center; justify-content: center;
+		}
+		.why-us-check svg { width: 14px; height: 14px; }
+		.why-us-list strong { display: block; color: var(--navy); margin-bottom: 0.125rem; font-weight: 600; }
+		.why-us-list span { color: var(--text-muted); font-size: 0.875rem; }
+
+		/* === Process === */
+		.process { padding: 4rem 0; background: var(--soft-gray); }
+		.process h2 { text-align: center; margin-bottom: 3rem; }
+		.process-grid {
+			display: grid; grid-template-columns: 1fr; gap: 2rem;
+		}
+		@media (min-width: 640px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
+		@media (min-width: 1024px) { .process-grid { grid-template-columns: repeat(4, 1fr); } }
+		.process-step { text-align: center; }
+		.process-num {
+			display: inline-flex; align-items: center; justify-content: center;
+			width: 56px; height: 56px; border-radius: 50%;
+			background: var(--navy); color: var(--white);
+			font-family: var(--font-display); font-weight: 700; font-size: 1.25rem;
+			margin-bottom: 1rem; border: 3px solid var(--red);
+		}
+		.process-step h3 { margin-bottom: 0.5rem; font-size: 1.125rem; }
+		.process-step p { font-size: 0.9375rem; color: var(--text-muted); }
+
+		/* === Testimonials === */
+		.testimonials { padding: 4rem 0; background: var(--white); }
+		.testimonials h2 { text-align: center; margin-bottom: 3rem; }
+		.testimonials-grid {
+			display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+		}
+		@media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+		.testimonial-card {
+			background: var(--off-white); border: 1px solid var(--border-gray);
+			border-radius: 4px; padding: 1.75rem;
+			display: flex; flex-direction: column;
+		}
+		.testimonial-card .stars {
+			color: #F5C518; font-size: 1rem; margin-bottom: 0.75rem; letter-spacing: 0.1em;
+		}
+		.testimonial-card blockquote {
+			color: var(--text-primary); font-size: 0.9375rem; line-height: 1.6;
+			margin-bottom: 1.25rem; flex-grow: 1;
+		}
+		.testimonial-card figcaption {
+			border-top: 1px solid var(--border-gray); padding-top: 1rem; font-style: normal;
+		}
+		.testimonial-card figcaption strong { display: block; color: var(--navy); font-weight: 600; }
+		.testimonial-card figcaption span { color: var(--text-muted); font-size: 0.8125rem; }
+
+		/* === FAQ Accordion === */
+		.faq { padding: 4rem 0; background: var(--soft-gray); }
+		.faq h2 { text-align: center; margin-bottom: 3rem; }
+		.faq-list { max-width: 800px; margin: 0 auto; }
+		.faq-item {
+			background: var(--white); border: 1px solid var(--border-gray);
+			border-radius: 4px; margin-bottom: 0.75rem; overflow: hidden;
+		}
+		.faq-question {
+			width: 100%; background: var(--white); border: none;
+			padding: 1.25rem 1.5rem; text-align: left; cursor: pointer;
+			display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+			font-family: var(--font-display); font-weight: 600; font-size: 1rem;
+			color: var(--navy); min-height: 44px;
+		}
+		.faq-question:hover { background: var(--off-white); }
+		.faq-icon {
+			flex-shrink: 0; width: 24px; height: 24px; color: var(--red);
+			transition: transform 0.2s;
+		}
+		.faq-item[open] .faq-icon { transform: rotate(45deg); }
+		.faq-answer {
+			padding: 0 1.5rem 1.25rem; color: var(--text-primary);
+			font-size: 0.9375rem; line-height: 1.7;
+		}
+
+		/* === Quote CTA === */
+		.quote-cta { background: var(--red); color: var(--white); padding: 4rem 0; }
+		.quote-cta-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: start; }
+		@media (min-width: 1024px) { .quote-cta-grid { grid-template-columns: 1fr 1fr; } }
+		.quote-cta h2 { color: var(--white); margin-bottom: 1rem; }
+		.quote-cta-pitch p { color: var(--white); opacity: 0.95; font-size: 1.0625rem; line-height: 1.7; margin-bottom: 1.5rem; }
+		.quote-cta-pitch ul { list-style: none; display: grid; gap: 0.5rem; }
+		.quote-cta-pitch li { display: flex; align-items: center; gap: 0.5rem; }
+		.quote-cta-pitch li::before { content: '✓'; color: var(--white); font-weight: 700; }
+		.quote-form {
+			background: var(--white); color: var(--text-primary); padding: 2rem;
+			border-radius: 4px;
+		}
+		.quote-form h3 { color: var(--navy); margin-bottom: 1.25rem; font-size: 1.25rem; }
+		.quote-form .form-row { display: grid; gap: 0.875rem; margin-bottom: 0.875rem; }
+		@media (min-width: 768px) { .quote-form .form-row { grid-template-columns: 1fr 1fr; } }
+		.quote-form label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--navy); margin-bottom: 0.375rem; }
+		.quote-form input,
+		.quote-form select,
+		.quote-form textarea {
+			display: block; width: 100%; padding: 0.625rem 0.75rem;
+			background: var(--white); color: var(--text-primary);
+			border: 1px solid var(--border-gray); border-radius: 3px;
+			font-family: var(--font-body); font-size: 0.9375rem; min-height: 44px;
+		}
+		.quote-form input:focus-visible,
+		.quote-form select:focus-visible,
+		.quote-form textarea:focus-visible {
+			outline: 2px solid var(--red); outline-offset: 1px; border-color: var(--red);
+		}
+		.quote-form textarea { min-height: 88px; resize: vertical; }
+		.quote-form .btn-primary { width: 100%; margin-top: 0.5rem; }
+		.quote-confirmation {
+			background: var(--white); color: var(--navy);
+			padding: 1.5rem; border-left: 4px solid var(--red); border-radius: 3px;
+		}
+		.quote-confirmation strong { display: block; margin-bottom: 0.5rem; color: var(--navy); }
+
+		/* === Footer === */
+		.site-footer { background: var(--navy); color: var(--white); padding: 3rem 0 1.5rem; }
+		.footer-grid {
+			display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem;
+		}
+		@media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+		@media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; } }
+		.footer-brand p { color: var(--white); opacity: 0.85; font-size: 0.9375rem; margin-top: 0.75rem; }
+		.footer-heading {
+			font-family: var(--font-display); font-weight: 700; font-size: 0.875rem;
+			text-transform: uppercase; letter-spacing: 0.08em; color: var(--red);
+			margin-bottom: 1rem;
+		}
+		.footer-list { list-style: none; }
+		.footer-list li { margin-bottom: 0.5rem; }
+		.site-footer a { color: var(--white); opacity: 0.85; font-size: 0.9375rem; }
+		.site-footer a:hover { color: var(--red); opacity: 1; }
+		.site-footer address { font-style: normal; font-size: 0.9375rem; opacity: 0.85; }
+		.site-footer address a { display: block; margin-top: 0.5rem; opacity: 1; }
+		.counties { font-size: 0.875rem; line-height: 1.7; opacity: 0.85; }
+		.footer-bottom {
+			padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.15);
+			display: flex; flex-direction: column; gap: 0.5rem;
+		}
+		@media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; } }
+		.trust-line { font-size: 0.75rem; opacity: 0.7; }
+		.copyright { font-size: 0.75rem; opacity: 0.6; }
+
+		/* === Sticky CTA bar === */
+		.sticky-bar {
+			position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+			background: var(--navy); color: var(--white);
+			display: flex; align-items: center; justify-content: space-between;
+			padding: 0.625rem 1rem; gap: 0.75rem;
+			border-top: 2px solid var(--red);
+			box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+		}
+		@media (min-width: 1024px) { .sticky-bar { display: none; } }
+		.sticky-bar-text { font-size: 0.8125rem; font-weight: 600; flex-grow: 1; line-height: 1.3; }
+		.sticky-bar a {
+			background: var(--red); color: var(--white);
+			padding: 0.5rem 0.875rem; font-weight: 600; font-size: 0.8125rem;
+			text-decoration: none; min-height: 36px;
+			display: inline-flex; align-items: center;
+		}
+
+		/* === Reveal animation === */
+		[data-reveal] {
+			opacity: 0; transform: translateY(20px);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+		}
+		[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header class="site-header">
+		<div class="header-inner">
+			<a href="#" class="brand">Bell Industrial <span class="brand-mark">FL</span></a>
+			<nav aria-label="Primary">
+				<a href="#building-types">Building Types</a>
+				<a href="#why-us">Why Choose Us</a>
+				<a href="#process">Process</a>
+				<a href="#faq">FAQ</a>
+				<a href="#quote-cta">Contact</a>
+			</nav>
+			<div class="header-cta">
+				<a href="tel:8635550142" class="header-phone">(863) 555-0142</a>
+				<a href="#quote-cta" class="btn-primary">Get a Quote</a>
+			</div>
+		</div>
+	</header>
+
+	<main id="main-content">
+
+		<section class="hero" aria-labelledby="hero-heading">
+			<div class="hero-content">
+				<h1 id="hero-heading">Florida-Engineered Steel Buildings, Delivered.</h1>
+				<p class="hero-subhead">1,400+ buildings across 14 west coast counties since 2006. FBC-engineered, sealed by Florida-licensed engineers, installed by our own crews.</p>
+				<div class="hero-ctas">
+					<a href="#quote-cta" class="btn-primary">Get a Free Quote</a>
+					<a href="tel:8635550142" class="btn-ghost">Call (863) 555-0142</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="trust-strip" aria-labelledby="trust-heading">
+			<div class="container">
+				<h2 id="trust-heading" class="sr-only">Company stats</h2>
+				<div class="trust-grid">
+					<div class="trust-item"><strong>1,400+</strong><span>BUILDINGS DELIVERED</span></div>
+					<div class="trust-item"><strong>20</strong><span>YEARS IN BUSINESS</span></div>
+					<div class="trust-item"><strong>14</strong><span>COUNTIES SERVED</span></div>
+					<div class="trust-item"><strong>FBC</strong><span>ENGINEERED &amp; SEALED</span></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="features" data-reveal aria-labelledby="features-heading">
+			<div class="container">
+				<h2 id="features-heading">Why Buyers Choose Bell Industrial</h2>
+				<p class="features-intro">Florida steel buildings done right — engineered for hurricanes, installed by local crews, priced honestly.</p>
+				<div class="features-grid">
+					<div class="feature-item">
+						<div class="feature-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V5l-8-3z"/></svg>
+						</div>
+						<h3>Florida-Engineered</h3>
+						<p>Every building sealed by a Florida-licensed structural engineer. FBC-compliant by default.</p>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+						</div>
+						<h3>Hurricane-Rated</h3>
+						<p>Engineered to 140-170 mph wind loads depending on your county and exposure.</p>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+						</div>
+						<h3>Local Install Crews</h3>
+						<p>Three install teams based in Lakeland, Sarasota, and Fort Myers. Most builds raise in 5-14 days.</p>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10l9 5 9-5V7l-9-5-9 5z"/><path d="M3 7l9 5 9-5"/><path d="M12 12v10"/></svg>
+						</div>
+						<h3>Galvalume AZ55</h3>
+						<p>Standard panels and trim. Marine-grade fasteners on coastal installs at no additional charge.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="building-types" class="building-types" data-reveal aria-labelledby="building-types-heading">
+			<div class="container">
+				<h2 id="building-types-heading">Steel Buildings for Every Florida Use</h2>
+				<p class="section-intro">From cattle barns in Hardee to RV storage in Sarasota, we build for the work and the weather.</p>
+				<div class="types-grid">
+					<article class="type-card">
+						<img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&q=80" alt="Steel cattle barn at golden hour" loading="lazy">
+						<div class="type-card-body">
+							<h3>Cattle &amp; Equipment Barns</h3>
+							<p class="type-spec">40×60 · 14' eave · open or enclosed</p>
+							<p class="type-price">From $28,000</p>
+							<p>Built for the equipment, the hay, and the herd.</p>
+							<a href="#quote-cta" class="type-link">Get a quote</a>
+						</div>
+					</article>
+					<article class="type-card">
+						<img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80" alt="Equestrian center-aisle barn" loading="lazy">
+						<div class="type-card-body">
+							<h3>Equestrian Barns &amp; Arenas</h3>
+							<p class="type-spec">36×60 center-aisle · arenas to 80×200</p>
+							<p class="type-price">From $58,000</p>
+							<p>Center-aisle stalls, run-in sheds, riding arenas.</p>
+							<a href="#quote-cta" class="type-link">Get a quote</a>
+						</div>
+					</article>
+					<article class="type-card">
+						<img src="https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=800&q=80" alt="Commercial steel warehouse exterior" loading="lazy">
+						<div class="type-card-body">
+							<h3>Commercial Warehouses</h3>
+							<p class="type-spec">60×100 clear-span · office buildouts</p>
+							<p class="type-price">From $95,000</p>
+							<p>I-75 corridor warehouses, contractor yards, light manufacturing.</p>
+							<a href="#quote-cta" class="type-link">Get a quote</a>
+						</div>
+					</article>
+					<article class="type-card">
+						<img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" alt="Mini-storage facility units" loading="lazy">
+						<div class="type-card-body">
+							<h3>Mini-Storage</h3>
+							<p class="type-spec">30×100 modules · multi-bay configurations</p>
+							<p class="type-price">From $48,000</p>
+							<p>Engineered for HOA approval and county permitting.</p>
+							<a href="#quote-cta" class="type-link">Get a quote</a>
+						</div>
+					</article>
+					<article class="type-card">
+						<img src="https://images.unsplash.com/photo-1566977776052-6e61e35ad547?w=800&q=80" alt="RV and boat storage building" loading="lazy">
+						<div class="type-card-body">
+							<h3>RV &amp; Boat Storage</h3>
+							<p class="type-spec">30×40 · 14' eave · coastal-rated coatings</p>
+							<p class="type-price">From $32,000</p>
+							<p>Marine-grade fasteners, salt-air-rated panels for coastal installs.</p>
+							<a href="#quote-cta" class="type-link">Get a quote</a>
+						</div>
+					</article>
+					<article class="type-card">
+						<img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80" alt="Workshop and garage steel building" loading="lazy">
+						<div class="type-card-body">
+							<h3>Workshops &amp; Garages</h3>
+							<p class="type-spec">30×40 detached · pole or clear-span</p>
+							<p class="type-price">From $26,000</p>
+							<p>Hobby-farm workshops, detached garages, enclosed RV covers.</p>
+							<a href="#quote-cta" class="type-link">Get a quote</a>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section id="why-us" class="why-us" data-reveal aria-labelledby="why-us-heading">
+			<div class="container">
+				<div class="why-us-grid">
+					<div class="why-us-text">
+						<h2 id="why-us-heading">Why Bell Industrial</h2>
+						<p>The shortlist of what you actually get when you sign with us — written plainly, no marketing fluff.</p>
+					</div>
+					<ul class="why-us-list">
+						<li>
+							<span class="why-us-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+							<div>
+								<strong>Sealed engineering drawings included</strong>
+								<span>Florida-licensed engineer's seal on every set, no add-on fee.</span>
+							</div>
+						</li>
+						<li>
+							<span class="why-us-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+							<div>
+								<strong>5-business-day quote turnaround</strong>
+								<span>Real numbers, real lead times — not a drip campaign.</span>
+							</div>
+						</li>
+						<li>
+							<span class="why-us-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+							<div>
+								<strong>14 west coast counties served</strong>
+								<span>Citrus to Collier — local crew, local permit knowledge.</span>
+							</div>
+						</li>
+						<li>
+							<span class="why-us-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+							<div>
+								<strong>Galvalume AZ55 standard</strong>
+								<span>Marine-grade fasteners on coastal jobs at no added cost.</span>
+							</div>
+						</li>
+						<li>
+							<span class="why-us-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+							<div>
+								<strong>5-14 day install</strong>
+								<span>Most builds raise in two weeks once permits are pulled.</span>
+							</div>
+						</li>
+						<li>
+							<span class="why-us-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+							<div>
+								<strong>Twenty years, 1,400+ buildings</strong>
+								<span>Survived Idalia, Ian, and three full hurricane cycles since 2006.</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="process" class="process" data-reveal aria-labelledby="process-heading">
+			<div class="container">
+				<h2 id="process-heading">Our 4-Step Process</h2>
+				<div class="process-grid">
+					<div class="process-step">
+						<div class="process-num" aria-hidden="true">1</div>
+						<h3>Quote</h3>
+						<p>Tell us your use, dimensions, and county. Sealed engineering quote within 5 business days.</p>
+					</div>
+					<div class="process-step">
+						<div class="process-num" aria-hidden="true">2</div>
+						<h3>Design</h3>
+						<p>Florida-licensed engineers seal site-specific drawings. We handle the FBC permit package.</p>
+					</div>
+					<div class="process-step">
+						<div class="process-num" aria-hidden="true">3</div>
+						<h3>Deliver</h3>
+						<p>Pre-fabricated steel arrives on a single truck. Galvalume AZ55 panels standard.</p>
+					</div>
+					<div class="process-step">
+						<div class="process-num" aria-hidden="true">4</div>
+						<h3>Install</h3>
+						<p>Lakeland, Sarasota, or Fort Myers crews. Most builds raise in 5-14 days.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="testimonials" data-reveal aria-labelledby="testimonials-heading">
+			<div class="container">
+				<h2 id="testimonials-heading">What Our Customers Say</h2>
+				<div class="testimonials-grid">
+					<figure class="testimonial-card">
+						<div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+						<blockquote>"My contractor yard outgrew me twice. Started with a 50×80 in 2014. They built me a 100×200 in 2021 and connected the two. Same crew lead both times."</blockquote>
+						<figcaption>
+							<strong>Mike D.</strong>
+							<span>Site-work contractor, Polk County</span>
+						</figcaption>
+					</figure>
+					<figure class="testimonial-card">
+						<div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+						<blockquote>"Our 60×120 hay barn went up in nine days and made it through Idalia without a scratched panel. The crew knew what we needed before we finished explaining it."</blockquote>
+						<figcaption>
+							<strong>Wade T.</strong>
+							<span>Cattle &amp; hay producer, Hardee County</span>
+						</figcaption>
+					</figure>
+					<figure class="testimonial-card">
+						<div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+						<blockquote>"We needed covered storage built and inspected before snowbirds rolled in. Bell Industrial pulled the Sarasota County permit, finished the slab and the steel in seven weeks, and we filled it the week it opened."</blockquote>
+						<figcaption>
+							<strong>Linda M.</strong>
+							<span>RV park owner, Sarasota County</span>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<section id="faq" class="faq" data-reveal aria-labelledby="faq-heading">
+			<div class="container">
+				<h2 id="faq-heading">Frequently Asked Questions</h2>
+				<div class="faq-list">
+					<details class="faq-item">
+						<summary class="faq-question">
+							How long does a steel building take to install?
+							<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+						</summary>
+						<div class="faq-answer">
+							Most buildings raise in 5-14 days once site preparation is complete and permits are pulled. Larger commercial buildings (60×100+) typically take the full two weeks; residential workshops and RV covers often go up in a week.
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary class="faq-question">
+							Do you handle the building permit?
+							<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+						</summary>
+						<div class="faq-answer">
+							Yes. We provide the sealed engineering drawings (signed by a Florida-licensed structural engineer) and submit the permit package to your county building department. You sign off on the application; we do the paperwork.
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary class="faq-question">
+							What wind rating will my building be engineered to?
+							<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+						</summary>
+						<div class="faq-answer">
+							Site-specific. The Florida Building Code assigns a wind speed by your county and exposure class. West coast inland counties (Polk, Hardee) typically design to 140-150 mph. Coastal counties (Lee, Collier, Sarasota) typically design to 160-170 mph. Your sealed drawings will show the exact value used.
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary class="faq-question">
+							What sizes can you build?
+							<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+						</summary>
+						<div class="faq-answer">
+							From 20×30 hobby workshops to 100×300+ commercial warehouses. Width is generally constrained between 20 and 100 feet for clear-span; length can run as long as the site allows. Eave heights from 8 ft (small storage) to 24 ft (commercial / equestrian arenas).
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary class="faq-question">
+							Do you offer financing?
+							<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+						</summary>
+						<div class="faq-answer">
+							Yes — through our financing partners. Options include traditional installment financing for residential and commercial buyers. Approval is typically returned in 24-48 hours. We can include financing pre-qualification with your initial quote.
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary class="faq-question">
+							What's included in the price?
+							<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+						</summary>
+						<div class="faq-answer">
+							The price includes the building kit (frame, panels, fasteners, trim), sealed engineering drawings, delivery to your site, and installation by our crew. Slab/foundation, site preparation, electrical, and interior finishes are quoted separately based on your needs.
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+
+		<section id="quote-cta" class="quote-cta" data-reveal aria-labelledby="quote-cta-heading">
+			<div class="container">
+				<div class="quote-cta-grid">
+					<div class="quote-cta-pitch">
+						<h2 id="quote-cta-heading">Get Your Free Quote</h2>
+						<p>Tell us about your project. We'll return a sealed engineering quote within 5 business days — no salesperson chasing you, just real numbers.</p>
+						<ul>
+							<li>Sealed engineering drawings included</li>
+							<li>Quote in 5 business days</li>
+							<li>No-obligation, no-cost</li>
+							<li>Florida-licensed, fully insured</li>
+						</ul>
+					</div>
+					<form class="quote-form" data-quote-form>
+						<h3>Request a Quote</h3>
+						<div class="form-row">
+							<div>
+								<label for="qf-name">Name</label>
+								<input type="text" id="qf-name" name="name" required autocomplete="name">
+							</div>
+							<div>
+								<label for="qf-phone">Phone</label>
+								<input type="tel" id="qf-phone" name="phone" required autocomplete="tel">
+							</div>
+						</div>
+						<div class="form-row">
+							<div>
+								<label for="qf-zip">ZIP</label>
+								<input type="text" id="qf-zip" name="zip" inputmode="numeric" maxlength="5" required autocomplete="postal-code">
+							</div>
+							<div>
+								<label for="qf-use">Use case</label>
+								<select id="qf-use" name="useCase" required>
+									<option value="">Select…</option>
+									<option value="cattle-hay">Cattle / Hay</option>
+									<option value="equestrian">Equestrian</option>
+									<option value="commercial">Commercial</option>
+									<option value="mini-storage">Mini-Storage</option>
+									<option value="rv-boat">RV / Boat</option>
+									<option value="workshop-garage">Workshop / Garage</option>
+									<option value="other">Other</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label for="qf-dim">Approximate dimensions</label>
+							<input type="text" id="qf-dim" name="dimensions" placeholder="60×100×16" required>
+						</div>
+						<div>
+							<label for="qf-desc">Project description (optional)</label>
+							<textarea id="qf-desc" name="description" rows="3"></textarea>
+						</div>
+						<button type="submit" class="btn-primary">Request my quote</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-grid">
+				<div class="footer-brand">
+					<a href="#" class="brand">Bell Industrial <span class="brand-mark">FL</span></a>
+					<p>Florida-engineered metal buildings. 1,400+ buildings across 14 west coast counties since 2006.</p>
+				</div>
+				<div>
+					<h3 class="footer-heading">Quick Links</h3>
+					<ul class="footer-list">
+						<li><a href="#building-types">Building Types</a></li>
+						<li><a href="#why-us">Why Choose Us</a></li>
+						<li><a href="#process">Our Process</a></li>
+						<li><a href="#faq">FAQ</a></li>
+						<li><a href="#quote-cta">Get a Quote</a></li>
+					</ul>
+				</div>
+				<div>
+					<h3 class="footer-heading">Contact</h3>
+					<address>
+						4820 US Highway 92 East<br>Lakeland, FL 33801<br>
+						<a href="tel:8635550142">(863) 555-0142</a>
+						<a href="mailto:build@bellindustrialconstruction.com">build@bellindustrialconstruction.com</a>
+					</address>
+				</div>
+				<div>
+					<h3 class="footer-heading">Service Area</h3>
+					<p class="counties">Citrus · Hernando · Pasco · Pinellas · Hillsborough · Polk · Manatee · Sarasota · Hardee · DeSoto · Charlotte · Lee · Collier · Hendry</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p class="trust-line">Florida GC License # CGC-XXXXXX · Member NFBA · BBB A+ Rated · Florida Product Approved Components</p>
+				<p class="copyright">© 2026 Bell Industrial Construction</p>
+			</div>
+		</div>
+	</footer>
+
+	<div class="sticky-bar" role="region" aria-label="Quick contact">
+		<span class="sticky-bar-text">Need a quote?</span>
+		<a href="tel:8635550142">Call</a>
+		<a href="#quote-cta">Get Quote</a>
+	</div>
+
+	<script>
+		/* === Scroll Reveal Observer === */
+		(function () {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+			document.querySelectorAll('[data-reveal]').forEach((el) => { observer.observe(el); });
+		})();
+
+		/* === Form Submit Handler (safe DOM construction) === */
+		(function () {
+			const form = document.querySelector('form[data-quote-form]');
+			if (!form) return;
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const confirmation = document.createElement('div');
+				confirmation.className = 'quote-confirmation';
+				confirmation.setAttribute('role', 'status');
+				confirmation.setAttribute('aria-live', 'polite');
+				const strong = document.createElement('strong');
+				strong.textContent = 'Thanks — your quote request is in.';
+				const para = document.createElement('p');
+				para.textContent = 'Bell Industrial will return a sealed engineering quote within 5 business days. We may call you at the number you provided to clarify site details.';
+				confirmation.append(strong, para);
+				form.replaceWith(confirmation);
+			});
+		})();
+
+		/* === FAQ accordion uses native <details>, no JS needed for open/close. === */
+		/* === Single-open behavior: close other items when one opens === */
+		(function () {
+			const items = document.querySelectorAll('.faq-item');
+			items.forEach((item) => {
+				item.addEventListener('toggle', () => {
+					if (item.open) {
+						items.forEach((other) => { if (other !== item) other.open = false; });
+					}
+				});
+			});
+		})();
+	</script>
+</body>
+</html>
