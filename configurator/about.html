@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About — Bell Industrial Construction</title>
+	<meta name="description" content="Bell Industrial Construction: Florida-engineered metal buildings since 2006. Family-owned, NFBA member, 1,400+ buildings.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+	<style>
+		/* === Tokens === */
+		:root {
+			--off-white: #F8F9FA;
+			--soft-gray: #E9ECEF;
+			--mid-gray: #6C757D;
+			--ink: #0A0A0A;
+			--teal: #1098AD;
+			--text-primary: var(--ink);
+			--bg-primary: var(--off-white);
+			--bg-panel: var(--soft-gray);
+			--accent: var(--teal);
+			--font-display: 'Inter', system-ui, sans-serif;
+			--font-body: 'Inter', system-ui, sans-serif;
+			--font-mono: 'JetBrains Mono', 'Courier New', monospace;
+		}
+		:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+		/* === Universal Reset === */
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+		body { min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+		img { max-width: 100%; height: auto; display: block; }
+		button, input, select, textarea { font: inherit; color: inherit; }
+		.skip-link {
+			position: absolute; top: -100%; left: 0; padding: 0.75rem 1rem;
+			background: var(--bg-primary, #fff); color: var(--text-primary, #000);
+			text-decoration: none; font-weight: 600; z-index: 9999; transition: top 0.2s;
+		}
+		.skip-link:focus { top: 0; outline: 2px solid currentColor; outline-offset: 2px; }
+		.sr-only {
+			position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+			overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+		}
+
+		/* === Base Typography === */
+		body { font-family: var(--font-body); color: var(--text-primary); background: var(--bg-primary); }
+		h1, h2, h3 { font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+		h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+		h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+		h3 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
+		p { margin-bottom: 1rem; }
+		.mono { font-family: var(--font-mono); }
+
+		/* === Header === */
+		.site-header { position: sticky; top: 0; z-index: 100; background: var(--off-white); border-bottom: 1px solid var(--soft-gray); }
+		.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 0.875rem 1.5rem; max-width: 1400px; margin: 0 auto; }
+		.brand { color: var(--ink); font-weight: 700; font-size: 1.0625rem; text-decoration: none; }
+		.site-header nav { display: flex; gap: 1.25rem; }
+		.site-header nav a { color: var(--mid-gray); text-decoration: none; font-weight: 500; font-size: 0.9375rem; }
+		.site-header nav a:hover { color: var(--teal); }
+		.site-header nav a.active { color: var(--teal); font-weight: 600; }
+		.phone-link { color: var(--ink); font-family: var(--font-mono); font-weight: 700; font-size: 0.9375rem; text-decoration: none; }
+		@media (max-width: 767px) { .site-header nav { display: none; } }
+
+		/* === Container === */
+		.container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+
+		/* === Hero === */
+		.hero { padding: 4rem 0; text-align: center; background: var(--bg-primary); }
+		.hero h1 { margin-bottom: 1rem; color: var(--ink); }
+		.hero p { font-size: 1.125rem; color: var(--mid-gray); max-width: 700px; margin: 0 auto 0 auto; }
+
+		/* === Content Section === */
+		.content-section { padding: 3rem 0; }
+		.content-section h2 { margin-bottom: 1.5rem; color: var(--ink); }
+		.content-section p { font-size: 0.9375rem; line-height: 1.7; color: var(--text-primary); margin-bottom: 1rem; }
+		.content-section ul { list-style: none; padding: 0; margin: 1rem 0; font-size: 0.9375rem; line-height: 1.7; }
+		.content-section li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; }
+		.content-section li::before { content: "·"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+		/* === Footer === */
+		.site-footer { background: var(--ink); color: var(--off-white); padding: 3rem 0 2rem; }
+		.footer-grid { display: grid; gap: 2rem; margin-bottom: 1.5rem; }
+		@media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+		.footer-brand { font-weight: 700; font-size: 1.0625rem; }
+		.footer-tagline { color: var(--teal); margin-top: 0.5rem; font-size: 0.9375rem; }
+		.footer-phone { display: block; color: var(--off-white); font-family: var(--font-mono); font-weight: 700; font-size: 1.125rem; text-decoration: none; margin-bottom: 0.75rem; }
+		.site-footer address { font-style: normal; font-size: 0.875rem; opacity: 0.85; }
+		.counties { font-size: 0.875rem; opacity: 0.85; line-height: 1.7; }
+		.trust-line { font-size: 0.75rem; opacity: 0.6; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+
+		/* === Scroll Reveal === */
+		[data-reveal] {
+			opacity: 0; transform: translateY(20px);
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+		}
+		[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header class="site-header">
+		<div class="header-inner">
+			<a href="home.html" class="brand">Bell Industrial</a>
+			<nav aria-label="Primary">
+				<a href="about.html" class="active">About</a>
+				<a href="products.html">Products</a>
+				<a href="home.html">Configurator</a>
+			</nav>
+			<a href="tel:8635550142" class="phone-link">(863) 555-0142</a>
+		</div>
+	</header>
+
+	<main id="main-content">
+
+		<section class="hero" data-reveal aria-labelledby="hero-heading">
+			<div class="container">
+				<h1 id="hero-heading">Built in Florida. Shipped to Florida.</h1>
+				<p>Since 2006, Bell Industrial has engineered and built over 1,400 metal buildings across the west coast. We design, engineer, manufacture, and install in-house — from foundation to final bolt.</p>
+			</div>
+		</section>
+
+		<section class="content-section" data-reveal aria-labelledby="story-heading">
+			<div class="container">
+				<h2 id="story-heading">About the company</h2>
+				<p>Bell Industrial Construction was founded in 2006 in Lakeland, Florida, and remains family-owned. We serve agricultural, commercial, and residential builders across 14 west-coast counties with a product-engineering ethos: every building starts with site-specific engineering, sealed drawings, and Florida-approved components.</p>
+				<p>Our team of licensed engineers, steel fabricators, and installation crews works in-house. We don't outsource design, manufacturing, or assembly — which means faster turnarounds, tighter quality control, and direct accountability to our customers.</p>
+			</div>
+		</section>
+
+		<section class="content-section" data-reveal aria-labelledby="capabilities-heading">
+			<div class="container">
+				<h2 id="capabilities-heading">Capabilities</h2>
+				<p>We handle the complete lifecycle:</p>
+				<ul>
+					<li>In-house design and engineering — no external consultants</li>
+					<li>Florida-sealed engineering drawings for every project</li>
+					<li>CNC fabrication and galvanizing in Lakeland</li>
+					<li>Single-truck or distributed delivery within our service area</li>
+					<li>Crew-led installation, 5–14 day typical raises</li>
+					<li>NFBA member; Florida GC License # CGC-XXXXXX</li>
+					<li>All components Florida Product Approved</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="content-section" data-reveal aria-labelledby="service-area-heading">
+			<div class="container">
+				<h2 id="service-area-heading">Service area</h2>
+				<p>We serve 14 west-coast Florida counties from our Lakeland headquarters:</p>
+				<ul>
+					<li>Citrus</li>
+					<li>Hernando</li>
+					<li>Pasco</li>
+					<li>Pinellas</li>
+					<li>Hillsborough</li>
+					<li>Polk</li>
+					<li>Manatee</li>
+					<li>Sarasota</li>
+					<li>Hardee</li>
+					<li>DeSoto</li>
+					<li>Charlotte</li>
+					<li>Lee</li>
+					<li>Collier</li>
+					<li>Hendry</li>
+				</ul>
+				<p>Our typical service radius is 30 miles from Lakeland HQ, though we regularly operate across all 14 counties for larger projects.</p>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-grid">
+				<div>
+					<p class="footer-brand">Bell Industrial Construction</p>
+					<p class="footer-tagline">Configure. Engineer. Build.</p>
+				</div>
+				<div>
+					<a href="tel:8635550142" class="footer-phone">(863) 555-0142</a>
+					<address>4820 US Highway 92 East · Lakeland, FL 33801<br>Mon–Fri 7am–6pm</address>
+				</div>
+				<div>
+					<p class="counties">Citrus · Hernando · Pasco · Pinellas · Hillsborough · Polk · Manatee · Sarasota · Hardee · DeSoto · Charlotte · Lee · Collier · Hendry</p>
+				</div>
+			</div>
+			<p class="trust-line">Florida GC License # CGC-XXXXXX · Member NFBA · BBB A+ Rated · Florida Product Approved Components</p>
+		</div>
+	</footer>
+
+	<script>
+		/* === Scroll Reveal Observer === */
+		(function () {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+			document.querySelectorAll('[data-reveal]').forEach((el) => { observer.observe(el); });
+		})();
+	</script>
+</body>
+</html>

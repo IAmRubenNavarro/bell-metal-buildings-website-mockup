@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Products — Bell Industrial Construction</title>
+	<meta name="description" content="Metal building systems: cattle barns, equestrian, commercial, mini-storage, RV/boat storage, workshops. Engineered in Florida.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+	<style>
+		/* === Tokens === */
+		:root {
+			--off-white: #F8F9FA;
+			--soft-gray: #E9ECEF;
+			--mid-gray: #6C757D;
+			--ink: #0A0A0A;
+			--teal: #1098AD;
+			--text-primary: var(--ink);
+			--bg-primary: var(--off-white);
+			--bg-panel: var(--soft-gray);
+			--accent: var(--teal);
+			--font-display: 'Inter', system-ui, sans-serif;
+			--font-body: 'Inter', system-ui, sans-serif;
+			--font-mono: 'JetBrains Mono', 'Courier New', monospace;
+		}
+		:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+		/* === Universal Reset === */
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+		body { min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+		img { max-width: 100%; height: auto; display: block; }
+		button, input, select, textarea { font: inherit; color: inherit; }
+		.skip-link {
+			position: absolute; top: -100%; left: 0; padding: 0.75rem 1rem;
+			background: var(--bg-primary, #fff); color: var(--text-primary, #000);
+			text-decoration: none; font-weight: 600; z-index: 9999; transition: top 0.2s;
+		}
+		.skip-link:focus { top: 0; outline: 2px solid currentColor; outline-offset: 2px; }
+		.sr-only {
+			position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+			overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+		}
+
+		/* === Base Typography === */
+		body { font-family: var(--font-body); color: var(--text-primary); background: var(--bg-primary); }
+		h1, h2, h3 { font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+		h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+		h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+		h3 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
+		p { margin-bottom: 1rem; }
+		.mono { font-family: var(--font-mono); }
+		a { color: var(--teal); text-decoration: none; font-weight: 500; }
+		a:hover { text-decoration: underline; }
+
+		/* === Header === */
+		.site-header { position: sticky; top: 0; z-index: 100; background: var(--off-white); border-bottom: 1px solid var(--soft-gray); }
+		.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 0.875rem 1.5rem; max-width: 1400px; margin: 0 auto; }
+		.brand { color: var(--ink); font-weight: 700; font-size: 1.0625rem; text-decoration: none; }
+		.site-header nav { display: flex; gap: 1.25rem; }
+		.site-header nav a { color: var(--mid-gray); text-decoration: none; font-weight: 500; font-size: 0.9375rem; }
+		.site-header nav a:hover { color: var(--teal); }
+		.site-header nav a.active { color: var(--teal); font-weight: 600; }
+		.phone-link { color: var(--ink); font-family: var(--font-mono); font-weight: 700; font-size: 0.9375rem; text-decoration: none; }
+		@media (max-width: 767px) { .site-header nav { display: none; } }
+
+		/* === Container === */
+		.container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+
+		/* === Hero === */
+		.hero { padding: 4rem 0; text-align: center; background: var(--bg-primary); }
+		.hero h1 { margin-bottom: 1rem; color: var(--ink); }
+		.hero p { font-size: 1.125rem; color: var(--mid-gray); max-width: 700px; margin: 0 auto 0 auto; }
+
+		/* === Products Grid === */
+		.products-section { padding: 3rem 0; }
+		.products-grid { display: grid; gap: 2rem; }
+		@media (min-width: 768px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+		@media (min-width: 1200px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+
+		.product-card { background: var(--off-white); border: 1px solid var(--soft-gray); overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s; }
+		.product-card:hover { border-color: var(--teal); box-shadow: 0 2px 8px rgba(16, 152, 173, 0.1); }
+		.product-image { width: 100%; height: 240px; object-fit: cover; background: var(--soft-gray); }
+		.product-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+		.product-name { font-size: 1.125rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+		.product-spec { font-size: 0.875rem; color: var(--mid-gray); margin-bottom: 1rem; }
+		.product-cta { margin-top: auto; }
+		.product-cta a { display: inline-block; color: var(--teal); font-weight: 600; font-size: 0.9375rem; }
+		.product-cta a:hover { text-decoration: underline; }
+
+		/* === Bottom CTA === */
+		.bottom-cta { padding: 3rem 0; text-align: center; }
+		.bottom-cta h2 { margin-bottom: 1.5rem; color: var(--ink); }
+		.cta-link { display: inline-block; background: var(--teal); color: var(--off-white); padding: 0.875rem 1.75rem; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+		.cta-link:hover { background: #0d8294; text-decoration: none; }
+
+		/* === Footer === */
+		.site-footer { background: var(--ink); color: var(--off-white); padding: 3rem 0 2rem; }
+		.footer-grid { display: grid; gap: 2rem; margin-bottom: 1.5rem; }
+		@media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+		.footer-brand { font-weight: 700; font-size: 1.0625rem; }
+		.footer-tagline { color: var(--teal); margin-top: 0.5rem; font-size: 0.9375rem; }
+		.footer-phone { display: block; color: var(--off-white); font-family: var(--font-mono); font-weight: 700; font-size: 1.125rem; text-decoration: none; margin-bottom: 0.75rem; }
+		.site-footer address { font-style: normal; font-size: 0.875rem; opacity: 0.85; }
+		.counties { font-size: 0.875rem; opacity: 0.85; line-height: 1.7; }
+		.trust-line { font-size: 0.75rem; opacity: 0.6; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+
+		/* === Scroll Reveal === */
+		[data-reveal] {
+			opacity: 0; transform: translateY(20px);
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+		}
+		[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+	</style>
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<header class="site-header">
+		<div class="header-inner">
+			<a href="home.html" class="brand">Bell Industrial</a>
+			<nav aria-label="Primary">
+				<a href="about.html">About</a>
+				<a href="products.html" class="active">Products</a>
+				<a href="home.html">Configurator</a>
+			</nav>
+			<a href="tel:8635550142" class="phone-link">(863) 555-0142</a>
+		</div>
+	</header>
+
+	<main id="main-content">
+
+		<section class="hero" data-reveal aria-labelledby="hero-heading">
+			<div class="container">
+				<h1 id="hero-heading">Metal buildings engineered for Florida.</h1>
+				<p>From cattle barns to commercial warehouses, we design and fabricate systems that meet the toughest wind zones and code requirements. Every building is sealed by our in-house engineers.</p>
+			</div>
+		</section>
+
+		<section class="products-section" data-reveal aria-labelledby="products-heading">
+			<div class="container">
+				<h2 id="products-heading" class="sr-only">Product categories</h2>
+				<div class="products-grid">
+					<div class="product-card">
+						<img src="../images/cattle-barn.jpg" alt="Cattle and hay barn building" loading="lazy" class="product-image">
+						<div class="product-body">
+							<h3 class="product-name">Cattle / Hay Barn</h3>
+							<p class="product-spec mono">40'–80' W × 60'–200' L</p>
+							<div class="product-cta"><a href="home.html">Open in configurator →</a></div>
+						</div>
+					</div>
+
+					<div class="product-card">
+						<img src="../images/equestrian-barn.jpg" alt="Equestrian barn with center aisle stalls" loading="lazy" class="product-image">
+						<div class="product-body">
+							<h3 class="product-name">Equestrian</h3>
+							<p class="product-spec mono">50'–80' W × 100'–220' L</p>
+							<div class="product-cta"><a href="home.html">Open in configurator →</a></div>
+						</div>
+					</div>
+
+					<div class="product-card">
+						<img src="../images/commercial-warehouse.jpg" alt="Commercial warehouse clear-span industrial building" loading="lazy" class="product-image">
+						<div class="product-body">
+							<h3 class="product-name">Commercial Warehouse</h3>
+							<p class="product-spec mono">60'–200' W × 100'–400' L</p>
+							<div class="product-cta"><a href="home.html">Open in configurator →</a></div>
+						</div>
+					</div>
+
+					<div class="product-card">
+						<img src="../images/mini-storage.jpg" alt="Mini-storage multi-bay self-storage" loading="lazy" class="product-image">
+						<div class="product-body">
+							<h3 class="product-name">Mini-Storage</h3>
+							<p class="product-spec mono">30'–50' W × 100'–300' L</p>
+							<div class="product-cta"><a href="home.html">Open in configurator →</a></div>
+						</div>
+					</div>
+
+					<div class="product-card">
+						<img src="../images/rv-boat-storage.jpg" alt="RV and boat storage covered structure" loading="lazy" class="product-image">
+						<div class="product-body">
+							<h3 class="product-name">RV / Boat Storage</h3>
+							<p class="product-spec mono">30'–60' W × 60'–200' L</p>
+							<div class="product-cta"><a href="home.html">Open in configurator →</a></div>
+						</div>
+					</div>
+
+					<div class="product-card">
+						<img src="../images/workshop-garage.jpg" alt="Workshop and garage multi-bay structure" loading="lazy" class="product-image">
+						<div class="product-body">
+							<h3 class="product-name">Workshop / Garage</h3>
+							<p class="product-spec mono">24'–50' W × 30'–100' L</p>
+							<div class="product-cta"><a href="home.html">Open in configurator →</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bottom-cta" data-reveal>
+			<div class="container">
+				<h2>Configure your exact spec</h2>
+				<a href="home.html" class="cta-link">Configure a building →</a>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-grid">
+				<div>
+					<p class="footer-brand">Bell Industrial Construction</p>
+					<p class="footer-tagline">Configure. Engineer. Build.</p>
+				</div>
+				<div>
+					<a href="tel:8635550142" class="footer-phone">(863) 555-0142</a>
+					<address>4820 US Highway 92 East · Lakeland, FL 33801<br>Mon–Fri 7am–6pm</address>
+				</div>
+				<div>
+					<p class="counties">Citrus · Hernando · Pasco · Pinellas · Hillsborough · Polk · Manatee · Sarasota · Hardee · DeSoto · Charlotte · Lee · Collier · Hendry</p>
+				</div>
+			</div>
+			<p class="trust-line">Florida GC License # CGC-XXXXXX · Member NFBA · BBB A+ Rated · Florida Product Approved Components</p>
+		</div>
+	</footer>
+
+	<script>
+		/* === Scroll Reveal Observer === */
+		(function () {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+			document.querySelectorAll('[data-reveal]').forEach((el) => { observer.observe(el); });
+		})();
+	</script>
+</body>
+</html>

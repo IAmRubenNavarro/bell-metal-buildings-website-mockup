@@ -67,6 +67,7 @@
 		.site-header nav { display: flex; gap: 1.25rem; }
 		.site-header nav a { color: var(--mid-gray); text-decoration: none; font-weight: 500; font-size: 0.9375rem; }
 		.site-header nav a:hover { color: var(--teal); }
+		.site-header nav a.active { color: var(--teal); font-weight: 600; }
 		.phone-link { color: var(--ink); font-family: var(--font-mono); font-weight: 700; font-size: 0.9375rem; text-decoration: none; }
 		@media (max-width: 767px) { .site-header nav { display: none; } }
 
@@ -167,9 +168,11 @@
 
 	<header class="site-header">
 		<div class="header-inner">
-			<a href="#" class="brand">Bell Industrial</a>
+			<a href="home.html" class="brand">Bell Industrial</a>
 			<nav aria-label="Primary">
-				<a href="#configurator">Configure</a>
+				<a href="about.html">About</a>
+				<a href="products.html">Products</a>
+				<a href="home.html" class="active">Configurator</a>
 			</nav>
 			<a href="tel:8635550142" class="phone-link">(863) 555-0142</a>
 		</div>
