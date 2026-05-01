@@ -1,2 +1,4 @@
 .verification/
 .claude/
+.playwright-mcp/
+act-*.png
