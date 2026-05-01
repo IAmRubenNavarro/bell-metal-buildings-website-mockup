@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Bell Industrial website mockup. This is a new/empty project — structure and tooling have not yet been established.
+Bell Metal Buildings website mockup. This is a new/empty project — structure and tooling have not yet been established.
 
 ## Coding Preferences
 

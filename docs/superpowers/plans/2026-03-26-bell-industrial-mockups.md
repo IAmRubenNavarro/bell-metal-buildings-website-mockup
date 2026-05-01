@@ -1,8 +1,8 @@
-# Bell Industrial Website Mockups Implementation Plan
+# Bell Metal Buildings Website Mockups Implementation Plan
 
 > **For agentic workers:** REQUIRED: Use superpowers:subagent-driven-development (if subagents available) or superpowers:executing-plans to implement this plan. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build 21 static HTML/CSS/JS mockup pages for Bell Industrial Construction across 3 sites and 3 visual styles.
+**Goal:** Build 21 static HTML/CSS/JS mockup pages for Bell Metal Buildings across 3 sites and 3 visual styles.
 
 **Architecture:** Each HTML file is fully self-contained (inline `<style>` and `<script>`) with no shared dependencies. Files are organized by site > style. Google Fonts loaded via CDN, images via Unsplash/Pexels URLs. All 9 tasks are independent and can execute in parallel.
 
@@ -54,7 +54,7 @@ Every file must include these patterns. Do NOT create shared files -- inline eve
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bell Industrial Construction | [Division] - [Page] | [Style]</title>
+	<title>Bell Metal Buildings | [Division] - [Page] | [Style]</title>
 	<!-- Google Fonts loaded per style -->
 	<style>
 		/* All CSS inline */
@@ -247,7 +247,7 @@ document.querySelector('form').addEventListener('submit', function(e) {
 ```html
 <header>
 	<nav>
-		<a href="../../corporate/[style]/index.html" class="nav-brand">Bell Industrial Construction</a>
+		<a href="../../corporate/[style]/index.html" class="nav-brand">Bell Metal Buildings</a>
 		<ul>
 			<li><a href="home.html">Home</a></li>
 			<li><a href="services.html">Services</a></li>
@@ -325,7 +325,7 @@ Create `corporate/bold/index.html` with:
 - Scroll-triggered reveal animations via IntersectionObserver
 - Responsive: cards stack vertically on mobile, hero text scales via `clamp(4rem, 10vw, 12rem)`, fixed bar becomes static footer on mobile
 - No nav bar (corporate is single-page entry point)
-- Page title: `Bell Industrial Construction | Corporate | Forge`
+- Page title: `Bell Metal Buildings | Corporate | Forge`
 
 - [ ] **Step 3: Open in browser and verify**
 
@@ -364,7 +364,7 @@ mkdir -p corporate/clean
 
 Create `corporate/clean/index.html` with:
 - Precision style tokens and Google Fonts
-- Split hero: 55% left with desaturated construction photo (Unsplash, `filter: saturate(0.7)`), 45% right navy (#0A1628) background with "Bell Industrial Construction" in Playfair Display, thin brass 1px rule underneath, one-sentence tagline in DM Sans
+- Split hero: 55% left with desaturated construction photo (Unsplash, `filter: saturate(0.7)`), 45% right navy (#0A1628) background with "Bell Metal Buildings" in Playfair Display, thin brass 1px rule underneath, one-sentence tagline in DM Sans
 - Vertical brass margin line: fixed `::before` on `main`, 1px wide, brass colored, positioned at left margin of content area, hidden below 1024px
 - Intro section: centered on white (#FAFAF8), 8rem vertical padding, brass (#B08D57) drop-cap on first letter using `::first-letter` pseudo-element with Playfair Display
 - Division cards: asymmetric layout -- IC card at ~55% width offset left, MB card at ~45% offset right, overlapping vertically by 40px via negative margin. Each card has desaturated photo, Playfair division name, one-line DM Sans description, brass-underline "Visit Site" link with draw animation on hover. IC links to `../../industrial-construction/clean/home.html`, MB links to `../../metal-buildings/clean/home.html`
@@ -372,7 +372,7 @@ Create `corporate/clean/index.html` with:
 - Scroll fade-in: IntersectionObserver, 0.6s ease-out upward drift
 - Responsive: split hero stacks (photo on top, text below), cards stack at equal width, footer details stack vertically
 - No nav bar
-- Page title: `Bell Industrial Construction | Corporate | Precision`
+- Page title: `Bell Metal Buildings | Corporate | Precision`
 
 - [ ] **Step 3: Open in browser and verify**
 
@@ -413,14 +413,14 @@ mkdir -p corporate/rugged
 Create `corporate/rugged/index.html` with:
 - Grit style tokens and Google Fonts
 - Body background: aged paper (#E8E0D4) with CSS-generated paper grain texture (SVG noise at low opacity) and faint angled blueprint grid pattern via `body::before` (linear-gradient grid lines, `transform: rotate(-2deg)`, `opacity: 0.04`)
-- Hero: wide warm-filtered construction photo (`filter: sepia(0.15) saturate(0.85)`), slightly rotated (`transform: rotate(-1deg)`), torn-edge bottom via clip-path polygon. "Bell Industrial Construction" in Arvo overlaid lower-left with faded red (#A63D2F) background swatch behind text, like a stamped label
+- Hero: wide warm-filtered construction photo (`filter: sepia(0.15) saturate(0.85)`), slightly rotated (`transform: rotate(-1deg)`), torn-edge bottom via clip-path polygon. "Bell Metal Buildings" in Arvo overlaid lower-left with faded red (#A63D2F) background swatch behind text, like a stamped label
 - Intro: left-aligned on paper background, two short paragraphs in Source Serif 4, faded red horizontal rule (`border-top: 3px solid var(--grit-red)`) separator below
 - Division cards: stacked vertically. Each card styled as pinned document: slight rotation (1deg for first, -1deg for second), visible 2px border in charred wood, inset box-shadow for depth, photo with vignette (`box-shadow: inset 0 0 40px rgba(30,17,8,0.4)`), Arvo division name, Source Serif 4 description, tactile button (darkens + translateY(2px) on hover). IC links to `../../industrial-construction/rugged/home.html`, MB links to `../../metal-buildings/rugged/home.html`
 - Charred-wood (#1E1108) dark footer, contact details stacked vertically in Source Serif 4, faded red "Call Us" link
 - Scroll: opacity-only fade-in via IntersectionObserver (no translation)
 - Responsive: rotations removed on mobile, hero photo loses rotation, cards lose rotation, full-width stacked
 - No nav bar
-- Page title: `Bell Industrial Construction | Corporate | Grit`
+- Page title: `Bell Metal Buildings | Corporate | Grit`
 
 - [ ] **Step 3: Open in browser and verify**
 
@@ -468,7 +468,7 @@ Create `industrial-construction/bold/home.html` with:
 - Featured Projects: three images in a row, clip-pathed into parallelograms (`clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%)`), overlay with project name on hover
 - CTA banner: full-width orange background, "GET A QUOTE" in Bebas Neue black text, links to `about.html`
 - Scroll reveal animations, responsive breakpoints
-- Page title: `Bell Industrial Construction | Industrial Construction - Home | Forge`
+- Page title: `Bell Metal Buildings | Industrial Construction - Home | Forge`
 
 - [ ] **Step 3: Open home.html and verify**
 

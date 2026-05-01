@@ -1,8 +1,8 @@
-# Bell Industrial Construction -- Website Mockup Design Spec
+# Bell Metal Buildings -- Website Mockup Design Spec
 
 ## Overview
 
-Nine static HTML/CSS/JS website mockups for Bell Industrial Construction, covering three sites in three distinct visual styles. The purpose is to present the client with meaningfully different design directions for their web presence.
+Nine static HTML/CSS/JS website mockups for Bell Metal Buildings, covering three sites in three distinct visual styles. The purpose is to present the client with meaningfully different design directions for their web presence.
 
 ## Sites
 
@@ -90,14 +90,14 @@ Covers metal building manufacturing -- pre-engineered structures, warehouses, ba
 
 #### Precision
 
-- **Hero:** Split layout -- 55% left is desaturated construction photo, 45% right is navy with "Bell Industrial Construction" in Playfair Display, thin brass rule underneath, single-sentence tagline. Vertical brass margin line begins here.
+- **Hero:** Split layout -- 55% left is desaturated construction photo, 45% right is navy with "Bell Metal Buildings" in Playfair Display, thin brass rule underneath, single-sentence tagline. Vertical brass margin line begins here.
 - **Intro:** Centered on white, generous padding (8rem top/bottom), brass drop-cap on opening letter.
 - **Division Cards:** Asymmetric -- Industrial Construction card larger and offset left, Metal Buildings slightly smaller and offset right, overlapping vertically ~40px. Each: desaturated photo, Playfair name, one-line description, brass-underline "Visit Site" link.
 - **Contact:** Navy footer, contact details horizontal with thin brass dividers between phone, email, address.
 
 #### Grit
 
-- **Hero:** Warm-filtered wide construction photo, rotated -1deg, torn-edge bottom clip-path. "Bell Industrial Construction" in Arvo overlaid lower-left with faded red background swatch like a stamped label. Blueprint grid visible behind.
+- **Hero:** Warm-filtered wide construction photo, rotated -1deg, torn-edge bottom clip-path. "Bell Metal Buildings" in Arvo overlaid lower-left with faded red background swatch like a stamped label. Blueprint grid visible behind.
 - **Intro:** Left-aligned on paper background, two short paragraphs in Source Serif 4, faded red horizontal rule separator.
 - **Division Cards:** Stacked vertically. Each looks like a pinned document -- slight rotation (1deg / -1deg), visible border, inset shadow like paper on corkboard. Photo with vignette, Arvo name, description, tactile button.
 - **Contact:** Charred-wood dark footer, contact details stacked vertically, faded red "Call Us" link.
@@ -251,7 +251,7 @@ Covers metal building manufacturing -- pre-engineered structures, warehouses, ba
 ### Navigation
 
 - Division sites include a top nav bar linking between their three pages (Home, Services, About/Contact)
-- Division sites include a "Bell Industrial Construction" link in the nav that links back to the corresponding style's corporate landing page (e.g., `bold/home.html` links to `../../corporate/bold/index.html`)
+- Division sites include a "Bell Metal Buildings" link in the nav that links back to the corresponding style's corporate landing page (e.g., `bold/home.html` links to `../../corporate/bold/index.html`)
 - Corporate landing page has no nav bar -- it is a single-page entry point
 - All CTAs ("Get a Quote," "Request Quote," "Request a Consultation," "Configure Your Building," etc.) link to the About/Contact page of the current division site
 
@@ -263,7 +263,7 @@ Covers metal building manufacturing -- pre-engineered structures, warehouses, ba
 
 ### Maps
 
-- Use a Google Maps iframe embed centered on Miami, FL (placeholder location for Bell Industrial Construction) with a dark-mode style filter applied for Forge, standard for Precision, and a warm-tinted filter for Grit
+- Use a Google Maps iframe embed centered on Miami, FL (placeholder location for Bell Metal Buildings) with a dark-mode style filter applied for Forge, standard for Precision, and a warm-tinted filter for Grit
 
 ### Interactive Elements
 
@@ -280,8 +280,8 @@ Covers metal building manufacturing -- pre-engineered structures, warehouses, ba
 
 ### Page Titles
 
-- Format: `Bell Industrial Construction | [Division] - [Page] | [Style]`
-- Examples: `Bell Industrial Construction | Corporate | Forge`, `Bell Industrial Construction | Metal Buildings - Services | Precision`
+- Format: `Bell Metal Buildings | [Division] - [Page] | [Style]`
+- Examples: `Bell Metal Buildings | Corporate | Forge`, `Bell Metal Buildings | Metal Buildings - Services | Precision`
 
 ## Folder Structure
 

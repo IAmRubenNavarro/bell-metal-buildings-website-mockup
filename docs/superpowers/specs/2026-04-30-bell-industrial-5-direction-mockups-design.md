@@ -1,4 +1,4 @@
-# Bell Industrial Construction — Five Design Directions for Home Page Mockups
+# Bell Metal Buildings — Five Design Directions for Home Page Mockups
 
 **Date:** 2026-04-30
 **Status:** Approved design, ready for implementation planning
@@ -6,7 +6,7 @@
 
 ## Overview
 
-This spec defines five visually distinct home-page mockups for Bell Industrial Construction, a Florida-west-coast metal buildings company. The purpose is to present the client with five meaningfully different design directions and let them pick a winner; the chosen direction will be expanded into a full multi-page site in a separate follow-up project.
+This spec defines five visually distinct home-page mockups for Bell Metal Buildings, a Florida-west-coast metal buildings company. The purpose is to present the client with five meaningfully different design directions and let them pick a winner; the chosen direction will be expanded into a full multi-page site in a separate follow-up project.
 
 **Project shape:** one client, one site, five visual directions, one home page per direction.
 
@@ -21,7 +21,7 @@ This spec defines five visually distinct home-page mockups for Bell Industrial C
 | Decision | Outcome |
 |---|---|
 | Project shape | 5 home pages now; depth follow-up on the winning direction is a separate future project |
-| Client | Bell Industrial Construction (clean-slate content, prior project's content not reused) |
+| Client | Bell Metal Buildings (clean-slate content, prior project's content not reused) |
 | Industry focus | Metal buildings, Florida west coast regional flavor |
 | Reference site | Toro Steel Buildings (anchor for Direction 1 only) |
 | 5 directions | Toro homage (elevated) · Editorial Agricultural · Industrial Technical · Warm Heritage · Configurator-First |
@@ -31,7 +31,7 @@ This spec defines five visually distinct home-page mockups for Bell Industrial C
 | Project structure | Self-contained per file, no build, no shared CSS/JS |
 | Tech stack | Vanilla HTML5, CSS3, ES2020+ JavaScript inline per file. Google Fonts CDN. Unsplash/Pexels image URLs. |
 
-**Brand-name caveat:** The company name is "Bell Industrial Construction" per the project decision, although "Industrial Construction" in the name reads more like general contracting than metal-buildings-specifically. This is flagged for the client to potentially revisit during the depth phase as a separate brand decision; not a blocker for mockup work.
+**Brand-name caveat:** The company name is "Bell Metal Buildings" per the project decision, although "Industrial Construction" in the name reads more like general contracting than metal-buildings-specifically. This is flagged for the client to potentially revisit during the depth phase as a separate brand decision; not a blocker for mockup work.
 
 ## Architecture & File Structure
 
@@ -288,7 +288,7 @@ Anchor testimonial — selected per direction to match its buyer persona:
 | 2 Editorial | Rebecca H., boarding facility owner, Marion County | "I interviewed four companies. They were the only ones who walked the property, asked about prevailing wind, and came back with a sealed drawing for my exact site — not a catalog page." |
 | 3 Technical | Mike D., site-work contractor, Polk County (same as Direction 1) | (same quote) |
 | 4 Heritage | Wade T., cattle/hay producer, Hardee County | "Our 60×120 hay barn went up in nine days and made it through Idalia without a scratched panel. The crew knew what we needed before we finished explaining it." |
-| 5 Configurator | Linda M., RV park owner, Sarasota County | "We needed covered storage built and inspected before snowbirds rolled in. Bell Industrial pulled the Sarasota County permit, finished the slab and the steel in seven weeks, and we filled it the week it opened." |
+| 5 Configurator | Linda M., RV park owner, Sarasota County | "We needed covered storage built and inspected before snowbirds rolled in. Bell Metal Buildings pulled the Sarasota County permit, finished the slab and the steel in seven weeks, and we filled it the week it opened." |
 
 ### Section 5 of 7 — Configurator Entry
 
@@ -324,7 +324,7 @@ Universal form (visual mock, non-functional submit):
 | 4 Heritage | Let's get started. | A real conversation, then a real quote. Sealed engineering drawings included with every estimate. |
 | 5 Configurator | (Integrated into configurator panel) | "Get my quote" button surfaces a confirmation panel summarizing the user's selections. |
 
-On submit (all directions): `event.preventDefault()`, display inline confirmation: *"Thanks. Bell Industrial will return a sealed engineering quote within 5 business days."*
+On submit (all directions): `event.preventDefault()`, display inline confirmation: *"Thanks. Bell Metal Buildings will return a sealed engineering quote within 5 business days."*
 
 ### Section 7 of 7 — Footer
 
@@ -332,14 +332,14 @@ Universal data block:
 
 | Field | Value |
 |---|---|
-| Company name | Bell Industrial Construction |
+| Company name | Bell Metal Buildings |
 | Address | 4820 US Highway 92 East, Lakeland, FL 33801 |
 | Phone | (863) 555-0142 |
 | Hours | Mon–Fri 7am–6pm |
-| Email | build@bellindustrialconstruction.com |
+| Email | build@bellmetalbuildings.com |
 | Service area | Citrus · Hernando · Pasco · Pinellas · Hillsborough · Polk · Manatee · Sarasota · Hardee · DeSoto · Charlotte · Lee · Collier · Hendry |
 | Trust line | Florida GC License # CGC-XXXXXX · Member NFBA · BBB A+ Rated · Florida Product Approved Components |
-| Copyright | © 2026 Bell Industrial Construction |
+| Copyright | © 2026 Bell Metal Buildings |
 
 Per-direction taglines:
 
@@ -471,7 +471,7 @@ state = { useCase, width, length, eaveHeight, zip }
 
 - `event.preventDefault()` on form submit
 - Read final state, build summary string
-- Show modal panel with summary: *"Got it — Bell Industrial will return a sealed engineering quote for your 60' × 100' × 16' cattle barn (Polk County, 150 mph wind zone) within 5 business days."*
+- Show modal panel with summary: *"Got it — Bell Metal Buildings will return a sealed engineering quote for your 60' × 100' × 16' cattle barn (Polk County, 150 mph wind zone) within 5 business days."*
 - No backend, no fetch, no localStorage
 
 **Estimated line count:**
@@ -529,7 +529,7 @@ The index page should be conspicuously plain. The temptation to design it too wo
 
 **Header copy:**
 
-> Bell Industrial Construction
+> Bell Metal Buildings
 > Five Design Directions for Home Page
 >
 > Each direction targets a different buyer. Click through to view the home page mockup. After you pick a winner, we'll expand the chosen direction into a full multi-page site.
@@ -683,7 +683,7 @@ This spec defines the mockup phase only. The following are explicitly excluded:
 - **Real backend.** No form submissions hit any server; all "submit" actions are visual confirmations only.
 - **Real pricing calculation.** Direction 5's configurator has no price computation; it shows dimensions and wind zone only.
 - **Real lead capture.** Forms do not actually create leads in any CRM.
-- **Photography of real Bell Industrial projects.** Until real install photos are provided, all images are Unsplash/Pexels stock.
+- **Photography of real Bell Metal Buildings projects.** Until real install photos are provided, all images are Unsplash/Pexels stock.
 - **Production-grade SEO.** No structured data (JSON-LD), no sitemap, no robots.txt, no per-page meta optimization beyond a single descriptive `<title>` and `<meta name="description">`.
 - **Analytics, tracking pixels, or chat widgets.** Mockup pages have none.
 - **Cross-browser testing on legacy browsers.** Modern evergreen only (last 2 years of Chrome/Edge/Firefox/Safari).

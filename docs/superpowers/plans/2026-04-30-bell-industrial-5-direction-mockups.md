@@ -1,8 +1,8 @@
-# Bell Industrial 5-Direction Mockups Implementation Plan
+# Bell Metal Buildings 5-Direction Mockups Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build 6 self-contained static HTML files (1 index landing page + 5 distinct home page direction mockups) for Bell Industrial Construction's metal buildings client review.
+**Goal:** Build 6 self-contained static HTML files (1 index landing page + 5 distinct home page direction mockups) for Bell Metal Buildings's metal buildings client review.
 
 **Architecture:** Each direction is one self-contained HTML5 file with inline `<style>` and `<script>` blocks. No shared CSS, no shared JS, no build step. Direction 5 (Configurator-First) carries ~150 lines of vanilla JS for state management, SVG preview, and ZIP-based wind-zone lookup. All other directions are HTML+CSS plus a small scroll-reveal observer.
 
@@ -48,7 +48,7 @@ Every direction file uses these patterns. Do NOT extract to shared files — eac
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bell Industrial Construction | [Direction Name]</title>
+	<title>Bell Metal Buildings | [Direction Name]</title>
 	<meta name="description" content="Florida-engineered metal buildings. 1,400+ buildings across 14 west coast counties since 2006.">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -197,7 +197,7 @@ Each direction defines its own reveal style.
 		confirmation.className = 'quote-confirmation';
 		confirmation.setAttribute('role', 'status');
 		confirmation.setAttribute('aria-live', 'polite');
-		confirmation.textContent = "Thanks. Bell Industrial will return a sealed engineering quote within 5 business days.";
+		confirmation.textContent = "Thanks. Bell Metal Buildings will return a sealed engineering quote within 5 business days.";
 		form.replaceWith(confirmation);
 	});
 })();
@@ -224,10 +224,10 @@ Adjust the alpha (0.4–0.6) to taste depending on photo brightness.
 
 | Field | Value |
 |---|---|
-| Company | Bell Industrial Construction |
+| Company | Bell Metal Buildings |
 | Address | 4820 US Highway 92 East, Lakeland, FL 33801 |
 | Phone | (863) 555-0142 |
-| Email | build@bellindustrialconstruction.com |
+| Email | build@bellmetalbuildings.com |
 | Hours | Mon–Fri 7am–6pm |
 | Founded | 2006 |
 | Project count | 1,400+ buildings since 2006 |
@@ -275,7 +275,7 @@ Adjust the alpha (0.4–0.6) to taste depending on photo brightness.
 
 - [ ] **Step 1: Create file with HTML5 scaffold + Google Fonts**
 
-Create `toro/home.html` with the universal HTML5 boilerplate, substituting `<title>Bell Industrial Construction | Florida-Engineered Steel Buildings</title>` and the Manrope + Inter Google Fonts URL above.
+Create `toro/home.html` with the universal HTML5 boilerplate, substituting `<title>Bell Metal Buildings | Florida-Engineered Steel Buildings</title>` and the Manrope + Inter Google Fonts URL above.
 
 - [ ] **Step 2: Add universal CSS reset + accessibility patterns + direction tokens**
 
@@ -328,7 +328,7 @@ a:hover { text-decoration: underline; }
 ```html
 <header class="site-header">
 	<div class="header-inner">
-		<a href="#" class="brand">Bell Industrial</a>
+		<a href="#" class="brand">Bell Metal Buildings</a>
 		<nav aria-label="Primary">
 			<a href="#configurator-entry">Configure</a>
 			<a href="#quote-cta">Get a Quote</a>
@@ -734,7 +734,7 @@ Use the 6 categories from spec section "Section 2 of 7 — Building Types Grid".
 	<div class="container">
 		<div class="footer-grid">
 			<div>
-				<p class="footer-brand">Bell Industrial Construction</p>
+				<p class="footer-brand">Bell Metal Buildings</p>
 				<p class="footer-tagline">Florida-Engineered Steel Buildings</p>
 			</div>
 			<div>
@@ -745,7 +745,7 @@ Use the 6 categories from spec section "Section 2 of 7 — Building Types Grid".
 			<div>
 				<h3 class="footer-heading">Call</h3>
 				<a href="tel:8635550142" class="footer-phone">(863) 555-0142</a>
-				<a href="mailto:build@bellindustrialconstruction.com">build@bellindustrialconstruction.com</a>
+				<a href="mailto:build@bellmetalbuildings.com">build@bellmetalbuildings.com</a>
 			</div>
 			<div>
 				<h3 class="footer-heading">Service area</h3>
@@ -753,7 +753,7 @@ Use the 6 categories from spec section "Section 2 of 7 — Building Types Grid".
 			</div>
 		</div>
 		<p class="trust-line">Florida GC License # CGC-XXXXXX · Member NFBA · BBB A+ Rated · Florida Product Approved Components</p>
-		<p class="copyright">© 2026 Bell Industrial Construction</p>
+		<p class="copyright">© 2026 Bell Metal Buildings</p>
 	</div>
 </footer>
 ```
@@ -869,7 +869,7 @@ git commit -m "Add Toro homage direction (1 of 5)"
 
 - [ ] **Step 1: Create file with HTML5 scaffold + Google Fonts**
 
-`<title>Bell Industrial Construction | Built for the work, built for the weather</title>` and the Fraunces + Inter URL.
+`<title>Bell Metal Buildings | Built for the work, built for the weather</title>` and the Fraunces + Inter URL.
 
 - [ ] **Step 2: Add universal CSS reset + accessibility patterns + direction tokens**
 
@@ -923,7 +923,7 @@ a:hover { background: rgba(180, 90, 60, 0.1); }
 ```html
 <header class="site-header">
 	<div class="header-inner">
-		<a href="#" class="brand">Bell Industrial Construction</a>
+		<a href="#" class="brand">Bell Metal Buildings</a>
 		<a href="tel:8635550142" class="phone-link">(863) 555-0142</a>
 	</div>
 </header>
@@ -1268,7 +1268,7 @@ git commit -m "Add Editorial Agricultural direction (2 of 5)"
 
 - [ ] **Step 1: Create file with HTML5 scaffold + Google Fonts**
 
-`<title>Bell Industrial Construction | ENGINEERED. SEALED. INSTALLED.</title>` and the Space Grotesk + Inter + JetBrains Mono URL.
+`<title>Bell Metal Buildings | ENGINEERED. SEALED. INSTALLED.</title>` and the Space Grotesk + Inter + JetBrains Mono URL.
 
 - [ ] **Step 2: Add universal CSS reset + accessibility patterns + direction tokens**
 
@@ -1313,7 +1313,7 @@ h3 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
 ```html
 <header class="site-header">
 	<div class="header-inner">
-		<a href="#" class="brand">BELL INDUSTRIAL <span class="mono">/ FBC</span></a>
+		<a href="#" class="brand">BELL METAL BUILDINGS <span class="mono">/ FBC</span></a>
 		<nav aria-label="Primary">
 			<a href="#configurator-entry">CONFIGURE</a>
 			<a href="#quote-cta">REQUEST QUOTE</a>
@@ -1661,7 +1661,7 @@ git commit -m "Add Industrial Technical direction (3 of 5)"
 
 - [ ] **Step 1: Create file with HTML5 scaffold + Google Fonts**
 
-`<title>Bell Industrial Construction | Steel Buildings the South Still Trusts</title>` and the Roboto Slab + Lora URL.
+`<title>Bell Metal Buildings | Steel Buildings the South Still Trusts</title>` and the Roboto Slab + Lora URL.
 
 - [ ] **Step 2: Add universal CSS reset + accessibility patterns + direction tokens**
 
@@ -1702,7 +1702,7 @@ a:hover { color: var(--forest); }
 ```html
 <header class="site-header">
 	<div class="header-inner">
-		<a href="#" class="brand">Bell Industrial Construction</a>
+		<a href="#" class="brand">Bell Metal Buildings</a>
 		<a href="tel:8635550142" class="phone-link">Call (863) 555-0142</a>
 	</div>
 </header>
@@ -1997,7 +1997,7 @@ git commit -m "Add Warm Heritage direction (4 of 5)"
 
 - [ ] **Step 1: Create file with HTML5 scaffold + Google Fonts**
 
-`<title>Bell Industrial Construction | Configure Your Steel Building</title>` and the Inter + JetBrains Mono URL.
+`<title>Bell Metal Buildings | Configure Your Steel Building</title>` and the Inter + JetBrains Mono URL.
 
 - [ ] **Step 2: Add universal CSS reset + accessibility patterns + direction tokens**
 
@@ -2034,7 +2034,7 @@ h3 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 ```html
 <header class="site-header">
 	<div class="header-inner">
-		<a href="#" class="brand">Bell Industrial</a>
+		<a href="#" class="brand">Bell Metal Buildings</a>
 		<nav aria-label="Primary">
 			<a href="#configurator">Configure</a>
 			<a href="#quote-confirm">Quote</a>
@@ -2362,7 +2362,7 @@ document.getElementById('configurator-form').addEventListener('submit', (e) => {
 	heading.textContent = 'Quote requested.';
 
 	const para = document.createElement('p');
-	para.append('Bell Industrial will return a sealed engineering quote for your ');
+	para.append('Bell Metal Buildings will return a sealed engineering quote for your ');
 	const strong = document.createElement('strong');
 	strong.textContent = `${state.width}' × ${state.length}' × ${state.eaveHeight}' ${def.label.toLowerCase()}`;
 	para.append(strong);
@@ -2497,7 +2497,7 @@ document.querySelectorAll('.quick-pick').forEach((btn) => {
 <section class="testimonial" data-reveal>
 	<div class="container">
 		<blockquote>
-			<p>"We needed covered storage built and inspected before snowbirds rolled in. Bell Industrial pulled the Sarasota County permit, finished the slab and the steel in seven weeks, and we filled it the week it opened."</p>
+			<p>"We needed covered storage built and inspected before snowbirds rolled in. Bell Metal Buildings pulled the Sarasota County permit, finished the slab and the steel in seven weeks, and we filled it the week it opened."</p>
 			<footer><strong>Linda M.</strong> · RV park owner, Sarasota County</footer>
 		</blockquote>
 	</div>
@@ -2518,7 +2518,7 @@ document.querySelectorAll('.quick-pick').forEach((btn) => {
 	<div class="container">
 		<div class="footer-grid">
 			<div>
-				<p class="footer-brand">Bell Industrial Construction</p>
+				<p class="footer-brand">Bell Metal Buildings</p>
 				<p class="footer-tagline">Configure. Engineer. Build.</p>
 			</div>
 			<div>
@@ -2605,8 +2605,8 @@ git commit -m "Add Configurator-First direction (5 of 5)"
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bell Industrial Construction — Five Design Directions</title>
-	<meta name="description" content="Five home page design directions for Bell Industrial Construction. Click through to compare.">
+	<title>Bell Metal Buildings — Five Design Directions</title>
+	<meta name="description" content="Five home page design directions for Bell Metal Buildings. Click through to compare.">
 	<style>
 		/* Inline styles below */
 	</style>
@@ -2615,7 +2615,7 @@ git commit -m "Add Configurator-First direction (5 of 5)"
 	<a href="#main" class="skip-link">Skip to content</a>
 	<main id="main">
 		<header class="page-header">
-			<h1>Bell Industrial Construction</h1>
+			<h1>Bell Metal Buildings</h1>
 			<p class="subtitle">Five Design Directions for Home Page</p>
 			<p class="brief">Each direction targets a different buyer. Click through to view the home page mockup. After you pick a winner, we'll expand the chosen direction into a full multi-page site.</p>
 		</header>
