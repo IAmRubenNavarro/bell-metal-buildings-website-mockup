@@ -254,16 +254,16 @@
 		}
 		.numbers-grid span { font-size: 0.875rem; opacity: 0.85; margin-top: 0.5rem; display: block; }
 
-		.testimonial blockquote {
+		.testimonial figure {
 			max-width: 800px;
 			margin: 0 auto;
 			border-left: 4px solid var(--red);
 			padding: 0.5rem 0 0.5rem 2rem;
 		}
 		.testimonial p { font-size: 1.5rem; line-height: 1.5; font-weight: 500; }
-		.testimonial footer { margin-top: 1.5rem; font-style: normal; }
-		.testimonial footer strong { display: block; }
-		.testimonial footer span { color: var(--charcoal); }
+		.testimonial figcaption { margin-top: 1.5rem; font-style: normal; }
+		.testimonial figcaption strong { display: block; }
+		.testimonial figcaption span { color: var(--charcoal); }
 
 		.configurator-entry { background: var(--charcoal); color: var(--white); }
 		.configurator-cta {
@@ -400,19 +400,19 @@
 		</div>
 	</header>
 	<main id="main-content">
-		<section class="hero">
+		<section class="hero" aria-labelledby="hero-heading">
 			<div class="hero-content">
-				<h1>Florida-Engineered Steel Buildings, Delivered.</h1>
+				<h1 id="hero-heading">Florida-Engineered Steel Buildings, Delivered.</h1>
 				<p class="hero-subhead">1,400+ buildings across 14 counties since 2006. Engineered to FBC, sealed by Florida-licensed engineers, installed by our crews.</p>
 				<a href="#quote-cta" class="btn-primary">Get a Quote</a>
 			</div>
 		</section>
-		<section class="building-types" data-reveal>
+		<section class="building-types" data-reveal aria-labelledby="building-types-heading">
 			<div class="container">
-				<h2>What we build</h2>
+				<h2 id="building-types-heading">What we build</h2>
 				<div class="types-grid">
 					<article class="type-card">
-						<img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&q=80" alt="Steel cattle barn at golden hour">
+						<img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&q=80" alt="Steel cattle barn at golden hour" loading="lazy">
 						<div class="type-card-body">
 							<h3>Cattle &amp; Equipment Barns</h3>
 							<p class="spec-line">40×60 · 14' eave · open or enclosed</p>
@@ -421,7 +421,7 @@
 						</div>
 					</article>
 					<article class="type-card">
-						<img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80" alt="Horse barn with center-aisle stalls">
+						<img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80" alt="Horse barn with center-aisle stalls" loading="lazy">
 						<div class="type-card-body">
 							<h3>Equestrian Barns &amp; Arenas</h3>
 							<p class="spec-line">36×60 center-aisle · arenas to 80×200</p>
@@ -430,7 +430,7 @@
 						</div>
 					</article>
 					<article class="type-card">
-						<img src="https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=800&q=80" alt="Industrial warehouse exterior">
+						<img src="https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=800&q=80" alt="Industrial warehouse exterior" loading="lazy">
 						<div class="type-card-body">
 							<h3>Commercial Warehouses</h3>
 							<p class="spec-line">60×100 clear-span · office buildouts</p>
@@ -439,7 +439,7 @@
 						</div>
 					</article>
 					<article class="type-card">
-						<img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" alt="Mini storage units">
+						<img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" alt="Mini storage units" loading="lazy">
 						<div class="type-card-body">
 							<h3>Mini-Storage</h3>
 							<p class="spec-line">30×100 modules · multi-bay configurations</p>
@@ -448,7 +448,7 @@
 						</div>
 					</article>
 					<article class="type-card">
-						<img src="https://images.unsplash.com/photo-1566977776052-6e61e35ad547?w=800&q=80" alt="RV and boat storage building">
+						<img src="https://images.unsplash.com/photo-1566977776052-6e61e35ad547?w=800&q=80" alt="RV and boat storage building" loading="lazy">
 						<div class="type-card-body">
 							<h3>RV &amp; Boat Storage</h3>
 							<p class="spec-line">30×40 · 14' eave · coastal-rated coatings</p>
@@ -457,7 +457,7 @@
 						</div>
 					</article>
 					<article class="type-card">
-						<img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80" alt="Workshop and detached garage">
+						<img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80" alt="Workshop and detached garage" loading="lazy">
 						<div class="type-card-body">
 							<h3>Workshops &amp; Garages</h3>
 							<p class="spec-line">30×40 detached · pole or clear-span</p>
@@ -469,9 +469,9 @@
 				<p class="grid-disclaimer">Pricing varies by site, wind exposure, and finish package. Sealed engineered drawings included with every quote.</p>
 			</div>
 		</section>
-		<section class="process" data-reveal>
+		<section class="process" data-reveal aria-labelledby="process-heading">
 			<div class="container">
-				<h2>How we build</h2>
+				<h2 id="process-heading">How we build</h2>
 				<ol class="process-steps">
 					<li>
 						<span class="step-num">01</span>
@@ -496,8 +496,9 @@
 				</ol>
 			</div>
 		</section>
-		<section class="numbers-strip">
+		<section class="numbers-strip" data-reveal aria-labelledby="stats-heading">
 			<div class="container">
+				<h2 id="stats-heading" class="sr-only">Company stats</h2>
 				<div class="numbers-grid">
 					<div><strong>1,400+</strong><span>Buildings</span></div>
 					<div><strong>20</strong><span>Years</span></div>
@@ -506,22 +507,25 @@
 				</div>
 			</div>
 		</section>
-		<section class="testimonial" data-reveal>
+		<section class="testimonial" data-reveal aria-labelledby="testimonial-heading">
 			<div class="container">
-				<blockquote>
-					<p>"My contractor yard outgrew me twice. Started with a 50×80 in 2014. They built me a 100×200 in 2021 and connected the two. Same crew lead both times."</p>
-					<footer>
+				<h2 id="testimonial-heading" class="sr-only">Customer testimonial</h2>
+				<figure>
+					<blockquote>
+						<p>"My contractor yard outgrew me twice. Started with a 50×80 in 2014. They built me a 100×200 in 2021 and connected the two. Same crew lead both times."</p>
+					</blockquote>
+					<figcaption>
 						<strong>Mike D.</strong>
 						<span>Site-work contractor, Polk County</span>
-					</footer>
-				</blockquote>
+					</figcaption>
+				</figure>
 			</div>
 		</section>
-		<section class="configurator-entry" id="configurator-entry" data-reveal>
+		<section class="configurator-entry" id="configurator-entry" data-reveal aria-labelledby="configurator-entry-heading">
 			<div class="container">
 				<div class="configurator-cta">
 					<div>
-						<h2>Build it on-screen first.</h2>
+						<h2 id="configurator-entry-heading">Build it on-screen first.</h2>
 						<p>Set your dimensions, pick your use, see the building, and get an instant size estimate before you pick up the phone.</p>
 						<a href="#" class="btn-primary">Configure &amp; Get Quote</a>
 					</div>
@@ -537,9 +541,9 @@
 				</div>
 			</div>
 		</section>
-		<section class="quote-cta" id="quote-cta" data-reveal>
+		<section class="quote-cta" id="quote-cta" data-reveal aria-labelledby="quote-cta-heading">
 			<div class="container">
-				<h2>Ready to build?</h2>
+				<h2 id="quote-cta-heading">Ready to build?</h2>
 				<p>Tell us your county, use, and approximate dimensions. Sealed engineering quote within 5 business days.</p>
 				<form class="quote-form" data-quote-form>
 					<div class="form-row">

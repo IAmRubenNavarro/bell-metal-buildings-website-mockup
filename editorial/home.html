@@ -203,7 +203,7 @@
 		.process { background: var(--barn-green); color: var(--bone); padding: 5rem 0; }
 		.process h2 { color: var(--bone); }
 		.process-prose { list-style: none; margin-top: 3rem; display: grid; gap: 3rem; }
-		.process-prose li { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; align-items: baseline; }
+		.process-prose li { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; align-items: start; }
 		.process-prose .step-num { font-family: var(--font-display); font-style: italic; font-size: 2.5rem; color: var(--terracotta); }
 		.process-prose h3 { color: var(--bone); margin-bottom: 0.75rem; }
 		.process-prose p { color: var(--bone); opacity: 0.9; max-width: none; }
@@ -256,9 +256,9 @@
 			font-style: normal;
 			min-height: 44px;
 		}
-		.quote-form input:focus,
-		.quote-form select:focus,
-		.quote-form textarea:focus {
+		.quote-form input:focus-visible,
+		.quote-form select:focus-visible,
+		.quote-form textarea:focus-visible {
 			outline: none;
 			border-bottom-color: var(--terracotta);
 			background: rgba(244,239,230,0.15);
@@ -309,10 +309,10 @@
 
 	<main id="main-content">
 		<!-- Hero Section -->
-		<section class="hero">
+		<section class="hero" aria-labelledby="hero-heading">
 			<div class="hero-photo" aria-hidden="true"></div>
 			<div class="hero-text">
-				<h1>Built for the work,<br><em>built for the weather.</em></h1>
+				<h1 id="hero-heading">Built for the work,<br><em>built for the weather.</em></h1>
 				<div class="hero-rule"></div>
 				<p class="hero-subhead">Twenty years raising steel across Florida's west coast — barns that outlast hurricanes, shops that outlast fashions.</p>
 				<a href="#quote-cta" class="btn-primary">Start a project</a>
@@ -320,9 +320,9 @@
 		</section>
 
 		<!-- Building Types Section -->
-		<section class="building-types">
+		<section class="building-types" aria-labelledby="building-types-heading">
 			<div class="container">
-				<h2>What we raise.</h2>
+				<h2 id="building-types-heading">What we raise.</h2>
 				<div class="types-spreads">
 					<article class="type-spread" data-reveal>
 						<div class="spread-photo">
@@ -394,9 +394,9 @@
 		</section>
 
 		<!-- Process Section -->
-		<section class="process" data-reveal>
+		<section class="process" data-reveal aria-labelledby="process-heading">
 			<div class="container">
-				<h2><em>How we work.</em></h2>
+				<h2 id="process-heading"><em>How we work.</em></h2>
 				<ol class="process-prose">
 					<li>
 						<span class="step-num">i.</span>
@@ -460,10 +460,10 @@
 		</section>
 
 		<!-- Configurator Entry Section -->
-		<section class="configurator-entry" data-reveal>
+		<section class="configurator-entry" data-reveal aria-labelledby="configurator-entry-heading">
 			<div class="container">
 				<div class="configurator-cta">
-					<h2><em>Design your barn on screen.</em></h2>
+					<h2 id="configurator-entry-heading"><em>Design your barn on screen.</em></h2>
 					<p>Set your dimensions, pick your use, see the building, and get an instant size estimate before you pick up the phone.</p>
 					<a href="#" class="btn-primary">Open the configurator →</a>
 				</div>
@@ -471,9 +471,9 @@
 		</section>
 
 		<!-- Quote CTA Section -->
-		<section class="quote-cta" id="quote-cta" data-reveal>
+		<section class="quote-cta" id="quote-cta" data-reveal aria-labelledby="quote-cta-heading">
 			<div class="container">
-				<h2><em>Tell us about the project.</em></h2>
+				<h2 id="quote-cta-heading"><em>Tell us about the project.</em></h2>
 				<p>We'd rather understand it first. Quotes are sealed by Florida-licensed engineers and returned within five business days.</p>
 				<form class="quote-form" data-quote-form>
 					<div class="form-row">
@@ -485,13 +485,13 @@
 						<label>Use case
 							<select name="useCase" required>
 								<option value="">Select…</option>
-								<option>Cattle / Hay</option>
-								<option>Equestrian</option>
-								<option>Commercial</option>
-								<option>Mini-Storage</option>
-								<option>RV / Boat</option>
-								<option>Workshop / Garage</option>
-								<option>Other</option>
+								<option value="cattle-hay">Cattle / Hay</option>
+								<option value="equestrian">Equestrian</option>
+								<option value="commercial">Commercial</option>
+								<option value="mini-storage">Mini-Storage</option>
+								<option value="rv-boat">RV / Boat</option>
+								<option value="workshop-garage">Workshop / Garage</option>
+								<option value="other">Other</option>
 							</select>
 						</label>
 					</div>

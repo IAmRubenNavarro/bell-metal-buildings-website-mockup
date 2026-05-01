@@ -170,7 +170,6 @@
 			<a href="#" class="brand">Bell Industrial</a>
 			<nav aria-label="Primary">
 				<a href="#configurator">Configure</a>
-				<a href="#configurator">Quote</a>
 			</nav>
 			<a href="tel:8635550142" class="phone-link">(863) 555-0142</a>
 		</div>
@@ -214,7 +213,7 @@
 							</label>
 							<div class="summary-panel">
 								<div class="summary-row"><span>Total area</span><strong class="mono" id="sqftLabel">6,000 sq ft</strong></div>
-								<div class="summary-row" id="windZoneRow" hidden><span>Wind zone</span><strong class="mono" id="windZoneLabel">—</strong></div>
+								<div class="summary-row" id="windZoneRow" hidden aria-live="polite"><span>Wind zone</span><strong class="mono" id="windZoneLabel">—</strong></div>
 							</div>
 							<button type="submit" class="btn-primary">Get my quote →</button>
 						</form>
@@ -372,7 +371,7 @@
 			const pitch = useCaseDefaults[state.useCase].pitch;
 			const ridge = eave + (state.width / 2) * (pitch / 12) * scale;
 
-			const depth = state.length * scale * 0.4;
+			const depth = Math.min(state.length * scale * 0.4, (W - 2 * PAD) * 0.6);
 			const offsetX = depth * 0.7;
 			const offsetY = -depth * 0.5;
 
@@ -454,7 +453,6 @@
 			const label = document.getElementById('windZoneLabel');
 			if (zone) {
 				row.hidden = false;
-				row.setAttribute('aria-live', 'polite');
 				label.textContent = zone.outOfArea ? zone.mph : `${zone.mph} (${zone.region})`;
 			} else {
 				row.hidden = true;
