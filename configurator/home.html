@@ -8,6 +8,14 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+	<script type="importmap">
+	{
+		"imports": {
+			"three": "https://unpkg.com/three@0.169.0/build/three.module.js",
+			"three/addons/": "https://unpkg.com/three@0.169.0/examples/jsm/"
+		}
+	}
+	</script>
 	<style>
 		/* === Tokens === */
 		:root {
@@ -99,7 +107,25 @@
 			background: var(--bg-panel); display: flex; flex-direction: column;
 			align-items: center; justify-content: center; padding: 2rem; min-height: 400px;
 		}
-		#buildingSvg { width: 100%; max-width: 600px; height: auto; }
+		.building-canvas-wrap {
+			position: relative; width: 100%; max-width: 600px;
+			background: var(--off-white); border: 1px solid var(--soft-gray);
+		}
+		#buildingCanvas {
+			display: block; width: 100%; aspect-ratio: 7 / 5;
+			background: linear-gradient(180deg, #DCE3E8 0%, #C8D0C9 60%, #B8C0B9 100%);
+			cursor: grab; touch-action: none;
+		}
+		#buildingCanvas:active { cursor: grabbing; }
+		.reset-view-btn {
+			position: absolute; top: 0.625rem; right: 0.625rem;
+			background: var(--off-white); color: var(--ink);
+			border: 1px solid var(--soft-gray);
+			padding: 0.375rem 0.75rem; font-family: var(--font-mono);
+			font-size: 0.75rem; cursor: pointer; font-weight: 500;
+		}
+		.reset-view-btn:hover { border-color: var(--teal); color: var(--teal); }
+		.reset-view-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 		.preview-disclaimer { font-size: 0.8125rem; color: var(--mid-gray); margin-top: 1.5rem; text-align: center; max-width: 500px; }
 
 		/* === Quote Confirmation === */
@@ -222,20 +248,12 @@
 						</form>
 					</div>
 					<div class="configurator-preview">
-						<svg id="buildingSvg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgTitle buildingDesc">
-							<title id="svgTitle">Building preview</title>
-							<desc id="buildingDesc">Building preview, 60 feet wide by 100 feet long by 16 feet eave height</desc>
-							<line id="groundLine" x1="20" y1="240" x2="380" y2="240" stroke="#0A0A0A" stroke-width="1"/>
-							<polygon id="frontFace" points="60,240 60,160 200,100 340,160 340,240" fill="none" stroke="#0A0A0A" stroke-width="2"/>
-							<line id="sideTop" x1="200" y1="100" x2="280" y2="60" stroke="#0A0A0A" stroke-width="2"/>
-							<line id="sideEaveR" x1="340" y1="160" x2="380" y2="120" stroke="#0A0A0A" stroke-width="2"/>
-							<line id="sideBottomR" x1="340" y1="240" x2="380" y2="200" stroke="#0A0A0A" stroke-width="2"/>
-							<line id="sideRoofBack" x1="280" y1="60" x2="380" y2="120" stroke="#0A0A0A" stroke-width="2"/>
-							<text id="widthCallout" x="200" y="265" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#1098AD">60' WIDTH</text>
-							<text id="lengthCallout" x="380" y="180" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#1098AD">100' LENGTH</text>
-							<text id="eaveCallout" x="50" y="200" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#1098AD" transform="rotate(-90 50 200)">16' EAVE</text>
-						</svg>
-						<p class="preview-disclaimer">Illustrative only. Pricing varies by site, wind exposure, and finish. Get a sealed engineering quote →</p>
+						<div class="building-canvas-wrap">
+							<canvas id="buildingCanvas" role="img" aria-label="3D parametric building preview, drag to rotate, scroll to zoom"></canvas>
+							<button type="button" id="resetView" class="reset-view-btn" aria-label="Reset camera view">Reset view</button>
+						</div>
+						<p id="buildingDesc" class="sr-only">Building preview, 60 feet wide by 100 feet long by 16 feet eave height</p>
+						<p class="preview-disclaimer">Drag to rotate · scroll to zoom. Illustrative only — pricing varies by site, wind exposure, and finish.</p>
 					</div>
 				</div>
 			</div>
@@ -325,7 +343,10 @@
 		</div>
 	</footer>
 
-	<script>
+	<script type="module">
+		import * as THREE from 'three';
+		import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
 		/* === State Model === */
 		const useCaseDefaults = {
 			cattle:      { width: 60,  length: 100, eaveHeight: 16, pitch: 4, label: 'Cattle / Hay Barn',    category: 'Agricultural' },
@@ -360,88 +381,124 @@
 			return zones[prefix] || { mph: 'Outside our service area', region: 'Call (863) 555-0142', outOfArea: true };
 		}
 
-		/* === SVG Render === */
-		function updateSvg() {
-			const W = 400, H = 280;
-			const PAD = 60;
-			const drawAreaW = W - 2 * PAD;
-			const drawAreaH = H - 2 * PAD;
+		/* === Three.js Scene === */
+		let scene, camera, renderer, controls, building;
+		const initialCameraPos = new THREE.Vector3(120, 75, 120);
+		const initialTarget = new THREE.Vector3(0, 8, 0);
 
-			const scale = Math.min(drawAreaW / state.width, drawAreaH / Math.max(state.eaveHeight + state.width / 4, 20));
+		function initThree() {
+			const canvas = document.getElementById('buildingCanvas');
+			const wrap = canvas.parentElement;
+			const w = wrap.clientWidth || 600;
+			const h = w * (5 / 7);
 
-			const w = state.width * scale;
-			const eave = state.eaveHeight * scale;
+			scene = new THREE.Scene();
+			scene.fog = new THREE.Fog(0xC8D0C9, 250, 800);
+
+			camera = new THREE.PerspectiveCamera(35, w / h, 0.1, 2000);
+			camera.position.copy(initialCameraPos);
+
+			renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+			renderer.setSize(w, h, false);
+			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+			scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+			const sun = new THREE.DirectionalLight(0xffffff, 0.85);
+			sun.position.set(80, 120, 60);
+			scene.add(sun);
+			const fill = new THREE.DirectionalLight(0xC8D5E8, 0.25);
+			fill.position.set(-60, 40, -40);
+			scene.add(fill);
+
+			const groundGeo = new THREE.PlaneGeometry(800, 800);
+			const groundMat = new THREE.MeshLambertMaterial({ color: 0xA8B0A8 });
+			const ground = new THREE.Mesh(groundGeo, groundMat);
+			ground.rotation.x = -Math.PI / 2;
+			ground.position.y = -0.05;
+			scene.add(ground);
+
+			controls = new OrbitControls(camera, canvas);
+			controls.enableDamping = true;
+			controls.dampingFactor = 0.06;
+			controls.maxPolarAngle = Math.PI / 2 - 0.05;
+			controls.minDistance = 25;
+			controls.maxDistance = 700;
+			controls.target.copy(initialTarget);
+			controls.update();
+
+			document.getElementById('resetView').addEventListener('click', resetView);
+			window.addEventListener('resize', onResize);
+
+			(function animate() {
+				requestAnimationFrame(animate);
+				controls.update();
+				renderer.render(scene, camera);
+			})();
+		}
+
+		function onResize() {
+			const canvas = document.getElementById('buildingCanvas');
+			const wrap = canvas.parentElement;
+			const w = wrap.clientWidth || 600;
+			const h = w * (5 / 7);
+			camera.aspect = w / h;
+			camera.updateProjectionMatrix();
+			renderer.setSize(w, h, false);
+		}
+
+		function resetView() {
+			camera.position.copy(initialCameraPos);
+			controls.target.copy(initialTarget);
+			controls.update();
+		}
+
+		function rebuildBuilding() {
+			if (building) {
+				scene.remove(building);
+				building.traverse((obj) => {
+					if (obj.geometry) obj.geometry.dispose();
+					if (obj.material) {
+						if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
+						else obj.material.dispose();
+					}
+				});
+			}
+
+			const W = state.width;
+			const L = state.length;
+			const eaveH = state.eaveHeight;
 			const pitch = useCaseDefaults[state.useCase].pitch;
-			const ridge = eave + (state.width / 2) * (pitch / 12) * scale;
+			const ridgeH = eaveH + (W / 2) * (pitch / 12);
 
-			const depth = Math.min(state.length * scale * 0.4, (W - 2 * PAD) * 0.6);
-			const offsetX = depth * 0.7;
-			const offsetY = -depth * 0.5;
+			/* Gable cross-section, centered on origin in X-Y plane */
+			const profile = new THREE.Shape();
+			profile.moveTo(-W / 2, 0);
+			profile.lineTo(-W / 2, eaveH);
+			profile.lineTo(0, ridgeH);
+			profile.lineTo(W / 2, eaveH);
+			profile.lineTo(W / 2, 0);
+			profile.lineTo(-W / 2, 0);
 
-			const groundY = H - 40;
-			const baseLeftX = W / 2 - w / 2;
+			const geo = new THREE.ExtrudeGeometry(profile, { depth: L, bevelEnabled: false, steps: 1 });
+			geo.translate(0, 0, -L / 2);
 
-			const frontPoints = [
-				[baseLeftX, groundY],
-				[baseLeftX, groundY - eave],
-				[baseLeftX + w / 2, groundY - ridge],
-				[baseLeftX + w, groundY - eave],
-				[baseLeftX + w, groundY]
-			].map(p => p.join(',')).join(' ');
-			document.getElementById('frontFace').setAttribute('points', frontPoints);
+			const wallMat = new THREE.MeshLambertMaterial({ color: 0xD8D5C8, flatShading: true });
 
-			document.getElementById('groundLine').setAttribute('y1', groundY);
-			document.getElementById('groundLine').setAttribute('y2', groundY);
+			building = new THREE.Group();
+			building.add(new THREE.Mesh(geo, wallMat));
 
-			const sideTopRX = baseLeftX + w / 2 + offsetX;
-			const sideTopRY = groundY - ridge + offsetY;
-			const sideEaveRX = baseLeftX + w + offsetX;
-			const sideEaveRY = groundY - eave + offsetY;
-			const sideBottomRX = baseLeftX + w + offsetX;
-			const sideBottomRY = groundY + offsetY;
+			const edges = new THREE.EdgesGeometry(geo, 30);
+			building.add(new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x0A0A0A })));
 
-			const sideTop = document.getElementById('sideTop');
-			sideTop.setAttribute('x1', baseLeftX + w / 2);
-			sideTop.setAttribute('y1', groundY - ridge);
-			sideTop.setAttribute('x2', sideTopRX);
-			sideTop.setAttribute('y2', sideTopRY);
+			scene.add(building);
 
-			const sideEaveR = document.getElementById('sideEaveR');
-			sideEaveR.setAttribute('x1', baseLeftX + w);
-			sideEaveR.setAttribute('y1', groundY - eave);
-			sideEaveR.setAttribute('x2', sideEaveRX);
-			sideEaveR.setAttribute('y2', sideEaveRY);
+			/* Update reset-view target as building grows */
+			const maxDim = Math.max(W, L);
+			initialCameraPos.set(maxDim * 1.4 + 30, maxDim * 0.6 + 20, maxDim * 1.4 + 30);
+			initialTarget.set(0, eaveH * 0.5, 0);
 
-			const sideBottomR = document.getElementById('sideBottomR');
-			sideBottomR.setAttribute('x1', baseLeftX + w);
-			sideBottomR.setAttribute('y1', groundY);
-			sideBottomR.setAttribute('x2', sideBottomRX);
-			sideBottomR.setAttribute('y2', sideBottomRY);
-
-			const sideRoofBack = document.getElementById('sideRoofBack');
-			sideRoofBack.setAttribute('x1', sideTopRX);
-			sideRoofBack.setAttribute('y1', sideTopRY);
-			sideRoofBack.setAttribute('x2', sideEaveRX);
-			sideRoofBack.setAttribute('y2', sideEaveRY);
-
-			const widthCallout = document.getElementById('widthCallout');
-			widthCallout.setAttribute('x', baseLeftX + w / 2);
-			widthCallout.setAttribute('y', groundY + 18);
-			widthCallout.textContent = `${state.width}' WIDTH`;
-
-			const lengthCallout = document.getElementById('lengthCallout');
-			lengthCallout.setAttribute('x', sideEaveRX + 4);
-			lengthCallout.setAttribute('y', sideEaveRY + (sideBottomRY - sideEaveRY) / 2);
-			lengthCallout.setAttribute('text-anchor', 'start');
-			lengthCallout.textContent = `${state.length}' LENGTH`;
-
-			const eaveCallout = document.getElementById('eaveCallout');
-			eaveCallout.setAttribute('x', baseLeftX - 8);
-			eaveCallout.setAttribute('y', groundY - eave / 2);
-			eaveCallout.setAttribute('transform', `rotate(-90 ${baseLeftX - 8} ${groundY - eave / 2})`);
-			eaveCallout.textContent = `${state.eaveHeight}' EAVE`;
-
-			document.getElementById('buildingDesc').textContent = `Building preview, ${state.width} feet wide by ${state.length} feet long by ${state.eaveHeight} feet eave height`;
+			document.getElementById('buildingDesc').textContent =
+				`Building preview, ${state.width} feet wide by ${state.length} feet long by ${state.eaveHeight} feet eave height`;
 		}
 
 		/* === Label Render === */
@@ -463,7 +520,7 @@
 		}
 
 		/* === Render === */
-		function render() { updateSvg(); updateLabels(); }
+		function render() { rebuildBuilding(); updateLabels(); }
 
 		/* === Configurator Event Handlers === */
 		document.getElementById('useCase').addEventListener('change', (e) => {
@@ -554,7 +611,10 @@
 		})();
 
 		/* === Initialize === */
+		initThree();
 		render();
+		/* Auto-fit camera on first load */
+		resetView();
 	</script>
 </body>
 </html>
