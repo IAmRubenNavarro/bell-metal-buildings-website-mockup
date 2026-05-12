@@ -254,6 +254,42 @@ h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;text-transform:up
               <option>Other</option>
             </select>
           </div>
+          <div class="field full" style="border-top:1px solid var(--p-rule); padding-top:var(--s-4); margin-top:var(--s-2)">
+            <div style="font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;font-size:13px;color:var(--p-primary);margin-bottom:var(--s-3)">Building dimensions <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--gray-500);font-size:12px">(if known)</span></div>
+            <div class="form-grid" style="grid-template-columns:repeat(3,1fr);gap:var(--s-3)">
+              <div class="field"><label class="field-label" for="dim-w">Width (ft)</label><input class="field-input" id="dim-w" type="number" min="12" max="200" placeholder="e.g. 40" /></div>
+              <div class="field"><label class="field-label" for="dim-l">Length (ft)</label><input class="field-input" id="dim-l" type="number" min="16" max="300" placeholder="e.g. 60" /></div>
+              <div class="field"><label class="field-label" for="dim-h">Height (ft)</label><input class="field-input" id="dim-h" type="number" min="8" max="30" placeholder="e.g. 12" /></div>
+            </div>
+            <div class="form-grid" style="grid-template-columns:1fr 1fr;gap:var(--s-3);margin-top:var(--s-3)">
+              <div class="field">
+                <label class="field-label" for="dim-pitch">Roof pitch</label>
+                <select class="field-select" id="dim-pitch">
+                  <option value="">Not sure</option>
+                  <option>2:12 (low slope)</option>
+                  <option selected>4:12 (standard)</option>
+                  <option>6:12 (steep)</option>
+                  <option>9:12 (cathedral)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="dim-type">Building type</label>
+                <select class="field-select" id="dim-type">
+                  <option>Garage</option>
+                  <option>Workshop</option>
+                  <option>Barn / Agricultural</option>
+                  <option>Commercial / Warehouse</option>
+                  <option>Hangar</option>
+                  <option>Barndominium</option>
+                  <option>Carport</option>
+                  <option>Quonset</option>
+                  <option>Shed / Storage</option>
+                  <option>Roofing system only</option>
+                  <option>Other / not sure</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div class="field"><label class="field-label" for="fn">First name <span class="req">*</span></label><input class="field-input" id="fn" required /></div>
           <div class="field"><label class="field-label" for="ln">Last name <span class="req">*</span></label><input class="field-input" id="ln" required /></div>
           <div class="field"><label class="field-label" for="em">Email <span class="req">*</span></label><input class="field-input" id="em" type="email" required /></div>
@@ -286,4 +322,4 @@ h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;text-transform:up
 
 <footer class="site-footer"><div class="footer-inner"><div class="footer-cols"><div class="footer-col"><div class="brand-mark" style="margin-bottom:var(--s-4)"><div class="brand-mark-glyph">B</div><div class="brand-mark-word" style="color:#fff">Bell Metal<small style="color:var(--p-accent)">Buildings Co.</small></div></div><div class="footer-contact"><strong>Contact</strong>+1-800-555-0100<br>hello@bellmetal.example<br>123 Industrial Way<strong>Follow us</strong><div class="footer-socials"><a href="#">f</a><a href="#">x</a><a href="#">in</a><a href="#">ig</a></div></div></div><div class="footer-col"><h5>Buildings</h5><a href="04-garages-detail.html">Garages</a><a href="04-workshops-detail.html">Workshops</a><a href="04-barndominiums-detail.html">Barndominiums</a><a href="04-quonset-detail.html">Quonset</a><a href="04-carports-detail.html">Carports</a><a href="04-commercial-detail.html">Commercial</a></div><div class="footer-col"><h5>Options</h5><a href="06-options-finishes.html">Foundation</a><a href="06-options-finishes.html">Doors</a><a href="06-options-finishes.html">Windows</a></div><div class="footer-col"><h5>Resources</h5><a href="12-faq-resources.html">FAQs</a><a href="18-video-library.html">Videos</a><a href="09-blog-index.html">Blog</a></div><div class="footer-col"><h5>Company</h5><a href="07-about.html">About</a><a href="08-contact.html">Contact</a><a href="14-privacy.html">Privacy</a><a href="13-warranty.html">Warranty</a></div></div><div class="footer-base">© 2026 Bell Metal Buildings Co.</div></div></footer>
 <a href="08-contact.html" class="floating-quote">Get a Quote →</a>
-</body></html>
+<script src="../_nav.js" defer></script></body></html>
