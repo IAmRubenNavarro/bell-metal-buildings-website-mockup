@@ -180,8 +180,9 @@ h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;text-transform:up
 
 
 
+
 /* ===== REAL PHOTOS (override placeholder gradients) ===== */
-.bg-container cover, .bg-workshop, .bg-barn, .bg-quonset, .bg-carport, .bg-container,
+.bg-garage, .bg-workshop, .bg-barn, .bg-quonset, .bg-carport, .bg-container,
 .bg-commercial, .bg-storage,
 .bg-ag, .bg-arena, .bg-av, .bg-cc, .bg-com, .bg-cp, .bg-gar, .bg-roof, .bg-stor, .bg-work,
 .bg-photo-1, .bg-photo-2, .bg-photo-3, .bg-photo-4, .bg-photo-5, .bg-photo-6,
@@ -193,7 +194,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;text-transform:up
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
-.bg-container cover { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-garage { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
 .bg-workshop { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important; }
 .bg-barn { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
 .bg-quonset { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important; }
@@ -266,6 +267,81 @@ h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;text-transform:up
 .testimonial-photo.bg-photo-10 { background-image: url("https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
 .testimonial-photo.bg-photo-11 { background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
 .testimonial-photo.bg-photo-12 { background-image: url("https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+/* Category aliases used on PLPs and homepage tiles */
+.bg-barn, .bg-barndominium, .bg-hangar, .bg-industrial, .bg-mini-storage,
+.bg-roofing, .bg-shed, .bg-warehouse, .bg-garage1, .bg-garage2,
+.bg-a1, .bg-a2, .bg-a3,
+.bg-c1, .bg-c2, .bg-c3, .bg-c4, .bg-c5, .bg-c6,
+.bg-c7, .bg-c8, .bg-c9, .bg-c10, .bg-c11, .bg-c12,
+.bg-b1, .bg-b2, .bg-b3, .bg-b4, .bg-b5, .bg-b6, .bg-b7, .bg-b8, .bg-b9,
+.bg-b10, .bg-b11, .bg-b12, .bg-b13, .bg-b14, .bg-b15, .bg-b16, .bg-b17, .bg-b18,
+.bg-bro1, .bg-bro2, .bg-bro3, .bg-bro4,
+.bg-r1, .bg-r2, .bg-r3, .bg-r4, .bg-r5,
+.bg-style1, .bg-style2 {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.bg-barn         { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-barndominium { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-hangar       { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1711931290007-c0dcbd574c7c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-industrial   { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1562088997-ed2fbeef1cd6?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-mini-storage { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-roofing      { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1649587345666-0f4ad68aa723?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-shed         { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1614687851910-31ed1fdfa474?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-warehouse    { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-garage1      { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-garage2      { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1614687851910-31ed1fdfa474?w=1400&q=80&auto=format&fit=crop") !important; }
+/* Our Advantage page (3 sections) */
+.bg-a1 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-a2 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-a3 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1721152395209-f9ca76755948?w=1400&q=80&auto=format&fit=crop") !important; }
+/* Clearance inventory (12 items — mix of building types) */
+.bg-c1  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c2  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c3  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c4  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1614687851910-31ed1fdfa474?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c5  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c6  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1706367514457-6aee115ab362?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c7  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c8  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c9  { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1562088997-ed2fbeef1cd6?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c10 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1721152395209-f9ca76755948?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c11 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-c12 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important; }
+/* Blog index thumbnails (18 posts) — varied building/construction photos */
+.bg-b1  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b2  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b3  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("__CONS1__") !important; }
+.bg-b4  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b5  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b6  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b7  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1649587345666-0f4ad68aa723?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b8  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b9  { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b10 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b11 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1614687851910-31ed1fdfa474?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b12 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b13 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1721152395209-f9ca76755948?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b14 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b15 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1711931290007-c0dcbd574c7c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b16 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1562088997-ed2fbeef1cd6?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b17 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-b18 { background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+/* Brochure thumbnails */
+.bg-bro1 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-bro2 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-bro3 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-bro4 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+/* Resources hub topic photos */
+.bg-r1 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-r2 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("__CONS1__") !important; }
+.bg-r3 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1649587345666-0f4ad68aa723?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-r4 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-r5 { background-image: linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+/* "Pre-fab garage kit styles" — straight wall vs quonset on every PDP */
+.bg-style1 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-style2 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important; }
 /* ===== END REAL PHOTOS ===== */
 </style>
 
