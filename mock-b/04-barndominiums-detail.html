@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Steel Barndominium Building Kits — Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+/* PDP-specific */
+.mid-cta{ padding:var(--s-7) 24px; text-align:center }
+.mid-cta h2{ text-transform:uppercase; margin-bottom:var(--s-4); font-size:var(--t-h1) }
+
+/* Hero photo carousel */
+.pdp-carousel{ display:flex; flex-direction:column; gap:14px }
+.pdp-stage{
+  position:relative; aspect-ratio: 16/9; border-radius:var(--r-md); overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #c47b40, #4d2b13);
+}
+.pdp-stage[data-photo="1"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #c47b40, #4d2b13) }
+.pdp-stage[data-photo="2"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #2c4361, #0e1a2b) }
+.pdp-stage[data-photo="3"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.pdp-stage[data-photo="4"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #5a6470, #1d2530) }
+.pdp-stage[data-photo="5"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #8a4f6e, #2b1d36) }
+.pdp-stage[data-photo="6"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #5e8aae, #1f3a55) }
+.pdp-stage[data-photo="7"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #b87333, #4a3219) }
+.pdp-stage[data-photo="8"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #3a5a3c, #0f1e10) }
+.pdp-stage[data-photo="9"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #6e3c4a, #1f1015) }
+.pdp-stage[data-photo="10"]{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)), linear-gradient(160deg, #485770, #15202e) }
+.pdp-arrows{ position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; padding:14px; pointer-events:none }
+.pdp-arrows button{ pointer-events:auto; width:48px; height:48px; border-radius:999px; background:rgba(8,17,28,.6); color:#fff; border:0; font-size:1.4rem; cursor:pointer }
+.pdp-arrows button:hover{ background:var(--b-ember) }
+.pdp-thumbs{ display:grid; grid-template-columns:repeat(10,1fr); gap:8px }
+@media (max-width:1000px){ .pdp-thumbs{ grid-template-columns:repeat(5,1fr) } }
+.pdp-thumb{
+  aspect-ratio:4/3; border-radius:6px; cursor:pointer; border:2px solid transparent;
+  background:linear-gradient(160deg, #c47b40, #4d2b13);
+}
+.pdp-thumb[data-thumb="2"]{ background:linear-gradient(160deg, #2c4361, #0e1a2b) }
+.pdp-thumb[data-thumb="3"]{ background:linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.pdp-thumb[data-thumb="4"]{ background:linear-gradient(160deg, #5a6470, #1d2530) }
+.pdp-thumb[data-thumb="5"]{ background:linear-gradient(160deg, #8a4f6e, #2b1d36) }
+.pdp-thumb[data-thumb="6"]{ background:linear-gradient(160deg, #5e8aae, #1f3a55) }
+.pdp-thumb[data-thumb="7"]{ background:linear-gradient(160deg, #b87333, #4a3219) }
+.pdp-thumb[data-thumb="8"]{ background:linear-gradient(160deg, #3a5a3c, #0f1e10) }
+.pdp-thumb[data-thumb="9"]{ background:linear-gradient(160deg, #6e3c4a, #1f1015) }
+.pdp-thumb[data-thumb="10"]{ background:linear-gradient(160deg, #485770, #15202e) }
+.pdp-thumb.is-active{ border-color:var(--b-ember) }
+
+/* State list */
+.state-cloud{ columns:5; column-gap:24px }
+@media (max-width:1000px){ .state-cloud{ columns:3 } }
+@media (max-width:600px){ .state-cloud{ columns:2 } }
+.state-cloud a{ display:block; padding:6px 0; font-size:.95rem; color:var(--b-text); border-bottom:1px dotted var(--b-rule) }
+.state-cloud a:hover{ color:var(--b-conduit); text-decoration:none }
+
+/* Long-form copy */
+.longform{ max-width:80ch }
+.longform h2{ text-transform:uppercase; margin:var(--s-6) 0 var(--s-3); border-bottom:3px solid var(--b-ember); padding-bottom:6px; display:inline-block }
+.longform p{ font-size:1.02rem; color:var(--b-text); margin-bottom:1em }
+
+/* Happy customers (compact for PDP) */
+.happy-list{ display:flex; flex-direction:column; gap:14px }
+.happy-row{
+  display:grid; grid-template-columns:160px 1fr; gap:20px;
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md); overflow:hidden;
+}
+.happy-row .photo{ min-height:130px; background:linear-gradient(160deg, #c47b40, #4d2b13) }
+.happy-row .photo.b{ background:linear-gradient(160deg, #2c4361, #0e1a2b) }
+.happy-row .photo.c{ background:linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.happy-row .photo.d{ background:linear-gradient(160deg, #5a6470, #1d2530) }
+.happy-row .body{ padding:16px 16px 16px 0; display:flex; flex-direction:column; gap:6px; justify-content:center }
+.happy-row .quote{ font-size:.95rem; margin:0 }
+.happy-row .who{ font-size:.85rem; color:var(--b-text-muted) }
+.happy-row .who strong{ color:var(--b-ink); font-family:var(--f-display); text-transform:uppercase; letter-spacing:.04em; font-size:.92rem }
+@media (max-width:700px){ .happy-row{ grid-template-columns:1fr } .happy-row .body{ padding:12px } }
+
+/* Featured projects */
+.project-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px }
+@media (max-width:1000px){ .project-grid{ grid-template-columns:repeat(2,1fr) } }
+@media (max-width:560px){ .project-grid{ grid-template-columns:1fr } }
+</style>
+
+<style>
+/* Category PDP hero (overrides shared placeholder) */
+.hero-photo, .page-hero, .hero {
+  background-image: linear-gradient(135deg, rgba(0,0,0,.35), rgba(0,0,0,.6)), url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+</style>
+</head>
+<body>
+
+<header class="nav-solid">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="./03-building-types.html">Buildings</a>
+      <a class="nav-link" href="./15-true-pricing.html">Pricing</a>
+      <a class="nav-link" href="./17-resources-hub.html">Resources</a>
+      <a class="nav-link" href="./11-testimonials.html">Reviews</a>
+    </div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<!-- Banner -->
+<section class="banner">
+  <div class="banner-inner">
+    <h1>Steel Barndominium Building Kits</h1>
+    <p class="lede">1- to 4-car barndominiums, attached or detached, with optional lean-tos. Engineered to your county codes. Self-erect over a long weekend with three friends, or hire a local crew.</p>
+  </div>
+</section>
+
+<!-- Mid CTA -->
+<section class="mid-cta">
+  <div class="container">
+    <h2>Configure Your Dream Barndominium Today</h2>
+    <a class="btn btn-primary btn-lg" href="#">Get My Price <span class="arrow">›</span></a>
+  </div>
+</section>
+
+<!-- Hero photo carousel -->
+<section class="container">
+  <div class="pdp-carousel">
+    <div class="pdp-stage" data-photo="1" id="stage" aria-label="Barndominium build photo">
+      <div class="pdp-arrows">
+        <button data-step="-1" aria-label="Previous">‹</button>
+        <button data-step="1" aria-label="Next">›</button>
+      </div>
+    </div>
+    <div class="pdp-thumbs" id="thumbs">
+      <button class="pdp-thumb is-active" data-thumb="1" data-set="1"></button>
+      <button class="pdp-thumb" data-thumb="2" data-set="2"></button>
+      <button class="pdp-thumb" data-thumb="3" data-set="3"></button>
+      <button class="pdp-thumb" data-thumb="4" data-set="4"></button>
+      <button class="pdp-thumb" data-thumb="5" data-set="5"></button>
+      <button class="pdp-thumb" data-thumb="6" data-set="6"></button>
+      <button class="pdp-thumb" data-thumb="7" data-set="7"></button>
+      <button class="pdp-thumb" data-thumb="8" data-set="8"></button>
+      <button class="pdp-thumb" data-thumb="9" data-set="9"></button>
+      <button class="pdp-thumb" data-thumb="10" data-set="10"></button>
+    </div>
+  </div>
+</section>
+
+<!-- Repeat CTA -->
+<section class="mid-cta" style="background:var(--b-paper-2); margin-top:var(--s-8)">
+  <div class="container">
+    <h2>Looking For A New Barndominium? Choose Bell Metal.</h2>
+    <a class="btn btn-primary btn-lg" href="#">Get My Price <span class="arrow">›</span></a>
+  </div>
+</section>
+
+<!-- State list cloud -->
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom:var(--s-5)">
+      <span class="eyebrow">By the state</span>
+      <h2>See barndominium builds from your area</h2>
+      <p class="lede">Bell Metal ships to the lower 48. Click your state to see customer builds, lead times by region, and the local code notes our engineers track.</p>
+    </div>
+    <div class="state-cloud">
+      <a href="#">· Alabama</a><a href="#">· Arizona</a><a href="#">· Arkansas</a><a href="#">· California</a><a href="#">· Colorado</a>
+      <a href="#">· Connecticut</a><a href="#">· Delaware</a><a href="#">· Florida</a><a href="#">· Georgia</a><a href="#">· Idaho</a>
+      <a href="#">· Illinois</a><a href="#">· Indiana</a><a href="#">· Iowa</a><a href="#">· Kansas</a><a href="#">· Kentucky</a>
+      <a href="#">· Louisiana</a><a href="#">· Maine</a><a href="#">· Maryland</a><a href="#">· Massachusetts</a><a href="#">· Michigan</a>
+      <a href="#">· Minnesota</a><a href="#">· Mississippi</a><a href="#">· Missouri</a><a href="#">· Montana</a><a href="#">· Nebraska</a>
+      <a href="#">· Nevada</a><a href="#">· New Hampshire</a><a href="#">· New Jersey</a><a href="#">· New Mexico</a><a href="#">· New York</a>
+      <a href="#">· North Carolina</a><a href="#">· North Dakota</a><a href="#">· Ohio</a><a href="#">· Oklahoma</a><a href="#">· Oregon</a>
+      <a href="#">· Pennsylvania</a><a href="#">· Rhode Island</a><a href="#">· South Carolina</a><a href="#">· South Dakota</a><a href="#">· Tennessee</a>
+      <a href="#">· Texas</a><a href="#">· Utah</a><a href="#">· Vermont</a><a href="#">· Virginia</a><a href="#">· Washington</a>
+      <a href="#">· West Virginia</a><a href="#">· Wisconsin</a><a href="#">· Wyoming</a>
+    </div>
+  </div>
+</section>
+
+<!-- Long-form copy -->
+<section class="section" style="background:var(--b-paper-2)">
+  <div class="container">
+    <div class="longform">
+      <h2>Steel Barndominiums for Every Use Case</h2>
+      <p>A Bell Metal barndominium isn't a wood-frame structure with metal cladding bolted on top — it's a pre-engineered, fully sealed, bolt-together kit designed for your county's snow, wind, and seismic loads from the first panel. That means a 30×40 barndominium in Pueblo gets different framing than a 30×40 in Bozeman, and you don't have to do the engineering math yourself.</p>
+      <p>Our barndominium line covers the four most-asked-for footprints: single-car (12×20), two-car (24×24), three-car (30×30), and four-car (40×40), plus any custom width up to 80′ in 5′ increments. Every kit ships flat on one truck with sealed drawings, an anchor-bolt plan, an erection manual, and a dedicated project manager who stays with your build from quote to delivery.</p>
+      <p>You can self-erect with friends in a long weekend, hire a local crew, or ask us to recommend an erection contractor working in your region. Either way, your engineering, your warranty, and your service line stay with Bell.</p>
+
+      <h2>What's Included In The Kit</h2>
+      <p>Primary red-iron frame and secondary cold-formed framing, 26-gauge Galvalume-coated PBR roof and wall panels (14 standard colors), trim, fasteners, sealants, anchor-bolt template, and full sealed structural drawings. Doors and windows are spec'd at quote time so the openings come pre-cut — not site-cut after the panels are on. Optional add-ons: wainscot, overhangs, lean-tos, insulation packages, cupolas, walk doors, sliding doors, bifold doors, roll-up doors, gable vents, ridge vents.</p>
+
+      <h2>Warranty &amp; Service</h2>
+      <p>Bell barndominiums carry a 50-year rust-perforation warranty on Galvalume panels, a 40-year paint warranty on factory finish, and a 25-year warranty on painted accessories. Every Bell building is backed by a service line for the life of the kit — if a panel ever fails to spec, you're talking to a human in our engineering office, not a phone tree.</p>
+
+      <div style="margin-top:var(--s-5)"><a class="btn btn-primary btn-lg" href="#">Get my barndominium price <span class="arrow">›</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Happy customers (9 barndominium-specific) -->
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom:var(--s-5)">
+      <span class="eyebrow">Barndominium owners speak</span>
+      <h2>Happy barndominium builders, real-world feedback</h2>
+    </div>
+    <div class="happy-list">
+      <article class="happy-row"><div class="photo"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Three-car detached with a lean-to. Bolts lined up first try and the trim was beautiful."</p><div class="who"><strong>Rosa M.</strong> · Barndominium · Pueblo, CO</div></div></article>
+      <article class="happy-row"><div class="photo b"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Two-car attached. Engineering caught a high-wind issue I would've missed."</p><div class="who"><strong>K. Sullivan</strong> · Barndominium · Galveston, TX</div></div></article>
+      <article class="happy-row"><div class="photo c"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Bell quoted, shipped, and stuck with us through inspection. Smooth from start to finish."</p><div class="who"><strong>J. Yost</strong> · Barndominium · Findlay, OH</div></div></article>
+      <article class="happy-row"><div class="photo d"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Four-car w/ workshop bay. Insulation package was perfect for our snow region."</p><div class="who"><strong>B. Antonsen</strong> · Barndominium · Duluth, MN</div></div></article>
+      <article class="happy-row"><div class="photo"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"I'm not a builder. With two buddies and a weekend, we put up a 24×30 barndominium. Drawings were obvious."</p><div class="who"><strong>P. Chambers</strong> · Barndominium · Asheville, NC</div></div></article>
+      <article class="happy-row"><div class="photo b"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Coastal lot. Bell spec'd a salt-grade coating without me having to ask. Two years in, zero rust."</p><div class="who"><strong>L. Mendez</strong> · Barndominium · Cape Coral, FL</div></div></article>
+      <article class="happy-row"><div class="photo c"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"PM stayed with me through a delayed slab pour. Held the price. Real partner."</p><div class="who"><strong>W. Tanaka</strong> · Barndominium · Eugene, OR</div></div></article>
+      <article class="happy-row"><div class="photo d"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Add-on bifold door to fit a small plane in my driveway. They engineered it to match."</p><div class="who"><strong>R. Stallworth</strong> · Barndominium · Wichita, KS</div></div></article>
+      <article class="happy-row"><div class="photo"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"30×40 with a 12′ ceiling. Bell engineers found a cheaper truss spacing than my first quote."</p><div class="who"><strong>F. Aoki</strong> · Barndominium · Pocatello, ID</div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- Spec accordion -->
+<section class="section" style="background:var(--b-paper-2)">
+  <div class="container">
+    <div style="margin-bottom:var(--s-5)">
+      <span class="eyebrow">Product data sheet</span>
+      <h2>Barndominium building system — at a glance</h2>
+    </div>
+    <div class="spec-accordion" data-spec>
+      <div class="spec-tabs"><button class="spec-tab is-active" data-tab="spec">Spec</button><button class="spec-tab" data-tab="why">Why Bell</button><button class="spec-tab" data-tab="adv">Advantages</button><button class="spec-tab" data-tab="faq">FAQs</button><button class="spec-tab" data-tab="cust">Customizations</button><button class="spec-tab" data-tab="war">Warranties &amp; Service</button></div>
+      <div class="spec-panel is-active" data-panel="spec">
+        <dl class="spec-rows">
+          <dt>Brand</dt><dd>Bell Metal Buildings Co.</dd>
+          <dt>Barndominium sizes</dt><dd>12×20 single-car · 24×24 two-car · 30×30 three-car · 40×40 four-car · custom 12–80′ wide</dd>
+          <dt>Frame steel</dt><dd>Red iron primary, cold-formed secondary</dd>
+          <dt>Panels</dt><dd>26-gauge Galvalume PBR or R-panel · 14 colors</dd>
+          <dt>Eave heights</dt><dd>8′, 10′, 12′, 14′, 16′ standard · taller on request</dd>
+          <dt>Doors available</dt><dd>Walk · roll-up · sliding · bifold (specify at quote)</dd>
+          <dt>Warranty</dt><dd>50-yr rust · 40-yr paint · 25-yr accessories</dd>
+          <dt>Lead time</dt><dd>6–10 weeks from contract to delivery</dd>
+        </dl>
+      </div>
+      <div class="spec-panel" data-panel="why"><p>Bell barndominiums are engineered, fixed-price, and stay with one project manager from quote through delivery. No T&amp;M creep, no change-order surprises, no "let me check with the office" runaround.</p></div>
+      <div class="spec-panel" data-panel="adv"><p>Door pre-cuts engineered in. Clear-span interior. Self-erect-friendly. Insulation packages spec'd to your climate zone.</p></div>
+      <div class="spec-panel" data-panel="faq"><p>Barndominium-specific FAQs render here. <a href="./12-faq-resources.html">Browse the full FAQ ›</a></p></div>
+      <div class="spec-panel" data-panel="cust"><p>Lean-tos · overhangs · wainscot · insulation · cupolas · skylights · gable/ridge venting · workshop bays · loft-ready framing.</p></div>
+      <div class="spec-panel" data-panel="war"><p>Material, paint, fastener warranties; service line for the life of the building.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured projects -->
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom:var(--s-5)">
+      <span class="eyebrow">Featured projects</span>
+      <h2>Barndominium builds standing today</h2>
+    </div>
+    <div class="project-grid">
+      <article class="project-card"><div class="photo"></div><div class="body"><p class="nickname">North Pueblo 3-Car</p><p class="pull">30×40 detached with attached lean-to. First-try-fit panels.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo warm"></div><div class="body"><p class="nickname">Galveston Coastal</p><p class="pull">24×24 attached. Salt-grade coating, no rust two years in.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo field"></div><div class="body"><p class="nickname">Findlay Family Bay</p><p class="pull">30×30 three-car. Smooth permit, smooth build.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo iron"></div><div class="body"><p class="nickname">Duluth Snow-Belt</p><p class="pull">40×40 four-car with R-25 insulated walls.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo"></div><div class="body"><p class="nickname">Asheville DIY Weekend</p><p class="pull">24×30 self-erect with two friends. Sold us on Bell.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo warm"></div><div class="body"><p class="nickname">Cape Coral Marine</p><p class="pull">Single-car, marine-grade coating, in the salt belt.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo field"></div><div class="body"><p class="nickname">Eugene Long-Lead Slab</p><p class="pull">Price held through a six-week slab delay.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo iron"></div><div class="body"><p class="nickname">Wichita Aircraft Door</p><p class="pull">Single-plane hangar-style bifold engineered in.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo"></div><div class="body"><p class="nickname">Pocatello Truss-Optimized</p><p class="pull">30×40 barndominium with cheaper truss spacing than first quote.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo warm"></div><div class="body"><p class="nickname">Boulder Workshop Bay</p><p class="pull">2-car barndominium + 12×20 workshop bay, shared roof line.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo field"></div><div class="body"><p class="nickname">Stillwater Three-Bay</p><p class="pull">36×40 with a lean-to for a small tractor.</p><a class="link" href="#">Read this build ›</a></div></article>
+      <article class="project-card"><div class="photo iron"></div><div class="body"><p class="nickname">Bozeman Mountain</p><p class="pull">30×30 two-car with heavy snow rating.</p><a class="link" href="#">Read this build ›</a></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- Phone band -->
+<section class="phone-band">
+  <div class="phone-band-inner">
+    <div class="lead">Call Now To Speak With A Building Consultant<small>Real human · No phone tree · Quote in minutes</small></div>
+    <div class="phone"><div class="phone-icon">📞</div><a class="phone-num" href="tel:+15555550199">(555) 555-0199</a></div>
+    <a class="btn btn-ghost on-dark" href="#">Get My Free Quote</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col">
+        <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+        <p class="blurb">Pre-engineered steel buildings shipped to the lower 48. American steel. Sealed drawings. Real people on the phone.</p>
+        <p class="blurb"><a href="tel:+15555550199" style="color:#fff; font-family:var(--f-display); font-weight:700; font-size:1.1rem; letter-spacing:.02em">📞 (555) 555-0199</a></p>
+        <div class="social-row"><a href="#">f</a><a href="#">◧</a><a href="#">▷</a><a href="#">in</a></div>
+      </div>
+      <div><h4>Buildings</h4><ul><li><a href="./04-barndominiums-detail.html">Barndominiums</a></li><li><a href="./04-barndominiums-detail.html">Workshops</a></li><li><a href="./04-barndominiums-detail.html">Barndominiums</a></li><li><a href="./04-barndominiums-detail.html">Quonset</a></li><li><a href="./04-barndominiums-detail.html">Commercial</a></li><li><a href="./03-building-types.html">All building types</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="./17-resources-hub.html">Complete guide</a></li><li><a href="./17-resources-hub.html">3D Designer</a></li><li><a href="./19-brochure.html">Brochures</a></li><li><a href="./18-video-library.html">Video library</a></li><li><a href="./12-faq-resources.html">FAQs</a></li><li><a href="./09-blog-index.html">Blog</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="./07-about.html">About Bell</a></li><li><a href="./16-our-advantage.html">Our advantage</a></li><li><a href="./13-warranty.html">Warranty</a></li><li><a href="./15-true-pricing.html">True pricing</a></li><li><a href="#">Customer stories</a></li><li><a href="#">Careers</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="./08-contact.html">Contact us</a></li><li><a href="./12-faq-resources.html">Help desk</a></li><li><a href="#">Newsroom</a></li><li><a href="#">Brand center</a></li></ul></div>
+    </div>
+    <div class="footer-legal"><span>© 2026 Bell Metal Buildings Co.</span><ul><li><a href="./14-privacy.html">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Sitemap</a></li><li><a href="#">Accessibility</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="util-bar"><div class="util-bar-inner"><span class="lead">Start here: <em>Price your barndominium in minutes</em></span><a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a></div></div>
+
+<script>
+// PDP photo carousel
+const stage = document.getElementById('stage');
+const thumbs = document.querySelectorAll('.pdp-thumb');
+let current = 1;
+function setPhoto(n){
+  current = ((n - 1 + 10) % 10) + 1;
+  stage.dataset.photo = current;
+  thumbs.forEach(t => t.classList.toggle('is-active', parseInt(t.dataset.thumb) === current));
+}
+thumbs.forEach(t => t.addEventListener('click', () => setPhoto(parseInt(t.dataset.set))));
+document.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => setPhoto(current + parseInt(b.dataset.step))));
+
+// Spec accordion
+document.querySelectorAll('[data-spec]').forEach(root => {
+  root.querySelectorAll('.spec-tab').forEach(btn => btn.addEventListener('click', () => {
+    const t = btn.dataset.tab;
+    root.querySelectorAll('.spec-tab').forEach(b => b.classList.toggle('is-active', b === btn));
+    root.querySelectorAll('.spec-panel').forEach(p => p.classList.toggle('is-active', p.dataset.panel === t));
+  }));
+});
+</script>
+</body>
+</html>

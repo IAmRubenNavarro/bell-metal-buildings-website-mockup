@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Metal Barndominium Kits — Bell Metal Buildings</title>
+<meta name="description" content="Pre-engineered steel barndominium kits — residential, detached, and commercial. Factory-direct from Bell." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Bell Metal — Mock A — Building Type Detail: Barndominiums
+   Template applies to: Quonset Huts, Container Covers, Barndominiums, Workshops, Carports, Commercial */
+:root {
+  --p-primary:#18181b; --p-primary-hover:#2a2a30; --p-primary-ink:#fff;
+  --p-accent:#b87333; --p-accent-hover:#9a5e25; --p-accent-ink:#18181b;
+  --p-surface:#fff; --p-surface-alt:#f4f3f1; --p-surface-deep:#14141a; --p-surface-deep-ink:#f4f3f1;
+  --p-rule:#ddd9d1; --p-check:#b87333;
+  --p-promo:#6f2622; --p-promo-ink:#f8e9d6; --p-wizard-bg:#eef0f4;
+  --gray-50:#f7f7f8;--gray-100:#ececef;--gray-200:#d8d8de;--gray-500:#66666f;--gray-600:#4a4a52;--gray-700:#34343a;--gray-800:#1f1f24;--gray-900:#111114;
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;--s-9:96px;
+  --r-sm:4px;--r-md:8px;--r-lg:14px;--r-pill:999px;
+  --shadow-card:0 2px 8px rgba(0,0,0,0.06); --shadow-lg:0 12px 32px rgba(0,0,0,0.18);
+  --font-display:'Oswald','Arial Narrow',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  --container:1280px;
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--gray-900);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}button{font:inherit;cursor:pointer}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--s-5)}
+h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.02em;line-height:1.05;margin:0}
+.todo{display:inline-block;background:#fff5cc;border:1px dashed #c89a00;color:#6b4d00;padding:1px 6px;font-size:11px;font-family:var(--font-body);font-weight:600;text-transform:none;letter-spacing:0;border-radius:3px}
+.todo.inline-dark{background:#2a1f12;border-color:#b87333;color:#f4f3f1}
+
+.promo-strip{background:var(--p-promo);color:var(--p-promo-ink);text-align:center;padding:10px var(--s-4);font-weight:600;font-size:14px;letter-spacing:0.03em}
+
+.site-header{background:#fff;border-bottom:1px solid var(--p-rule);position:sticky;top:0;z-index:50}
+.header-inner{max-width:var(--container);margin:0 auto;padding:var(--s-3) var(--s-5);display:flex;align-items:center;gap:var(--s-5)}
+.brand-mark{display:flex;align-items:center;gap:var(--s-3);text-decoration:none}
+.brand-mark-glyph{width:44px;height:44px;border-radius:var(--r-sm);background:var(--p-primary);color:var(--p-accent);display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:24px;line-height:1}
+.brand-mark-word{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;font-size:20px;color:var(--p-primary);line-height:1}
+.brand-mark-word small{display:block;font-family:var(--font-body);font-size:10px;letter-spacing:0.22em;color:var(--gray-500);margin-top:3px;text-transform:uppercase;font-weight:600}
+.nav-row{display:flex;gap:var(--s-5);align-items:center;margin-left:auto}
+.nav-row a{font-size:13px;color:var(--p-primary);text-decoration:none;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap}
+.nav-row a:hover{color:var(--p-accent-hover)}
+.nav-caret::after{content:" \25BE";opacity:0.6}
+.lang-select{background:transparent;border:1px solid var(--p-rule);border-radius:var(--r-sm);padding:6px 8px;font-size:12px;font-weight:600}
+.btn-phone{background:var(--p-primary);color:#fff;padding:10px 18px;font-size:13px;border-radius:var(--r-pill);text-decoration:none;font-family:var(--font-body);font-weight:700;letter-spacing:0.04em;text-transform:uppercase}
+.menu-toggle{display:none}
+@media(max-width:900px){.nav-row{display:none}.menu-toggle{display:grid;place-items:center;width:44px;height:44px;margin-left:auto;background:var(--p-primary);color:#fff;border:none;border-radius:var(--r-sm);font-size:22px}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:700;font-size:14px;letter-spacing:0.05em;text-transform:uppercase;padding:13px 24px;border-radius:var(--r-pill);border:2px solid transparent;cursor:pointer;text-decoration:none;line-height:1;transition:background .15s,color .15s,border-color .15s}
+.btn-primary{background:var(--p-primary);color:#fff}.btn-primary:hover{background:var(--p-primary-hover)}
+.btn-accent{background:var(--p-accent);color:var(--p-accent-ink)}.btn-accent:hover{background:var(--p-accent-hover);color:#fff}
+.btn-outline-dark{background:transparent;color:var(--p-primary);border-color:var(--p-primary)}.btn-outline-dark:hover{background:var(--p-primary);color:#fff}
+.btn-lg{padding:16px 30px;font-size:16px}.btn-sm{padding:9px 16px;font-size:12px}
+
+/* Hero */
+.page-hero{position:relative;min-height:440px;background:linear-gradient(110deg,rgba(20,20,26,.78) 0%,rgba(20,20,26,.38) 60%,rgba(20,20,26,.10) 100%),radial-gradient(at 30% 80%,rgba(184,115,51,.32),transparent 60%),linear-gradient(135deg,#2a2826 0%,#5b443b 50%,#b87333 100%);color:#fff;display:flex;align-items:center;overflow:hidden}
+.page-hero::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:40px;background:#fff;clip-path:polygon(0 100%,100% 100%,100% 0,0 70%)}
+.page-hero-inner{max-width:620px;padding:var(--s-9) var(--s-5);position:relative;z-index:1}
+.breadcrumb{font-family:var(--font-body);font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.65);margin-bottom:var(--s-3)}
+.breadcrumb a{color:var(--p-accent);text-decoration:none}
+.page-hero-eyebrow{font-family:var(--font-body);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;color:var(--p-accent);margin-bottom:var(--s-3)}
+.page-hero-title{font-size:clamp(36px,5vw,64px);color:var(--p-accent);margin-bottom:var(--s-3);line-height:1}
+.page-hero-sub{font-size:20px;font-family:var(--font-display);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:var(--s-5)}
+.hero-cta-row{display:flex;gap:var(--s-3);flex-wrap:wrap}
+
+/* Body content sections */
+.body-section{padding:var(--s-9) 0;background:#fff}
+.body-section.alt{background:var(--gray-50)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-8);align-items:center}
+.two-col.reverse{direction:rtl}.two-col.reverse>*{direction:ltr}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:var(--s-5)}}
+.two-col-photo{position:relative;aspect-ratio:5/4;border-radius:var(--r-md);background-size:cover;background-position:center}
+.two-col-photo .arrows{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%);padding:0 var(--s-3);pointer-events:none}
+.two-col-photo .arrow{width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,0.55);color:#fff;border:none;font-size:18px;pointer-events:auto;display:grid;place-items:center}
+.two-col-photo .counter{position:absolute;bottom:var(--s-3);right:var(--s-3);background:rgba(0,0,0,0.6);color:#fff;font-size:11px;padding:4px 8px;border-radius:var(--r-sm);font-family:var(--font-body);letter-spacing:0.1em;font-weight:600}
+.two-col h2{font-size:clamp(24px,2.8vw,36px);color:var(--p-primary);margin-bottom:var(--s-3)}
+.two-col p{color:var(--gray-700);margin:0 0 var(--s-3)}
+
+/* Pull-quote */
+.pullquote-section{background:var(--p-surface-deep);padding:var(--s-9) 0}
+.pullquote-card{max-width:880px;margin:0 auto;background:#0f0f14;color:#fff;padding:var(--s-8) var(--s-7);border-radius:var(--r-md);position:relative;border:1px solid rgba(184,115,51,0.25)}
+.pullquote-card::before{content:"\201C";font-family:Georgia,serif;font-size:120px;line-height:0.5;color:var(--p-accent);position:absolute;left:32px;top:56px}
+.pullquote-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:24px;line-height:1.4;margin:0 0 var(--s-5) 80px;color:#fff}
+.pullquote-attrib{font-family:var(--font-body);color:var(--p-accent);font-weight:700;margin-left:80px;text-transform:uppercase;letter-spacing:0.06em;font-size:14px}
+@media(max-width:700px){.pullquote-text,.pullquote-attrib{margin-left:0}.pullquote-card::before{display:none}}
+
+/* Mid body sections */
+.body-section h2{font-size:clamp(24px,2.8vw,36px);color:var(--p-primary);margin-bottom:var(--s-4)}
+.body-section .lede{color:var(--gray-700);max-width:760px;margin:0 0 var(--s-5)}
+.body-section p{color:var(--gray-700);max-width:760px;margin:0 0 var(--s-4)}
+.subheads{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-6);margin-top:var(--s-6)}
+@media(max-width:900px){.subheads{grid-template-columns:1fr}}
+.subhead-block h3{color:var(--p-accent);font-size:22px;margin-bottom:var(--s-2)}
+.subhead-block p{color:var(--gray-700);font-size:15px;margin:0}
+
+/* Style mini-cards */
+.style-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-5);margin-top:var(--s-6)}
+@media(max-width:700px){.style-cards{grid-template-columns:1fr}}
+.style-card{background:#fff;border:1px solid var(--p-rule);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card)}
+.style-card-img{aspect-ratio:16/10;background-size:cover;background-position:center}
+.style-card-body{padding:var(--s-5)}
+.style-card h4{color:var(--p-primary);font-size:20px;margin-bottom:var(--s-2)}
+.style-card p{font-size:14px;color:var(--gray-700);margin:0 0 var(--s-4)}
+
+/* check list */
+.check-list{list-style:none;padding:0;margin:var(--s-4) 0}
+.check-list li{position:relative;padding-left:40px;margin-bottom:var(--s-3);font-size:15px;color:var(--gray-800);line-height:1.45;font-weight:500}
+.check-list li::before{content:"\2713";position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--p-check);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700}
+
+/* FAQ */
+.faq-section{background:#fff;padding:var(--s-9) 0}
+.faq-section h2{text-align:center;color:var(--p-primary);font-size:clamp(26px,3vw,36px)}
+.faq-list{max-width:880px;margin:var(--s-6) auto 0}
+.faq-row{border-bottom:1px solid var(--p-rule);padding:var(--s-4) 0;cursor:pointer}
+.faq-row-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3)}
+.faq-q{font-weight:700;color:var(--p-primary);font-size:16px}
+.faq-toggle{width:32px;height:32px;border-radius:50%;border:2px solid var(--p-primary);color:var(--p-primary);display:grid;place-items:center;font-weight:700;font-size:20px;line-height:1;flex-shrink:0;transition:transform .2s,background .2s,color .2s}
+.faq-row[aria-expanded="true"] .faq-toggle{background:var(--p-primary);color:var(--p-accent);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;color:var(--gray-700);font-size:15px}
+.faq-row[aria-expanded="true"] .faq-a{max-height:280px;padding-top:var(--s-3)}
+
+/* Closing CTA */
+.cta-section{background:linear-gradient(135deg,#1f1f24,#5b443b);color:#fff;padding:var(--s-8) 0;text-align:center}
+.cta-section h2{color:var(--p-accent);font-size:clamp(26px,3vw,40px)}
+.cta-section p{max-width:600px;margin:var(--s-3) auto var(--s-5);opacity:0.9}
+
+/* Inline wizard */
+.wizard-band{background:var(--p-wizard-bg);padding:var(--s-9) 0}
+.wizard-shell{max-width:920px;margin:0 auto;background:#fff;border-radius:var(--r-md);padding:var(--s-7);box-shadow:var(--shadow-card);border:1px solid var(--p-rule)}
+.wizard-head{text-align:center;margin-bottom:var(--s-5)}
+.wizard-head h2{font-size:clamp(24px,2.8vw,34px);color:var(--p-primary)}
+.wizard-head p{color:var(--gray-600);margin:var(--s-2) 0 0}
+.wizard-progress{height:8px;background:var(--gray-100);border-radius:var(--r-pill);overflow:hidden;margin-bottom:var(--s-3)}
+.wizard-progress-bar{height:100%;width:4%;background:var(--p-accent)}
+.wizard-step-label{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-500);text-align:center;margin-bottom:var(--s-5)}
+.wiz-q-title{font-family:var(--font-display);font-size:20px;color:var(--p-primary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:var(--s-3)}
+.wizard-options{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-2);margin-bottom:var(--s-5)}
+@media(max-width:600px){.wizard-options{grid-template-columns:repeat(2,1fr)}}
+.wizard-option{background:#fff;border:2px solid var(--p-rule);border-radius:var(--r-sm);padding:var(--s-4) var(--s-3);text-align:center;font-size:13px;font-weight:600;cursor:pointer}
+.wizard-option.active{border-color:var(--p-accent);background:var(--p-accent);color:var(--p-accent-ink)}
+.wizard-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--s-3);margin-bottom:var(--s-5)}
+@media(max-width:700px){.wizard-grid{grid-template-columns:1fr}}
+.field-label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;color:var(--gray-700);margin-bottom:6px}
+.field-input,.field-select{width:100%;padding:12px 14px;border:1px solid var(--p-rule);border-radius:var(--r-sm);font-family:var(--font-body);font-size:14px;background:#fff}
+.wiz-final-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);margin-bottom:var(--s-5)}
+@media(max-width:600px){.wiz-final-grid{grid-template-columns:1fr}}
+.wiz-submit-row{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3);flex-wrap:wrap}
+.wizard-note{font-size:12px;color:var(--gray-500)}
+
+/* Footer */
+.site-footer{background:var(--p-surface-deep);color:#f4f3f1;padding:var(--s-8) 0 var(--s-5);position:relative}
+.site-footer::before{content:"";position:absolute;inset:0;background:radial-gradient(at 20% 30%,rgba(184,115,51,0.08),transparent 50%),repeating-linear-gradient(45deg,rgba(255,255,255,0.015) 0 2px,transparent 2px 18px);pointer-events:none}
+.footer-inner{position:relative;max-width:var(--container);margin:0 auto;padding:0 var(--s-5)}
+.footer-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:var(--s-6)}
+@media(max-width:1000px){.footer-cols{grid-template-columns:1fr 1fr;gap:var(--s-5)}}
+.footer-col h5{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;font-size:14px;color:var(--p-accent);margin:0 0 var(--s-3);padding-bottom:6px;border-bottom:2px solid var(--p-accent);display:inline-block}
+.footer-col a{display:block;color:rgba(244,243,241,0.75);text-decoration:none;font-size:13px;margin-bottom:6px}
+.footer-col a:hover{color:var(--p-accent)}
+.footer-contact{font-size:13px;line-height:1.7;opacity:0.85}
+.footer-contact strong{display:block;color:var(--p-accent);margin-top:var(--s-2);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;font-size:11px}
+.footer-socials{display:flex;gap:var(--s-2);margin-top:var(--s-3)}
+.footer-socials a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.07);display:grid;place-items:center;font-weight:700;font-size:12px;text-decoration:none;color:#fff}
+.footer-base{border-top:1px solid rgba(255,255,255,0.12);margin-top:var(--s-7);padding-top:var(--s-4);text-align:center;font-size:12px;opacity:0.65}
+
+/* Floating pill */
+.floating-quote{position:fixed;bottom:var(--s-5);left:50%;transform:translateX(-50%);background:var(--p-primary);color:#fff;padding:14px 26px;border-radius:var(--r-pill);font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;font-size:13px;box-shadow:var(--shadow-lg);text-decoration:none;z-index:40;border:2px solid var(--p-accent)}
+
+/* Placeholders */
+.bg-garage1{background-image:linear-gradient(135deg,#2a2826,#5b443b)}
+.bg-garage2{background-image:linear-gradient(135deg,#34343a,#b87333)}
+.bg-style1{background-image:linear-gradient(135deg,#1f1f24,#5b443b)}
+.bg-style2{background-image:linear-gradient(135deg,#4a3d2f,#b87333)}
+
+
+
+
+
+
+/* ===== REAL PHOTOS (override placeholder gradients) ===== */
+.bg-barndominium, .bg-workshop, .bg-barn, .bg-quonset, .bg-carport, .bg-container,
+.bg-commercial, .bg-storage,
+.bg-ag, .bg-arena, .bg-av, .bg-cc, .bg-com, .bg-cp, .bg-gar, .bg-roof, .bg-stor, .bg-work,
+.bg-photo-1, .bg-photo-2, .bg-photo-3, .bg-photo-4, .bg-photo-5, .bg-photo-6,
+.bg-photo-7, .bg-photo-8, .bg-photo-9, .bg-photo-10, .bg-photo-11, .bg-photo-12,
+.bg-ind-1, .bg-ind-2, .bg-ind-3, .bg-ind-4, .bg-ind-5, .bg-ind-6, .bg-ind-7, .bg-ind-8, .bg-ind-9,
+.bg-t1, .bg-t2, .bg-t3, .bg-t4, .bg-t5, .bg-t6, .bg-t7, .bg-t8, .bg-t9, .bg-t10, .bg-t11, .bg-t12,
+.hero, .page-hero, .split-photo, .testimonial-photo {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.bg-barndominium { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-workshop { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-barn { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-quonset { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-carport { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1706367514457-6aee115ab362?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-container { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-commercial { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-storage { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ag { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1742273877541-432d7326b260?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-arena { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-av { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1711931290007-c0dcbd574c7c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-cc { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-com { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1562088997-ed2fbeef1cd6?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-cp { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1706367514457-6aee115ab362?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-gar { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-roof { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1649587345666-0f4ad68aa723?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-stor { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-work { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-1 { background-image: url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-2 { background-image: url("https://images.unsplash.com/photo-1738101014614-5a5cbd30e5cf?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-3 { background-image: url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-4 { background-image: url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-5 { background-image: url("https://images.unsplash.com/photo-1742273877541-432d7326b260?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-6 { background-image: url("https://images.unsplash.com/photo-1649587345666-0f4ad68aa723?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-7 { background-image: url("https://images.unsplash.com/photo-1721152395209-f9ca76755948?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-8 { background-image: url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-9 { background-image: url("https://images.unsplash.com/photo-1637300417161-bff1e04ea9f6?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-10 { background-image: url("https://images.unsplash.com/photo-1755702612268-81c9d9354f30?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-11 { background-image: url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-photo-12 { background-image: url("https://images.unsplash.com/photo-1706367514457-6aee115ab362?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-1 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-2 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-3 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-4 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-5 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-6 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1614687851910-31ed1fdfa474?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-7 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-8 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-ind-9 { background-image: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1721152395209-f9ca76755948?w=1400&q=80&auto=format&fit=crop") !important; }
+/* Testimonials page t-photo .bg-tN (project photos behind testimonial cards) */
+.bg-t1 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t2 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t3 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t4 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t5 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1742273877541-432d7326b260?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t6 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t7 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1721152395209-f9ca76755948?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t8 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t9 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1614687851910-31ed1fdfa474?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t10 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t11 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.bg-t12 { background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.5)), url("https://images.unsplash.com/photo-1706367514457-6aee115ab362?w=1400&q=80&auto=format&fit=crop") !important; }
+/* Hero (home/page hero) */
+.hero, .page-hero {
+  background-image: linear-gradient(135deg, rgba(0,0,0,.55), rgba(0,0,0,.78)), url("https://images.unsplash.com/photo-1562088997-ed2fbeef1cd6?w=1400&q=80&auto=format&fit=crop") !important;
+}
+/* Split photo (homepage feature row) */
+.split-photo {
+  background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1649587345666-0f4ad68aa723?w=1400&q=80&auto=format&fit=crop") !important;
+}
+/* Testimonial portrait photos (small circles in carousels) */
+.testimonial-photo.bg-photo-1 { background-image: url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-2 { background-image: url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-3 { background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-4 { background-image: url("https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-5 { background-image: url("https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-6 { background-image: url("https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-7 { background-image: url("https://images.unsplash.com/photo-1521119989659-a83eee488004?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-8 { background-image: url("https://images.unsplash.com/photo-1463453091185-61582044d556?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-9 { background-image: url("https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-10 { background-image: url("https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-11 { background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+.testimonial-photo.bg-photo-12 { background-image: url("https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&q=80&auto=format&fit=crop&crop=faces") !important; }
+/* ===== END REAL PHOTOS ===== */
+</style>
+
+<style>
+/* Category PDP hero (overrides shared placeholder) */
+.hero-photo, .page-hero, .hero {
+  background-image: linear-gradient(135deg, rgba(0,0,0,.35), rgba(0,0,0,.6)), url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+</style>
+</head>
+<body>
+
+<div class="promo-strip">Clearance Event — Save up to 40% on in-stock kits.</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="brand-mark"><div class="brand-mark-glyph" aria-hidden="true">B</div><div class="brand-mark-word">Bell Metal<small>Buildings Co.</small></div></a>
+    <nav class="nav-row"><a href="#" class="nav-caret">Buildings</a><a href="#">Clearance</a><a href="#" class="nav-caret">Options &amp; Finishes</a><a href="#">Resources</a><a href="#">Blog</a><a href="#" class="nav-caret">About</a><select class="lang-select"><option>EN</option><option>ES</option></select><a href="tel:+18005550100" class="btn-phone">📞 +1-800-555-0100</a></nav>
+    <button class="menu-toggle">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb"><a href="#">Home</a> / <a href="#">Buildings</a> / Metal Barndominium Kits</nav>
+    <div class="page-hero-eyebrow">Building Type · Detail</div>
+    <h1 class="page-hero-title">Metal barndominium kits</h1>
+    <div class="page-hero-sub">Built once. Stands for generations.</div>
+    <div class="hero-cta-row">
+      <a href="#" class="btn btn-accent btn-lg">Price My Barndominium →</a>
+      <a href="#" class="btn btn-primary btn-lg" style="background:rgba(255,255,255,0.1);border:2px solid #fff">View Floor Plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Steel For Barndominiums -->
+<section class="body-section">
+  <div class="container">
+    <div class="two-col">
+      <div class="two-col-photo bg-garage1" role="img" aria-label="Steel barndominium with vehicle photo">
+        <div class="arrows"><button class="arrow">‹</button><button class="arrow">›</button></div>
+        <div class="counter">1 / 6</div>
+      </div>
+      <div>
+        <h2>Why choose steel for your barndominium?</h2>
+        <p>Wood frames rot, sag, and feed termites. Steel doesn't. A Bell barndominium kit goes up faster than a stick-built equivalent, holds its dimensions through 40-year temperature swings, and meets fire-resistance ratings that no traditional carport can match.</p>
+        <p>Every kit ships with stamped engineering for your local snow, wind, and seismic loads — so your permit officer signs off the first time.</p>
+        <a href="#" class="btn btn-outline-dark">Compare Steel vs. Wood →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pull-quote testimonial -->
+<section class="pullquote-section">
+  <div class="container">
+    <blockquote class="pullquote-card">
+      <p class="pullquote-text">"We compared four manufacturers. Bell was the only one whose stamped drawings came back faster than our county's permit window — and the kit went up exactly to those drawings."</p>
+      <div class="pullquote-attrib">— Tucker Reilly, Asheville NC</div>
+    </blockquote>
+  </div>
+</section>
+
+<!-- Personal Steel Barndominiums -->
+<section class="body-section">
+  <div class="container">
+    <div class="two-col reverse">
+      <div class="two-col-photo bg-garage2" role="img" aria-label="Personal residential barndominium photo">
+        <div class="arrows"><button class="arrow">‹</button><button class="arrow">›</button></div>
+        <div class="counter">2 / 6</div>
+      </div>
+      <div>
+        <h2>Personal steel barndominiums</h2>
+        <p>A two-bay detached barndominium that fits a truck, a hobby project, and the lawn equipment you've outgrown indoor storage for. A three-bay shop that doubles as a man cave. A workshop with a finished mezzanine for the kids' band practice. Pick your bay count, pick your eave height, pick your color — we engineer the rest.</p>
+        <p>Standard residential sizes: 20×20 (single), 24×30 (two-bay), 30×40 (three-bay), 40×60 (four-bay shop). Anything between is a phone call away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Commercial Steel Barndominiums -->
+<section class="body-section alt">
+  <div class="container">
+    <h2>Commercial steel barndominiums</h2>
+    <p class="lede">Service bays, fleet maintenance, body shops, and municipal vehicle barndominiums — Bell engineers the wide-clear-span, high-eave, multi-overhead-door configurations that commercial operators need.</p>
+    <p>Add insulated wall panels for tenant comfort, in-floor heating loops, vehicle exhaust evacuation cutouts, and reinforced jambs for impact loads. Mezzanine packages give you parts storage above the bay without consuming floor space.</p>
+    <p>Our largest commercial barndominium to date: a <b>120-foot clear-span, 18-foot eave, six-bay municipal vehicle facility</b> in. Permit-ready engineering delivered in 18 business days.</p>
+  </div>
+</section>
+
+<!-- Steel Barndominium Kits -->
+<section class="body-section">
+  <div class="container">
+    <h2>Steel barndominium kits</h2>
+    <p class="lede">A "kit" is everything you need to put up your barndominium's shell, delivered on one truck (or two for larger buildings), with every piece labeled to the erection drawings.</p>
+    <p><strong>Included:</strong> primary frame (columns, rafters), secondary frame (purlins, girts), roof and wall panels in the color you spec, every trim piece, every fastener, all sealants, doors and windows you've quoted, and the stamped engineering package.</p>
+    <p><strong>Not included:</strong> the foundation, anchor bolts (we ship anchor-bolt drawings; your foundation contractor pours and embeds), electrical and plumbing rough-in, insulation if you didn't add it, permits, and labor.</p>
+    <p>Looking for in-stock pricing? Browse our <a href="#" style="color:var(--p-accent);font-weight:600">clearance inventory →</a> for kits priced below MSRP and ready to ship.</p>
+  </div>
+</section>
+
+<!-- Advantages with 3 subheads -->
+<section class="body-section alt">
+  <div class="container">
+    <h2>Advantages of metal barndominiums over traditional</h2>
+    <p class="lede">Three places steel pulls ahead of stick-built and pole-barn alternatives.</p>
+    <div class="subheads">
+      <div class="subhead-block">
+        <h3>Value</h3>
+        <p>A steel kit costs 15–25% less than the equivalent stick-built shell, depending on your zip and the spec. The bigger the span, the more steel pulls ahead.</p>
+      </div>
+      <div class="subhead-block">
+        <h3>Versatility</h3>
+        <p>Clear-span design means no interior columns. Move the doors. Add a mezzanine. Reconfigure the layout in five years without touching the frame.</p>
+      </div>
+      <div class="subhead-block">
+        <h3>Safety &amp; convenience</h3>
+        <p>Non-combustible primary frame. Resistant to termites, mold, and rot. Same kit, same envelope, same insurance discount whether you're storing classic cars or a Class A motorhome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Style mini cards -->
+<section class="body-section">
+  <div class="container">
+    <h2>Prefab barndominium kit styles</h2>
+    <p class="lede">Bell engineers two distinct barndominium profiles. Pick the one that matches your site and your taste.</p>
+    <div class="style-cards">
+      <article class="style-card">
+        <div class="style-card-img bg-style1"></div>
+        <div class="style-card-body">
+          <h4>Straight-wall steel frame</h4>
+          <p>Vertical walls, gable roof, classic barndominium profile. Best when you want to install shelving along the walls, add doors and windows easily, and match the look of a stick-built building.</p>
+          <a href="#" class="btn btn-outline-dark btn-sm">See straight-wall →</a>
+        </div>
+      </article>
+      <article class="style-card">
+        <div class="style-card-img bg-style2"></div>
+        <div class="style-card-body">
+          <h4>Quonset hut kits</h4>
+          <p>Arch-roof profile, no internal trusses, lowest cost-per-square-foot in the catalog. Best when you want maximum value and the curved walls don't get in the way of how you use the space.</p>
+          <a href="#" class="btn btn-outline-dark btn-sm">See Quonset →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ 11 items -->
+<section class="faq-section">
+  <div class="container">
+    <h2>Barndominium kit FAQs</h2>
+    <div class="faq-list">
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">What's the smallest barndominium you'll engineer?</div><div class="faq-toggle">+</div></div><div class="faq-a">Our standard catalog starts at 12×20 for a single-bay barndominium. Anything smaller is quoted custom.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Can I add a lean-to or shed-roof addition?</div><div class="faq-toggle">+</div></div><div class="faq-a">Yes. Most barndominium kits can accept a lean-to extension on one or both sidewalls. We engineer the connection and ship a matched roof slope.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">What's the typical lead time from order to delivery?</div><div class="faq-toggle">+</div></div><div class="faq-a">Residential barndominium kits: 6–8 weeks from final engineering. Commercial kits: 8–10 weeks. Clearance buildings: 5–10 business days.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Will the kit fit my existing foundation?</div><div class="faq-toggle">+</div></div><div class="faq-a">If you have an existing slab, we can engineer the kit to match your footprint — within reason. Send us slab dimensions and a photo and we'll tell you what's possible.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Do you supply the overhead doors?</div><div class="faq-toggle">+</div></div><div class="faq-a">Yes — we offer Wayne Dalton and CHI overhead doors as line items on the kit. Specify size, panel style, color, opener type, and insulation R-value.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Can I get the building in a custom color?</div><div class="faq-toggle">+</div></div><div class="faq-a">We offer 14 standard colors with 40-year paint warranty. Custom colors are available on order — minimum quantity and lead-time apply.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Will it work in my climate?</div><div class="faq-toggle">+</div></div><div class="faq-a">Bell barndominiums are engineered to your zip code's snow, wind, and seismic loads. From Florida hurricane zones to Wyoming high-snow country, we adjust the steel weight accordingly.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Can I store hazardous materials inside?</div><div class="faq-toggle">+</div></div><div class="faq-a">Steel envelopes are well-suited for fuel and chemical storage thanks to their non-combustible frame. Check your local code for specific containment, ventilation, and fire-rating requirements.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">How long does the kit last?</div><div class="faq-toggle">+</div></div><div class="faq-a">Bell barndominium kits carry a 50-year rust-perforation warranty and a 40-year paint warranty. Most installed Bell buildings outlast their original owners.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Can I install it myself?</div><div class="faq-toggle">+</div></div><div class="faq-a">Most owners with one or two helpers can install our barndominium kits in 2–4 weekends. Larger barndominiums (40×60+) benefit from a small crew with a forklift or scissor lift.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">What if I run into a problem during installation?</div><div class="faq-toggle">+</div></div><div class="faq-a">Every kit comes with a dedicated project manager who answers calls during install. We've talked customers through every bolt pattern over FaceTime more times than we can count.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to start your barndominium?</h2>
+    <p>Tell us your zip, your dimensions, and what's going inside. We'll send a real engineered quote in 24 hours — not a placeholder.</p>
+    <a href="#" class="btn btn-accent btn-lg">Request a Quote →</a>
+  </div>
+</section>
+
+<!-- Inline wizard -->
+<section class="wizard-band">
+  <div class="container">
+    <div class="wizard-shell">
+      <div class="wizard-head"><h2>Let us help you every step of the way</h2><p>Five quick questions. A real engineered quote in your inbox in 24 hours.</p></div>
+      <div class="wizard-progress"><div class="wizard-progress-bar"></div></div>
+      <div class="wizard-step-label">Step 1 of 5 · 4% complete</div>
+      <div class="wiz-q-title">What are you building?</div>
+      <div class="wizard-options"><button class="wizard-option active">Barndominium</button><button class="wizard-option">Workshop</button><button class="wizard-option">Barn / ag</button><button class="wizard-option">Commercial</button><button class="wizard-option">Carport</button><button class="wizard-option">Container cover</button><button class="wizard-option">Quonset</button><button class="wizard-option">Storage</button></div>
+      <div class="wiz-q-title">Dimensions</div>
+      <div class="wizard-grid">
+        <div><label class="field-label">Width</label><select class="field-select"><option>20'</option><option>30'</option><option selected>40'</option><option>50'</option><option>60'</option></select></div>
+        <div><label class="field-label">Length</label><select class="field-select"><option>30'</option><option>40'</option><option selected>60'</option><option>80'</option><option>100'</option></select></div>
+        <div><label class="field-label">Eave height</label><select class="field-select"><option>10'</option><option>12'</option><option selected>14'</option><option>16'</option></select></div>
+      </div>
+      <div class="wiz-q-title">Where's it going?</div>
+      <div class="wiz-final-grid">
+        <div><label class="field-label">ZIP</label><input class="field-input" placeholder="00000" /></div>
+        <div><label class="field-label">Name</label><input class="field-input" placeholder="Name" /></div>
+        <div><label class="field-label">Email</label><input class="field-input" type="email" /></div>
+        <div><label class="field-label">Phone</label><input class="field-input" type="tel" /></div>
+      </div>
+      <div class="wiz-submit-row">
+        <div class="wizard-note">We'll never sell your data.</div>
+        <a href="#" class="btn btn-accent btn-lg">Get my quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col"><div class="brand-mark" style="margin-bottom:var(--s-4)"><div class="brand-mark-glyph">B</div><div class="brand-mark-word" style="color:#fff">Bell Metal<small style="color:var(--p-accent)">Buildings Co.</small></div></div><div class="footer-contact"><strong>Contact Us</strong>+1-800-555-0100<br>hello@bellmetal.example<br>123 Industrial Way, Anytown, US<strong>Follow us</strong><div class="footer-socials"><a href="#">f</a><a href="#">x</a><a href="#">in</a><a href="#">ig</a></div></div></div>
+      <div class="footer-col"><h5>Buildings</h5><a href="#">Barndominiums</a><a href="#">Workshops</a><a href="#">Barndominiums</a><a href="#">Quonset</a><a href="#">Carports</a><a href="#">Container Covers</a><a href="#">Commercial</a><a href="#">Storage</a></div>
+      <div class="footer-col"><h5>Options</h5><a href="#">Foundation</a><a href="#">Doors</a><a href="#">Windows</a><a href="#">Insulation</a><a href="#">Trims</a></div>
+      <div class="footer-col"><h5>Resources</h5><a href="#">FAQs</a><a href="#">Videos</a><a href="#">Brochures</a><a href="#">Blog</a></div>
+      <div class="footer-col"><h5>Company</h5><a href="#">About</a><a href="#">Contact</a><a href="#">Testimonials</a><a href="#">Privacy</a><a href="#">Warranty</a></div>
+    </div>
+    <div class="footer-base">© 2026 Bell Metal Buildings Co.</div>
+  </div>
+</footer>
+
+<a href="#" class="floating-quote">Get a Quote →</a>
+
+<script>
+document.querySelectorAll('.faq-row').forEach(row => {
+  const toggle = () => {
+    const open = row.getAttribute('aria-expanded') === 'true';
+    row.setAttribute('aria-expanded', open ? 'false' : 'true');
+    row.querySelector('.faq-toggle').textContent = open ? '+' : '×';
+  };
+  row.addEventListener('click', toggle);
+  row.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+});
+document.querySelectorAll('.wizard-option').forEach(btn => {
+  btn.addEventListener('click', () => { document.querySelectorAll('.wizard-option').forEach(b => b.classList.remove('active')); btn.classList.add('active'); });
+});
+</script>
+</body>
+</html>
