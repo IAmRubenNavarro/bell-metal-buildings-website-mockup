@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ready-to-Ship Inventory — Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+/* Inventory specific */
+.notice-band{ background:var(--b-burgundy); color:#fff; padding:14px 24px }
+.notice-band-inner{ max-width:var(--container); margin:0 auto; text-align:center; font-family:var(--f-display); font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:.95rem }
+.notice-band-inner em{ color:#ffce9c; font-style:normal }
+
+.filter-bar{
+  display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+  padding:var(--s-5) 0; border-bottom:1px solid var(--b-rule);
+}
+.filter-bar .lbl{ font-family:var(--f-display); font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:.78rem; color:var(--b-text-muted); margin-right:6px }
+
+.inv-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:var(--s-6) }
+@media (max-width:1000px){ .inv-grid{ grid-template-columns:repeat(2,1fr) } }
+@media (max-width:600px){ .inv-grid{ grid-template-columns:1fr } }
+.inv-card{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md); overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.inv-card .photo{ aspect-ratio:5/3; position:relative }
+.inv-card .photo.a{ background:linear-gradient(160deg, #c47b40, #4d2b13) }
+.inv-card .photo.b{ background:linear-gradient(160deg, #2c4361, #0e1a2b) }
+.inv-card .photo.c{ background:linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.inv-card .photo.d{ background:linear-gradient(160deg, #5a6470, #1d2530) }
+.inv-card .photo.e{ background:linear-gradient(160deg, #8a4f6e, #2b1d36) }
+.inv-card .photo.f{ background:linear-gradient(160deg, #5e8aae, #1f3a55) }
+.inv-card .badge-row{ position:absolute; top:10px; left:10px; right:10px; display:flex; justify-content:space-between; gap:6px }
+.inv-card .badge{
+  background:var(--b-ink); color:#fff; font-family:var(--f-display); font-weight:700;
+  text-transform:uppercase; letter-spacing:.06em; font-size:.7rem; padding:5px 10px; border-radius:var(--r-pill);
+}
+.inv-card .badge.save{ background:var(--b-success) }
+.inv-card .badge.stock{ background:var(--b-ember) }
+.inv-card .body{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:6px; flex:1 }
+.inv-card h3{ font-size:1.1rem; text-transform:uppercase; letter-spacing:.02em; margin-bottom:2px }
+.inv-card .spec-line{ font-size:.85rem; color:var(--b-text-muted); margin:0 }
+.inv-card .price-row{ display:flex; align-items:baseline; gap:10px; margin:8px 0 6px }
+.inv-card .msrp{ font-size:.95rem; color:var(--b-text-muted); text-decoration:line-through }
+.inv-card .price{ font-family:var(--f-display); font-weight:700; font-size:1.45rem; color:var(--b-ember); letter-spacing:.01em }
+.inv-card .ship{ font-size:.78rem; color:var(--b-success); font-weight:600 }
+.inv-card .ctas{ display:flex; flex-direction:column; gap:8px; margin-top:auto; padding-top:10px; border-top:1px dashed var(--b-rule) }
+.inv-card .ctas .btn{ width:100%; font-size:.85rem }
+
+.pagination{ display:flex; gap:8px; justify-content:center; margin-top:var(--s-7) }
+.pagination button{ width:38px; height:38px; border-radius:8px; border:1.5px solid var(--b-rule); background:#fff; color:var(--b-ink); font-family:var(--f-display); font-weight:600; cursor:pointer }
+.pagination button.is-active{ background:var(--b-ink); color:#fff; border-color:var(--b-ink) }
+</style>
+</head>
+<body>
+
+<header class="nav-solid">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+    <div class="nav-links"><a class="nav-link" href="./03-building-types.html">Buildings</a><a class="nav-link" href="./15-true-pricing.html">Pricing</a><a class="nav-link" href="./17-resources-hub.html">Resources</a><a class="nav-link" href="./11-testimonials.html">Reviews</a></div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<!-- Banner -->
+<section class="banner">
+  <div class="banner-inner">
+    <h1>Ready-To-Ship Inventory</h1>
+    <p class="lede">12 engineered build packages waiting in the yard. Locked-price, lower-than-quote, and ready to truck within 10 business days. Buy as-is or work with our team to add doors, windows, and insulation.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary btn-lg" href="#">Get My Price <span class="arrow">›</span></a>
+      <a class="btn btn-secondary btn-lg" href="#">Call about a kit</a>
+    </div>
+  </div>
+</section>
+
+<!-- Burgundy notice -->
+<div class="notice-band">
+  <div class="notice-band-inner">⚑ Limited inventory · prices honored while kits remain in stock · <em>refreshed weekly</em></div>
+</div>
+
+<!-- Filter bar -->
+<section class="section-tight">
+  <div class="container">
+    <div class="filter-bar">
+      <span class="lbl">Building type</span>
+      <div class="chip-row">
+        <button class="chip is-active">All</button>
+        <button class="chip">Garages</button>
+        <button class="chip">Workshops</button>
+        <button class="chip">Barndominiums</button>
+        <button class="chip">Quonset</button>
+        <button class="chip">Carports</button>
+        <button class="chip">Commercial</button>
+        <button class="chip">Storage</button>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <span class="lbl">Size</span>
+      <div class="chip-row">
+        <button class="chip is-active">Any</button>
+        <button class="chip">Under 30′</button>
+        <button class="chip">30′–50′</button>
+        <button class="chip">50′+ </button>
+      </div>
+      <span class="lbl" style="margin-left:auto">Sort</span>
+      <select class="select" style="max-width:200px"><option>Recommended</option><option>Price: low to high</option><option>Price: high to low</option><option>Newest in yard</option></select>
+    </div>
+  </div>
+</section>
+
+<!-- Inventory grid -->
+<section class="section-tight">
+  <div class="container">
+    <div class="inv-grid">
+      <article class="inv-card"><div class="photo a"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 18%</span></div></div><div class="body"><h3>30×40×12 Garage Kit</h3><p class="spec-line">Two-bay · 14-color · 26-gauge PBR · CO snow load 30 psf</p><div class="price-row"><span class="msrp">$24,800 <span class="todo">placeholder pricing</span></span><span class="price">$20,400</span></div><span class="ship">Ships in 7–10 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo b"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 22%</span></div></div><div class="body"><h3>40×60×14 Workshop Kit</h3><p class="spec-line">Insulated · 12′ roll-up door pre-cut · clear-span</p><div class="price-row"><span class="msrp">$48,200</span><span class="price">$37,600</span></div><span class="ship">Ships in 7–10 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo c"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 15%</span></div></div><div class="body"><h3>50×100×16 Ag Building</h3><p class="spec-line">No center post · sliding 14′ door · barn red</p><div class="price-row"><span class="msrp">$72,400</span><span class="price">$61,500</span></div><span class="ship">Ships in 10 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo d"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 20%</span></div></div><div class="body"><h3>24×40×10 Single-Car Garage</h3><p class="spec-line">Walk door · two windows · charcoal roof</p><div class="price-row"><span class="msrp">$17,200</span><span class="price">$13,800</span></div><span class="ship">Ships in 5–7 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo e"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 12%</span></div></div><div class="body"><h3>20×30 Quonset Workshop</h3><p class="spec-line">Arch frame · S-grade · end-walls included</p><div class="price-row"><span class="msrp">$11,400</span><span class="price">$9,990</span></div><span class="ship">Ships in 5 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo f"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 25%</span></div></div><div class="body"><h3>24×24 Carport — Heavy Snow</h3><p class="spec-line">60 psf snow rated · 3-bay vehicle cover</p><div class="price-row"><span class="msrp">$6,800</span><span class="price">$5,100</span></div><span class="ship">Ships in 5 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo a"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 17%</span></div></div><div class="body"><h3>30×50×14 Workshop</h3><p class="spec-line">14′ eave · 10′ roll-up · insulated walls</p><div class="price-row"><span class="msrp">$32,900</span><span class="price">$27,300</span></div><span class="ship">Ships in 7 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo b"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 19%</span></div></div><div class="body"><h3>40×80×16 Commercial Shell</h3><p class="spec-line">Retail or light-industrial · two 12′ overhead doors</p><div class="price-row"><span class="msrp">$64,500</span><span class="price">$52,200</span></div><span class="ship">Ships in 10 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo c"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 14%</span></div></div><div class="body"><h3>30×40×12 Barndominium Shell</h3><p class="spec-line">Loft-ready framing · upper window pre-cuts</p><div class="price-row"><span class="msrp">$29,700</span><span class="price">$25,500</span></div><span class="ship">Ships in 7–10 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo d"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 21%</span></div></div><div class="body"><h3>40×60×14 Cold Storage</h3><p class="spec-line">R-25 walls · R-30 ceiling · single 8′ insulated door</p><div class="price-row"><span class="msrp">$58,400</span><span class="price">$46,200</span></div><span class="ship">Ships in 10 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo e"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 16%</span></div></div><div class="body"><h3>20×40 Container Cover</h3><p class="spec-line">Cantilever over two 20′ shipping containers</p><div class="price-row"><span class="msrp">$8,400</span><span class="price">$7,050</span></div><span class="ship">Ships in 5 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+
+      <article class="inv-card"><div class="photo f"><div class="badge-row"><span class="badge stock">In stock</span><span class="badge save">Save 13%</span></div></div><div class="body"><h3>32×32×12 Three-Car Garage</h3><p class="spec-line">Three 9′ roll-ups · 14-color · clay roof</p><div class="price-row"><span class="msrp">$22,500</span><span class="price">$19,500</span></div><span class="ship">Ships in 7 business days</span><div class="ctas"><a class="btn btn-primary" href="#">Reserve this kit</a><a class="btn btn-ghost" href="#">View drawings (PDF)</a></div></div></article>
+    </div>
+
+    <div class="pagination">
+      <button class="is-active">1</button><button>2</button><button>3</button><button>›</button>
+    </div>
+  </div>
+</section>
+
+<!-- Phone band -->
+<section class="phone-band">
+  <div class="phone-band-inner">
+    <div class="lead">Want a kit that's not in the yard?<small>We can engineer and quote anything in 24–48 hours.</small></div>
+    <div class="phone"><div class="phone-icon">📞</div><a class="phone-num" href="tel:+15555550199">(555) 555-0199</a></div>
+    <a class="btn btn-ghost on-dark" href="#">Get a custom price</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col">
+        <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+        <p class="blurb">Pre-engineered steel buildings shipped to the lower 48. American steel. Sealed drawings. Real people on the phone.</p>
+        <div class="social-row"><a href="#">f</a><a href="#">◧</a><a href="#">▷</a><a href="#">in</a></div>
+      </div>
+      <div><h4>Buildings</h4><ul><li><a href="./04-garages-detail.html">Garages</a></li><li><a href="./04-garages-detail.html">Workshops</a></li><li><a href="./04-garages-detail.html">Barndominiums</a></li><li><a href="./03-building-types.html">All types</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="./17-resources-hub.html">Resources</a></li><li><a href="./19-brochure.html">Brochures</a></li><li><a href="./12-faq-resources.html">FAQs</a></li><li><a href="./09-blog-index.html">Blog</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="./07-about.html">About</a></li><li><a href="./16-our-advantage.html">Our advantage</a></li><li><a href="./13-warranty.html">Warranty</a></li><li><a href="./15-true-pricing.html">True pricing</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="./08-contact.html">Contact</a></li><li><a href="./12-faq-resources.html">Help desk</a></li></ul></div>
+    </div>
+    <div class="footer-legal"><span>© 2026 Bell Metal Buildings Co.</span><ul><li><a href="./14-privacy.html">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="util-bar"><div class="util-bar-inner"><span class="lead">Need it custom? <em>Get a tailored price in minutes</em></span><a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a></div></div>
+
+<script>
+document.querySelectorAll('.chip-row').forEach(row => row.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { row.querySelectorAll('.chip').forEach(x => x.classList.remove('is-active')); c.classList.add('is-active'); })));
+</script>
+</body>
+</html>

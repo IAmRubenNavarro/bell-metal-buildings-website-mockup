@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clearance Inventory — Bell Metal Buildings</title>
+<meta name="description" content="In-stock steel buildings available now at clearance pricing. First-come, first-served. Make an offer." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --p-primary:#18181b; --p-primary-hover:#2a2a30; --p-primary-ink:#fff;
+  --p-accent:#b87333; --p-accent-hover:#9a5e25; --p-accent-ink:#18181b;
+  --p-surface:#fff; --p-surface-alt:#f4f3f1; --p-surface-deep:#14141a; --p-surface-deep-ink:#f4f3f1;
+  --p-rule:#ddd9d1; --p-check:#b87333;
+  --p-promo:#6f2622; --p-promo-ink:#f8e9d6; --p-wizard-bg:#eef0f4;
+  --notice-bg:#fff8e1; --notice-border:#d4a418; --notice-ink:#7a5800;
+  --gray-50:#f7f7f8;--gray-100:#ececef;--gray-200:#d8d8de;--gray-500:#66666f;--gray-600:#4a4a52;--gray-700:#34343a;--gray-800:#1f1f24;--gray-900:#111114;
+  --danger:#b8302a;
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;--s-9:96px;
+  --r-sm:4px;--r-md:8px;--r-pill:999px;
+  --shadow-card:0 2px 8px rgba(0,0,0,0.06); --shadow-lg:0 12px 32px rgba(0,0,0,0.18);
+  --font-display:'Oswald','Arial Narrow',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  --container:1280px;
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--gray-900);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}button{font:inherit;cursor:pointer}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--s-5)}
+h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.02em;line-height:1.05;margin:0}
+.todo{display:inline-block;background:#fff5cc;border:1px dashed #c89a00;color:#6b4d00;padding:1px 6px;font-size:11px;font-family:var(--font-body);font-weight:600;text-transform:none;letter-spacing:0;border-radius:3px}
+.todo.inline-dark{background:#2a1f12;border-color:#b87333;color:#f4f3f1}
+
+.promo-strip{background:var(--p-promo);color:var(--p-promo-ink);text-align:center;padding:10px var(--s-4);font-weight:600;font-size:14px;letter-spacing:0.03em}
+
+.site-header{background:#fff;border-bottom:1px solid var(--p-rule);position:sticky;top:0;z-index:50}
+.header-inner{max-width:var(--container);margin:0 auto;padding:var(--s-3) var(--s-5);display:flex;align-items:center;gap:var(--s-5)}
+.brand-mark{display:flex;align-items:center;gap:var(--s-3);text-decoration:none}
+.brand-mark-glyph{width:44px;height:44px;border-radius:var(--r-sm);background:var(--p-primary);color:var(--p-accent);display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:24px;line-height:1}
+.brand-mark-word{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;font-size:20px;color:var(--p-primary);line-height:1}
+.brand-mark-word small{display:block;font-family:var(--font-body);font-size:10px;letter-spacing:0.22em;color:var(--gray-500);margin-top:3px;text-transform:uppercase;font-weight:600}
+.nav-row{display:flex;gap:var(--s-5);align-items:center;margin-left:auto}
+.nav-row a{font-size:13px;color:var(--p-primary);text-decoration:none;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap}
+.nav-caret::after{content:" \25BE";opacity:0.6}
+.lang-select{background:transparent;border:1px solid var(--p-rule);border-radius:var(--r-sm);padding:6px 8px;font-size:12px;font-weight:600}
+.btn-phone{background:var(--p-primary);color:#fff;padding:10px 18px;font-size:13px;border-radius:var(--r-pill);text-decoration:none;font-family:var(--font-body);font-weight:700;letter-spacing:0.04em;text-transform:uppercase}
+.menu-toggle{display:none}
+@media(max-width:900px){.nav-row{display:none}.menu-toggle{display:grid;place-items:center;width:44px;height:44px;margin-left:auto;background:var(--p-primary);color:#fff;border:none;border-radius:var(--r-sm);font-size:22px}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:700;font-size:14px;letter-spacing:0.05em;text-transform:uppercase;padding:13px 24px;border-radius:var(--r-pill);border:2px solid transparent;cursor:pointer;text-decoration:none;line-height:1;transition:.15s}
+.btn-primary{background:var(--p-primary);color:#fff}.btn-primary:hover{background:var(--p-primary-hover)}
+.btn-accent{background:var(--p-accent);color:var(--p-accent-ink)}.btn-accent:hover{background:var(--p-accent-hover);color:#fff}
+.btn-outline-dark{background:transparent;color:var(--p-primary);border-color:var(--p-primary)}.btn-outline-dark:hover{background:var(--p-primary);color:#fff}
+.btn-lg{padding:16px 30px;font-size:16px}.btn-sm{padding:9px 14px;font-size:11px}
+
+/* Hero */
+.page-hero{position:relative;min-height:380px;background:linear-gradient(110deg,rgba(20,20,26,.74) 0%,rgba(20,20,26,.42) 60%,rgba(20,20,26,.10) 100%),radial-gradient(at 30% 80%,rgba(184,115,51,.30),transparent 60%),linear-gradient(135deg,#3a2a1e 0%,#8a3a2c 50%,#b87333 100%);color:#fff;display:flex;align-items:center;overflow:hidden}
+.page-hero::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:40px;background:#fff;clip-path:polygon(0 100%,100% 100%,100% 0,0 70%)}
+.page-hero-inner{max-width:760px;padding:var(--s-8) var(--s-5);position:relative;z-index:1}
+.breadcrumb{font-family:var(--font-body);font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.65);margin-bottom:var(--s-3)}
+.breadcrumb a{color:var(--p-accent);text-decoration:none}
+.page-hero-eyebrow{font-family:var(--font-body);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;color:var(--p-accent);margin-bottom:var(--s-3)}
+.page-hero-title{font-size:clamp(32px,4.6vw,56px);color:var(--p-accent);margin-bottom:var(--s-3);line-height:1}
+.page-hero-sub{font-size:18px;color:#fff;opacity:0.92}
+
+/* Intro band */
+.intro-band{background:#fff;padding:var(--s-8) 0;text-align:center}
+.intro-band h2{font-size:clamp(26px,3vw,38px);color:var(--p-primary)}
+.intro-band p{max-width:680px;margin:var(--s-3) auto 0;color:var(--gray-600)}
+
+/* Notice banner */
+.notice{
+  background:var(--notice-bg); border:1px solid var(--notice-border); color:var(--notice-ink);
+  border-radius:var(--r-md); padding:var(--s-4) var(--s-5);
+  font-size:14px; max-width:1080px; margin:0 auto var(--s-6);
+  display:flex; gap:var(--s-3); align-items:flex-start;
+}
+.notice-icon{width:24px;height:24px;flex-shrink:0;background:var(--notice-border);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px}
+
+/* Filter / sort bar */
+.controls-bar{background:var(--gray-50);border-top:1px solid var(--p-rule);border-bottom:1px solid var(--p-rule);padding:var(--s-4) 0}
+.controls-row{display:flex;gap:var(--s-3);align-items:center;flex-wrap:wrap}
+.controls-row .group{display:flex;gap:var(--s-2);align-items:center}
+.controls-row .group label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-600)}
+.controls-row select{padding:8px 12px;border:1px solid var(--p-rule);border-radius:var(--r-sm);background:#fff;font-size:13px;font-family:var(--font-body)}
+.results-count{margin-left:auto;font-size:13px;color:var(--gray-600)}
+.results-count b{color:var(--p-primary)}
+
+/* Grid */
+.products-section{background:var(--gray-50);padding:var(--s-7) 0 var(--s-9)}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5)}
+@media(max-width:1000px){.products-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.products-grid{grid-template-columns:1fr}}
+
+/* Product card */
+.clear-card{background:#fff;border:1px solid var(--p-rule);border-radius:var(--r-md);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.15s, box-shadow 0.15s}
+.clear-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-card)}
+.clear-card-img{aspect-ratio:4/3;background-size:cover;background-position:center;position:relative}
+.clear-badge{position:absolute;top:var(--s-3);left:var(--s-3);background:var(--danger);color:#fff;font-family:var(--font-display);text-transform:uppercase;letter-spacing:0.06em;font-size:11px;padding:4px 8px;border-radius:var(--r-sm);font-weight:700}
+.clear-stock-pill{position:absolute;top:var(--s-3);right:var(--s-3);background:rgba(0,0,0,0.7);color:#fff;font-size:11px;padding:4px 8px;border-radius:var(--r-pill);font-weight:600;letter-spacing:0.05em}
+.clear-card-body{padding:var(--s-4);display:flex;flex-direction:column;gap:var(--s-2);flex:1}
+.clear-card-cat{font-size:11px;font-weight:700;color:var(--p-accent);letter-spacing:0.12em;text-transform:uppercase}
+.clear-card-title{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:18px;color:var(--p-primary);line-height:1.1}
+.clear-card-desc{font-size:13px;color:var(--gray-600);margin:0}
+.clear-card-specs{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s-1)}
+.clear-spec{background:var(--p-surface-alt);color:var(--gray-700);font-size:11px;padding:3px 8px;border-radius:var(--r-pill);font-weight:600;border:1px solid var(--p-rule)}
+.clear-card-prices{margin-top:auto;padding-top:var(--s-3);border-top:1px solid var(--p-rule)}
+.was-price{color:var(--danger);text-decoration:line-through;font-size:13px;font-weight:600}
+.sale-line{display:flex;align-items:baseline;gap:8px;margin-top:2px}
+.sale-price{color:var(--gray-900);font-size:24px;font-family:var(--font-display);font-weight:700}
+.save-pill{background:var(--success,#2f8a4a);color:#fff;font-size:11px;padding:3px 8px;border-radius:var(--r-pill);font-weight:700;letter-spacing:0.04em;text-transform:uppercase}
+.clear-card-ctas{display:flex;flex-direction:column;gap:8px;padding:0 var(--s-4) var(--s-4)}
+
+/* Pagination */
+.pagination{display:flex;justify-content:center;gap:var(--s-2);margin-top:var(--s-8)}
+.pagination button{background:#fff;border:1px solid var(--p-rule);width:40px;height:40px;border-radius:var(--r-sm);font-weight:700;color:var(--p-primary)}
+.pagination button.active{background:var(--p-primary);color:#fff;border-color:var(--p-primary)}
+
+/* Wizard band */
+.wizard-band{background:var(--p-wizard-bg);padding:var(--s-9) 0}
+.wizard-shell{max-width:920px;margin:0 auto;background:#fff;border-radius:var(--r-md);padding:var(--s-7);box-shadow:var(--shadow-card);border:1px solid var(--p-rule)}
+.wizard-head{text-align:center;margin-bottom:var(--s-5)}
+.wizard-head h2{font-size:clamp(24px,2.8vw,34px);color:var(--p-primary)}
+.wizard-head p{color:var(--gray-600);margin:var(--s-2) 0 0}
+.wizard-progress{height:8px;background:var(--gray-100);border-radius:var(--r-pill);overflow:hidden;margin-bottom:var(--s-3)}
+.wizard-progress-bar{height:100%;width:4%;background:var(--p-accent)}
+.wizard-step-label{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-500);text-align:center;margin-bottom:var(--s-5)}
+.wiz-q-title{font-family:var(--font-display);font-size:20px;color:var(--p-primary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:var(--s-3)}
+.wizard-options{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-2);margin-bottom:var(--s-5)}
+@media(max-width:600px){.wizard-options{grid-template-columns:repeat(2,1fr)}}
+.wizard-option{background:#fff;border:2px solid var(--p-rule);border-radius:var(--r-sm);padding:var(--s-4) var(--s-3);text-align:center;font-size:13px;font-weight:600;cursor:pointer}
+.wizard-option.active{border-color:var(--p-accent);background:var(--p-accent);color:var(--p-accent-ink)}
+.wizard-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--s-3);margin-bottom:var(--s-5)}
+@media(max-width:700px){.wizard-grid{grid-template-columns:1fr}}
+.field-label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;color:var(--gray-700);margin-bottom:6px}
+.field-input,.field-select{width:100%;padding:12px 14px;border:1px solid var(--p-rule);border-radius:var(--r-sm);font-family:var(--font-body);font-size:14px;background:#fff}
+.wiz-final-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);margin-bottom:var(--s-5)}
+@media(max-width:600px){.wiz-final-grid{grid-template-columns:1fr}}
+.wiz-submit-row{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3);flex-wrap:wrap}
+.wizard-note{font-size:12px;color:var(--gray-500)}
+
+/* Footer */
+.site-footer{background:var(--p-surface-deep);color:#f4f3f1;padding:var(--s-8) 0 var(--s-5);position:relative}
+.site-footer::before{content:"";position:absolute;inset:0;background:radial-gradient(at 20% 30%,rgba(184,115,51,0.08),transparent 50%),repeating-linear-gradient(45deg,rgba(255,255,255,0.015) 0 2px,transparent 2px 18px);pointer-events:none}
+.footer-inner{position:relative;max-width:var(--container);margin:0 auto;padding:0 var(--s-5)}
+.footer-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:var(--s-6)}
+@media(max-width:1000px){.footer-cols{grid-template-columns:1fr 1fr;gap:var(--s-5)}}
+.footer-col h5{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;font-size:14px;color:var(--p-accent);margin:0 0 var(--s-3);padding-bottom:6px;border-bottom:2px solid var(--p-accent);display:inline-block}
+.footer-col a{display:block;color:rgba(244,243,241,0.75);text-decoration:none;font-size:13px;margin-bottom:6px}
+.footer-contact{font-size:13px;line-height:1.7;opacity:0.85}
+.footer-contact strong{display:block;color:var(--p-accent);margin-top:var(--s-2);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;font-size:11px}
+.footer-socials{display:flex;gap:var(--s-2);margin-top:var(--s-3)}
+.footer-socials a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.07);display:grid;place-items:center;font-weight:700;font-size:12px;text-decoration:none;color:#fff}
+.footer-base{border-top:1px solid rgba(255,255,255,0.12);margin-top:var(--s-7);padding-top:var(--s-4);text-align:center;font-size:12px;opacity:0.65}
+
+.floating-quote{position:fixed;bottom:var(--s-5);left:50%;transform:translateX(-50%);background:var(--p-primary);color:#fff;padding:14px 26px;border-radius:var(--r-pill);font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;font-size:13px;box-shadow:var(--shadow-lg);text-decoration:none;z-index:40;border:2px solid var(--p-accent)}
+
+/* Photo bg variants */
+.bg-c1{background-image:linear-gradient(135deg,#2a2826,#5b443b)}
+.bg-c2{background-image:linear-gradient(135deg,#34343a,#b87333)}
+.bg-c3{background-image:linear-gradient(135deg,#1f1f24,#5b443b)}
+.bg-c4{background-image:linear-gradient(135deg,#4a3d2f,#b87333)}
+.bg-c5{background-image:linear-gradient(135deg,#5b443b,#8a6b54)}
+.bg-c6{background-image:linear-gradient(135deg,#2c3848,#5670a3)}
+.bg-c7{background-image:linear-gradient(135deg,#3f4a3b,#8a9e64)}
+.bg-c8{background-image:linear-gradient(135deg,#1f1f24,#b87333)}
+.bg-c9{background-image:linear-gradient(135deg,#66666f,#2a2826)}
+.bg-c10{background-image:linear-gradient(135deg,#4a4a52,#b87333)}
+.bg-c11{background-image:linear-gradient(135deg,#5b443b,#2a2826)}
+.bg-c12{background-image:linear-gradient(135deg,#34343a,#5b443b)}
+</style>
+</head>
+<body>
+
+<div class="promo-strip">Clearance Event — Save up to 40% on in-stock kits. <span class="todo">TODO: confirm offer</span></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="brand-mark"><div class="brand-mark-glyph">B</div><div class="brand-mark-word">Bell Metal<small>Buildings Co.</small></div></a>
+    <nav class="nav-row"><a href="#" class="nav-caret">Buildings</a><a href="#">Clearance</a><a href="#" class="nav-caret">Options &amp; Finishes</a><a href="#">Resources</a><a href="#">Blog</a><a href="#" class="nav-caret">About</a><select class="lang-select"><option>EN</option><option>ES</option></select><a href="tel:+18005550100" class="btn-phone">📞 +1-800-555-0100</a></nav>
+    <button class="menu-toggle">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb"><a href="#">Home</a> / Clearance Inventory</nav>
+    <div class="page-hero-eyebrow">In-stock buildings</div>
+    <h1 class="page-hero-title">Clearance buildings — proudly made in the USA</h1>
+    <div class="page-hero-sub">First come, first served. Engineered, mill-tested, ready to ship in 5–10 business days.</div>
+  </div>
+</section>
+
+<section class="intro-band">
+  <div class="container">
+    <h2>First come, first served: exclusive steel building clearance deals</h2>
+    <p>These are real, in-stock kits we've finished engineering and built ahead. Each one ships in 5–10 business days, has stamped drawings, and carries the same 50-year rust-perforation warranty as a custom Bell build. Make an offer or call us — once it's gone, it's gone.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="notice" role="note">
+    <div class="notice-icon" aria-hidden="true">!</div>
+    <div>All clearance buildings are sold as described — sizes and accessory packages are fixed. Engineering re-runs or color changes will bump you back to the standard 6–10 week lead time and adjusted pricing. Make an offer below MSRP and we'll counter or accept within one business day.</div>
+  </div>
+</div>
+
+<div class="controls-bar">
+  <div class="container">
+    <div class="controls-row">
+      <div class="group"><label for="cat">Category:</label><select id="cat"><option>All categories</option><option>Garages</option><option>Workshops</option><option>Commercial</option><option>Carports</option><option>Storage</option><option>Quonset</option></select></div>
+      <div class="group"><label for="size">Size:</label><select id="size"><option>All sizes</option><option>Up to 1,200 sq ft</option><option>1,200 – 3,000 sq ft</option><option>3,000 – 6,000 sq ft</option><option>Over 6,000 sq ft</option></select></div>
+      <div class="group"><label for="sort">Sort:</label><select id="sort"><option>Featured</option><option>Price ↑</option><option>Price ↓</option><option>Newest</option><option>Largest first</option></select></div>
+      <div class="results-count">Showing <b>12</b> of <b>12</b> in-stock buildings</div>
+    </div>
+  </div>
+</div>
+
+<section class="products-section">
+  <div class="container">
+    <div class="products-grid">
+
+      <!-- Card 1 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c1">
+          <span class="clear-badge">30% off</span>
+          <span class="clear-stock-pill">In stock</span>
+        </div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Garage</div>
+          <h3 class="clear-card-title">20' × 30' × 10' Single-Bay Garage</h3>
+          <p class="clear-card-desc">Straight-wall, one 9×8 overhead door, walk door, color: forge bronze.</p>
+          <div class="clear-card-specs"><span class="clear-spec">600 sq ft</span><span class="clear-spec">10' eave</span><span class="clear-spec">25-year paint</span></div>
+          <div class="clear-card-prices">
+            <span class="was-price">Was: $25,400</span>
+            <div class="sale-line"><span class="sale-price">$17,760</span><span class="save-pill">Save 30%</span></div>
+            <span class="todo">TODO: real price</span>
+          </div>
+        </div>
+        <div class="clear-card-ctas">
+          <a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a>
+          <a href="#" class="btn btn-primary btn-sm">Make an Offer</a>
+          <a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call for Faster Response</a>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c2"><span class="clear-badge">25% off</span><span class="clear-stock-pill">In stock</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Workshop</div>
+          <h3 class="clear-card-title">30' × 40' × 12' Workshop</h3>
+          <p class="clear-card-desc">Insulated package, two overhead doors, single walk door, color: charcoal slate.</p>
+          <div class="clear-card-specs"><span class="clear-spec">1,200 sq ft</span><span class="clear-spec">R-19 insulation</span><span class="clear-spec">12' eave</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $32,800</span><div class="sale-line"><span class="sale-price">$24,600</span><span class="save-pill">Save 25%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c3"><span class="clear-badge">35% off</span><span class="clear-stock-pill">In stock</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Garage / 2-bay</div>
+          <h3 class="clear-card-title">24' × 36' × 12' Two-Bay Garage</h3>
+          <p class="clear-card-desc">Two 10×8 overhead doors, two windows, walk door, color: barn red.</p>
+          <div class="clear-card-specs"><span class="clear-spec">864 sq ft</span><span class="clear-spec">12' eave</span><span class="clear-spec">Stamped</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $34,200</span><div class="sale-line"><span class="sale-price">$22,230</span><span class="save-pill">Save 35%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c4"><span class="clear-badge">40% off</span><span class="clear-stock-pill">Last one</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Workshop</div>
+          <h3 class="clear-card-title">40' × 60' × 16' Workshop</h3>
+          <p class="clear-card-desc">Heavy-gauge frame, four overhead doors, mezzanine package, color: amber tan.</p>
+          <div class="clear-card-specs"><span class="clear-spec">2,400 sq ft</span><span class="clear-spec">Mezzanine</span><span class="clear-spec">16' eave</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $58,400</span><div class="sale-line"><span class="sale-price">$35,040</span><span class="save-pill">Save 40%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c5"><span class="clear-badge">20% off</span><span class="clear-stock-pill">In stock</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Carport / RV</div>
+          <h3 class="clear-card-title">18' × 36' × 14' RV Carport</h3>
+          <p class="clear-card-desc">Tall-eave open-sided RV cover with one closed end, color: charcoal slate.</p>
+          <div class="clear-card-specs"><span class="clear-spec">648 sq ft</span><span class="clear-spec">14' eave</span><span class="clear-spec">Open</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $14,200</span><div class="sale-line"><span class="sale-price">$11,360</span><span class="save-pill">Save 20%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c6"><span class="clear-badge">30% off</span><span class="clear-stock-pill">In stock</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Storage</div>
+          <h3 class="clear-card-title">30' × 50' × 14' Storage Building</h3>
+          <p class="clear-card-desc">Two overhead doors, four windows, partition framing included, color: hunter green.</p>
+          <div class="clear-card-specs"><span class="clear-spec">1,500 sq ft</span><span class="clear-spec">Partitions</span><span class="clear-spec">14' eave</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $39,200</span><div class="sale-line"><span class="sale-price">$27,440</span><span class="save-pill">Save 30%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 7 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c7"><span class="clear-badge">25% off</span><span class="clear-stock-pill">In stock</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Agricultural</div>
+          <h3 class="clear-card-title">50' × 80' × 16' Loafing Shed</h3>
+          <p class="clear-card-desc">Wide clear-span ag building, three sides enclosed, gable end open, color: graphite.</p>
+          <div class="clear-card-specs"><span class="clear-spec">4,000 sq ft</span><span class="clear-spec">Clear-span</span><span class="clear-spec">16' eave</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $68,200</span><div class="sale-line"><span class="sale-price">$51,150</span><span class="save-pill">Save 25%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 8 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c8"><span class="clear-badge">30% off</span><span class="clear-stock-pill">In stock</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Commercial</div>
+          <h3 class="clear-card-title">60' × 100' × 18' Commercial Hall</h3>
+          <p class="clear-card-desc">Insulated, four overhead bays, two walk doors, six windows, color: forge bronze.</p>
+          <div class="clear-card-specs"><span class="clear-spec">6,000 sq ft</span><span class="clear-spec">R-25 insulation</span><span class="clear-spec">18' eave</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $124,000</span><div class="sale-line"><span class="sale-price">$86,800</span><span class="save-pill">Save 30%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 9 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c9"><span class="clear-badge">28% off</span><span class="clear-stock-pill">In stock</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Quonset</div>
+          <h3 class="clear-card-title">30' × 50' × 15' Quonset Hut</h3>
+          <p class="clear-card-desc">Arch-roof Q-model, two end-wall openings, color: galvanized natural.</p>
+          <div class="clear-card-specs"><span class="clear-spec">1,500 sq ft</span><span class="clear-spec">Arch profile</span><span class="clear-spec">15' peak</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $26,400</span><div class="sale-line"><span class="sale-price">$19,010</span><span class="save-pill">Save 28%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 10 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c10"><span class="clear-badge">22% off</span><span class="clear-stock-pill">In stock</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Carport / 3-bay</div>
+          <h3 class="clear-card-title">30' × 30' × 11' Triple Carport</h3>
+          <p class="clear-card-desc">Three-bay open carport, gable roof, color: amber tan.</p>
+          <div class="clear-card-specs"><span class="clear-spec">900 sq ft</span><span class="clear-spec">11' eave</span><span class="clear-spec">Open</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $9,800</span><div class="sale-line"><span class="sale-price">$7,640</span><span class="save-pill">Save 22%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 11 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c11"><span class="clear-badge">32% off</span><span class="clear-stock-pill">Last one</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Garage / Shop</div>
+          <h3 class="clear-card-title">40' × 80' × 14' Garage + Shop</h3>
+          <p class="clear-card-desc">Combo: two-bay garage front, open shop rear, four overhead doors, mezzanine.</p>
+          <div class="clear-card-specs"><span class="clear-spec">3,200 sq ft</span><span class="clear-spec">Mezzanine</span><span class="clear-spec">14' eave</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $79,400</span><div class="sale-line"><span class="sale-price">$53,990</span><span class="save-pill">Save 32%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+      <!-- Card 12 -->
+      <article class="clear-card">
+        <div class="clear-card-img bg-c12"><span class="clear-badge">35% off</span><span class="clear-stock-pill">Last one</span></div>
+        <div class="clear-card-body">
+          <div class="clear-card-cat">Commercial</div>
+          <h3 class="clear-card-title">80' × 120' × 20' Commercial Warehouse</h3>
+          <p class="clear-card-desc">Clear-span warehouse shell, two dock-height openings, four overhead doors, color: graphite.</p>
+          <div class="clear-card-specs"><span class="clear-spec">9,600 sq ft</span><span class="clear-spec">Dock-height</span><span class="clear-spec">20' eave</span></div>
+          <div class="clear-card-prices"><span class="was-price">Was: $152,800</span><div class="sale-line"><span class="sale-price">$99,320</span><span class="save-pill">Save 35%</span></div></div>
+        </div>
+        <div class="clear-card-ctas"><a href="#" class="btn btn-outline-dark btn-sm">View Drawing</a><a href="#" class="btn btn-primary btn-sm">Make an Offer</a><a href="tel:+18005550100" class="btn btn-accent btn-sm">📞 Call</a></div>
+      </article>
+
+    </div>
+
+    <div class="pagination">
+      <button>‹</button>
+      <button class="active">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>›</button>
+    </div>
+  </div>
+</section>
+
+<section class="wizard-band">
+  <div class="container">
+    <div class="wizard-shell">
+      <div class="wizard-head"><h2>Don't see what you need? Build a custom quote.</h2><p>Five quick questions. Real engineered quote in 24 hours.</p></div>
+      <div class="wizard-progress"><div class="wizard-progress-bar"></div></div>
+      <div class="wizard-step-label">Step 1 of 5 · 4% complete</div>
+      <div class="wiz-q-title">What are you building?</div>
+      <div class="wizard-options"><button class="wizard-option active">Garage</button><button class="wizard-option">Workshop</button><button class="wizard-option">Barn / ag</button><button class="wizard-option">Commercial</button><button class="wizard-option">Carport</button><button class="wizard-option">Container cover</button><button class="wizard-option">Quonset</button><button class="wizard-option">Storage</button></div>
+      <div class="wiz-q-title">Dimensions</div>
+      <div class="wizard-grid">
+        <div><label class="field-label">Width</label><select class="field-select"><option>20'</option><option selected>40'</option><option>60'</option></select></div>
+        <div><label class="field-label">Length</label><select class="field-select"><option>40'</option><option selected>60'</option><option>100'</option></select></div>
+        <div><label class="field-label">Eave height</label><select class="field-select"><option>12'</option><option selected>14'</option><option>16'</option></select></div>
+      </div>
+      <div class="wiz-q-title">Where's it going?</div>
+      <div class="wiz-final-grid">
+        <div><label class="field-label">ZIP</label><input class="field-input" placeholder="00000" /></div>
+        <div><label class="field-label">Name</label><input class="field-input" /></div>
+        <div><label class="field-label">Email</label><input class="field-input" type="email" /></div>
+        <div><label class="field-label">Phone</label><input class="field-input" type="tel" /></div>
+      </div>
+      <div class="wiz-submit-row"><div class="wizard-note">We'll never sell your data.</div><a href="#" class="btn btn-accent btn-lg">Get my quote →</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col"><div class="brand-mark" style="margin-bottom:var(--s-4)"><div class="brand-mark-glyph">B</div><div class="brand-mark-word" style="color:#fff">Bell Metal<small style="color:var(--p-accent)">Buildings Co.</small></div></div><div class="footer-contact"><strong>Contact Us</strong>+1-800-555-0100<br>hello@bellmetal.example<br>123 Industrial Way <span class="todo inline-dark">TODO</span><strong>Follow us</strong><div class="footer-socials"><a href="#">f</a><a href="#">x</a><a href="#">in</a><a href="#">ig</a></div></div></div>
+      <div class="footer-col"><h5>Buildings</h5><a href="#">Garages</a><a href="#">Workshops</a><a href="#">Barndominiums</a><a href="#">Quonset</a><a href="#">Carports</a><a href="#">Container Covers</a><a href="#">Commercial</a><a href="#">Storage</a></div>
+      <div class="footer-col"><h5>Options</h5><a href="#">Foundation</a><a href="#">Doors</a><a href="#">Windows</a><a href="#">Insulation</a><a href="#">Trims</a></div>
+      <div class="footer-col"><h5>Resources</h5><a href="#">FAQs</a><a href="#">Videos</a><a href="#">Brochures</a><a href="#">Blog</a></div>
+      <div class="footer-col"><h5>Company</h5><a href="#">About</a><a href="#">Contact</a><a href="#">Testimonials</a><a href="#">Privacy</a><a href="#">Warranty</a></div>
+    </div>
+    <div class="footer-base">© 2026 Bell Metal Buildings Co. <span class="todo inline-dark">TODO: legal entity</span></div>
+  </div>
+</footer>
+
+<a href="#" class="floating-quote">Get a Quote →</a>
+
+<script>
+document.querySelectorAll('.wizard-option').forEach(btn => {
+  btn.addEventListener('click', () => { document.querySelectorAll('.wizard-option').forEach(b => b.classList.remove('active')); btn.classList.add('active'); });
+});
+</script>
+</body>
+</html>

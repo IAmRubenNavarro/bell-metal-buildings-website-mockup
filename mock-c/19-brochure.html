@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Brochures &amp; downloads — Bell Metal Buildings</title>
+<meta name="description" content="Download Bell's full catalog, door &amp; window guide, color chart, and warranty. Four PDFs delivered by email." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .bro-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap: var(--s-5); }
+  @media (max-width:1100px){ .bro-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width:560px){ .bro-grid{ grid-template-columns: 1fr; } }
+  .bro-card{
+    background: var(--c-paper); border: 1px solid var(--c-rule);
+    border-radius: var(--r-md); overflow:hidden;
+    display:flex; flex-direction:column; box-shadow: var(--sh-card);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .bro-card:hover{ transform: translateY(-3px); box-shadow: var(--sh-md); }
+  .bro-cover{
+    aspect-ratio: 3/4;
+    background:
+      linear-gradient(180deg, rgba(15,39,36,.55) 0 30%, rgba(15,39,36,.85) 100%),
+      linear-gradient(135deg, #14302a, #1f4039);
+    color: var(--c-cream-ink);
+    padding: var(--s-5);
+    display:flex; flex-direction:column; justify-content: space-between;
+    position:relative;
+  }
+  .bro-cover .kicker{
+    font:600 var(--t-eyebrow)/1 var(--f-body); letter-spacing: .22em; text-transform:uppercase;
+    color: var(--c-brass-soft);
+  }
+  .bro-cover h3{
+    font-family: var(--f-display); font-weight: 700; font-size: 1.5rem;
+    color: var(--c-bone); line-height:1.05;
+    font-variation-settings:"opsz" 144, "SOFT" 30;
+  }
+  .bro-cover .meta{ font-size: var(--t-xs); color: var(--c-bone-2); }
+  .bro-foot{
+    padding: var(--s-4) var(--s-5);
+    display:flex; align-items:center; justify-content:space-between;
+    background: var(--c-paper); border-top: 1px solid var(--c-rule-soft);
+  }
+  .bro-foot .pages{ font:600 var(--t-xs)/1 var(--f-body); letter-spacing:.12em; text-transform:uppercase; color: var(--c-text-muted); }
+  .gate-card{
+    background: var(--c-paper); border: 1px solid var(--c-brass);
+    border-left: 4px solid var(--c-brick);
+    border-radius: var(--r-md); padding: var(--s-7);
+    box-shadow: var(--sh-md); max-width: 760px; margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="left">Building experts since 1962 · Made in Aliquippa, PA</div>
+    <div class="right">
+      <span>We're here to help — call <a href="tel:18004442525">1-800-444-2525</a></span>
+      <span class="lang">EN · <a href="#" style="color: var(--c-bone);">ES</a></span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="02-homepage.html" class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">Bell Metal Buildings<small>Since 1962</small></span>
+    </a>
+    <nav class="primary-nav">
+      <a href="03-building-types.html">Building Types</a>
+      <a href="06-options-finishes.html">Options &amp; Finishes</a>
+      <a href="07-about.html">About</a>
+      <a href="17-resources-hub.html" class="is-active">Resources</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-outline btn-sm" href="05-clearance-inventory.html">Sale buildings</a>
+      <a class="btn btn-secondary btn-sm" href="08-contact.html">Contact</a>
+      <a class="btn btn-primary btn-sm" href="02-homepage.html#hero-quote">Free quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-banner">
+    <div class="wrap">
+      <div class="eyebrow on-dark">Brochures &amp; downloads</div>
+      <h1>Take Bell <em>with you</em></h1>
+      <p>Four PDF brochures covering the full catalog, doors and windows, the color chart, and warranty terms. Drop your email and we'll send all four.</p>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+
+      <div class="bro-grid">
+
+        <div class="bro-card">
+          <div class="bro-cover">
+            <div>
+              <div class="kicker">Brochure 01</div>
+              <div style="margin-top: var(--s-5);">
+                <div class="meta">Full catalog</div>
+                <h3>Bell building catalog 2026</h3>
+              </div>
+            </div>
+            <div class="meta">2026 edition · printed in Aliquippa</div>
+          </div>
+          <div class="bro-foot">
+            <span class="pages">48 pages · PDF</span>
+            <a class="btn-ghost">Download</a>
+          </div>
+        </div>
+
+        <div class="bro-card">
+          <div class="bro-cover" style="background: linear-gradient(180deg, rgba(168,54,42,.65) 0 30%, rgba(15,39,36,.85) 100%), linear-gradient(135deg, #532019, #1f4039);">
+            <div>
+              <div class="kicker">Brochure 02</div>
+              <div style="margin-top: var(--s-5);">
+                <div class="meta">Doors &amp; windows</div>
+                <h3>Doors, windows &amp; openings guide</h3>
+              </div>
+            </div>
+            <div class="meta">Sliders, roll-ups, walkthroughs, glazing</div>
+          </div>
+          <div class="bro-foot">
+            <span class="pages">16 pages · PDF</span>
+            <a class="btn-ghost">Download</a>
+          </div>
+        </div>
+
+        <div class="bro-card">
+          <div class="bro-cover" style="background: linear-gradient(180deg, rgba(184,138,59,.6) 0 30%, rgba(15,39,36,.85) 100%), linear-gradient(135deg, #6a4f1d, #1f4039);">
+            <div>
+              <div class="kicker">Brochure 03</div>
+              <div style="margin-top: var(--s-5);">
+                <div class="meta">Colors</div>
+                <h3>Panel &amp; trim color chart</h3>
+              </div>
+            </div>
+            <div class="meta">13 panel · 6 trim · with photo-realistic chips</div>
+          </div>
+          <div class="bro-foot">
+            <span class="pages">8 pages · PDF</span>
+            <a class="btn-ghost">Download</a>
+          </div>
+        </div>
+
+        <div class="bro-card">
+          <div class="bro-cover" style="background: linear-gradient(180deg, rgba(15,39,36,.7) 0 30%, rgba(15,39,36,.9) 100%), linear-gradient(135deg, #14302a, #0a1c1a);">
+            <div>
+              <div class="kicker">Brochure 04</div>
+              <div style="margin-top: var(--s-5);">
+                <div class="meta">Coverage</div>
+                <h3>Warranty terms (full document)</h3>
+              </div>
+            </div>
+            <div class="meta">Plain-language + binding terms</div>
+          </div>
+          <div class="bro-foot">
+            <span class="pages">12 pages · PDF</span>
+            <a class="btn-ghost">Download</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Gated form -->
+      <div style="margin-top: var(--s-9);">
+        <div class="gate-card">
+          <div class="eyebrow" style="margin-bottom: var(--s-3);">Send all four to my inbox</div>
+          <h2 style="font-size: var(--t-d2); font-variation-settings:'opsz' 144, 'SOFT' 30; margin-bottom: var(--s-4);">One email, four brochures.</h2>
+          <p style="color: var(--c-text-muted); margin-bottom: var(--s-5);">We'll email the four PDFs and (optionally) sign you up for the Bell Field Journal — a once-a-month note from our engineers. You can unsubscribe at any time.</p>
+
+          <form onsubmit="event.preventDefault(); alert('Production: emails the brochures and posts to CRM.');">
+            <div class="ds-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-3);">
+              <div class="field"><label>First name</label><input class="input" /></div>
+              <div class="field"><label>Last name</label><input class="input" /></div>
+            </div>
+            <div class="ds-grid" style="display:grid; grid-template-columns: 1.6fr 1fr; gap: var(--s-3); margin-top: var(--s-3);">
+              <div class="field"><label>Email</label><input class="input" type="email" placeholder="you@email.com" /></div>
+              <div class="field"><label>Project state</label>
+                <select class="select"><option>—</option><option>Pennsylvania</option><option>Ohio</option><option>West Virginia</option><option>New York</option><option>Other</option></select>
+              </div>
+            </div>
+            <div class="field" style="margin-top: var(--s-3);"><label>What are you considering building?</label>
+              <select class="select"><option>—</option><option>Garage</option><option>Workshop</option><option>Warehouse</option><option>Barndominium</option><option>Barn / agriculture</option><option>Hangar</option><option>Storage</option><option>Other / multiple</option></select>
+            </div>
+            <label class="checkbox" style="margin-top: var(--s-5);"><input type="checkbox" checked /> Send me the monthly Field Journal (no spam, unsubscribe anytime).</label>
+
+            <p style="font-size: var(--t-xs); color: var(--c-text-faint); margin-top: var(--s-3);">By submitting you agree to our <a href="14-privacy.html">privacy policy</a>. <span class="todo">captcha</span> Production: reCAPTCHA enterprise.</p>
+
+            <button class="btn btn-primary btn-lg" type="submit" style="width:100%; margin-top: var(--s-4);">Email me all four brochures</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="photo-band">
+    <div class="wrap">
+      <div class="eyebrow on-dark center">We own the factory</div>
+      <h2>Want the quote instead?</h2>
+      <p>If you already know what you're building, skip the brochures and go straight to a sealed quote.</p>
+      <div class="btn-row" style="justify-content:center; margin-top: var(--s-5);">
+        <a class="btn btn-primary" href="02-homepage.html#hero-quote">Get a free quote</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="foot-h">Additional resources</div>
+      <ul class="foot-list">
+        <li><a href="03-building-types.html">Building types</a></li>
+        <li><a href="07-about.html">About Bell</a></li>
+        <li><a href="09-blog-index.html">Field journal</a></li>
+        <li><a href="17-resources-hub.html">Certifications &amp; resources</a></li>
+        <li><a href="13-warranty.html">Warranty</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Get in touch</div>
+      <div class="foot-contact">
+        <div class="row"><span class="icon">☎</span><div>Toll free<br><strong style="color:var(--c-bone)"><a href="tel:18004442525" style="color:inherit;">1-800-444-2525</a></strong></div></div>
+        <div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001</div></div>
+      </div>
+      <div class="foot-social"><a href="#">f</a><a href="#">ig</a><a href="#">in</a><a href="#">yt</a></div>
+    </div>
+    <div class="foot-help">
+      <div class="foot-h">How can we help?</div>
+      <a class="btn btn-secondary" href="08-contact.html">Contact us</a>
+      <a class="btn btn-primary" href="02-homepage.html#hero-quote">Get a free quote</a>
+    </div>
+  </div>
+  <div class="subfooter">© 2026 Bell Metal Buildings Co. · All rights reserved · <a href="14-privacy.html" style="color:inherit;">Privacy policy</a></div>
+</footer>
+
+<a class="q-tab" href="08-contact.html">Questions? Let's talk</a>
+
+</body>
+</html>

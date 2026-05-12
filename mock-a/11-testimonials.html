@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Testimonials — Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--p-primary:#18181b;--p-accent:#b87333;--p-accent-ink:#18181b;--p-surface-deep:#14141a;--p-rule:#ddd9d1;--p-promo:#6f2622;--p-promo-ink:#f8e9d6;--gray-50:#f7f7f8;--gray-500:#66666f;--gray-600:#4a4a52;--gray-700:#34343a;--gray-900:#111114;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;--s-9:96px;--r-sm:4px;--r-md:8px;--r-pill:999px;--shadow-card:0 2px 8px rgba(0,0,0,0.06);--shadow-lg:0 12px 32px rgba(0,0,0,0.18);--font-display:'Oswald','Arial Narrow',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--container:1280px}
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--gray-900);background:#fff}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--s-5)}
+h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.02em;line-height:1.05;margin:0}
+.todo{display:inline-block;background:#fff5cc;border:1px dashed #c89a00;color:#6b4d00;padding:1px 6px;font-size:11px;font-family:var(--font-body);font-weight:600;text-transform:none;letter-spacing:0;border-radius:3px}.todo.inline-dark{background:#2a1f12;border-color:#b87333;color:#f4f3f1}
+.promo-strip{background:var(--p-promo);color:var(--p-promo-ink);text-align:center;padding:10px var(--s-4);font-weight:600;font-size:14px}
+.site-header{background:#fff;border-bottom:1px solid var(--p-rule);position:sticky;top:0;z-index:50}
+.header-inner{max-width:var(--container);margin:0 auto;padding:var(--s-3) var(--s-5);display:flex;align-items:center;gap:var(--s-5)}
+.brand-mark{display:flex;align-items:center;gap:var(--s-3);text-decoration:none}
+.brand-mark-glyph{width:44px;height:44px;border-radius:var(--r-sm);background:var(--p-primary);color:var(--p-accent);display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:24px}
+.brand-mark-word{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;font-size:20px;color:var(--p-primary);line-height:1}.brand-mark-word small{display:block;font-family:var(--font-body);font-size:10px;letter-spacing:0.22em;color:var(--gray-500);margin-top:3px;text-transform:uppercase;font-weight:600}
+.nav-row{display:flex;gap:var(--s-5);align-items:center;margin-left:auto}.nav-row a{font-size:13px;color:var(--p-primary);text-decoration:none;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap}.nav-caret::after{content:" \25BE";opacity:0.6}.lang-select{background:transparent;border:1px solid var(--p-rule);border-radius:var(--r-sm);padding:6px 8px;font-size:12px;font-weight:600}.btn-phone{background:var(--p-primary);color:#fff;padding:10px 18px;font-size:13px;border-radius:var(--r-pill);text-decoration:none;font-family:var(--font-body);font-weight:700;letter-spacing:0.04em;text-transform:uppercase}.menu-toggle{display:none}
+@media(max-width:900px){.nav-row{display:none}.menu-toggle{display:grid;place-items:center;width:44px;height:44px;margin-left:auto;background:var(--p-primary);color:#fff;border:none;border-radius:var(--r-sm);font-size:22px}}
+
+.page-hero{position:relative;min-height:340px;background:linear-gradient(110deg,rgba(20,20,26,.55) 0%,rgba(20,20,26,.18) 100%),linear-gradient(135deg,#3a2a1e,#5b443b 60%,#b87333);color:#fff;display:flex;align-items:center;overflow:hidden}
+.page-hero::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:40px;background:#fff;clip-path:polygon(0 100%,100% 100%,100% 0,0 70%)}
+.page-hero-inner{max-width:760px;padding:var(--s-8) var(--s-5);position:relative;z-index:1}
+.breadcrumb{font-family:var(--font-body);font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.65);margin-bottom:var(--s-3)}.breadcrumb a{color:var(--p-accent);text-decoration:none}
+.page-hero-eyebrow{font-family:var(--font-body);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;color:var(--p-accent);margin-bottom:var(--s-3)}
+.page-hero-title{font-size:clamp(30px,4.4vw,52px);color:var(--p-accent);margin-bottom:var(--s-3)}
+.page-hero-sub{font-size:18px;opacity:0.92}
+
+.intro-bar{background:#fff;padding:var(--s-8) 0 var(--s-3);text-align:center}
+.intro-bar h2{font-size:clamp(24px,2.8vw,32px);color:var(--p-primary)}
+.intro-bar p{max-width:680px;margin:var(--s-3) auto 0;color:var(--gray-600)}
+
+.t-section{padding:var(--s-6) 0 var(--s-9);background:#fff}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5)}
+@media(max-width:1000px){.t-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.t-grid{grid-template-columns:1fr}}
+.t-card{background:#fff;border:1px solid var(--p-rule);border-radius:var(--r-md);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.15s,box-shadow 0.15s}
+.t-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-card)}
+.t-photo{aspect-ratio:4/3;background-size:cover;background-position:center;position:relative}
+.t-photo .badge{position:absolute;top:var(--s-3);left:var(--s-3);background:rgba(0,0,0,0.7);color:#fff;font-size:11px;padding:4px 10px;border-radius:var(--r-pill);font-weight:600;letter-spacing:0.05em}
+.t-body{padding:var(--s-4);display:flex;flex-direction:column;gap:var(--s-2);flex:1}
+.t-location{font-size:11px;color:var(--p-accent);font-weight:700;letter-spacing:0.12em;text-transform:uppercase}
+.t-title{font-family:var(--font-display);font-size:18px;color:var(--p-primary);text-transform:uppercase;letter-spacing:0.04em}
+.t-name{font-size:13px;color:var(--gray-700);font-weight:600}
+.t-stars{color:var(--p-accent);letter-spacing:2px;font-size:14px}
+.t-quote{font-size:14px;color:var(--gray-700);font-style:italic;flex:1;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+
+.bg-t1{background-image:linear-gradient(135deg,#2a2826,#5b443b)}.bg-t2{background-image:linear-gradient(135deg,#34343a,#b87333)}.bg-t3{background-image:linear-gradient(135deg,#5b443b,#8a6b54)}.bg-t4{background-image:linear-gradient(135deg,#1f1f24,#5b443b)}.bg-t5{background-image:linear-gradient(135deg,#4a3d2f,#b87333)}.bg-t6{background-image:linear-gradient(135deg,#3f4a3b,#b87333)}.bg-t7{background-image:linear-gradient(135deg,#2c3848,#5670a3)}.bg-t8{background-image:linear-gradient(135deg,#1f1f24,#b87333)}.bg-t9{background-image:linear-gradient(135deg,#66666f,#2a2826)}.bg-t10{background-image:linear-gradient(135deg,#5b443b,#2a2826)}.bg-t11{background-image:linear-gradient(135deg,#4a4a52,#b87333)}.bg-t12{background-image:linear-gradient(135deg,#34343a,#5b443b)}
+
+.site-footer{background:var(--p-surface-deep);color:#f4f3f1;padding:var(--s-8) 0 var(--s-5);position:relative}
+.site-footer::before{content:"";position:absolute;inset:0;background:radial-gradient(at 20% 30%,rgba(184,115,51,0.08),transparent 50%),repeating-linear-gradient(45deg,rgba(255,255,255,0.015) 0 2px,transparent 2px 18px);pointer-events:none}
+.footer-inner{position:relative;max-width:var(--container);margin:0 auto;padding:0 var(--s-5)}
+.footer-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:var(--s-6)}@media(max-width:1000px){.footer-cols{grid-template-columns:1fr 1fr;gap:var(--s-5)}}
+.footer-col h5{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;font-size:14px;color:var(--p-accent);margin:0 0 var(--s-3);padding-bottom:6px;border-bottom:2px solid var(--p-accent);display:inline-block}
+.footer-col a{display:block;color:rgba(244,243,241,0.75);text-decoration:none;font-size:13px;margin-bottom:6px}
+.footer-contact{font-size:13px;line-height:1.7;opacity:0.85}.footer-contact strong{display:block;color:var(--p-accent);margin-top:var(--s-2);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;font-size:11px}
+.footer-socials{display:flex;gap:var(--s-2);margin-top:var(--s-3)}.footer-socials a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.07);display:grid;place-items:center;font-weight:700;font-size:12px;text-decoration:none;color:#fff}
+.footer-base{border-top:1px solid rgba(255,255,255,0.12);margin-top:var(--s-7);padding-top:var(--s-4);text-align:center;font-size:12px;opacity:0.65}
+.floating-quote{position:fixed;bottom:var(--s-5);left:50%;transform:translateX(-50%);background:var(--p-primary);color:#fff;padding:14px 26px;border-radius:var(--r-pill);font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;font-size:13px;box-shadow:var(--shadow-lg);text-decoration:none;z-index:40;border:2px solid var(--p-accent)}
+</style>
+</head>
+<body>
+
+<div class="promo-strip">Clearance Event — Save up to 40% on in-stock kits. <span class="todo">TODO: confirm offer</span></div>
+<header class="site-header"><div class="header-inner"><a href="#" class="brand-mark"><div class="brand-mark-glyph">B</div><div class="brand-mark-word">Bell Metal<small>Buildings Co.</small></div></a><nav class="nav-row"><a href="#" class="nav-caret">Buildings</a><a href="#">Clearance</a><a href="#" class="nav-caret">Options &amp; Finishes</a><a href="#">Resources</a><a href="#">Blog</a><a href="#" class="nav-caret">About</a><a href="tel:+18005550100" class="btn-phone">📞 +1-800-555-0100</a></nav><button class="menu-toggle">☰</button></div></header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb"><a href="#">Home</a> / <a href="#">About</a> / Testimonials</nav>
+    <div class="page-hero-eyebrow">Customer stories</div>
+    <h1 class="page-hero-title">Bell Metal building reviews &amp; testimonials</h1>
+    <div class="page-hero-sub">Sixty-five thousand customers and counting. Here's a small sample.</div>
+  </div>
+</section>
+
+<section class="intro-bar">
+  <div class="container">
+    <h2>Customer satisfaction is our priority</h2>
+    <p>Every Bell customer earns a follow-up call after delivery. These are some of the stories we've been told back.</p>
+  </div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="t-grid">
+      <article class="t-card"><div class="t-photo bg-t1"><span class="badge">Garage · 30×40</span></div><div class="t-body"><div class="t-location">Bozeman, MT</div><h3 class="t-title">Hodges family workshop</h3><div class="t-stars">★★★★★</div><p class="t-quote">"Bell's engineers walked us through every snow-load and wind-load calc. We knew exactly what we were buying before we signed."</p><div class="t-name">[TODO] Customer #1</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t2"><span class="badge">Workshop · 40×60</span></div><div class="t-body"><div class="t-location">Tulsa, OK</div><h3 class="t-title">Reyes auto shop</h3><div class="t-stars">★★★★★</div><p class="t-quote">"Kit arrived on the day they said it would. Every piece was labeled. Our crew put it up in three weekends."</p><div class="t-name">[TODO] Customer #2</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t3"><span class="badge">Commercial · 60×100</span></div><div class="t-body"><div class="t-location">Asheville, NC</div><h3 class="t-title">Blue Ridge distribution</h3><div class="t-stars">★★★★★</div><p class="t-quote">"We compared four manufacturers. Bell was the only one whose stamped drawings came back faster than our county's permit window."</p><div class="t-name">[TODO] Customer #3</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t4"><span class="badge">Barndominium · 40×80</span></div><div class="t-body"><div class="t-location">Boise, ID</div><h3 class="t-title">McKenna home</h3><div class="t-stars">★★★★★</div><p class="t-quote">"The barndominium is now the nicest building on our property. Customers ask where we sourced the steel."</p><div class="t-name">[TODO] Customer #4</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t5"><span class="badge">Ag · 50×100</span></div><div class="t-body"><div class="t-location">Cheyenne, WY</div><h3 class="t-title">Carrier ranch shed</h3><div class="t-stars">★★★★★</div><p class="t-quote">"Two winters and 80-mph gusts later, not a single panel has moved. Worth every dollar of the upcharge."</p><div class="t-name">[TODO] Customer #5</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t6"><span class="badge">Commercial · 80×100</span></div><div class="t-body"><div class="t-location">Lexington, KY</div><h3 class="t-title">Westside fleet depot</h3><div class="t-stars">★★★★★</div><p class="t-quote">"My rep called me three times during the design phase. I never felt like a number — and I bought a 60×100."</p><div class="t-name">[TODO] Customer #6</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t7"><span class="badge">Workshop · 30×40</span></div><div class="t-body"><div class="t-location">Bend, OR</div><h3 class="t-title">High-Desert hobby shop</h3><div class="t-stars">★★★★★</div><p class="t-quote">"They didn't try to upsell me on stuff I didn't need. They told me what I needed for my code and we built that."</p><div class="t-name">[TODO] Customer #7</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t8"><span class="badge">Container cover · 40×60</span></div><div class="t-body"><div class="t-location">Reno, NV</div><h3 class="t-title">Reno container operation</h3><div class="t-stars">★★★★★</div><p class="t-quote">"The container cover went up over our shipping containers in a single day. We've expanded the same way three times."</p><div class="t-name">[TODO] Customer #8</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t9"><span class="badge">Garage · 20×30</span></div><div class="t-body"><div class="t-location">Manchester, NH</div><h3 class="t-title">Larkin two-car</h3><div class="t-stars">★★★★★</div><p class="t-quote">"Best-priced quote out of six suppliers, and the only one that included foundation specs. Done deal."</p><div class="t-name">[TODO] Customer #9</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t10"><span class="badge">Quonset · 30×60</span></div><div class="t-body"><div class="t-location">Fort Smith, AR</div><h3 class="t-title">Arkansas River Quonset</h3><div class="t-stars">★★★★★</div><p class="t-quote">"I'm not a builder. Their team coached me through bolt patterns over FaceTime. I'm telling everyone I know."</p><div class="t-name">[TODO] Customer #10</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t11"><span class="badge">Commercial · 50×80</span></div><div class="t-body"><div class="t-location">Wichita, KS</div><h3 class="t-title">Plains medical storage</h3><div class="t-stars">★★★★★</div><p class="t-quote">"Our local inspector said the engineering package was the cleanest he'd seen all year."</p><div class="t-name">[TODO] Customer #11</div></div></article>
+
+      <article class="t-card"><div class="t-photo bg-t12"><span class="badge">Carport · 18×30</span></div><div class="t-body"><div class="t-location">Mobile, AL</div><h3 class="t-title">Gulf Coast RV cover</h3><div class="t-stars">★★★★★</div><p class="t-quote">"They followed up on our small clearance buy with the same care they gave a commercial customer. That earned a referral."</p><div class="t-name">[TODO] Customer #12</div></div></article>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-cols"><div class="footer-col"><div class="brand-mark" style="margin-bottom:var(--s-4)"><div class="brand-mark-glyph">B</div><div class="brand-mark-word" style="color:#fff">Bell Metal<small style="color:var(--p-accent)">Buildings Co.</small></div></div><div class="footer-contact"><strong>Contact</strong>+1-800-555-0100<br>hello@bellmetal.example<br>123 Industrial Way <span class="todo inline-dark">TODO</span><strong>Follow us</strong><div class="footer-socials"><a href="#">f</a><a href="#">x</a><a href="#">in</a><a href="#">ig</a></div></div></div><div class="footer-col"><h5>Buildings</h5><a href="#">Garages</a><a href="#">Workshops</a><a href="#">Quonset</a></div><div class="footer-col"><h5>Options</h5><a href="#">Doors</a><a href="#">Windows</a></div><div class="footer-col"><h5>Resources</h5><a href="#">FAQs</a><a href="#">Blog</a></div><div class="footer-col"><h5>Company</h5><a href="#">About</a><a href="#">Contact</a></div></div><div class="footer-base">© 2026 Bell Metal Buildings Co. <span class="todo inline-dark">TODO</span></div></div></footer>
+<a href="#" class="floating-quote">Get a Quote →</a>
+</body></html>

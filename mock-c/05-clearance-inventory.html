@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Clearance inventory — Bell Metal Buildings</title>
+<meta name="description" content="In-stock Bell steel buildings ready to ship. Save up to 35% on pre-engineered kits from our Aliquippa, PA factory floor." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .notice{
+    background: var(--c-brass-soft); color: var(--c-spruce);
+    border-top:1px solid var(--c-brass); border-bottom:1px solid var(--c-brass);
+    padding: var(--s-4) var(--s-5); text-align:center;
+    font:600 var(--t-sm)/1.5 var(--f-body);
+  }
+  .filter-bar{
+    display:flex; flex-wrap:wrap; align-items:center; gap: var(--s-3);
+    padding: var(--s-5); background: var(--c-paper);
+    border:1px solid var(--c-rule); border-radius: var(--r-md); margin-bottom: var(--s-7);
+  }
+  .filter-bar label{ font:600 var(--t-xs)/1 var(--f-body); letter-spacing:.12em; text-transform:uppercase; color: var(--c-text-muted); }
+  .filter-bar select, .filter-bar input{
+    border:1px solid var(--c-rule); border-radius: var(--r-sm); padding: .4rem .6rem;
+    background: var(--c-paper); font-size: var(--t-sm); color: var(--c-spruce);
+  }
+  .inv-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: var(--s-5); }
+  @media (max-width:900px){ .inv-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width:560px){ .inv-grid{ grid-template-columns: 1fr; } }
+  .inv-card{
+    background: var(--c-paper); border:1px solid var(--c-rule-soft); border-radius: var(--r-md);
+    overflow:hidden; box-shadow: var(--sh-card); display:flex; flex-direction:column;
+    position:relative;
+  }
+  .inv-photo{
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, rgba(15,39,36,.30), rgba(184,138,59,.22)),
+                repeating-linear-gradient(60deg, #c5bb9e 0 14px, #b4ab8e 14px 28px);
+    position:relative;
+  }
+  .save-pill{
+    position:absolute; top:var(--s-3); left:var(--s-3);
+    background: var(--c-brick); color: var(--c-cream-ink);
+    font:700 var(--t-xs)/1 var(--f-body); letter-spacing:.08em; text-transform:uppercase;
+    padding: .35rem .65rem; border-radius: var(--r-pill);
+    box-shadow: 0 2px 6px rgba(15,39,36,.25);
+  }
+  .stock-pill{
+    position:absolute; top:var(--s-3); right:var(--s-3);
+    background: var(--c-bone); color: var(--c-spruce);
+    font:700 var(--t-xs)/1 var(--f-body); letter-spacing:.08em; text-transform:uppercase;
+    padding: .35rem .65rem; border-radius: var(--r-pill);
+    border: 1px solid var(--c-brass);
+  }
+  .stock-pill::before{ content:"●"; color: var(--c-success); margin-right:.4rem; }
+  .inv-body{ padding: var(--s-5); display:flex; flex-direction:column; gap: var(--s-3); flex:1; }
+  .inv-title{
+    font-family:var(--f-display); font-weight:700; font-size: 1.0625rem; line-height:1.25;
+    letter-spacing:.02em; color: var(--c-spruce); text-transform:uppercase;
+    font-variation-settings:"opsz" 36, "SOFT" 30;
+  }
+  .inv-specs{ font:500 var(--t-sm)/1.4 var(--f-body); color: var(--c-text-muted); }
+  .inv-pricing{
+    display:flex; align-items:baseline; gap:var(--s-3);
+    padding-top: var(--s-3); border-top:1px dashed var(--c-rule-soft);
+  }
+  .inv-msrp{
+    font-size: var(--t-sm); color: var(--c-text-muted); text-decoration: line-through; text-decoration-color: var(--c-danger);
+  }
+  .inv-price{
+    font-family:var(--f-display); font-weight:700; font-size: 1.5rem; color: var(--c-brick);
+    font-variation-settings:"opsz" 96;
+  }
+  .inv-ctas{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); margin-top: var(--s-3); }
+  .inv-ctas .btn{ padding: .55rem .75rem; font-size: var(--t-xs); }
+  .inv-call{
+    grid-column: 1 / -1; text-align:center; font:700 var(--t-sm)/1.2 var(--f-body); color: var(--c-spruce); padding: var(--s-2);
+    border-top:1px dashed var(--c-rule-soft); margin-top:var(--s-2);
+  }
+  .inv-call a{ color: var(--c-brick); }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="promo">Spring clearance · save up to 35% on stocked inventory — limited builds available</div>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="left">Building experts since 1962 · Made in Aliquippa, PA</div>
+    <div class="right">
+      <span>We're here to help — call <a href="tel:18004442525">1-800-444-2525</a></span>
+      <span class="lang">EN · <a href="#" style="color: var(--c-bone);">ES</a></span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="02-homepage.html" class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">Bell Metal Buildings<small>Since 1962</small></span>
+    </a>
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="03-building-types.html">Building Types</a>
+      <a href="06-options-finishes.html">Options &amp; Finishes</a>
+      <a href="07-about.html">About</a>
+      <a href="17-resources-hub.html">Resources</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-outline btn-sm is-active" href="05-clearance-inventory.html" style="background:var(--c-spruce); color:var(--c-cream-ink);">Sale buildings</a>
+      <a class="btn btn-secondary btn-sm" href="08-contact.html">Contact</a>
+      <a class="btn btn-primary btn-sm" href="02-homepage.html#hero-quote">Free quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-banner">
+    <div class="wrap">
+      <div class="eyebrow on-dark">Ready-to-ship inventory</div>
+      <h1>Clearance <em>buildings</em></h1>
+      <p>Pre-engineered Bell kits already cut, coated, and stacked on the Aliquippa floor. Discounted off MSRP and ready to ship in 7–14 days. Make an offer or call our team — these move quickly.</p>
+    </div>
+  </section>
+
+  <div class="notice">Clearance buildings are sold as-engineered. Modifications outside posted specs require a quote from <a href="08-contact.html">our team</a>.</div>
+
+  <section class="section section-light">
+    <div class="container">
+
+      <div class="filter-bar">
+        <div><label>Category</label> <select><option>All categories</option><option>Garage</option><option>Workshop</option><option>Warehouse</option><option>Barndominium</option><option>Storage</option><option>Hangar</option></select></div>
+        <div><label>Size</label> <select><option>All sizes</option><option>Under 1,000 sq ft</option><option>1,000–3,000 sq ft</option><option>3,000–6,000 sq ft</option><option>6,000+ sq ft</option></select></div>
+        <div><label>Sort by</label> <select><option>Best discount</option><option>Lowest price</option><option>Largest first</option><option>Newest added</option></select></div>
+        <div style="margin-left:auto;"><span style="font:600 var(--t-xs)/1 var(--f-body); letter-spacing:.12em; text-transform:uppercase; color: var(--c-text-muted);">12 buildings · Page 1 of 3</span></div>
+      </div>
+
+      <div class="inv-grid">
+
+        <article class="inv-card">
+          <div class="inv-photo"><span class="save-pill">Save 32%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Garage · 3-bay</div>
+            <h3 class="inv-title">30 × 40 × 12 metal garage kit</h3>
+            <div class="inv-specs">Three 9×8 roll-ups · 1 walk door · Spruce roof / Bone walls · 30 lb snow / 115 mph wind</div>
+            <div class="inv-pricing">
+              <span class="inv-msrp">MSRP $24,900</span>
+              <span class="inv-price">$16,900</span>
+            </div>
+            <div class="inv-ctas">
+              <a class="btn btn-outline" href="04-garages-detail.html">View drawing</a>
+              <a class="btn btn-primary" href="08-contact.html">Make an offer</a>
+            </div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.22), rgba(15,39,36,.26)), repeating-linear-gradient(60deg, #c8be9e 0 14px, #b7ad8d 14px 28px);"><span class="save-pill">Save 28%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Workshop · Insulated</div>
+            <h3 class="inv-title">40 × 60 × 14 workshop kit</h3>
+            <div class="inv-specs">One 12×12 roll-up · 2 walk doors · Insulation pack · Onyx roof / Quarry walls · 35 lb / 115 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $44,500</span><span class="inv-price">$32,100</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(184,138,59,.20), rgba(15,39,36,.22)), repeating-linear-gradient(-30deg, #cabf9d 0 14px, #b9b08c 14px 28px);"><span class="save-pill">Save 35%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Warehouse · Clear-span</div>
+            <h3 class="inv-title">60 × 100 × 16 clear-span warehouse</h3>
+            <div class="inv-specs">Two 14×14 roll-ups · 1 dock-high · 1 walk · Spruce trim · 40 lb / 130 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $84,000</span><span class="inv-price">$54,600</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.28), rgba(168,54,42,.18)), repeating-linear-gradient(90deg, #c6bc9d 0 14px, #b6ac8c 14px 28px);"><span class="save-pill">Save 22%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Barn · Agriculture</div>
+            <h3 class="inv-title">40 × 80 × 14 cold-storage barn</h3>
+            <div class="inv-specs">Two 12×12 sliders · 2 walk doors · Forest roof / Bone walls · 40 lb / 115 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $42,300</span><span class="inv-price">$33,000</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.30), rgba(184,138,59,.20)), repeating-linear-gradient(135deg, #c4ba9c 0 14px, #b3a98c 14px 28px);"><span class="save-pill">Save 30%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Barndominium · Shell</div>
+            <h3 class="inv-title">40 × 80 × 16 barndominium shell</h3>
+            <div class="inv-specs">1 garage roll-up · 4 prep'd window openings · Spruce roof / Brick walls · 30 lb / 115 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $58,000</span><span class="inv-price">$40,600</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.20), rgba(184,138,59,.14)), repeating-linear-gradient(45deg, #ccc2a2 0 14px, #bbb190 14px 28px);"><span class="save-pill">Save 25%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Storage · Multi-bay</div>
+            <h3 class="inv-title">24 × 40 × 10 storage building</h3>
+            <div class="inv-specs">Four 8×8 roll-ups · 1 walk door · Bone roof / Onyx trim · 30 lb / 115 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $18,400</span><span class="inv-price">$13,800</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(184,138,59,.18), rgba(15,39,36,.22)), repeating-linear-gradient(-60deg, #c5bb9c 0 14px, #b4aa8c 14px 28px);"><span class="save-pill">Save 28%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Workshop · Compact</div>
+            <h3 class="inv-title">20 × 30 × 10 contractor workshop</h3>
+            <div class="inv-specs">One 10×8 roll-up · 1 walk · Slate roof / Bone walls · 25 lb / 115 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $12,800</span><span class="inv-price">$9,200</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.30), rgba(168,54,42,.16)), repeating-linear-gradient(75deg, #c3b99b 0 14px, #b2a88a 14px 28px);"><span class="save-pill">Save 24%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Hangar · Single</div>
+            <h3 class="inv-title">50 × 60 × 16 aircraft hangar</h3>
+            <div class="inv-specs">Bi-fold 40-foot hangar door · 1 walk · Quarry roof / Bone walls · 25 lb / 130 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $62,000</span><span class="inv-price">$47,100</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.16), rgba(15,39,36,.26)), repeating-linear-gradient(15deg, #c8be9b 0 14px, #b6ac8a 14px 28px);"><span class="save-pill">Save 18%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Garage · Single-bay</div>
+            <h3 class="inv-title">14 × 24 × 9 single-bay garage</h3>
+            <div class="inv-specs">One 8×8 roll-up · 1 walk · Onyx roof / Cloud walls · 30 lb / 115 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $7,500</span><span class="inv-price">$6,150</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(184,138,59,.14), rgba(15,39,36,.24)), repeating-linear-gradient(-15deg, #c0b698 0 14px, #aea58a 14px 28px);"><span class="save-pill">Save 32%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Arena · Riding</div>
+            <h3 class="inv-title">80 × 120 × 14 horse riding arena</h3>
+            <div class="inv-specs">Sliding 14×14 entry · 2 walk doors · Forest roof / Bone walls · 30 lb / 115 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $112,000</span><span class="inv-price">$76,200</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.18), rgba(184,138,59,.14)), repeating-linear-gradient(120deg, #ccc2a4 0 14px, #b8b092 14px 28px);"><span class="save-pill">Save 26%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Mini-storage · 10-unit</div>
+            <h3 class="inv-title">30 × 100 × 9 mini-storage building</h3>
+            <div class="inv-specs">Ten 8×7 roll-ups · Bone walls / Brick roof · 30 lb / 115 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $54,000</span><span class="inv-price">$40,000</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+        <article class="inv-card">
+          <div class="inv-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.24), rgba(184,138,59,.18)), repeating-linear-gradient(165deg, #bfb597 0 14px, #aea489 14px 28px);"><span class="save-pill">Save 21%</span><span class="stock-pill">In stock</span></div>
+          <div class="inv-body">
+            <div class="story-eyebrow">Commercial · Retail shell</div>
+            <h3 class="inv-title">50 × 80 × 14 commercial shell</h3>
+            <div class="inv-specs">Storefront opening · 2 walks · 1 12×14 roll-up · Brass trim · 35 lb / 130 mph</div>
+            <div class="inv-pricing"><span class="inv-msrp">MSRP $68,500</span><span class="inv-price">$54,100</span></div>
+            <div class="inv-ctas"><a class="btn btn-outline" href="04-garages-detail.html">View drawing</a><a class="btn btn-primary" href="08-contact.html">Make an offer</a></div>
+            <div class="inv-call">Or call: <a href="tel:18004442525">1-800-444-2525</a></div>
+          </div>
+        </article>
+
+      </div>
+
+      <nav class="pagination" aria-label="Inventory pagination">
+        <a href="#" class="is-active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#" class="next">Next ›</a>
+      </nav>
+
+      <p style="text-align:center; font-size:var(--t-sm); color:var(--c-text-muted);">All clearance prices are <span class="todo">pricing</span> placeholders. Don't see your size? <a href="02-homepage.html#hero-quote">Quote a custom build</a> instead.</p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="foot-h">Additional resources</div>
+      <ul class="foot-list">
+        <li><a href="03-building-types.html">Building types</a></li>
+        <li><a href="07-about.html">About Bell</a></li>
+        <li><a href="09-blog-index.html">Field journal</a></li>
+        <li><a href="17-resources-hub.html">Certifications &amp; resources</a></li>
+        <li><a href="13-warranty.html">Warranty</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Get in touch</div>
+      <div class="foot-contact">
+        <div class="row"><span class="icon">☎</span><div>Toll free<br><strong style="color:var(--c-bone)"><a href="tel:18004442525" style="color:inherit;">1-800-444-2525</a></strong></div></div>
+        <div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001</div></div>
+      </div>
+      <div class="foot-social"><a href="#">f</a><a href="#">ig</a><a href="#">in</a><a href="#">yt</a></div>
+    </div>
+    <div class="foot-help">
+      <div class="foot-h">How can we help?</div>
+      <a class="btn btn-secondary" href="08-contact.html">Contact us</a>
+      <a class="btn btn-primary" href="02-homepage.html#hero-quote">Get a free quote</a>
+    </div>
+  </div>
+  <div class="subfooter">© 2026 Bell Metal Buildings Co. · All rights reserved · <a href="14-privacy.html" style="color:inherit;">Privacy policy</a></div>
+</footer>
+
+<a class="q-tab" href="08-contact.html">Questions? Let's talk</a>
+
+</body>
+</html>

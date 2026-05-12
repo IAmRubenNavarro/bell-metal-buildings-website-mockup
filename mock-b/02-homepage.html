@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bell Metal Buildings — Pre-engineered steel building kits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+/* Homepage-specific */
+.home-hero{ min-height:640px }
+.home-hero .hero-photo{
+  background:
+    linear-gradient(105deg, rgba(8,17,28,.82) 0%, rgba(8,17,28,.4) 50%, rgba(8,17,28,0) 80%),
+    linear-gradient(160deg, #6d3d1c 0%, #2b1d12 60%, #1f1f24 100%);
+}
+.easy-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-5) }
+@media (max-width:900px){ .easy-grid{ grid-template-columns:1fr } }
+.easy-card{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  padding:24px; display:flex; flex-direction:column; gap:8px;
+}
+.easy-card h3{ text-transform:uppercase; letter-spacing:.02em; font-size:1.1rem }
+.easy-card p{ color:var(--b-text-muted); font-size:.92rem; margin:0 }
+.easy-card .link{ margin-top:6px; color:var(--b-conduit); font-weight:600; font-size:.9rem; display:inline-flex; gap:6px }
+.easy-card .link::after{ content:"›"; font-weight:700 }
+
+.type-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px }
+@media (max-width:1100px){ .type-grid{ grid-template-columns:repeat(3,1fr) } }
+@media (max-width:700px){ .type-grid{ grid-template-columns:repeat(2,1fr) } }
+.type-tile{
+  position:relative; aspect-ratio:4/5; border-radius:var(--r-md); overflow:hidden;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:18px; color:#fff; text-decoration:none;
+  background:linear-gradient(180deg, rgba(0,0,0,.0) 30%, rgba(0,0,0,.78) 100%),
+    linear-gradient(160deg, #2c4361, #0e1a2b);
+  transition:transform .15s;
+}
+.type-tile:hover{ transform:translateY(-3px); text-decoration:none; color:#fff }
+.type-tile.warm{ background:linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.8) 100%), linear-gradient(160deg, #c47b40, #4d2b13) }
+.type-tile.field{ background:linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.8) 100%), linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.type-tile.iron{ background:linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.8) 100%), linear-gradient(160deg, #5a6470, #1d2530) }
+.type-tile.sky{ background:linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.8) 100%), linear-gradient(160deg, #5e8aae, #1f3a55) }
+.type-tile.dusk{ background:linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.8) 100%), linear-gradient(160deg, #8a4f6e, #2b1d36) }
+.type-tile h3{ font-size:1.15rem; text-transform:uppercase; letter-spacing:.02em; margin-bottom:4px }
+.type-tile p{ font-size:.82rem; color:rgba(255,255,255,.85); margin:0; line-height:1.4 }
+.type-tile.cta{
+  background:var(--b-ember); justify-content:center; text-align:center;
+}
+.type-tile.cta h3{ font-size:1.2rem }
+.type-tile.cta .pip{ font-size:1.6rem; margin-bottom:6px; line-height:1 }
+.type-tile.cta:hover{ background:var(--b-ember-hover) }
+
+.blog-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-5) }
+@media (max-width:900px){ .blog-row{ grid-template-columns:1fr } }
+.blog-card{
+  display:flex; flex-direction:column; background:#fff;
+  border:1px solid var(--b-rule); border-radius:var(--r-md); overflow:hidden;
+  text-decoration:none; color:var(--b-text);
+}
+.blog-card:hover{ box-shadow:var(--sh-md); text-decoration:none }
+.blog-card .photo{
+  aspect-ratio: 16/9; position:relative;
+  background:linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.45)), linear-gradient(160deg, #2c4361, #0e1a2b);
+}
+.blog-card .photo.warm{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.45)), linear-gradient(160deg, #c47b40, #4d2b13) }
+.blog-card .photo.field{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.45)), linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.blog-card .body{ padding:18px 20px 22px; display:flex; flex-direction:column; gap:8px }
+.blog-card h3{ font-size:1.1rem; text-transform:uppercase; letter-spacing:.02em; line-height:1.2 }
+
+/* Section intros */
+.section-intro{ display:flex; justify-content:space-between; align-items:flex-end; gap:var(--s-5); margin-bottom:var(--s-6); flex-wrap:wrap }
+.section-intro .lede{ max-width:50ch }
+
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER (transparent over hero) ============ -->
+<header class="nav-transparent" style="position:absolute; top:0; left:0; right:0">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html">
+      <span class="brand-mark">B</span>
+      <span class="brand-stack">Bell Metal<small>Buildings Co.</small></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="./03-building-types.html">Buildings</a>
+      <a class="nav-link" href="./15-true-pricing.html">Pricing</a>
+      <a class="nav-link" href="./17-resources-hub.html">Resources</a>
+      <a class="nav-link" href="./11-testimonials.html">Reviews</a>
+    </div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero home-hero">
+  <div class="hero-photo"></div>
+  <div class="hero-inner">
+    <div>
+      <h1>Steel Building Kits<br>Built To Stand For Generations.</h1>
+      <p class="sub">Pre-engineered · Bolt-together · I-beam construction</p>
+      <p class="body">From compact garages to commercial warehouses, Bell Metal designs and ships engineered steel building kits anywhere in the lower 48. Quoted in minutes. American steel. Real people on the phone.</p>
+      <div class="ctas">
+        <button class="btn btn-primary btn-lg">Get My Price <span class="arrow">›</span></button>
+        <a class="btn btn-secondary btn-lg" href="./17-resources-hub.html">3D Designer</a>
+      </div>
+    </div>
+    <aside class="hero-testimonial">
+      <div class="photo"></div>
+      <div class="who">Rosa M.</div>
+      <div class="where">Garage — Pueblo, CO</div>
+      <span class="verified">Verified Customer</span>
+      <p class="quote" style="margin-top:10px">"Quote was clear, panels showed up clean, and the bolts lined up the first try. That doesn't happen with stick-built."</p>
+      <a class="btn-link" href="#" style="color:#fff">Get a quote ›</a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ REVIEWS BAND ============ -->
+<section class="reviews-band">
+  <div class="reviews-band-inner">
+    <h2>See why we're rated <em>(almost)</em> 5-stars</h2>
+    <div class="reviews-band-stats">
+      <div class="stat">
+        <span class="big">12,400+</span>
+        <span class="label"><span class="todo">verify count</span> · happy customers</span>
+      </div>
+      <div class="stat">
+        <div class="gold-stars">★★★★★</div>
+        <span class="label">4.9 out of 5</span>
+      </div>
+      <div class="stat">
+        <a class="btn btn-ghost on-dark" href="./11-testimonials.html">Read our reviews</a>
+        <span class="label" style="margin-top:8px"><a href="#" style="color:var(--b-text-invert-2)">Or browse customer stories ›</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL CAROUSEL ============ -->
+<section class="testimonial-band">
+  <div class="testimonial-band-inner">
+    <div class="section-intro" style="color:#fff">
+      <div>
+        <span class="eyebrow">Owner stories</span>
+        <h2 style="color:#fff">Builds standing today, owners speaking for them.</h2>
+      </div>
+      <a class="btn btn-ghost on-dark" href="./11-testimonials.html">All reviews</a>
+    </div>
+    <div class="tscroll" id="tscroll">
+      <article class="tcard"><div class="photo warm"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Quote was clear, panels showed up clean, and the bolts lined up the first try. That doesn't happen with stick-built."</p><div class="who"><strong>Rosa M.</strong> — Garage, Pueblo CO</div><span class="verified">Verified Customer</span></div></article>
+      <article class="tcard"><div class="photo"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Got three quotes; Bell was the only one who asked about my soil and snow zone before pricing. That earned the contract."</p><div class="who"><strong>D. Patel</strong> — Workshop, Boise ID</div><span class="verified">Verified Customer</span></div></article>
+      <article class="tcard"><div class="photo field"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Hay barn went up in a long weekend with three friends. Drawings were spot-on; haven't had a single leak."</p><div class="who"><strong>Wes B.</strong> — Ag building, Stillwater OK</div><span class="verified">Verified Customer</span></div></article>
+      <article class="tcard"><div class="photo iron"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"40×60 commercial shell, anchor bolts to roof line in seven weeks. PM stayed with us the whole way."</p><div class="who"><strong>J. Okafor</strong> — Commercial, Memphis TN</div><span class="verified">Verified Customer</span></div></article>
+      <article class="tcard"><div class="photo dusk"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Barndominium project. The engineer caught two code issues during pricing — saved us a re-permit."</p><div class="who"><strong>Lana W.</strong> — Barndominium, Bozeman MT</div><span class="verified">Verified Customer</span></div></article>
+      <article class="tcard"><div class="photo"></div><div class="body"><div class="stars">★★★★★</div><p class="quote">"Storage building for a small marina. Salt-air-rated coating, no rust streaks two winters in."</p><div class="who"><strong>Tomás R.</strong> — Storage, Annapolis MD</div><span class="verified">Verified Customer</span></div></article>
+    </div>
+    <div class="tscroll-ctrls">
+      <button aria-label="Previous" data-scroll="-1">‹</button>
+      <button aria-label="Next" data-scroll="1">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WE'LL MAKE IT EASY ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Six steps. No mystery.</span>
+        <h2>We'll make it easy. You make it yours.</h2>
+        <p class="lede">From the first phone call to the day the truck arrives, the process is fixed-price, fully engineered, and walked through by a real project manager.</p>
+      </div>
+    </div>
+    <div class="easy-grid">
+      <article class="easy-card">
+        <h3>01 · Pick a building type</h3>
+        <p>Browse the eight Bell building categories, or take the two-minute quiz if you're not sure.</p>
+        <a class="link" href="./03-building-types.html">Browse buildings</a>
+      </article>
+      <article class="easy-card">
+        <h3>02 · Configure your kit</h3>
+        <p>Size, doors, windows, insulation, roof pitch, color — all in the 3D Designer, no signup required.</p>
+        <a class="link" href="./17-resources-hub.html">Launch designer</a>
+      </article>
+      <article class="easy-card">
+        <h3>03 · Get an engineered quote</h3>
+        <p>Bell's engineers price to your county's snow, wind, and seismic loads — not to a sticker.</p>
+        <a class="link" href="#">Get my price</a>
+      </article>
+      <article class="easy-card">
+        <h3>04 · Lock the price</h3>
+        <p>Your quote holds for 30 days, even when the global steel index moves. <span class="todo">confirm hold-window</span></p>
+        <a class="link" href="./15-true-pricing.html">How pricing works</a>
+      </article>
+      <article class="easy-card">
+        <h3>05 · Take delivery</h3>
+        <p>Stamped drawings, anchor-bolt plan, and a sealed kit show up on one truck. PM stays with you.</p>
+        <a class="link" href="./16-our-advantage.html">Our advantage</a>
+      </article>
+      <article class="easy-card">
+        <h3>06 · Start building</h3>
+        <p>Self-erect with friends or hire a crew. Erection guides + a service line for the life of the building.</p>
+        <a class="link" href="./18-video-library.html">Watch a build</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHOOSE YOUR BUILDING TYPE ============ -->
+<section class="section" style="background:var(--b-paper-2)">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Browse by use case</span>
+        <h2>Choose Your Steel Building Type</h2>
+        <p class="lede">Bell Metal manufactures eight standard building categories — each engineered to your county codes. Don't see your use case? Click "Not sure" or "Custom build" and we'll start from your sketch.</p>
+      </div>
+      <a class="btn btn-ghost" href="./03-building-types.html">View all buildings</a>
+    </div>
+    <div class="type-grid">
+      <a class="type-tile" href="./04-garages-detail.html"><h3>Garages</h3><p>1–4 car · attached or detached · lean-tos</p></a>
+      <a class="type-tile warm" href="./04-garages-detail.html"><h3>Workshops</h3><p>Insulated · roll-up doors · clear-span</p></a>
+      <a class="type-tile field" href="./04-garages-detail.html"><h3>Barndominiums</h3><p>Hybrid living/working · 40–60′ widths</p></a>
+      <a class="type-tile iron" href="./04-garages-detail.html"><h3>Quonset</h3><p>Arch buildings · efficient cubic space</p></a>
+      <a class="type-tile sky" href="./04-garages-detail.html"><h3>Carports</h3><p>Open-air · vehicle, RV, boat covers</p></a>
+      <a class="type-tile dusk" href="./04-garages-detail.html"><h3>Container Covers</h3><p>Cantilever shelters over shipping containers</p></a>
+      <a class="type-tile" href="./04-garages-detail.html"><h3>Commercial</h3><p>Warehouses · retail · light-industrial</p></a>
+      <a class="type-tile field" href="./04-garages-detail.html"><h3>Storage</h3><p>Mini-storage · ag storage · cold storage</p></a>
+      <a class="type-tile cta" href="#"><div class="pip">?</div><h3>Not sure — help me</h3><p style="color:rgba(255,255,255,.85)">Two-minute quiz, then a price</p></a>
+      <a class="type-tile cta" style="background:var(--b-conduit)" href="#"><div class="pip">+</div><h3>Custom build</h3><p style="color:rgba(255,255,255,.85)">Start from your sketch or plans</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEEL VS CONVENTIONAL ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Why steel</span>
+        <h2>Steel Building vs. Traditional Construction</h2>
+      </div>
+    </div>
+    <div class="vs-block">
+      <div class="vs-card">
+        <div class="vs-col">
+          <h4>Bell Metal building system</h4>
+          <ul>
+            <li>Engineered for your county's loads</li>
+            <li>Fixed-price quote — no change orders</li>
+            <li>Bolt-together — self-erect or pro crew</li>
+            <li>50-yr rust / 40-yr paint warranty <span class="todo">confirm</span></li>
+            <li>Clear-span interior up to 200′</li>
+            <li>Project manager stays with you</li>
+          </ul>
+        </div>
+        <div class="vs-col bad">
+          <h4>Conventional stick-built</h4>
+          <ul>
+            <li>Site-cut framing — weather delays</li>
+            <li>T&amp;M pricing — change orders pile up</li>
+            <li>Load-bearing interior walls limit span</li>
+            <li>Often no manufacturer warranty</li>
+            <li>Wood frame — termite, rot, fire vulnerability</li>
+            <li>No factory engineering review</li>
+          </ul>
+        </div>
+      </div>
+      <div class="vs-photo"></div>
+    </div>
+    <div class="center" style="margin-top:var(--s-6)">
+      <button class="btn btn-primary btn-lg">Get your steel building quote today <span class="arrow">›</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOG TEASER ============ -->
+<section class="section" style="background:var(--b-paper-2)">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Gather good intel</span>
+        <h2>From the Bell Metal blog</h2>
+        <p class="lede">Plain-language guides on pricing, permitting, foundations, and the small choices that make a big building feel right.</p>
+      </div>
+      <a class="btn btn-ghost" href="./09-blog-index.html">More steel building tips ›</a>
+    </div>
+    <div class="blog-row">
+      <a class="blog-card" href="./10-blog-post.html">
+        <div class="photo"></div>
+        <div class="body">
+          <span class="tag blue">DIY</span>
+          <h3>How to build a steel building on a budget</h3>
+          <p class="muted" style="font-size:.92rem; margin:0">Six places to spend (and three places not to) when every dollar matters.</p>
+        </div>
+      </a>
+      <a class="blog-card" href="./10-blog-post.html">
+        <div class="photo warm"></div>
+        <div class="body">
+          <span class="tag blue">Design &amp; Budgeting</span>
+          <h3>What actually determines your steel price</h3>
+          <p class="muted" style="font-size:.92rem; margin:0">Hot-rolled-coil, snow zones, openings — the five variables that move the number.</p>
+        </div>
+      </a>
+      <a class="blog-card" href="./10-blog-post.html">
+        <div class="photo field"></div>
+        <div class="body">
+          <span class="tag blue">Construction</span>
+          <h3>Foundations 101 for first-time builders</h3>
+          <p class="muted" style="font-size:.92rem; margin:0">Slab vs. pier vs. floating — which fits your soil, your code, and your wallet.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHONE BAND ============ -->
+<section class="phone-band">
+  <div class="phone-band-inner">
+    <div class="lead">Call Now To Speak With A Building Consultant<small>Real human · No phone tree · Quote in minutes</small></div>
+    <div class="phone">
+      <div class="phone-icon">📞</div>
+      <a class="phone-num" href="tel:+15555550199">(555) 555-0199</a>
+    </div>
+    <a class="btn btn-ghost on-dark" href="#">Get My Free Quote</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col">
+        <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+        <p class="blurb">Pre-engineered steel buildings shipped to the lower 48. American steel. Sealed drawings. Real people on the phone.</p>
+        <p class="blurb"><a href="tel:+15555550199" style="color:#fff; font-family:var(--f-display); font-weight:700; font-size:1.1rem; letter-spacing:.02em">📞 (555) 555-0199</a></p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◧</a>
+          <a href="#" aria-label="YouTube">▷</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div><h4>Buildings</h4><ul>
+        <li><a href="./04-garages-detail.html">Garages</a></li>
+        <li><a href="./04-garages-detail.html">Workshops</a></li>
+        <li><a href="./04-garages-detail.html">Barndominiums</a></li>
+        <li><a href="./04-garages-detail.html">Quonset</a></li>
+        <li><a href="./04-garages-detail.html">Commercial</a></li>
+        <li><a href="./03-building-types.html">All building types</a></li>
+      </ul></div>
+      <div><h4>Resources</h4><ul>
+        <li><a href="./17-resources-hub.html">Complete guide</a></li>
+        <li><a href="./17-resources-hub.html">3D Designer</a></li>
+        <li><a href="./19-brochure.html">Brochures</a></li>
+        <li><a href="./18-video-library.html">Video library</a></li>
+        <li><a href="./12-faq-resources.html">FAQs</a></li>
+        <li><a href="./09-blog-index.html">Blog</a></li>
+      </ul></div>
+      <div><h4>Company</h4><ul>
+        <li><a href="./07-about.html">About Bell</a></li>
+        <li><a href="./16-our-advantage.html">Our advantage</a></li>
+        <li><a href="./13-warranty.html">Warranty</a></li>
+        <li><a href="./15-true-pricing.html">True pricing</a></li>
+        <li><a href="#">Customer stories</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul></div>
+      <div><h4>Connect</h4><ul>
+        <li><a href="./08-contact.html">Contact us</a></li>
+        <li><a href="./12-faq-resources.html">Help desk</a></li>
+        <li><a href="#">Newsroom</a></li>
+        <li><a href="#">Brand center</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Bell Metal Buildings Co. <span class="todo">confirm legal entity</span></span>
+      <ul>
+        <li><a href="./14-privacy.html">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Sitemap</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY UTILITY BAR ============ -->
+<div class="util-bar">
+  <div class="util-bar-inner">
+    <span class="lead">Start here: <em>Price your building in minutes</em></span>
+    <a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a>
+  </div>
+</div>
+
+<script>
+// Testimonial carousel scroll
+const tscroll = document.getElementById('tscroll');
+document.querySelectorAll('[data-scroll]').forEach(b => {
+  b.addEventListener('click', () => {
+    if (!tscroll) return;
+    tscroll.scrollBy({ left: parseInt(b.dataset.scroll) * 340, behavior:'smooth' });
+  });
+});
+</script>
+</body>
+</html>

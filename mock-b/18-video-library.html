@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Video Library — Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+.vid-layout{ display:grid; grid-template-columns:1fr 360px; gap:var(--s-7) }
+@media (max-width:1000px){ .vid-layout{ grid-template-columns:1fr } }
+
+.featured-video{
+  aspect-ratio:16/9; border-radius:var(--r-md); overflow:hidden;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 50%),
+    linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.45)),
+    linear-gradient(160deg, #2c4361, #0e1a2b);
+  position:relative; display:grid; place-items:center;
+}
+.play{
+  width:84px; height:84px; border-radius:999px; background:rgba(255,255,255,.92);
+  color:var(--b-ember); font-size:2.2rem; display:grid; place-items:center;
+  font-family:var(--f-display); font-weight:700; padding-left:6px;
+}
+.featured-meta{ margin-top:var(--s-4) }
+.featured-meta h2{ text-transform:uppercase; letter-spacing:.02em; margin-bottom:6px }
+.featured-meta .runtime{ color:var(--b-text-muted); font-size:.9rem }
+
+.vid-list{ display:flex; flex-direction:column; gap:14px }
+.vid-row{
+  display:grid; grid-template-columns:140px 1fr; gap:14px;
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md); overflow:hidden;
+  cursor:pointer; text-decoration:none; color:var(--b-text);
+}
+.vid-row:hover{ box-shadow:var(--sh-md); text-decoration:none }
+.vid-row .thumb{
+  aspect-ratio:4/3; position:relative;
+  background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.4)), linear-gradient(160deg, #2c4361, #0e1a2b);
+}
+.vid-row .thumb.a{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.4)), linear-gradient(160deg, #c47b40, #4d2b13) }
+.vid-row .thumb.b{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.4)), linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.vid-row .thumb.c{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.4)), linear-gradient(160deg, #5a6470, #1d2530) }
+.vid-row .thumb.d{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.4)), linear-gradient(160deg, #8a4f6e, #2b1d36) }
+.vid-row .thumb::after{
+  content:"▶"; position:absolute; right:8px; bottom:8px;
+  color:#fff; background:rgba(8,17,28,.7); width:28px; height:28px;
+  border-radius:999px; display:grid; place-items:center; font-size:.75rem;
+}
+.vid-row .body{ padding:12px 12px 12px 0; display:flex; flex-direction:column; gap:4px; justify-content:center }
+.vid-row h3{ font-size:1rem; text-transform:uppercase; letter-spacing:.02em }
+.vid-row .meta{ font-size:.8rem; color:var(--b-text-muted) }
+
+.chapter-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:var(--s-7) }
+@media (max-width:900px){ .chapter-grid{ grid-template-columns:1fr } }
+</style>
+</head>
+<body>
+
+<header class="nav-solid">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+    <div class="nav-links"><a class="nav-link" href="./03-building-types.html">Buildings</a><a class="nav-link" href="./15-true-pricing.html">Pricing</a><a class="nav-link" href="./17-resources-hub.html">Resources</a><a class="nav-link" href="./11-testimonials.html">Reviews</a></div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<section class="banner">
+  <div class="banner-inner">
+    <h1>Bell Metal Video Library</h1>
+    <p class="lede">Erection walkthroughs, build timelapses, and conversations with customers — recorded on real Bell job sites, not staged.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary btn-lg" href="#">Get My Price <span class="arrow">›</span></a>
+      <a class="btn btn-secondary btn-lg" href="./19-brochure.html">Get the brochures</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="vid-layout">
+      <!-- Featured video -->
+      <div>
+        <div class="featured-video">
+          <div class="play">▶</div>
+        </div>
+        <div class="featured-meta">
+          <span class="eyebrow">Featured</span>
+          <h2>How a 40×60 Workshop Goes Up In A Weekend</h2>
+          <p class="runtime">14:32 · Filmed Boise, ID · D. Patel build</p>
+          <p>Time-lapse and step-by-step on a real 40×60 workshop erection — three people, three days, one truck. Voiceover by the Bell PM who delivered the kit.</p>
+        </div>
+      </div>
+
+      <!-- Right rail: video list -->
+      <aside class="vid-list">
+        <a class="vid-row" href="#"><div class="thumb a"></div><div class="body"><h3>Anchor bolt set, walked through</h3><span class="meta">6:18 · How-to</span></div></a>
+        <a class="vid-row" href="#"><div class="thumb b"></div><div class="body"><h3>Reading your sealed drawings</h3><span class="meta">11:04 · How-to</span></div></a>
+        <a class="vid-row" href="#"><div class="thumb c"></div><div class="body"><h3>Quonset arch erection — 11 days</h3><span class="meta">22:40 · Timelapse</span></div></a>
+        <a class="vid-row" href="#"><div class="thumb d"></div><div class="body"><h3>Foundations 101 — three options compared</h3><span class="meta">17:55 · Guide</span></div></a>
+        <a class="vid-row" href="#"><div class="thumb"></div><div class="body"><h3>Insulation packages — what you actually need</h3><span class="meta">9:12 · Guide</span></div></a>
+        <a class="vid-row" href="#"><div class="thumb a"></div><div class="body"><h3>Customer talk: Rosa M. on her 3-car garage</h3><span class="meta">8:48 · Interview</span></div></a>
+      </aside>
+    </div>
+
+    <!-- Chapter-style stack -->
+    <h2 style="text-transform:uppercase; margin-top:var(--s-8); border-bottom:3px solid var(--b-ember); padding-bottom:6px; display:inline-block">Browse by topic</h2>
+    <div class="chapter-grid">
+      <a class="icon-card" href="#"><div class="ic">▶</div><h3>Build Timelapses</h3><p>Six full builds compressed into the highlight reel. Garage, workshop, ag, commercial, barndo, Quonset.</p><span class="btn-link">Watch all ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">⚒</div><h3>Erection How-Tos</h3><p>Ten how-to videos covering anchor bolt set, primary frame, secondary framing, panels, doors, trim.</p><span class="btn-link">Watch all ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">👤</div><h3>Customer Interviews</h3><p>Twelve owners walking through what they ordered, what they ran into, and what they'd do again.</p><span class="btn-link">Watch all ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">📐</div><h3>Engineering Deep-Dives</h3><p>Bell engineers explain how snow zone, wind exposure, and seismic loads end up in your drawings.</p><span class="btn-link">Watch all ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">$</div><h3>Pricing &amp; Buying</h3><p>How a Bell quote is built, how the steel index moves it, and what's never inside the number.</p><span class="btn-link">Watch all ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">🎓</div><h3>Steel Buildings 101</h3><p>Twenty-minute primer on red iron, cold-formed framing, panel gauges, and warranty mechanics.</p><span class="btn-link">Watch all ›</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="phone-band">
+  <div class="phone-band-inner">
+    <div class="lead">Want a video walkthrough on your build?<small>We'll do a live call with your project on-screen.</small></div>
+    <div class="phone"><div class="phone-icon">📞</div><a class="phone-num" href="tel:+15555550199">(555) 555-0199</a></div>
+    <a class="btn btn-ghost on-dark" href="#">Get My Free Quote</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col"><a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a><p class="blurb">Pre-engineered steel buildings shipped to the lower 48.</p><div class="social-row"><a href="#">f</a><a href="#">◧</a><a href="#">▷</a><a href="#">in</a></div></div>
+      <div><h4>Buildings</h4><ul><li><a href="./04-garages-detail.html">Garages</a></li><li><a href="./03-building-types.html">All types</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="./17-resources-hub.html">Resources</a></li><li><a href="./18-video-library.html">Video library</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="./07-about.html">About</a></li><li><a href="./13-warranty.html">Warranty</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="./08-contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-legal"><span>© 2026 Bell Metal Buildings Co.</span><ul><li><a href="./14-privacy.html">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="util-bar"><div class="util-bar-inner"><span class="lead">Done watching? <em>Get a price next</em></span><a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a></div></div>
+
+</body>
+</html>

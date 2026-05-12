@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact — Bell Metal Buildings</title>
+<meta name="description" content="Talk to a real Bell engineer about your steel building project. Phone, address, and a long-form quote request form." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .contact-body{ padding: var(--s-9) var(--s-5); background: var(--c-bone); }
+  .contact-body .wrap{ max-width: var(--container); margin: 0 auto; display:grid; grid-template-columns: 1fr 1.4fr; gap: var(--s-8); align-items: flex-start; }
+  @media (max-width:900px){ .contact-body .wrap{ grid-template-columns: 1fr; } }
+  .info-col h2{ font-size: var(--t-h1); margin-bottom: var(--s-4); }
+  .info-col .row{ display:flex; gap:var(--s-3); align-items:flex-start; padding: var(--s-3) 0; border-bottom: 1px dashed var(--c-rule-soft); }
+  .info-col .icon{
+    width:36px; height:36px; flex:0 0 auto; border-radius: 50%;
+    background: var(--c-spruce); color: var(--c-brass-soft);
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:var(--f-display); font-weight:700; font-size:.9rem;
+  }
+  .info-col strong{ color: var(--c-spruce); display:block; }
+  .info-col a{ color: var(--c-brick); }
+  .info-col .connect-h{
+    font:700 var(--t-eyebrow)/1 var(--f-body); letter-spacing:var(--tr-eyebrow); text-transform:uppercase;
+    color: var(--c-brass-hover); margin: var(--s-6) 0 var(--s-3);
+  }
+  .info-col .social{ display:flex; gap: var(--s-2); }
+  .info-col .social a{
+    width:40px; height:40px; border-radius: var(--r-sm);
+    background: var(--c-spruce); color: var(--c-brass-soft);
+    display:inline-flex; align-items:center; justify-content:center; font-family:var(--f-display); font-weight:700;
+  }
+
+  .form-card{ background: var(--c-paper); border:1px solid var(--c-rule); border-radius: var(--r-md); padding: var(--s-7); box-shadow: var(--sh-card); }
+  .form-card .intro-h{
+    font:600 var(--t-eyebrow)/1.2 var(--f-body); letter-spacing:.16em; text-transform:uppercase;
+    color: var(--c-spruce); margin-bottom: var(--s-2);
+  }
+  .form-card .urgent{ font:600 var(--t-sm)/1.5 var(--f-body); color: var(--c-text-muted); margin-bottom: var(--s-6); }
+  .form-section{ padding-top: var(--s-5); margin-top: var(--s-5); border-top: 1px dashed var(--c-rule-soft); }
+  .form-section h4{ font: 600 var(--t-eyebrow)/1.2 var(--f-body); letter-spacing:.16em; text-transform:uppercase; color: var(--c-brass-hover); margin-bottom: var(--s-3); }
+  .form-grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+  @media (max-width:560px){ .form-grid-2{ grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="left">Building experts since 1962 · Made in Aliquippa, PA</div>
+    <div class="right">
+      <span>We're here to help — call <a href="tel:18004442525">1-800-444-2525</a></span>
+      <span class="lang">EN · <a href="#" style="color: var(--c-bone);">ES</a></span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="02-homepage.html" class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">Bell Metal Buildings<small>Since 1962</small></span>
+    </a>
+    <nav class="primary-nav">
+      <a href="03-building-types.html">Building Types</a>
+      <a href="06-options-finishes.html">Options &amp; Finishes</a>
+      <a href="07-about.html">About</a>
+      <a href="17-resources-hub.html">Resources</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-outline btn-sm" href="05-clearance-inventory.html">Sale buildings</a>
+      <a class="btn btn-secondary btn-sm is-active" href="08-contact.html" style="background:var(--c-brick); color:var(--c-cream-ink);">Contact</a>
+      <a class="btn btn-primary btn-sm" href="02-homepage.html#hero-quote">Free quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-banner">
+    <div class="wrap">
+      <div class="eyebrow on-dark">Contact us</div>
+      <h1>We're standing by, <em>ready to help</em></h1>
+      <p>Call our team, walk in to the factory by appointment, or send the form below — every inquiry routes to a real Bell engineer, not a contact-center.</p>
+    </div>
+  </section>
+
+  <section class="contact-body">
+    <div class="wrap">
+
+      <aside class="info-col">
+        <h2>Get in touch</h2>
+        <div class="row"><span class="icon">☎</span><div><strong>Toll free</strong><a href="tel:18004442525">1-800-444-2525</a><div style="font-size:var(--t-xs); color: var(--c-text-faint);">Mon–Fri · 7am–6pm Eastern</div></div></div>
+        <div class="row"><span class="icon">@</span><div><strong>Quotes &amp; engineering</strong><a href="mailto:quotes@bellmetalbuildings.example">quotes@bellmetalbuildings.example</a> <span class="todo">email</span></div></div>
+        <div class="row"><span class="icon">⌖</span><div><strong>Factory &amp; showroom</strong>2200 Furnace Road<br>Aliquippa, PA 15001 <span class="todo">address</span><div style="font-size:var(--t-xs); color: var(--c-text-faint); margin-top:.25rem;">By appointment — call ahead</div></div></div>
+
+        <div class="connect-h">Let's connect</div>
+        <div class="social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">yt</a>
+        </div>
+
+        <div style="margin-top:var(--s-7); padding: var(--s-5); background: var(--c-paper); border:1px solid var(--c-rule); border-radius: var(--r-md);">
+          <div class="eyebrow" style="margin-bottom: var(--s-3);">Faster than a form?</div>
+          <p style="margin: 0 0 var(--s-3); color: var(--c-text-muted); font-size: var(--t-sm);">For urgent project questions, call the toll-free line and ask for engineering. Forms are answered next business day.</p>
+          <a class="btn btn-primary btn-sm" href="tel:18004442525">Call 1-800-444-2525</a>
+        </div>
+      </aside>
+
+      <form class="form-card" onsubmit="event.preventDefault(); alert('Production: posts to CRM.');">
+        <div class="intro-h">Please enter a few details and we'll get back to you</div>
+        <p class="urgent">To speak with us immediately, call <a href="tel:18004442525">1-800-444-2525</a>.</p>
+
+        <div class="field"><label for="qc">Questions or comments</label><textarea id="qc" class="textarea" rows="4" placeholder="Tell us what you're building and where it'll go."></textarea></div>
+
+        <div class="form-section">
+          <h4>Building details</h4>
+          <div class="input-row">
+            <div class="field"><label>Width (ft)</label><input class="input" placeholder="—" /></div>
+            <div class="field"><label>Length (ft)</label><input class="input" placeholder="—" /></div>
+            <div class="field"><label>Height (ft)</label><input class="input" placeholder="—" /></div>
+          </div>
+          <div class="form-grid-2" style="margin-top: var(--s-3);">
+            <div class="field"><label>State</label>
+              <select class="select">
+                <option>—</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option><option>—</option><option>District of Columbia</option><option>Puerto Rico</option><option>U.S. Virgin Islands</option><option>Guam</option><option>American Samoa</option><option>Armed Forces Americas</option><option>Armed Forces Europe</option><option>Armed Forces Pacific</option>
+              </select>
+            </div>
+            <div class="field"><label>Zip code</label><input class="input" placeholder="—" /></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4>How do we get in touch?</h4>
+          <div class="form-grid-2">
+            <div class="field"><label>First name</label><input class="input" /></div>
+            <div class="field"><label>Last name</label><input class="input" /></div>
+          </div>
+          <div class="form-grid-2" style="margin-top: var(--s-3);">
+            <div class="field"><label>Email</label><input class="input" type="email" /></div>
+            <div class="field"><label>Phone</label>
+              <div class="phone-with-flag"><span class="flag">+1</span><input class="input" type="tel" /></div>
+            </div>
+          </div>
+        </div>
+
+        <label class="checkbox" style="margin-top: var(--s-6);"><input type="checkbox" checked /> Send me Bell's monthly Field Journal newsletter (no spam, unsubscribe anytime).</label>
+
+        <p style="font-size: var(--t-xs); color: var(--c-text-faint); margin-top: var(--s-4);">By submitting this form you agree to our <a href="14-privacy.html">privacy policy</a>. <span class="todo">captcha</span> Production: reCAPTCHA enterprise here.</p>
+
+        <button class="btn btn-primary btn-lg" type="submit" style="margin-top: var(--s-5); width:100%;">Send my request</button>
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="foot-h">Additional resources</div>
+      <ul class="foot-list">
+        <li><a href="03-building-types.html">Building types</a></li>
+        <li><a href="07-about.html">About Bell</a></li>
+        <li><a href="09-blog-index.html">Field journal</a></li>
+        <li><a href="17-resources-hub.html">Certifications &amp; resources</a></li>
+        <li><a href="13-warranty.html">Warranty</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Get in touch</div>
+      <div class="foot-contact">
+        <div class="row"><span class="icon">☎</span><div>Toll free<br><strong style="color:var(--c-bone)"><a href="tel:18004442525" style="color:inherit;">1-800-444-2525</a></strong></div></div>
+        <div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001</div></div>
+      </div>
+      <div class="foot-social"><a href="#">f</a><a href="#">ig</a><a href="#">in</a><a href="#">yt</a></div>
+    </div>
+    <div class="foot-help">
+      <div class="foot-h">How can we help?</div>
+      <a class="btn btn-secondary" href="08-contact.html">Contact us</a>
+      <a class="btn btn-primary" href="02-homepage.html#hero-quote">Get a free quote</a>
+    </div>
+  </div>
+  <div class="subfooter">© 2026 Bell Metal Buildings Co. · All rights reserved · <a href="14-privacy.html" style="color:inherit;">Privacy policy</a></div>
+</footer>
+
+</body>
+</html>

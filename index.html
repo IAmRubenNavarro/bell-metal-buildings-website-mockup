@@ -1,286 +1,429 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bell Metal Buildings — Design Direction Catalog</title>
-	<meta name="description" content="Design direction options for the Bell Metal Buildings website. Click through to compare.">
-	<style>
-		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-		body {
-			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-			color: #1a1a1a;
-			background: #ffffff;
-			line-height: 1.6;
-			-webkit-font-smoothing: antialiased;
-		}
-		.skip-link {
-			position: absolute; top: -100%; left: 0; padding: 0.75rem 1rem;
-			background: #1a1a1a; color: #fff; text-decoration: none; z-index: 999;
-		}
-		.skip-link:focus { top: 0; }
-		:focus-visible { outline: 2px solid #1a1a1a; outline-offset: 2px; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bell Metal Buildings — Concept Review</title>
+<meta name="description" content="Three website concept directions for Bell Metal Buildings Co. — Charcoal+Bronze, Indigo+Ember, and Spruce+Brick heritage editorial. 19 pages per direction." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+<style>
+	* { box-sizing: border-box; }
+	html, body { margin: 0; padding: 0; }
+	body {
+		font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+		font-size: 16px;
+		line-height: 1.6;
+		color: #1a1a1a;
+		background: #f7f5f0;
+		-webkit-font-smoothing: antialiased;
+	}
+	h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+	a { color: inherit; }
 
-		main { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
-		.page-header { margin-bottom: 3rem; }
-		.page-header h1 { font-size: 2rem; margin-bottom: 0.5rem; font-weight: 700; }
-		.subtitle { font-size: 1.125rem; color: #6c757d; margin-bottom: 1.5rem; }
-		.brief { font-size: 0.9375rem; color: #495057; line-height: 1.7; max-width: 65ch; }
+	.container { max-width: 1200px; margin: 0 auto; padding-inline: 24px; }
 
-		.directions { display: flex; flex-direction: column; gap: 1rem; }
-		.direction-card {
-			display: block;
-			border: 1px solid #dee2e6;
-			padding: 1.5rem;
-			text-decoration: none;
-			color: inherit;
-			transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
-		}
-		.direction-card:hover {
-			transform: translateY(-2px);
-			border-color: #1a1a1a;
-			box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-		}
-		.direction-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
-		.palette-chips { display: flex; gap: 4px; flex-shrink: 0; }
-		.palette-chip { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
-		.direction-name { font-size: 1.125rem; font-weight: 700; flex-grow: 1; }
-		.view-link { font-size: 0.875rem; color: #1a1a1a; }
-		.direction-concept { font-size: 0.9375rem; color: #495057; }
+	header {
+		background: #1a1a1a;
+		color: #f7f5f0;
+		padding: 56px 0 64px;
+		border-bottom: 4px solid #b88a3b;
+	}
+	header .container { display: flex; flex-direction: column; gap: 16px; }
+	.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #b88a3b; }
+	h1 { font-size: clamp(2rem, 3vw + 1rem, 3.5rem); line-height: 1.05; color: #ffffff; max-width: 22ch; }
+	header p { color: rgba(255,255,255,0.78); max-width: 64ch; font-size: 1.05rem; margin: 0; }
+	.header-meta { color: rgba(255,255,255,0.55); font-size: 13px; margin-top: 8px; }
 
-		.earlier-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid #dee2e6; }
-		.earlier-section h2 { font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 700; }
-		.earlier-intro { font-size: 0.9375rem; color: #495057; line-height: 1.7; max-width: 65ch; margin-bottom: 1.5rem; }
-		.earlier-section .direction-name { font-size: 1rem; }
-	</style>
+	main { padding: 64px 0 80px; }
+
+	.intro { max-width: 64ch; margin-bottom: 56px; }
+	.intro h2 { font-size: clamp(1.5rem, 1.5vw + 1rem, 2rem); margin-bottom: 12px; }
+	.intro p { color: #555; margin: 0; }
+
+	.mocks { display: grid; grid-template-columns: 1fr; gap: 32px; }
+	@media (min-width: 900px) { .mocks { grid-template-columns: repeat(3, 1fr); } }
+
+	.mock-card {
+		background: #ffffff;
+		border: 1px solid #e4dfd2;
+		border-radius: 12px;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		box-shadow: 0 2px 12px rgba(15,39,36,0.05);
+		transition: transform .15s, box-shadow .15s;
+	}
+	.mock-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(15,39,36,0.12); }
+
+	.mock-cover {
+		aspect-ratio: 4 / 3;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 24px;
+		color: #ffffff;
+	}
+	.mock-cover .letter {
+		font-family: 'Fraunces', serif;
+		font-size: 84px;
+		font-weight: 700;
+		line-height: 1;
+		text-shadow: 0 4px 24px rgba(0,0,0,0.2);
+	}
+	.mock-cover .cover-title {
+		font-family: 'Fraunces', serif;
+		font-size: 22px;
+		font-weight: 600;
+		max-width: 16ch;
+		line-height: 1.2;
+	}
+	.mock-cover .cover-tag {
+		display: inline-block;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		padding: 4px 10px;
+		border-radius: 999px;
+		align-self: flex-start;
+		background: rgba(255,255,255,0.18);
+		backdrop-filter: blur(8px);
+	}
+
+	.cover-a { background: linear-gradient(135deg, #18181b 0 60%, #b87333 100%); }
+	.cover-b { background: linear-gradient(135deg, #0e1a2b 0 50%, #e26432 100%); }
+	.cover-c { background: linear-gradient(135deg, #0f2724 0 55%, #a8362a 100%); }
+
+	.swatches { display: flex; gap: 6px; margin-top: 12px; }
+	.swatch {
+		width: 28px; height: 28px; border-radius: 6px;
+		border: 1px solid rgba(255,255,255,0.4);
+		box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+	}
+
+	.mock-body { padding: 24px 24px 28px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+	.mock-body h3 { font-size: 22px; }
+	.mock-meta { font-size: 13px; color: #777; font-weight: 500; letter-spacing: 0.04em; }
+	.mock-body p { font-size: 14px; color: #444; margin: 0; }
+
+	.entry-points { margin-top: 8px; padding-top: 16px; border-top: 1px dashed #d8d2c4; }
+	.entry-points-label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #777; margin-bottom: 8px; }
+	.entry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 13px; }
+	.entry-grid a {
+		text-decoration: none; color: #1a1a1a;
+		padding: 6px 8px;
+		border-radius: 4px;
+		transition: background .12s;
+	}
+	.entry-grid a:hover { background: #f5efe2; color: #a8362a; }
+	.entry-grid a.primary { font-weight: 600; }
+
+	.btn-row { display: flex; gap: 8px; margin-top: 14px; }
+	.btn {
+		display: inline-flex; align-items: center; gap: 6px;
+		padding: 10px 16px;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-decoration: none;
+		border-radius: 6px;
+		transition: background .12s, color .12s;
+	}
+	.btn-primary { background: #1a1a1a; color: #ffffff; }
+	.btn-primary:hover { background: #b88a3b; color: #1a1a1a; }
+	.btn-ghost { background: transparent; color: #1a1a1a; border: 1px solid #d8d2c4; }
+	.btn-ghost:hover { border-color: #1a1a1a; background: #f5efe2; }
+
+	.full-list-toggle {
+		display: block; margin-top: 12px;
+		font-size: 12px; font-weight: 600;
+		text-decoration: none;
+		color: #777;
+		cursor: pointer;
+		text-align: center;
+	}
+	.full-list-toggle:hover { color: #1a1a1a; }
+	details > summary { list-style: none; cursor: pointer; }
+	details > summary::-webkit-details-marker { display: none; }
+	details[open] .full-list-toggle::after { content: " ▾"; }
+	details:not([open]) .full-list-toggle::after { content: " ▸"; }
+
+	.all-pages {
+		margin-top: 12px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4px;
+		font-size: 12px;
+	}
+	.all-pages a {
+		text-decoration: none;
+		color: #555;
+		padding: 4px 8px;
+		border-radius: 4px;
+	}
+	.all-pages a:hover { background: #f5efe2; color: #a8362a; }
+
+	.notes {
+		margin-top: 80px;
+		padding: 32px;
+		background: #ffffff;
+		border: 1px solid #e4dfd2;
+		border-left: 4px solid #b88a3b;
+		border-radius: 8px;
+	}
+	.notes h3 { font-size: 18px; margin-bottom: 12px; }
+	.notes ul { margin: 0; padding-left: 20px; color: #555; font-size: 14px; }
+	.notes li { margin-bottom: 6px; }
+
+	footer {
+		background: #1a1a1a;
+		color: rgba(255,255,255,0.55);
+		padding: 32px 0;
+		font-size: 13px;
+		margin-top: 64px;
+	}
+	footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+</style>
 </head>
 <body>
-	<a href="#main" class="skip-link">Skip to content</a>
-	<main id="main">
-		<header class="page-header">
-			<h1>Bell Metal Buildings</h1>
-			<p class="subtitle">Pick a design direction</p>
-			<p class="brief">Six complete takes on the same business — colors, typography, layout, voice. Click through to compare. The winning direction gets expanded into a full site.</p>
-		</header>
-		<nav class="directions" aria-label="Design directions">
-			<a href="toro/home.html" class="direction-card">
-				<div class="direction-card-header">
-					<div class="palette-chips" aria-hidden="true">
-						<span class="palette-chip" style="background:#0A1F3D"></span>
-						<span class="palette-chip" style="background:#D8362F"></span>
-						<span class="palette-chip" style="background:#2A2A2A"></span>
-						<span class="palette-chip" style="background:#E8EAEE"></span>
-					</div>
-					<span class="direction-name">Bold &amp; Direct</span>
-					<span class="view-link">View →</span>
-				</div>
-				<p class="direction-concept">Navy and red. Built to push visitors toward getting a quote.</p>
-			</a>
 
-			<a href="editorial/home.html" class="direction-card">
-				<div class="direction-card-header">
-					<div class="palette-chips" aria-hidden="true">
-						<span class="palette-chip" style="background:#F4EFE6"></span>
-						<span class="palette-chip" style="background:#2E3D2A"></span>
-						<span class="palette-chip" style="background:#B45A3C"></span>
-						<span class="palette-chip" style="background:#1A1A1A"></span>
-					</div>
-					<span class="direction-name">Editorial &amp; Premium</span>
-					<span class="view-link">View →</span>
-				</div>
-				<p class="direction-concept">Magazine-style with serif type and large photography. Premium positioning.</p>
-			</a>
+<header>
+	<div class="container">
+		<span class="eyebrow">Bell Metal Buildings Co. · Working name</span>
+		<h1>Three website concept directions</h1>
+		<p>Visual mockups for client review. Each direction is a full 19-page website — homepage, design system, building catalog, all content surfaces. Browse on any device; tap into the pages you want to walk through together.</p>
+		<p class="header-meta">Prepared by Ruben Navarro · May 2026 · Placeholder copy and gradient imagery; real photography, legal copy, and final brand decisions pending.</p>
+	</div>
+</header>
 
-			<a href="technical/home.html" class="direction-card">
-				<div class="direction-card-header">
-					<div class="palette-chips" aria-hidden="true">
-						<span class="palette-chip" style="background:#F2F2EE"></span>
-						<span class="palette-chip" style="background:#1B2B4A"></span>
-						<span class="palette-chip" style="background:#F5C518"></span>
-						<span class="palette-chip" style="background:#101010"></span>
-					</div>
-					<span class="direction-name">Engineering Catalog</span>
-					<span class="view-link">View →</span>
-				</div>
-				<p class="direction-concept">Spec-sheet feel built to win engineers and procurement buyers.</p>
-			</a>
+<main>
+	<div class="container">
 
-			<a href="heritage/home.html" class="direction-card">
-				<div class="direction-card-header">
-					<div class="palette-chips" aria-hidden="true">
-						<span class="palette-chip" style="background:#EDE6D6"></span>
-						<span class="palette-chip" style="background:#7A2A1F"></span>
-						<span class="palette-chip" style="background:#2F4A2E"></span>
-						<span class="palette-chip" style="background:#A88752"></span>
-					</div>
-					<span class="direction-name">Heritage &amp; Trust</span>
-					<span class="view-link">View →</span>
-				</div>
-				<p class="direction-concept">Warm, story-driven. Family ownership and craftsmanship.</p>
-			</a>
-
-			<a href="configurator/home.html" class="direction-card">
-				<div class="direction-card-header">
-					<div class="palette-chips" aria-hidden="true">
-						<span class="palette-chip" style="background:#F8F9FA"></span>
-						<span class="palette-chip" style="background:#E9ECEF"></span>
-						<span class="palette-chip" style="background:#0A0A0A"></span>
-						<span class="palette-chip" style="background:#1098AD"></span>
-					</div>
-					<span class="direction-name">Interactive Configurator</span>
-					<span class="view-link">View →</span>
-				</div>
-				<p class="direction-concept">Customers configure their building right on the homepage.</p>
-			</a>
-
-			<a href="wordpress/home.html" class="direction-card">
-				<div class="direction-card-header">
-					<div class="palette-chips" aria-hidden="true">
-						<span class="palette-chip" style="background:#0A1F3D"></span>
-						<span class="palette-chip" style="background:#D8362F"></span>
-						<span class="palette-chip" style="background:#F5F5F5"></span>
-						<span class="palette-chip" style="background:#2A2A2A"></span>
-					</div>
-					<span class="direction-name">WordPress / Quick Launch</span>
-					<span class="view-link">View →</span>
-				</div>
-				<p class="direction-concept">Familiar WordPress design. Easy for your team to update.</p>
-			</a>
-		</nav>
-
-		<section class="earlier-section" aria-labelledby="earlier-heading">
-			<h2 id="earlier-heading">Earlier mockups</h2>
-			<p class="earlier-intro">Earlier explorations across different industries and visual styles. Kept for reference.</p>
-			<nav class="directions" aria-label="Earlier mockups">
-
-				<a href="corporate/bold/index.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#0D0D0D"></span>
-							<span class="palette-chip" style="background:#FF4D00"></span>
-							<span class="palette-chip" style="background:#2A2A2A"></span>
-							<span class="palette-chip" style="background:#FFFFFF"></span>
-						</div>
-						<span class="direction-name">Forge — Corporate</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Black and orange. Brutalist single-page landing.</p>
-				</a>
-
-				<a href="corporate/clean/index.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#FAFAF8"></span>
-							<span class="palette-chip" style="background:#0A1628"></span>
-							<span class="palette-chip" style="background:#B08D57"></span>
-							<span class="palette-chip" style="background:#F2F1EE"></span>
-						</div>
-						<span class="direction-name">Precision — Corporate</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Navy and brass. Clean corporate single-page landing.</p>
-				</a>
-
-				<a href="corporate/rugged/index.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#E8E0D4"></span>
-							<span class="palette-chip" style="background:#1E1108"></span>
-							<span class="palette-chip" style="background:#A63D2F"></span>
-							<span class="palette-chip" style="background:#4A6741"></span>
-						</div>
-						<span class="direction-name">Grit — Corporate</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Paper, wood, and red. Hand-built single-page landing.</p>
-				</a>
-
-				<a href="industrial-construction/bold/home.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#0D0D0D"></span>
-							<span class="palette-chip" style="background:#FF4D00"></span>
-							<span class="palette-chip" style="background:#2A2A2A"></span>
-							<span class="palette-chip" style="background:#FFFFFF"></span>
-						</div>
-						<span class="direction-name">Forge — Industrial Construction</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Black and orange. Brutalist multi-page site (home / about / services).</p>
-				</a>
-
-				<a href="industrial-construction/clean/home.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#FAFAF8"></span>
-							<span class="palette-chip" style="background:#0A1628"></span>
-							<span class="palette-chip" style="background:#B08D57"></span>
-							<span class="palette-chip" style="background:#F2F1EE"></span>
-						</div>
-						<span class="direction-name">Precision — Industrial Construction</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Navy and brass. Clean corporate multi-page site.</p>
-				</a>
-
-				<a href="industrial-construction/rugged/home.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#E8E0D4"></span>
-							<span class="palette-chip" style="background:#1E1108"></span>
-							<span class="palette-chip" style="background:#A63D2F"></span>
-							<span class="palette-chip" style="background:#4A6741"></span>
-						</div>
-						<span class="direction-name">Grit — Industrial Construction</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Paper, wood, and red. Hand-built multi-page site.</p>
-				</a>
-
-				<a href="metal-buildings/bold/home.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#0D0D0D"></span>
-							<span class="palette-chip" style="background:#FF4D00"></span>
-							<span class="palette-chip" style="background:#2A2A2A"></span>
-							<span class="palette-chip" style="background:#FFFFFF"></span>
-						</div>
-						<span class="direction-name">Forge — Metal Buildings</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Black and orange. Brutalist multi-page site.</p>
-				</a>
-
-				<a href="metal-buildings/clean/home.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#FAFAF8"></span>
-							<span class="palette-chip" style="background:#0A1628"></span>
-							<span class="palette-chip" style="background:#B08D57"></span>
-							<span class="palette-chip" style="background:#F2F1EE"></span>
-						</div>
-						<span class="direction-name">Precision — Metal Buildings</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Navy and brass. Clean corporate multi-page site.</p>
-				</a>
-
-				<a href="metal-buildings/rugged/home.html" class="direction-card">
-					<div class="direction-card-header">
-						<div class="palette-chips" aria-hidden="true">
-							<span class="palette-chip" style="background:#E8E0D4"></span>
-							<span class="palette-chip" style="background:#1E1108"></span>
-							<span class="palette-chip" style="background:#A63D2F"></span>
-							<span class="palette-chip" style="background:#4A6741"></span>
-						</div>
-						<span class="direction-name">Grit — Metal Buildings</span>
-						<span class="view-link">View →</span>
-					</div>
-					<p class="direction-concept">Paper, wood, and red. Hand-built multi-page site.</p>
-				</a>
-
-			</nav>
+		<section class="intro">
+			<h2>How to use this review</h2>
+			<p>The three directions below explore different visual identities for the same content. Open each homepage to feel the direction; open the design system to see every primitive in one place; open the building-types or garages page to see how content is structured. The footer of each mock links the full set of 19 pages.</p>
 		</section>
-	</main>
+
+		<section class="mocks">
+
+			<!-- Mock A -->
+			<article class="mock-card">
+				<a href="mock-a/02-homepage.html" class="mock-cover cover-a" style="text-decoration:none;">
+					<span class="cover-tag">Direction A</span>
+					<div>
+						<div class="letter">A</div>
+						<div class="cover-title">Charcoal + Bronze</div>
+						<div class="swatches" aria-hidden="true">
+							<span class="swatch" style="background:#18181b"></span>
+							<span class="swatch" style="background:#b87333"></span>
+							<span class="swatch" style="background:#f4f3f1"></span>
+							<span class="swatch" style="background:#6f2622"></span>
+						</div>
+					</div>
+				</a>
+				<div class="mock-body">
+					<div class="mock-meta">Industrial trade · Oswald + Inter · 19 pages</div>
+					<h3>Industrial trade catalog</h3>
+					<p>Familiar steel-building pattern. Floating quote pill, sitewide wizard band, alternating image-with-arrows product list, clearance inventory standing in for a traditional PLP. Closest to reference site 1.</p>
+
+					<div class="btn-row">
+						<a class="btn btn-primary" href="mock-a/02-homepage.html">Open homepage →</a>
+						<a class="btn btn-ghost" href="mock-a/01-design-system.html">Design system</a>
+					</div>
+
+					<div class="entry-points">
+						<div class="entry-points-label">Key pages</div>
+						<div class="entry-grid">
+							<a class="primary" href="mock-a/02-homepage.html">Homepage</a>
+							<a href="mock-a/03-building-types.html">Building types</a>
+							<a href="mock-a/04-garages-detail.html">Garages PDP</a>
+							<a href="mock-a/05-clearance-inventory.html">Clearance</a>
+							<a href="mock-a/07-about.html">About</a>
+							<a href="mock-a/08-contact.html">Contact</a>
+						</div>
+					</div>
+
+					<details>
+						<summary class="full-list-toggle">All 19 pages</summary>
+						<div class="all-pages">
+							<a href="mock-a/01-design-system.html">01 · Design system</a>
+							<a href="mock-a/02-homepage.html">02 · Homepage</a>
+							<a href="mock-a/03-building-types.html">03 · Building types</a>
+							<a href="mock-a/04-garages-detail.html">04 · Garages detail</a>
+							<a href="mock-a/05-clearance-inventory.html">05 · Clearance</a>
+							<a href="mock-a/06-options-finishes.html">06 · Options &amp; Finishes</a>
+							<a href="mock-a/07-about.html">07 · About</a>
+							<a href="mock-a/08-contact.html">08 · Contact</a>
+							<a href="mock-a/09-blog-index.html">09 · Blog index</a>
+							<a href="mock-a/10-blog-post.html">10 · Blog post</a>
+							<a href="mock-a/11-testimonials.html">11 · Testimonials</a>
+							<a href="mock-a/12-faq-resources.html">12 · FAQ + Resources</a>
+							<a href="mock-a/13-warranty.html">13 · Warranty</a>
+							<a href="mock-a/14-privacy.html">14 · Privacy</a>
+							<a href="mock-a/15-true-pricing.html">15 · True pricing</a>
+							<a href="mock-a/16-our-advantage.html">16 · Our advantage</a>
+							<a href="mock-a/17-resources-hub.html">17 · Resources hub</a>
+							<a href="mock-a/18-video-library.html">18 · Video library</a>
+							<a href="mock-a/19-brochure.html">19 · Brochures</a>
+						</div>
+					</details>
+				</div>
+			</article>
+
+			<!-- Mock B -->
+			<article class="mock-card">
+				<a href="mock-b/02-homepage.html" class="mock-cover cover-b" style="text-decoration:none;">
+					<span class="cover-tag">Direction B</span>
+					<div>
+						<div class="letter">B</div>
+						<div class="cover-title">Indigo + Ember + Conduit</div>
+						<div class="swatches" aria-hidden="true">
+							<span class="swatch" style="background:#0e1a2b"></span>
+							<span class="swatch" style="background:#e26432"></span>
+							<span class="swatch" style="background:#2a7fd4"></span>
+							<span class="swatch" style="background:#16a34a"></span>
+						</div>
+					</div>
+				</a>
+				<div class="mock-body">
+					<div class="mock-meta">Engineered quote-flow · Barlow Condensed + Source Sans 3 · 19 pages</div>
+					<h3>Lead-gen quote machine</h3>
+					<p>One persistent CTA: get-my-price. Sticky bottom utility bar, transparent-over-hero homepage header, navy banner on every interior page, spec accordion on PLP/PDP, left-rail guide nav on company pages. Closest to reference site 2.</p>
+
+					<div class="btn-row">
+						<a class="btn btn-primary" href="mock-b/02-homepage.html">Open homepage →</a>
+						<a class="btn btn-ghost" href="mock-b/01-design-system.html">Design system</a>
+					</div>
+
+					<div class="entry-points">
+						<div class="entry-points-label">Key pages</div>
+						<div class="entry-grid">
+							<a class="primary" href="mock-b/02-homepage.html">Homepage</a>
+							<a href="mock-b/03-building-types.html">Building types</a>
+							<a href="mock-b/04-garages-detail.html">Garages PDP</a>
+							<a href="mock-b/05-clearance-inventory.html">Inventory</a>
+							<a href="mock-b/07-about.html">About</a>
+							<a href="mock-b/12-faq-resources.html">Help Desk</a>
+						</div>
+					</div>
+
+					<details>
+						<summary class="full-list-toggle">All 19 pages</summary>
+						<div class="all-pages">
+							<a href="mock-b/01-design-system.html">01 · Design system</a>
+							<a href="mock-b/02-homepage.html">02 · Homepage</a>
+							<a href="mock-b/03-building-types.html">03 · Building types</a>
+							<a href="mock-b/04-garages-detail.html">04 · Garages detail</a>
+							<a href="mock-b/05-clearance-inventory.html">05 · Inventory</a>
+							<a href="mock-b/06-options-finishes.html">06 · Options &amp; Finishes</a>
+							<a href="mock-b/07-about.html">07 · About</a>
+							<a href="mock-b/08-contact.html">08 · Contact</a>
+							<a href="mock-b/09-blog-index.html">09 · Blog index</a>
+							<a href="mock-b/10-blog-post.html">10 · Blog post</a>
+							<a href="mock-b/11-testimonials.html">11 · Testimonials</a>
+							<a href="mock-b/12-faq-resources.html">12 · Help Desk + FAQ</a>
+							<a href="mock-b/13-warranty.html">13 · Warranty</a>
+							<a href="mock-b/14-privacy.html">14 · Privacy</a>
+							<a href="mock-b/15-true-pricing.html">15 · True pricing</a>
+							<a href="mock-b/16-our-advantage.html">16 · Our advantage</a>
+							<a href="mock-b/17-resources-hub.html">17 · Resources hub</a>
+							<a href="mock-b/18-video-library.html">18 · Video library</a>
+							<a href="mock-b/19-brochure.html">19 · Brochures</a>
+						</div>
+					</details>
+				</div>
+			</article>
+
+			<!-- Mock C -->
+			<article class="mock-card">
+				<a href="mock-c/02-homepage.html" class="mock-cover cover-c" style="text-decoration:none;">
+					<span class="cover-tag">Direction C</span>
+					<div>
+						<div class="letter">C</div>
+						<div class="cover-title">Spruce + Bone + Brick + Brass</div>
+						<div class="swatches" aria-hidden="true">
+							<span class="swatch" style="background:#0f2724"></span>
+							<span class="swatch" style="background:#f5efe2"></span>
+							<span class="swatch" style="background:#a8362a"></span>
+							<span class="swatch" style="background:#b88a3b"></span>
+						</div>
+					</div>
+				</a>
+				<div class="mock-body">
+					<div class="mock-meta">Heritage editorial · Fraunces + IBM Plex Sans + Caveat · 19 pages</div>
+					<h3>Heritage editorial</h3>
+					<p>Serif display, hand-script testimonial accent, warm parchment palette, brass-dot footer motif. Quote card overlaps the hero on every product surface. Reads more publishing house than industrial trade. Closest to reference site 3.</p>
+
+					<div class="btn-row">
+						<a class="btn btn-primary" href="mock-c/02-homepage.html">Open homepage →</a>
+						<a class="btn btn-ghost" href="mock-c/01-design-system.html">Design system</a>
+					</div>
+
+					<div class="entry-points">
+						<div class="entry-points-label">Key pages</div>
+						<div class="entry-grid">
+							<a class="primary" href="mock-c/02-homepage.html">Homepage</a>
+							<a href="mock-c/03-building-types.html">Building types</a>
+							<a href="mock-c/04-garages-detail.html">Garages PDP</a>
+							<a href="mock-c/07-about.html">About</a>
+							<a href="mock-c/06-options-finishes.html">Options &amp; Finishes</a>
+							<a href="mock-c/11-testimonials.html">Testimonials</a>
+						</div>
+					</div>
+
+					<details>
+						<summary class="full-list-toggle">All 19 pages</summary>
+						<div class="all-pages">
+							<a href="mock-c/01-design-system.html">01 · Design system</a>
+							<a href="mock-c/02-homepage.html">02 · Homepage</a>
+							<a href="mock-c/03-building-types.html">03 · Building types</a>
+							<a href="mock-c/04-garages-detail.html">04 · Garages detail</a>
+							<a href="mock-c/05-clearance-inventory.html">05 · Clearance</a>
+							<a href="mock-c/06-options-finishes.html">06 · Options &amp; Finishes</a>
+							<a href="mock-c/07-about.html">07 · About</a>
+							<a href="mock-c/08-contact.html">08 · Contact</a>
+							<a href="mock-c/09-blog-index.html">09 · Field Journal</a>
+							<a href="mock-c/10-blog-post.html">10 · Blog post</a>
+							<a href="mock-c/11-testimonials.html">11 · Testimonials</a>
+							<a href="mock-c/12-faq-resources.html">12 · FAQ + Resources</a>
+							<a href="mock-c/13-warranty.html">13 · Warranty</a>
+							<a href="mock-c/14-privacy.html">14 · Privacy</a>
+							<a href="mock-c/15-true-pricing.html">15 · True pricing</a>
+							<a href="mock-c/16-our-advantage.html">16 · Our advantage</a>
+							<a href="mock-c/17-resources-hub.html">17 · Resources hub</a>
+							<a href="mock-c/18-video-library.html">18 · Video library</a>
+							<a href="mock-c/19-brochure.html">19 · Brochures</a>
+						</div>
+					</details>
+				</div>
+			</article>
+
+		</section>
+
+		<section class="notes">
+			<h3>Heads-up before you click around</h3>
+			<ul>
+				<li>Every photo is a CSS-gradient placeholder. Real photography is pending and will replace the gradient blocks one-for-one.</li>
+				<li>All testimonial names, statistics, and customer logos are marked with TODO chips and are illustrative only until real attributions are sourced.</li>
+				<li>Privacy and Warranty pages carry placeholder legal copy. Both require counsel review before any production launch.</li>
+				<li>Phone, email, mailing address, and the company tagline are placeholders. Confirm before launch.</li>
+				<li>Brand name "Bell Metal Buildings Co." is the working name from the brief. Confirm or rename.</li>
+				<li>The three directions are independent — pick one to take forward, not a blend of all three.</li>
+			</ul>
+		</section>
+
+	</div>
+</main>
+
+<footer>
+	<div class="container">
+		<span>© 2026 Bell Metal Buildings Co. mockup review</span>
+		<span>Three directions · 57 pages · Mobile-friendly</span>
+	</div>
+</footer>
+
 </body>
 </html>

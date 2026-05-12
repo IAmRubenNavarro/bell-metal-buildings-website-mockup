@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+.contact-hero{ padding:var(--s-9) 24px var(--s-7); text-align:center; background:var(--b-paper) }
+.contact-hero h1{ font-size:var(--t-d2); text-transform:uppercase; margin-bottom:.4em }
+.contact-hero .lede{ max-width:50ch; margin:0 auto var(--s-5); color:var(--b-text-muted) }
+.contact-phone-num{ font-family:var(--f-display); font-weight:700; font-size:2.4rem; letter-spacing:.02em; color:var(--b-ember); text-decoration:none }
+.contact-phone-num:hover{ color:var(--b-ember-hover); text-decoration:none }
+.contact-cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-6) }
+@media (max-width:900px){ .contact-cols{ grid-template-columns:1fr } }
+.contact-col{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  padding:var(--s-6); display:flex; flex-direction:column; gap:14px;
+}
+.contact-col h3{ text-transform:uppercase; letter-spacing:.02em; font-size:1.1rem }
+.contact-col .row-line{ display:flex; align-items:flex-start; gap:10px; font-size:.95rem }
+.contact-col .row-line .ic{ width:32px; height:32px; flex:0 0 32px; border-radius:8px; background:var(--b-conduit-soft); color:var(--b-conduit); display:grid; place-items:center }
+.contact-col p{ font-size:.95rem; color:var(--b-text-muted); margin:0 }
+
+.featured-in{
+  background:var(--b-paper-2); padding:var(--s-7) 0; border-top:1px solid var(--b-rule); border-bottom:1px solid var(--b-rule);
+  margin-top:var(--s-8);
+}
+.featured-in-inner{ max-width:var(--container); margin:0 auto; padding-inline:24px; text-align:center }
+.featured-in h4{ font-family:var(--f-display); text-transform:uppercase; letter-spacing:var(--tr-eyebrow); font-size:.85rem; color:var(--b-text-muted); margin-bottom:var(--s-5) }
+.logo-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:var(--s-6); align-items:center }
+.fakelogo{
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:.06em; font-size:.95rem; color:#9aa4b3; padding:8px 14px;
+  border:1.5px solid #cdd3dc; border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<header class="nav-solid">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+    <div class="nav-links"><a class="nav-link" href="./03-building-types.html">Buildings</a><a class="nav-link" href="./15-true-pricing.html">Pricing</a><a class="nav-link" href="./17-resources-hub.html">Resources</a><a class="nav-link" href="./11-testimonials.html">Reviews</a></div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<section class="contact-hero">
+  <div class="container">
+    <h1>Available to provide customer support</h1>
+    <p class="lede">Real humans, Pacific–Eastern, six days a week. <span class="todo">Confirm Bell's actual support hours.</span></p>
+    <a class="contact-phone-num" href="tel:+15555550199">(555) 555-0199</a>
+  </div>
+</section>
+
+<!-- Contact info / Help Desk / Careers -->
+<section class="section-tight">
+  <div class="container">
+    <div class="contact-cols">
+      <article class="contact-col">
+        <h3>Contact Information</h3>
+        <div class="row-line"><span class="ic">📞</span><div><strong>Phone</strong><br><a href="tel:+15555550199">(555) 555-0199</a></div></div>
+        <div class="row-line"><span class="ic">✉</span><div><strong>Email</strong><br><a href="mailto:hello@bellmetal.example">hello@bellmetal.example</a> <span class="todo">placeholder</span></div></div>
+        <div class="row-line"><span class="ic">⌂</span><div><strong>Mailing</strong><br>1234 Forge Road, Suite 200<br>Denver, CO 80112 <span class="todo">placeholder</span></div></div>
+        <div class="social-row" style="margin-top:6px">
+          <a href="#" aria-label="Facebook" style="background:var(--b-paper-3); color:var(--b-ink); border-color:var(--b-rule)">f</a>
+          <a href="#" aria-label="Instagram" style="background:var(--b-paper-3); color:var(--b-ink); border-color:var(--b-rule)">◧</a>
+          <a href="#" aria-label="YouTube" style="background:var(--b-paper-3); color:var(--b-ink); border-color:var(--b-rule)">▷</a>
+          <a href="#" aria-label="LinkedIn" style="background:var(--b-paper-3); color:var(--b-ink); border-color:var(--b-rule)">in</a>
+          <a href="#" aria-label="X" style="background:var(--b-paper-3); color:var(--b-ink); border-color:var(--b-rule)">𝕏</a>
+        </div>
+      </article>
+
+      <article class="contact-col">
+        <h3>Help Desk</h3>
+        <p>Already a Bell customer with a build question, drawing question, or warranty matter? The Help Desk routes you straight to the right inbox within an hour during business days.</p>
+        <a class="btn btn-secondary" href="./12-faq-resources.html">Visit the Help Desk ›</a>
+      </article>
+
+      <article class="contact-col">
+        <h3>Careers</h3>
+        <p>We're growing the engineering, sales, and PM teams every quarter. If you've spent time in steel — drafting, fabrication, on-site erection, sales — we'd like to talk.</p>
+        <a class="btn btn-secondary" href="#">Bell Metal Career Center ›</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Media / Email / Pricing -->
+<section class="section-tight">
+  <div class="container">
+    <div class="contact-cols">
+      <article class="contact-col">
+        <h3>Media Relations</h3>
+        <p>Press inquiries, executive interviews, plant tours. Materials and quotes available on request.</p>
+        <a class="btn btn-secondary" href="#">Bell Metal Newsroom ›</a>
+      </article>
+      <article class="contact-col">
+        <h3>General Inquiries</h3>
+        <p>For everything that isn't a quote — partnerships, vendor onboarding, community sponsorships.</p>
+        <a class="btn btn-secondary" href="mailto:hello@bellmetal.example">Email us ›</a>
+      </article>
+      <article class="contact-col">
+        <h3>Request a Price</h3>
+        <p>Skip the form — talk to a project manager or kick off the quote flow from any building-type page.</p>
+        <a class="btn btn-primary" href="#">Get My Price ›</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Featured In logo row -->
+<section class="featured-in">
+  <div class="featured-in-inner">
+    <h4>Bell Metal proudly supports <span class="todo">confirm partners</span></h4>
+    <div class="logo-row">
+      <span class="fakelogo">Rural Builders Coalition</span>
+      <span class="fakelogo">Coalition for Steel Construction</span>
+      <span class="fakelogo">Habitat For Humanity Affiliate</span>
+      <span class="fakelogo">Future Farmers of America</span>
+      <span class="fakelogo">Veteran Build Network</span>
+      <span class="fakelogo">Mountain Region 4-H</span>
+      <span class="fakelogo">United Way of the Rockies</span>
+      <span class="fakelogo">American Welding Society</span>
+    </div>
+  </div>
+</section>
+
+<section class="phone-band">
+  <div class="phone-band-inner">
+    <div class="lead">Prefer to talk?<small>Real human, no phone tree.</small></div>
+    <div class="phone"><div class="phone-icon">📞</div><a class="phone-num" href="tel:+15555550199">(555) 555-0199</a></div>
+    <a class="btn btn-ghost on-dark" href="#">Get My Free Quote</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col"><a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a><p class="blurb">Pre-engineered steel buildings shipped to the lower 48.</p><div class="social-row"><a href="#">f</a><a href="#">◧</a><a href="#">▷</a><a href="#">in</a></div></div>
+      <div><h4>Buildings</h4><ul><li><a href="./04-garages-detail.html">Garages</a></li><li><a href="./03-building-types.html">All types</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="./17-resources-hub.html">Resources</a></li><li><a href="./12-faq-resources.html">FAQs</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="./07-about.html">About</a></li><li><a href="./13-warranty.html">Warranty</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="./08-contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-legal"><span>© 2026 Bell Metal Buildings Co.</span><ul><li><a href="./14-privacy.html">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="util-bar"><div class="util-bar-inner"><span class="lead">Start here: <em>Price your building in minutes</em></span><a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a></div></div>
+
+</body>
+</html>

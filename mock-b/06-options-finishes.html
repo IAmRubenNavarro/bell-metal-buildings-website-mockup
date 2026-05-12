@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Options &amp; Finishes — Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+.options-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
+@media (max-width:900px){ .options-grid{ grid-template-columns:1fr } }
+
+/* Color chart */
+.colorgrid{ display:grid; grid-template-columns:repeat(7,1fr); gap:12px }
+@media (max-width:900px){ .colorgrid{ grid-template-columns:repeat(4,1fr) } }
+@media (max-width:600px){ .colorgrid{ grid-template-columns:repeat(2,1fr) } }
+.swatch{ background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md); overflow:hidden }
+.swatch .chip{ aspect-ratio:1/1 }
+.swatch .name{ padding:8px 10px; font-family:var(--f-display); font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:.78rem; color:var(--b-ink) }
+
+.bundle{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  padding:24px; display:flex; flex-direction:column; gap:10px;
+}
+.bundle h3{ text-transform:uppercase; letter-spacing:.02em }
+.bundle ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px }
+.bundle li{ display:flex; align-items:flex-start; gap:8px; font-size:.92rem }
+.bundle li::before{ content:"✓"; color:var(--b-success); font-weight:700 }
+</style>
+</head>
+<body>
+
+<header class="nav-solid">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+    <div class="nav-links"><a class="nav-link" href="./03-building-types.html">Buildings</a><a class="nav-link" href="./15-true-pricing.html">Pricing</a><a class="nav-link" href="./17-resources-hub.html">Resources</a><a class="nav-link" href="./11-testimonials.html">Reviews</a></div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<section class="banner">
+  <div class="banner-inner">
+    <h1>Options &amp; Finishes</h1>
+    <p class="lede">Every Bell building can be configured down to the door swing and trim color before it leaves the line. Browse the six accessory categories, then bundle them in your quote.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary btn-lg" href="#">Get My Price <span class="arrow">›</span></a>
+      <a class="btn btn-secondary btn-lg" href="./19-brochure.html">Download color chart</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6-card icon grid -->
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom:var(--s-5)">
+      <span class="eyebrow">Browse by category</span>
+      <h2>Six accessory families</h2>
+    </div>
+    <div class="options-grid">
+      <a class="icon-card" href="#"><div class="ic">⊟</div><h3>Doors</h3><p>Walk · roll-up · sliding · bifold. Insulated and non-insulated. All hardware included.</p><span class="btn-link">See doors ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">▢</div><h3>Windows</h3><p>Fixed, single-hung, slider. Insulated low-E glass available in all 14 trim colors.</p><span class="btn-link">See windows ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">≡</div><h3>Insulation</h3><p>R-13, R-19, R-25, and R-30 packages for walls and ceiling. Vapor barrier included.</p><span class="btn-link">See insulation ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">/</div><h3>Trim &amp; Wainscot</h3><p>Two-tone wainscot, base trim, eave trim, gable trim, corner trim — all factory-matched.</p><span class="btn-link">See trim ›</span></a>
+      <a class="icon-card" href="#"><div class="ic">◇</div><h3>Skylights &amp; Ventilation</h3><p>Ridge vents, gable vents, turbines, skylights, and cupolas — engineered into the panel layout.</p><span class="btn-link">See venting ›</span></a>
+      <a class="icon-card" href="./19-brochure.html"><div class="ic">⬜</div><h3>Color Chart</h3><p>14 standard finish colors with a 40-year paint warranty. Custom colors on quote.</p><span class="btn-link">Color chart PDF ›</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Color chart -->
+<section class="section" style="background:var(--b-paper-2)">
+  <div class="container">
+    <div style="margin-bottom:var(--s-5)">
+      <span class="eyebrow">Color chart</span>
+      <h2>Bell Metal — 14 standard finishes</h2>
+      <p class="lede">Every color is a Galvalume-coated, baked-enamel finish with our 40-year paint warranty. <span class="todo">Confirm actual SKU names/codes with Bell.</span></p>
+    </div>
+    <div class="colorgrid">
+      <div class="swatch"><div class="chip" style="background:#222"></div><div class="name">Iron Black</div></div>
+      <div class="swatch"><div class="chip" style="background:#444"></div><div class="name">Slate Gray</div></div>
+      <div class="swatch"><div class="chip" style="background:#7a7a7a"></div><div class="name">Steel Mist</div></div>
+      <div class="swatch"><div class="chip" style="background:#c5c5c5"></div><div class="name">Sterling</div></div>
+      <div class="swatch"><div class="chip" style="background:#eeeae0"></div><div class="name">Bone</div></div>
+      <div class="swatch"><div class="chip" style="background:#cb7a3a"></div><div class="name">Forge Bronze</div></div>
+      <div class="swatch"><div class="chip" style="background:#8a3c2f"></div><div class="name">Barn Red</div></div>
+      <div class="swatch"><div class="chip" style="background:#4a2c1f"></div><div class="name">Saddle</div></div>
+      <div class="swatch"><div class="chip" style="background:#3b5a3c"></div><div class="name">Pasture Green</div></div>
+      <div class="swatch"><div class="chip" style="background:#2c4361"></div><div class="name">Steel Blue</div></div>
+      <div class="swatch"><div class="chip" style="background:#0e1a2b"></div><div class="name">Anthracite</div></div>
+      <div class="swatch"><div class="chip" style="background:#5b6878"></div><div class="name">Conduit</div></div>
+      <div class="swatch"><div class="chip" style="background:#a08c5f"></div><div class="name">Wheat</div></div>
+      <div class="swatch"><div class="chip" style="background:#f5f6f8"></div><div class="name">Snow White</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Bundles -->
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom:var(--s-5)">
+      <span class="eyebrow">Pre-packaged bundles</span>
+      <h2>Common configurations, pre-priced</h2>
+    </div>
+    <div class="options-grid">
+      <article class="bundle"><h3>Workshop Bundle</h3><ul><li>10′ roll-up door</li><li>One 3′ walk door</li><li>Two 3×3 fixed windows</li><li>R-19 wall insulation</li><li>Gable + ridge vents</li></ul></article>
+      <article class="bundle"><h3>Garage Bundle</h3><ul><li>(2) 9′ roll-up doors</li><li>One 3′ walk door</li><li>Two 2×3 sliders</li><li>R-13 wall insulation</li><li>Eave + gable trim, two-tone</li></ul></article>
+      <article class="bundle"><h3>Ag Bundle</h3><ul><li>14′ sliding door</li><li>One 3′ walk door</li><li>Six gable vents</li><li>R-13 ceiling only</li><li>Barn-red roof, white walls</li></ul></article>
+      <article class="bundle"><h3>Barndominium Bundle</h3><ul><li>(1) 9′ roll-up + (2) 3′ walk doors</li><li>Six insulated windows</li><li>R-25 wall · R-30 ceiling</li><li>Loft-ready stair openings</li><li>Two-tone wainscot</li></ul></article>
+      <article class="bundle"><h3>Cold Storage Bundle</h3><ul><li>One 8′ insulated overhead</li><li>R-25 walls · R-30 ceiling</li><li>Vapor barrier full-perimeter</li><li>Sealed door gaskets</li><li>No vents (sealed envelope)</li></ul></article>
+      <article class="bundle"><h3>Commercial Shell Bundle</h3><ul><li>(2) 12′ overhead doors</li><li>One 3′ ADA walk door</li><li>Six 4×4 windows</li><li>R-19 walls</li><li>Ridge + 6 gable vents</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="phone-band">
+  <div class="phone-band-inner">
+    <div class="lead">Talk through your accessory list with a real PM<small>Faster than a form. Better than a chat bot.</small></div>
+    <div class="phone"><div class="phone-icon">📞</div><a class="phone-num" href="tel:+15555550199">(555) 555-0199</a></div>
+    <a class="btn btn-ghost on-dark" href="#">Get My Free Quote</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col"><a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a><p class="blurb">Pre-engineered steel buildings shipped to the lower 48.</p><div class="social-row"><a href="#">f</a><a href="#">◧</a><a href="#">▷</a><a href="#">in</a></div></div>
+      <div><h4>Buildings</h4><ul><li><a href="./04-garages-detail.html">Garages</a></li><li><a href="./03-building-types.html">All types</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="./17-resources-hub.html">Resources</a></li><li><a href="./19-brochure.html">Brochures</a></li><li><a href="./12-faq-resources.html">FAQs</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="./07-about.html">About</a></li><li><a href="./13-warranty.html">Warranty</a></li><li><a href="./15-true-pricing.html">True pricing</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="./08-contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-legal"><span>© 2026 Bell Metal Buildings Co.</span><ul><li><a href="./14-privacy.html">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="util-bar"><div class="util-bar-inner"><span class="lead">Configure &amp; quote your kit · <em>in minutes</em></span><a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a></div></div>
+
+</body>
+</html>

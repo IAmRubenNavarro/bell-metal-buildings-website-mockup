@@ -1,0 +1,1822 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bell Metal Buildings — Mock C Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   BELL METAL BUILDINGS — MOCK C — DESIGN SYSTEM
+   Reference: site 3 (Olympia Steel Buildings) structural patterns
+   Direction: heritage editorial / Americana
+   Distinct from A (charcoal+bronze condensed sans)
+                  and B (indigo+ember+blue condensed sans)
+   ========================================================= */
+
+:root{
+  /* ---------- Color: Spruce / Bone / Brick / Brass ---------- */
+  --c-spruce:        #0f2724;   /* primary deep green-black */
+  --c-spruce-2:      #16332f;   /* layered dark surface */
+  --c-spruce-deep:   #0a1c1a;   /* footer base */
+  --c-spruce-line:   #233f3a;   /* hairline on dark */
+
+  --c-bone:          #f5efe2;   /* warm parchment surface */
+  --c-bone-2:        #ece4d2;   /* one step deeper */
+  --c-bone-3:        #dfd6c1;   /* third paper, tabs/accordions */
+  --c-paper:         #ffffff;
+  --c-rule:          #c9c0a8;   /* hairline on bone */
+  --c-rule-soft:     #e5dec8;
+
+  --c-brick:         #a8362a;   /* primary CTA, headlines on light */
+  --c-brick-hover:   #8c2a20;
+  --c-brick-deep:    #6f2218;
+  --c-brick-ink:     #f8efe5;
+
+  --c-brass:         #b88a3b;   /* editorial accent: rules, eyebrows */
+  --c-brass-hover:   #9b7128;
+  --c-brass-soft:    #ead7a6;
+
+  --c-cream-ink:     #f8efe5;   /* text on dark/brick */
+  --c-text:          #1a2a26;   /* default body text on light */
+  --c-text-muted:    #5b6660;
+  --c-text-faint:    #8a948e;
+  --c-text-invert:   #f5efe2;
+
+  --c-success:       #2f6f3f;
+  --c-warning:       #b6841d;
+  --c-danger:        #b8302a;
+
+  /* ---------- Type ---------- */
+  --f-display: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --f-body:    "IBM Plex Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+  --f-script:  "Caveat", "Homemade Apple", "Apple Chancery", cursive;
+
+  --t-d1:  clamp(2.5rem, 4.5vw + 1rem, 4.5rem);     /* 40 → 72 */
+  --t-d2:  clamp(2rem, 3.2vw + 1rem, 3.25rem);      /* 32 → 52 */
+  --t-h1:  clamp(1.75rem, 1.5vw + 1.1rem, 2.5rem);  /* 28 → 40 */
+  --t-h2:  clamp(1.375rem, 1vw + 1rem, 1.875rem);   /* 22 → 30 */
+  --t-h3:  1.25rem;     /* 20 */
+  --t-h4:  1.0625rem;   /* 17 */
+  --t-body:1rem;        /* 16 */
+  --t-sm:  .9375rem;    /* 15 */
+  --t-xs:  .8125rem;    /* 13 */
+  --t-eyebrow: .75rem;  /* 12 */
+
+  --t-quote: clamp(1.5rem, 1.5vw + 1rem, 2rem);  /* script testimonial */
+
+  --lh-tight:1.06;
+  --lh-snug:1.2;
+  --lh-body:1.65;
+  --tr-display:.005em;
+  --tr-eyebrow:.22em;
+
+  /* ---------- Spacing (4px base) ---------- */
+  --s-1:.25rem; --s-2:.5rem; --s-3:.75rem; --s-4:1rem;
+  --s-5:1.5rem; --s-6:2rem; --s-7:3rem; --s-8:4rem;
+  --s-9:6rem; --s-10:8rem; --s-11:10rem;
+
+  /* ---------- Radius ---------- */
+  --r-sm:3px;
+  --r-md:6px;
+  --r-lg:12px;
+  --r-xl:24px;
+  --r-pill:999px;
+
+  /* ---------- Shadow ---------- */
+  --sh-sm:    0 1px 2px rgba(15,39,36,.10);
+  --sh-card:  0 2px 12px rgba(15,39,36,.10);
+  --sh-md:    0 8px 24px rgba(15,39,36,.16);
+  --sh-lg:    0 24px 48px rgba(15,39,36,.24);
+  --sh-inset: inset 0 0 0 1px rgba(184,138,59,.5);
+
+  /* ---------- Layout ---------- */
+  --container: 1240px;
+  --container-narrow: 880px;
+  --container-prose: 720px;
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+*,*::before,*::after{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth }
+body{
+  margin:0;
+  font-family:var(--f-body);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--c-text);
+  background:var(--c-bone);
+}
+h1,h2,h3,h4{
+  font-family:var(--f-display);
+  font-weight:600;
+  font-variation-settings:"opsz" 96, "SOFT" 30;
+  line-height:var(--lh-tight);
+  letter-spacing:var(--tr-display);
+  margin:0;
+  color:var(--c-spruce);
+}
+h1{font-size:var(--t-h1)}
+h2{font-size:var(--t-h2)}
+h3{font-size:var(--t-h3); font-variation-settings:"opsz" 36}
+h4{font-size:var(--t-h4); font-variation-settings:"opsz" 16}
+p{margin:0 0 .9em}
+a{color:var(--c-brick); text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%; display:block}
+hr{border:0; height:1px; background:var(--c-rule); margin:var(--s-7) 0}
+code{font:600 .85rem/1.4 ui-monospace,Menlo,Consolas,monospace; background:var(--c-bone-2); padding:2px 6px; border-radius:var(--r-sm); color:var(--c-spruce)}
+
+/* =========================================================
+   Design-system chrome (this file only)
+   ========================================================= */
+.ds{
+  max-width: var(--container);
+  margin:0 auto;
+  padding: var(--s-9) var(--s-5);
+}
+.ds-head{
+  border-bottom:1px solid var(--c-rule);
+  padding-bottom:var(--s-6);
+  margin-bottom:var(--s-8);
+}
+.ds-kicker{
+  font:600 var(--t-eyebrow)/1.2 var(--f-body);
+  letter-spacing:var(--tr-eyebrow);
+  text-transform:uppercase;
+  color:var(--c-brass-hover);
+  margin-bottom:var(--s-2);
+}
+.ds-title{
+  font-family:var(--f-display);
+  font-size:var(--t-d2);
+  font-weight:700;
+  font-variation-settings:"opsz" 144, "SOFT" 30;
+  color:var(--c-spruce);
+  margin:0 0 var(--s-3);
+}
+.ds-lede{
+  font-size:1.125rem;
+  color:var(--c-text-muted);
+  max-width:60ch;
+}
+.ds-section{
+  margin: var(--s-9) 0;
+  padding-top: var(--s-7);
+  border-top: 2px solid var(--c-brass);
+}
+.ds-section > h2{
+  font-size:var(--t-d2);
+  font-variation-settings:"opsz" 144, "SOFT" 30;
+  margin-bottom:var(--s-4);
+}
+.ds-section-lede{
+  color:var(--c-text-muted);
+  max-width:60ch;
+  margin-bottom: var(--s-6);
+}
+.ds-subhead{
+  font:600 var(--t-eyebrow)/1.2 var(--f-body);
+  letter-spacing:var(--tr-eyebrow);
+  text-transform:uppercase;
+  color:var(--c-spruce);
+  margin:var(--s-7) 0 var(--s-3);
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--c-rule);
+}
+.ds-grid{ display:grid; gap:var(--s-5); }
+.ds-grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+.ds-grid-4{ grid-template-columns: repeat(4, minmax(0,1fr)); }
+.ds-grid-6{ grid-template-columns: repeat(6, minmax(0,1fr)); }
+@media (max-width:900px){
+  .ds-grid-3,.ds-grid-4,.ds-grid-6{ grid-template-columns: repeat(2,1fr) }
+}
+@media (max-width:560px){
+  .ds-grid-3,.ds-grid-4,.ds-grid-6{ grid-template-columns: 1fr }
+}
+.ds-note{
+  font-size:var(--t-sm);
+  color:var(--c-text-muted);
+  background:var(--c-bone-2);
+  border-left:3px solid var(--c-brass);
+  padding:var(--s-4) var(--s-5);
+  margin: var(--s-5) 0;
+}
+
+/* =========================================================
+   TOKEN: Color swatches
+   ========================================================= */
+.sw{
+  background:var(--c-paper);
+  border:1px solid var(--c-rule);
+  border-radius:var(--r-md);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.sw-chip{ height:96px; }
+.sw-meta{ padding: var(--s-3) var(--s-4); font-size:var(--t-sm); }
+.sw-name{ font-weight:600; color:var(--c-spruce); }
+.sw-token{ color:var(--c-text-muted); font-family:ui-monospace,Menlo,monospace; font-size:var(--t-xs); }
+.sw-hex{ color:var(--c-text-faint); font-family:ui-monospace,Menlo,monospace; font-size:var(--t-xs); }
+
+/* =========================================================
+   TOKEN: Type specimen
+   ========================================================= */
+.type-spec{
+  background:var(--c-paper);
+  border:1px solid var(--c-rule);
+  border-radius:var(--r-md);
+  padding: var(--s-6);
+  display:grid; gap: var(--s-4);
+}
+.spec-row{ display:grid; grid-template-columns: 160px 1fr; gap:var(--s-5); align-items:baseline; padding-bottom:var(--s-4); border-bottom:1px dashed var(--c-rule-soft); }
+.spec-row:last-child{ border-bottom:0; padding-bottom:0; }
+.spec-label{ font:600 var(--t-xs)/1.2 var(--f-body); letter-spacing:.12em; text-transform:uppercase; color:var(--c-text-muted); }
+
+/* =========================================================
+   COMPONENT: Buttons
+   ========================================================= */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap: var(--s-2);
+  font-family:var(--f-body);
+  font-weight:600;
+  font-size:var(--t-sm);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding: .75rem 1.25rem;
+  border-radius:var(--r-sm);
+  border:1px solid transparent;
+  cursor:pointer;
+  text-decoration:none;
+  transition: background .12s, color .12s, border-color .12s, transform .08s;
+}
+.btn:hover{ text-decoration:none; }
+.btn:active{ transform: translateY(1px); }
+
+.btn-primary{ background: var(--c-brick); color: var(--c-brick-ink); }
+.btn-primary:hover{ background: var(--c-brick-hover); }
+
+.btn-secondary{ background: var(--c-spruce); color: var(--c-cream-ink); }
+.btn-secondary:hover{ background: var(--c-spruce-2); }
+
+.btn-outline{ background:transparent; color: var(--c-spruce); border-color: var(--c-spruce); }
+.btn-outline:hover{ background: var(--c-spruce); color: var(--c-cream-ink); }
+
+.btn-outline-on-dark{ background:transparent; color: var(--c-bone); border-color: var(--c-bone); }
+.btn-outline-on-dark:hover{ background: var(--c-bone); color: var(--c-spruce); }
+
+.btn-ghost{ background: transparent; color: var(--c-spruce); padding: .6rem .75rem; letter-spacing: .06em; }
+.btn-ghost::after{ content:" →"; }
+.btn-ghost:hover{ color: var(--c-brick); }
+
+.btn-lg{ font-size: var(--t-body); padding: 1rem 1.75rem; }
+.btn-sm{ font-size: var(--t-xs); padding: .5rem .75rem; }
+
+.btn-row{ display:flex; flex-wrap:wrap; gap:var(--s-3); align-items:center; }
+
+/* =========================================================
+   COMPONENT: Eyebrow + Hairline
+   ========================================================= */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:var(--s-3);
+  font:600 var(--t-eyebrow)/1.2 var(--f-body);
+  letter-spacing:var(--tr-eyebrow);
+  text-transform:uppercase;
+  color:var(--c-brass-hover);
+}
+.eyebrow::before{
+  content:""; display:inline-block; width:32px; height:2px; background:var(--c-brass);
+}
+.eyebrow.on-dark{ color: var(--c-brass-soft); }
+.eyebrow.on-dark::before{ background: var(--c-brass-soft); }
+
+.divider-ornament{
+  display:flex; align-items:center; justify-content:center;
+  gap: var(--s-3);
+  margin: var(--s-6) 0;
+}
+.divider-ornament::before,
+.divider-ornament::after{
+  content:""; flex: 0 0 80px; height:1px; background:var(--c-brass);
+}
+.divider-ornament > span{
+  width:10px; height:10px; transform:rotate(45deg); background:var(--c-brass);
+}
+
+/* =========================================================
+   COMPONENT: Form fields
+   ========================================================= */
+.field{ display:flex; flex-direction:column; gap:var(--s-2); }
+.field label{ font:600 var(--t-xs)/1.2 var(--f-body); letter-spacing:.1em; text-transform:uppercase; color:var(--c-spruce); }
+.input, .select, .textarea{
+  font-family:var(--f-body);
+  font-size:var(--t-body);
+  color:var(--c-spruce);
+  background:var(--c-paper);
+  border:1px solid var(--c-rule);
+  border-radius:var(--r-sm);
+  padding: .7rem .9rem;
+  width:100%;
+  transition: border-color .12s, box-shadow .12s;
+}
+.input:focus, .select:focus, .textarea:focus{
+  outline:0;
+  border-color: var(--c-brass);
+  box-shadow: 0 0 0 3px rgba(184,138,59,.18);
+}
+.textarea{ min-height: 96px; resize: vertical; }
+.input-row{ display:grid; grid-template-columns: repeat(3,1fr); gap:var(--s-3); }
+@media (max-width:560px){ .input-row{ grid-template-columns: 1fr; } }
+.phone-with-flag{
+  display:flex; align-items:stretch; border:1px solid var(--c-rule); border-radius: var(--r-sm); overflow:hidden; background:var(--c-paper);
+}
+.phone-with-flag .flag{
+  display:flex; align-items:center; gap:.4rem;
+  padding: .7rem .8rem; background:var(--c-bone-2); border-right:1px solid var(--c-rule);
+  font-size: var(--t-sm); color: var(--c-text-muted);
+}
+.phone-with-flag .flag::before{
+  content:""; display:inline-block; width:18px; height:12px; border-radius:2px;
+  background:
+    linear-gradient(to bottom, #b22 0 16.6%, #fff 16.6% 33.3%, #b22 33.3% 50%, #fff 50% 66.6%, #b22 66.6% 83.3%, #fff 83.3% 100%);
+}
+.phone-with-flag .input{ border:0; border-radius:0; }
+.checkbox{ display:inline-flex; align-items:center; gap:.5rem; font-size:var(--t-sm); color:var(--c-text); }
+
+/* =========================================================
+   COMPONENT: Quote form card (overlays hero)
+   ========================================================= */
+.quote-card{
+  background:var(--c-paper);
+  border-radius:var(--r-md);
+  border-top: 4px solid var(--c-brick);
+  box-shadow: var(--sh-lg);
+  padding: var(--s-6);
+  width: 100%;
+  max-width: 420px;
+}
+.quote-card .qc-eyebrow{ font:600 var(--t-eyebrow)/1.2 var(--f-body); letter-spacing:var(--tr-eyebrow); text-transform:uppercase; color:var(--c-brass-hover); }
+.quote-card .qc-title{ font-family:var(--f-display); font-size: 1.5rem; font-weight:700; color:var(--c-spruce); margin: var(--s-2) 0 var(--s-4); }
+.quote-card .qc-sub{ font-size:var(--t-sm); color:var(--c-text-muted); margin-bottom: var(--s-4); }
+.progress{ height:8px; background: var(--c-bone-2); border-radius:var(--r-pill); overflow:hidden; margin-bottom: var(--s-4); }
+.progress-fill{ height:100%; background: var(--c-brick); width:33%; transition: width .2s; }
+.progress-meta{ display:flex; justify-content:space-between; font:600 var(--t-xs)/1 var(--f-body); letter-spacing:.08em; text-transform:uppercase; color:var(--c-text-muted); margin-top:-.5rem; margin-bottom: var(--s-3); }
+
+/* =========================================================
+   COMPONENT: Utility bar + Header
+   ========================================================= */
+.utility-bar{
+  background: var(--c-spruce-deep);
+  color: var(--c-text-invert);
+  font-size: var(--t-xs);
+  letter-spacing:.04em;
+}
+.utility-bar .wrap{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: .55rem var(--s-5);
+  display:flex; align-items:center; justify-content:space-between; gap:var(--s-4);
+}
+.utility-bar a{ color: var(--c-brass-soft); }
+.utility-bar a:hover{ color: var(--c-bone); }
+.utility-bar .right{ display:flex; align-items:center; gap:var(--s-5); }
+.utility-bar .lang{ display:inline-flex; align-items:center; gap:.4rem; color: var(--c-bone); padding-left:var(--s-4); border-left:1px solid var(--c-spruce-line); }
+
+.site-header{
+  background: var(--c-paper);
+  border-bottom: 1px solid var(--c-rule);
+  position:sticky; top:0; z-index:50;
+}
+.site-header .wrap{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--s-4) var(--s-5);
+  display:grid; grid-template-columns: auto 1fr auto; align-items:center; gap: var(--s-6);
+}
+.brand{
+  display:inline-flex; align-items:center; gap:.7rem; color:var(--c-spruce);
+}
+.brand:hover{ text-decoration:none; }
+.brand-mark{
+  width:44px; height:44px; border-radius: var(--r-sm);
+  background:
+    radial-gradient(circle at 30% 30%, var(--c-brass) 0 22%, transparent 23%),
+    var(--c-spruce);
+  display:inline-flex; align-items:center; justify-content:center;
+  color: var(--c-bone); font-family:var(--f-display); font-weight:700; font-size:1.25rem;
+  position:relative; box-shadow: inset 0 0 0 1px rgba(245,239,226,.18);
+}
+.brand-mark::after{
+  content:"B"; position:relative; z-index:1; font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+.brand-name{
+  font-family:var(--f-display); font-weight:700; font-size: 1.125rem; line-height:1; color:var(--c-spruce);
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+.brand-name small{ display:block; font:500 var(--t-eyebrow)/1.2 var(--f-body); letter-spacing:.16em; text-transform:uppercase; color:var(--c-brass-hover); margin-top:.25rem; }
+
+.primary-nav{ display:flex; justify-content:center; gap:var(--s-6); }
+.primary-nav a{ color:var(--c-spruce); font:600 var(--t-sm)/1 var(--f-body); letter-spacing:.04em; padding: var(--s-3) 0; border-bottom:2px solid transparent; }
+.primary-nav a:hover{ text-decoration:none; color:var(--c-brick); border-bottom-color: var(--c-brick); }
+
+.header-cta{ display:flex; gap:var(--s-2); }
+
+@media (max-width:900px){
+  .site-header .wrap{ grid-template-columns: auto 1fr auto; }
+  .primary-nav{ display:none; }
+}
+
+/* =========================================================
+   COMPONENT: Hero with overlaid quote form
+   ========================================================= */
+.hero{
+  position:relative;
+  min-height: 580px;
+  background: var(--c-spruce);
+  color: var(--c-cream-ink);
+  overflow:hidden;
+}
+.hero::before{
+  /* photo placeholder: green-on-green chevron mock */
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(135deg, rgba(15,39,36,.55) 0 60%, rgba(168,54,42,.25) 100%),
+    repeating-linear-gradient(45deg, #16332f 0 32px, #122a26 32px 64px);
+  z-index:0;
+}
+.hero .wrap{
+  position:relative; z-index:1;
+  max-width: var(--container);
+  margin:0 auto;
+  padding: var(--s-9) var(--s-5);
+  display:grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-7); align-items:center;
+}
+.hero-headline{
+  font-family:var(--f-display);
+  font-size: var(--t-d1);
+  font-weight:800;
+  font-variation-settings:"opsz" 144, "SOFT" 50;
+  line-height: 1.02;
+  color: var(--c-bone);
+  margin: 0 0 var(--s-5);
+}
+.hero-headline em{ font-style: italic; color: var(--c-brass-soft); font-variation-settings:"opsz" 144, "SOFT" 100; }
+.hero-bullets{ list-style:none; padding:0; margin:0; display:grid; gap: var(--s-3); }
+.hero-bullets li{ display:flex; align-items:flex-start; gap: var(--s-3); font-size: 1.0625rem; color: var(--c-bone-2); }
+.hero-bullets li::before{
+  content:"✦"; color: var(--c-brass); flex: 0 0 auto; line-height: 1.4;
+}
+
+@media (max-width:900px){
+  .hero .wrap{ grid-template-columns: 1fr; padding: var(--s-7) var(--s-5); }
+  .hero{ min-height: auto; }
+}
+
+/* =========================================================
+   COMPONENT: Use-case card (image-top / tile-bottom)
+   ========================================================= */
+.uc-grid{
+  display:grid; grid-template-columns: repeat(4,1fr); gap: var(--s-4);
+}
+@media (max-width:1100px){ .uc-grid{ grid-template-columns: repeat(3,1fr) } }
+@media (max-width:760px){ .uc-grid{ grid-template-columns: repeat(2,1fr) } }
+@media (max-width:480px){ .uc-grid{ grid-template-columns: 1fr } }
+.uc-card{
+  background: var(--c-paper);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--sh-card);
+  display:flex; flex-direction:column;
+  transition: transform .15s, box-shadow .15s;
+  border:1px solid var(--c-rule-soft);
+}
+.uc-card:hover{ transform: translateY(-2px); box-shadow: var(--sh-md); text-decoration:none; }
+.uc-photo{
+  aspect-ratio: 4 / 3;
+  background:
+    linear-gradient(135deg, rgba(15,39,36,.25), rgba(168,54,42,.18)),
+    repeating-linear-gradient(60deg, #cdc4ab 0 12px, #c0b69a 12px 24px);
+}
+.uc-tile{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: var(--s-4) var(--s-5);
+  background: var(--c-paper);
+  border-top: 1px solid var(--c-rule-soft);
+}
+.uc-title{
+  font-family:var(--f-display); font-weight:700; font-size:1.0625rem;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--c-spruce);
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+.uc-chev{ color: var(--c-brass-hover); font-size:1.25rem; line-height:1; }
+
+/* =========================================================
+   COMPONENT: Feature check grid (6 items)
+   ========================================================= */
+.feature-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: var(--s-6) var(--s-7); }
+@media (max-width:760px){ .feature-grid{ grid-template-columns: 1fr 1fr } }
+@media (max-width:480px){ .feature-grid{ grid-template-columns: 1fr } }
+.feature-item{ display:flex; align-items:flex-start; gap: var(--s-4); }
+.feature-check{
+  flex:0 0 auto;
+  width:40px; height:40px; border-radius:50%;
+  background: var(--c-brick);
+  color: var(--c-cream-ink);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-weight:700; box-shadow: 0 0 0 4px rgba(168,54,42,.10);
+}
+.feature-text{ font:600 var(--t-body)/1.35 var(--f-body); color: var(--c-spruce); }
+.feature-text small{ display:block; font:400 var(--t-sm)/1.5 var(--f-body); color:var(--c-text-muted); margin-top:.25rem; }
+
+/* =========================================================
+   COMPONENT: Photo band (full-bleed dark)
+   ========================================================= */
+.photo-band{
+  position:relative;
+  background: var(--c-spruce-deep);
+  color: var(--c-cream-ink);
+  overflow:hidden;
+  padding: var(--s-9) var(--s-5);
+  text-align:center;
+}
+.photo-band::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 20% 40%, rgba(184,138,59,.18), transparent 50%),
+    radial-gradient(circle at 80% 60%, rgba(168,54,42,.22), transparent 55%),
+    repeating-linear-gradient(135deg, #0a1c1a 0 22px, #0c2220 22px 44px);
+  opacity:.85;
+}
+.photo-band .wrap{ position:relative; max-width: var(--container-narrow); margin:0 auto; }
+.photo-band h2{
+  font-family:var(--f-display); color: var(--c-bone);
+  font-size: var(--t-d2); font-variation-settings:"opsz" 144, "SOFT" 50;
+  margin: var(--s-3) 0;
+}
+.photo-band p{ color: var(--c-bone-2); max-width: 60ch; margin-inline: auto; }
+
+/* =========================================================
+   COMPONENT: Delivery band (with US map)
+   ========================================================= */
+.delivery-band{
+  background: var(--c-bone-2);
+  padding: var(--s-9) var(--s-5);
+  border-top:1px solid var(--c-rule);
+  border-bottom:1px solid var(--c-rule);
+}
+.delivery-band .wrap{
+  max-width: var(--container);
+  margin: 0 auto;
+  display:grid; grid-template-columns: 1fr 1.2fr; gap: var(--s-7); align-items:center;
+}
+.delivery-band h2{ font-size: var(--t-d2); font-variation-settings:"opsz" 144, "SOFT" 30; }
+.delivery-band p{ color: var(--c-text-muted); }
+.us-map-wrap{
+  background: var(--c-paper);
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-rule);
+  padding: var(--s-5);
+  display:flex; align-items:center; justify-content:center;
+  min-height: 240px;
+  box-shadow: var(--sh-card);
+}
+.us-map-wrap svg{ width:100%; height:auto; max-height: 320px; }
+@media (max-width:900px){ .delivery-band .wrap{ grid-template-columns: 1fr; } }
+
+/* =========================================================
+   COMPONENT: Logo wall
+   ========================================================= */
+.logo-wall{
+  display:grid; grid-template-columns: repeat(4,1fr); gap: var(--s-5);
+  align-items:center; justify-items:center;
+}
+@media (max-width:760px){ .logo-wall{ grid-template-columns: repeat(2,1fr) } }
+.logo-chip{
+  width:100%; aspect-ratio: 5 / 2; max-height: 80px;
+  background: var(--c-paper);
+  border:1px dashed var(--c-rule);
+  border-radius: var(--r-sm);
+  display:flex; align-items:center; justify-content:center;
+  font:700 .9rem/1 var(--f-display); letter-spacing:.18em; text-transform:uppercase;
+  color: var(--c-text-muted);
+}
+
+/* =========================================================
+   COMPONENT: Card carousel (chevron arrows)
+   ========================================================= */
+.carousel{ position:relative; padding: 0 var(--s-7); }
+.carousel-track{
+  display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--s-4);
+}
+@media (max-width:900px){ .carousel-track{ grid-template-columns: repeat(2,1fr) } }
+@media (max-width:560px){ .carousel-track{ grid-template-columns: 1fr } }
+.carousel .chev{
+  position:absolute; top:50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--c-bone); color: var(--c-spruce);
+  border:1px solid var(--c-rule);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:1.25rem; cursor:pointer; box-shadow: var(--sh-sm);
+}
+.carousel .chev:hover{ background: var(--c-brick); color: var(--c-cream-ink); border-color: var(--c-brick); }
+.carousel .chev.prev{ left: 0; }
+.carousel .chev.next{ right: 0; }
+
+.story-card{
+  background: var(--c-paper); border-radius: var(--r-md); overflow:hidden;
+  border:1px solid var(--c-rule-soft); box-shadow: var(--sh-card);
+  display:flex; flex-direction:column;
+}
+.story-photo{
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #15332e, #2b4a3f);
+}
+.story-body{ padding: var(--s-4) var(--s-5); }
+.story-eyebrow{ font:600 var(--t-eyebrow)/1.2 var(--f-body); letter-spacing:var(--tr-eyebrow); text-transform:uppercase; color:var(--c-brass-hover); margin-bottom:var(--s-2); }
+.story-title{ font-family:var(--f-display); font-size:1.0625rem; font-weight:700; line-height:1.2; color:var(--c-spruce); letter-spacing:.02em; }
+
+/* =========================================================
+   COMPONENT: Testimonial slider (script italic)
+   ========================================================= */
+.testimonial-band{
+  background: var(--c-bone-2);
+  padding: var(--s-9) var(--s-5);
+}
+.testimonial-band .wrap{
+  max-width: var(--container);
+  margin:0 auto;
+  display:grid; grid-template-columns: 1fr 1.4fr; gap: var(--s-8); align-items:center;
+}
+@media (max-width:900px){ .testimonial-band .wrap{ grid-template-columns: 1fr; } }
+.history-col h2{ font-size: var(--t-d2); }
+.history-col p{ color: var(--c-text-muted); }
+.bbb-badge{
+  display:inline-flex; align-items:center; gap: var(--s-3);
+  border: 1px solid var(--c-brass);
+  background: var(--c-paper);
+  border-radius: var(--r-md);
+  padding: var(--s-3) var(--s-4);
+  font:600 var(--t-sm)/1 var(--f-body);
+  color: var(--c-spruce);
+  box-shadow: var(--sh-sm);
+  margin-top: var(--s-5);
+}
+.bbb-badge .seal{
+  width: 36px; height:36px; border-radius:50%;
+  background: var(--c-brick); color: var(--c-cream-ink);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--f-display); font-weight:800; font-size: .9rem;
+}
+.testimonial{
+  background: var(--c-paper); border-radius: var(--r-md);
+  padding: var(--s-7);
+  border: 1px solid var(--c-rule);
+  position:relative;
+}
+.testimonial::before{
+  content:"\201C"; /* opening curly quote */
+  position:absolute; top: -.2em; left: var(--s-4);
+  font-family: var(--f-display); font-size: 8rem; line-height:1;
+  color: var(--c-brass-soft);
+}
+.t-quote{
+  font-family: var(--f-script);
+  font-size: var(--t-quote);
+  font-weight: 500;
+  color: var(--c-spruce);
+  line-height: 1.35;
+  margin: 0 0 var(--s-5);
+  position:relative;
+}
+.t-initials{ font:700 var(--t-sm)/1 var(--f-body); letter-spacing:.16em; text-transform:uppercase; color: var(--c-brass-hover); }
+.t-meta{ font: 400 var(--t-xs)/1.4 var(--f-body); color: var(--c-text-muted); margin-top: .25rem; }
+.t-dots{ display:flex; gap: .5rem; margin-top: var(--s-5); }
+.t-dot{ width:8px; height:8px; border-radius:50%; background:var(--c-rule); }
+.t-dot.is-active{ background: var(--c-brick); }
+
+/* =========================================================
+   COMPONENT: Color swatch matrix (panel + trim)
+   ========================================================= */
+.swatch-matrix{
+  background: var(--c-paper);
+  border:1px solid var(--c-rule);
+  border-radius: var(--r-md);
+  padding: var(--s-6);
+}
+.swatch-row{
+  display:flex; flex-wrap: wrap; gap: var(--s-3);
+  margin-bottom: var(--s-5);
+}
+.swatch{
+  width: 56px; height: 56px;
+  border-radius: var(--r-sm);
+  position:relative;
+  box-shadow: inset 0 0 0 1px rgba(15,39,36,.18), 0 1px 2px rgba(15,39,36,.10);
+}
+.swatch-label{ font:600 var(--t-xs)/1 var(--f-body); letter-spacing:.1em; text-transform:uppercase; color:var(--c-text-muted); display:block; margin-top: var(--s-1); }
+.swatch.is-light .swatch-label{ color: var(--c-text-faint); }
+.swatch-group h4{ font-size: var(--t-h4); margin-bottom: var(--s-3); }
+.swatch-disclaimer{ font-size: var(--t-xs); color: var(--c-text-faint); font-style:italic; margin-top: var(--s-3); }
+
+/* =========================================================
+   COMPONENT: Illustrated spec block (alternating)
+   ========================================================= */
+.spec-block{
+  display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-8); align-items:center;
+  padding: var(--s-8) 0;
+  border-top: 1px solid var(--c-rule);
+}
+.spec-block.reverse .spec-illu{ order: 2; }
+.spec-block.reverse .spec-copy{ order: 1; }
+@media (max-width:900px){ .spec-block{ grid-template-columns: 1fr; } .spec-block.reverse .spec-illu, .spec-block.reverse .spec-copy{ order:initial; } }
+.spec-illu{
+  background: var(--c-paper);
+  border:1px solid var(--c-rule);
+  border-radius: var(--r-md);
+  padding: var(--s-6);
+  min-height: 280px;
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.spec-illu svg{ width: 100%; height:auto; max-height: 240px; }
+.spec-callout{
+  position:absolute;
+  font:600 var(--t-xs)/1.3 var(--f-body); letter-spacing:.08em; text-transform:uppercase;
+  color: var(--c-brick); background: var(--c-bone);
+  border:1px solid var(--c-brick); padding: .25rem .5rem;
+  border-radius: var(--r-sm);
+}
+.spec-eyebrow{ font:600 var(--t-eyebrow)/1.2 var(--f-body); letter-spacing:var(--tr-eyebrow); text-transform:uppercase; color: var(--c-brass-hover); margin-bottom: var(--s-2); }
+.spec-copy h3{ font-size: var(--t-h2); font-variation-settings:"opsz" 144, "SOFT" 30; margin-bottom: var(--s-3); }
+.spec-copy p{ color: var(--c-text-muted); }
+
+/* =========================================================
+   COMPONENT: Project / blog card (paginated index)
+   ========================================================= */
+.proj-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: var(--s-5); }
+@media (max-width:760px){ .proj-grid{ grid-template-columns: 1fr 1fr } }
+@media (max-width:480px){ .proj-grid{ grid-template-columns: 1fr } }
+.proj-card{
+  background: var(--c-paper);
+  border:1px solid var(--c-rule-soft);
+  border-radius: var(--r-md);
+  overflow:hidden;
+  box-shadow: var(--sh-card);
+  display:flex; flex-direction:column;
+}
+.proj-photo{
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(160deg, #1d4138, #2f5648);
+}
+.proj-body{ padding: var(--s-5); display:flex; flex-direction:column; gap:var(--s-3); flex:1; }
+.proj-title{
+  font-family:var(--f-display); font-size: 1.0625rem; font-weight:700; line-height:1.25;
+  letter-spacing:.02em; color:var(--c-spruce); text-transform:uppercase;
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+}
+.proj-teaser{ font-size: var(--t-sm); color: var(--c-text-muted); }
+.proj-readmore{ font:600 var(--t-sm)/1 var(--f-body); color: var(--c-brick); align-self:flex-start; margin-top:auto; }
+.proj-readmore::after{ content:" ›"; }
+
+/* =========================================================
+   COMPONENT: Page banner (photo band + title + subhead)
+   ========================================================= */
+.page-banner{
+  background: var(--c-spruce);
+  color: var(--c-cream-ink);
+  padding: var(--s-8) var(--s-5);
+  position:relative;
+  overflow:hidden;
+}
+.page-banner::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(184,138,59,.18), transparent 55%),
+    repeating-linear-gradient(45deg, #122a26 0 22px, #16332f 22px 44px);
+  opacity:.85;
+}
+.page-banner .wrap{ position:relative; max-width: var(--container); margin: 0 auto; }
+.page-banner h1{
+  font-family:var(--f-display); color: var(--c-bone);
+  font-size: var(--t-d1); font-variation-settings:"opsz" 144, "SOFT" 50;
+  margin: 0 0 var(--s-3);
+}
+.page-banner h1 em{ font-style: italic; color: var(--c-brass-soft); font-variation-settings:"opsz" 144, "SOFT" 100; }
+.page-banner p{ color: var(--c-bone-2); max-width: 60ch; }
+
+/* =========================================================
+   COMPONENT: Search bar
+   ========================================================= */
+.searchbar{
+  display:flex; gap: var(--s-2);
+  max-width: 560px; margin: 0 auto;
+  background: var(--c-paper); padding: var(--s-2);
+  border:1px solid var(--c-rule); border-radius: var(--r-pill);
+  box-shadow: var(--sh-sm);
+}
+.searchbar input{
+  flex:1; border:0; outline:0; padding: .55rem var(--s-4);
+  background:transparent; font-family:var(--f-body); font-size: var(--t-sm); color: var(--c-spruce);
+}
+.searchbar button{ border-radius: var(--r-pill); }
+
+/* =========================================================
+   COMPONENT: Pagination
+   ========================================================= */
+.pagination{
+  display:flex; align-items:center; justify-content:center; gap: var(--s-2);
+  margin: var(--s-7) 0;
+  font:600 var(--t-sm)/1 var(--f-body);
+}
+.pagination a, .pagination span{
+  padding: .5rem .8rem; border-radius: var(--r-sm);
+  color: var(--c-spruce); background: transparent; border: 1px solid transparent;
+}
+.pagination a:hover{ background: var(--c-bone-2); text-decoration:none; }
+.pagination .is-active{ background: var(--c-brick); color: var(--c-cream-ink); }
+.pagination .next{ color: var(--c-brick); }
+
+/* =========================================================
+   COMPONENT: Accordion
+   ========================================================= */
+.accordion{ border-top: 1px solid var(--c-rule); }
+.acc-item{ border-bottom: 1px solid var(--c-rule); }
+.acc-head{
+  width:100%; text-align:left; background: transparent; border:0; cursor:pointer;
+  padding: var(--s-5) 0;
+  display:flex; align-items:center; justify-content:space-between; gap: var(--s-4);
+  font-family:var(--f-display); font-size: 1.0625rem; font-weight:700; color:var(--c-spruce);
+  font-variation-settings:"opsz" 36, "SOFT" 30;
+  letter-spacing:.02em; text-transform:uppercase;
+}
+.acc-head:hover{ color: var(--c-brick); }
+.acc-icon{ font-family:var(--f-display); color: var(--c-brick); font-size: 1.5rem; font-weight:400; line-height:1; }
+.acc-body{
+  max-height: 0; overflow:hidden;
+  transition: max-height .25s ease;
+  color: var(--c-text-muted);
+}
+.acc-body > div{ padding-bottom: var(--s-5); }
+.acc-item.is-open .acc-body{ max-height: 800px; }
+.acc-item.is-open .acc-icon{ transform: rotate(45deg); }
+
+/* =========================================================
+   COMPONENT: Floating Q-tab
+   ========================================================= */
+.q-tab{
+  position:fixed; right: var(--s-5); bottom: var(--s-5);
+  background: var(--c-brick); color: var(--c-cream-ink);
+  padding: var(--s-3) var(--s-5);
+  border-radius: var(--r-pill);
+  font:700 var(--t-sm)/1 var(--f-body); letter-spacing:.04em;
+  box-shadow: var(--sh-lg);
+  display:inline-flex; align-items:center; gap: var(--s-2);
+  z-index: 60;
+}
+.q-tab::before{
+  content:""; width:8px; height:8px; border-radius:50%;
+  background: var(--c-brass); box-shadow: 0 0 0 4px rgba(184,138,59,.35);
+}
+
+/* =========================================================
+   COMPONENT: Site footer (patterned dark)
+   ========================================================= */
+.site-footer{
+  position:relative;
+  background: var(--c-spruce-deep);
+  color: var(--c-bone-2);
+  padding: var(--s-9) var(--s-5) var(--s-7);
+  overflow:hidden;
+}
+.site-footer::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    radial-gradient(circle, rgba(184,138,59,.07) 0 14%, transparent 15%),
+    radial-gradient(circle, rgba(184,138,59,.05) 0 14%, transparent 15%);
+  background-size: 64px 64px, 64px 64px;
+  background-position: 0 0, 32px 32px;
+  pointer-events:none;
+}
+.site-footer .wrap{
+  position:relative; z-index:1;
+  max-width: var(--container); margin: 0 auto;
+  display:grid; grid-template-columns: 1.1fr 1fr 1fr; gap: var(--s-7);
+}
+@media (max-width:900px){ .site-footer .wrap{ grid-template-columns: 1fr; } }
+.foot-h{
+  font:700 var(--t-eyebrow)/1 var(--f-body); letter-spacing:var(--tr-eyebrow); text-transform:uppercase;
+  color: var(--c-brass-soft); margin-bottom: var(--s-4);
+  padding-bottom: var(--s-2); border-bottom: 1px solid var(--c-spruce-line);
+}
+.foot-list{ list-style:none; padding:0; margin:0; display:grid; gap: var(--s-2); }
+.foot-list a{ color: var(--c-bone-2); }
+.foot-list a:hover{ color: var(--c-bone); text-decoration:none; }
+.foot-contact{ display:grid; gap: var(--s-3); }
+.foot-contact .row{ display:flex; gap: var(--s-3); align-items:flex-start; }
+.foot-contact .icon{
+  width: 28px; height: 28px; flex:0 0 auto;
+  border-radius: 50%;
+  background: var(--c-spruce-2); color: var(--c-brass-soft);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--f-display); font-weight:700; font-size: .85rem;
+}
+.foot-social{ display:flex; gap: var(--s-2); margin-top: var(--s-4); }
+.foot-social a{
+  width:36px; height:36px; border-radius: var(--r-sm);
+  background: var(--c-spruce-2); color: var(--c-brass-soft);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--f-display); font-weight:700; font-size: .85rem;
+}
+.foot-help .btn{ width:100%; margin-bottom: var(--s-3); }
+.subfooter{
+  position:relative; z-index:1;
+  max-width: var(--container); margin: var(--s-7) auto 0;
+  padding-top: var(--s-5);
+  border-top:1px solid var(--c-spruce-line);
+  text-align:center;
+  font-size: var(--t-xs); color: var(--c-text-faint);
+}
+
+/* =========================================================
+   COMPONENT: Promo strip (top, optional)
+   ========================================================= */
+.promo{
+  background: var(--c-brick-deep);
+  color: var(--c-cream-ink);
+  text-align:center;
+  font:600 var(--t-xs)/1.4 var(--f-body);
+  letter-spacing:.04em; text-transform:uppercase;
+  padding: .55rem var(--s-5);
+  border-bottom: 1px solid rgba(245,239,226,.15);
+}
+.promo a{ color: var(--c-brass-soft); text-decoration: underline; text-underline-offset:3px; }
+
+/* =========================================================
+   COMPONENT: TODO chip
+   ========================================================= */
+.todo{
+  display:inline-block;
+  font:700 var(--t-xs)/1 var(--f-body); letter-spacing:.06em; text-transform:uppercase;
+  background: #fff4d8; color: #6b4f00; padding: .25rem .5rem;
+  border:1px solid #e6c779; border-radius: var(--r-sm);
+  margin: 0 .25rem;
+}
+
+/* =========================================================
+   COMPONENT: Featured-in / stats strip
+   ========================================================= */
+.stats-strip{
+  background: var(--c-brick);
+  color: var(--c-cream-ink);
+  padding: var(--s-7) var(--s-5);
+}
+.stats-strip .wrap{
+  max-width: var(--container); margin:0 auto;
+  display:grid; grid-template-columns: repeat(4,1fr); gap: var(--s-6); text-align:center;
+}
+@media (max-width:760px){ .stats-strip .wrap{ grid-template-columns: 1fr 1fr; } }
+.stat-n{
+  font-family: var(--f-display); font-weight: 800; font-size: var(--t-d2);
+  font-variation-settings:"opsz" 144, "SOFT" 80;
+  line-height:1;
+  color: var(--c-bone);
+}
+.stat-l{ font:600 var(--t-xs)/1.4 var(--f-body); letter-spacing:.16em; text-transform:uppercase; color: var(--c-brass-soft); margin-top: .5rem; }
+
+</style>
+</head>
+<body>
+
+<div class="ds">
+
+  <!-- Header -->
+  <header class="ds-head">
+    <div class="ds-kicker">Bell Metal Buildings · Mock C</div>
+    <h1 class="ds-title">Design system</h1>
+    <p class="ds-lede">Heritage editorial direction grounded in the site 3 (Olympia Steel Buildings) structural inventory. Every token and primitive on this page is what every Mock C production page will consume from <code>_shared.css</code>.</p>
+    <div class="ds-note"><strong>Reference doc — not a customer-facing page.</strong> Approve the palette and primitives below before any page builds.</div>
+  </header>
+
+  <!-- =========================================================
+       SECTION 1 — Foundations: Palette
+       ========================================================= -->
+  <section class="ds-section" id="palette">
+    <div class="eyebrow">01 · Foundations</div>
+    <h2>Palette</h2>
+    <p class="ds-section-lede">Spruce + Bone + Brick + Brass. The deep green-black primary, warm parchment surface, oxblood-brick CTAs, and slim brass editorial accent set Mock C apart from Mock A (charcoal/bronze) and Mock B (indigo/ember/blue).</p>
+
+    <h3 class="ds-subhead">Primary surfaces</h3>
+    <div class="ds-grid ds-grid-4">
+      <div class="sw"><div class="sw-chip" style="background:#0f2724"></div><div class="sw-meta"><div class="sw-name">Spruce</div><div class="sw-token">--c-spruce</div><div class="sw-hex">#0f2724</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#16332f"></div><div class="sw-meta"><div class="sw-name">Spruce 2</div><div class="sw-token">--c-spruce-2</div><div class="sw-hex">#16332f</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#0a1c1a"></div><div class="sw-meta"><div class="sw-name">Spruce Deep</div><div class="sw-token">--c-spruce-deep</div><div class="sw-hex">#0a1c1a</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#233f3a"></div><div class="sw-meta"><div class="sw-name">Spruce Line</div><div class="sw-token">--c-spruce-line</div><div class="sw-hex">#233f3a</div></div></div>
+    </div>
+
+    <h3 class="ds-subhead">Paper / bone surfaces</h3>
+    <div class="ds-grid ds-grid-4">
+      <div class="sw"><div class="sw-chip" style="background:#ffffff"></div><div class="sw-meta"><div class="sw-name">Paper</div><div class="sw-token">--c-paper</div><div class="sw-hex">#ffffff</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#f5efe2"></div><div class="sw-meta"><div class="sw-name">Bone</div><div class="sw-token">--c-bone</div><div class="sw-hex">#f5efe2</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#ece4d2"></div><div class="sw-meta"><div class="sw-name">Bone 2</div><div class="sw-token">--c-bone-2</div><div class="sw-hex">#ece4d2</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#dfd6c1"></div><div class="sw-meta"><div class="sw-name">Bone 3</div><div class="sw-token">--c-bone-3</div><div class="sw-hex">#dfd6c1</div></div></div>
+    </div>
+
+    <h3 class="ds-subhead">Accent (CTAs + editorial details)</h3>
+    <div class="ds-grid ds-grid-4">
+      <div class="sw"><div class="sw-chip" style="background:#a8362a"></div><div class="sw-meta"><div class="sw-name">Brick</div><div class="sw-token">--c-brick</div><div class="sw-hex">#a8362a</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#8c2a20"></div><div class="sw-meta"><div class="sw-name">Brick Hover</div><div class="sw-token">--c-brick-hover</div><div class="sw-hex">#8c2a20</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#b88a3b"></div><div class="sw-meta"><div class="sw-name">Brass</div><div class="sw-token">--c-brass</div><div class="sw-hex">#b88a3b</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#ead7a6"></div><div class="sw-meta"><div class="sw-name">Brass Soft</div><div class="sw-token">--c-brass-soft</div><div class="sw-hex">#ead7a6</div></div></div>
+    </div>
+
+    <h3 class="ds-subhead">Semantic</h3>
+    <div class="ds-grid ds-grid-4">
+      <div class="sw"><div class="sw-chip" style="background:#2f6f3f"></div><div class="sw-meta"><div class="sw-name">Success</div><div class="sw-token">--c-success</div><div class="sw-hex">#2f6f3f</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#b6841d"></div><div class="sw-meta"><div class="sw-name">Warning</div><div class="sw-token">--c-warning</div><div class="sw-hex">#b6841d</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#b8302a"></div><div class="sw-meta"><div class="sw-name">Danger</div><div class="sw-token">--c-danger</div><div class="sw-hex">#b8302a</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#c9c0a8"></div><div class="sw-meta"><div class="sw-name">Rule</div><div class="sw-token">--c-rule</div><div class="sw-hex">#c9c0a8</div></div></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 2 — Foundations: Type
+       ========================================================= -->
+  <section class="ds-section" id="type">
+    <div class="eyebrow">02 · Foundations</div>
+    <h2>Typography</h2>
+    <p class="ds-section-lede">Fraunces (editorial serif, variable optical sizing + SOFT axis) for display and headlines. IBM Plex Sans for body. Caveat for the script testimonial moments that mirror site 3's italic-script testimonial slider — used sparingly so it stays an accent.</p>
+
+    <div class="type-spec">
+      <div class="spec-row">
+        <div class="spec-label">Display 1<br><code>--t-d1</code></div>
+        <div style="font-family:var(--f-display); font-size: var(--t-d1); font-weight:800; line-height:1.05; font-variation-settings:'opsz' 144, 'SOFT' 50;">Built once. Stands for generations.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Display 2<br><code>--t-d2</code></div>
+        <div style="font-family:var(--f-display); font-size: var(--t-d2); font-weight:700; line-height:1.06; font-variation-settings:'opsz' 144, 'SOFT' 30;">Engineered in steel. Made in America.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">H1<br><code>--t-h1</code></div>
+        <div style="font-family:var(--f-display); font-size: var(--t-h1); font-weight:600;">A factory you can call by name.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">H2<br><code>--t-h2</code></div>
+        <div style="font-family:var(--f-display); font-size: var(--t-h2); font-weight:600;">Buildings for every use</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">H3<br><code>--t-h3</code></div>
+        <div style="font-family:var(--f-display); font-size: var(--t-h3); font-weight:600;">Why we own the factory</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Body<br><code>--t-body</code></div>
+        <div>Bell pre-engineers every frame, panel, and trim piece in our Aliquippa facility — then ships the kit straight to your site with a stamped engineering drawing for your jurisdiction. No middlemen. No surprise upcharges. No "we'll get back to you on that."</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Small<br><code>--t-sm</code></div>
+        <div style="font-size: var(--t-sm); color: var(--c-text-muted);">Configure your width, length, and height in three steps. We'll send a sealed quote within one business day.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Eyebrow<br><code>--t-eyebrow</code></div>
+        <div class="eyebrow">Heritage since 1962</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Script<br><code>--f-script</code></div>
+        <div style="font-family:var(--f-script); font-size: var(--t-quote); color: var(--c-spruce); line-height:1.3;">They had our blueprints stamped in three days. Building was up by the next month.</div>
+      </div>
+    </div>
+
+    <div class="divider-ornament"><span></span></div>
+
+    <h3 class="ds-subhead">Type scale, line height, tracking</h3>
+    <p style="color:var(--c-text-muted); max-width:60ch;">Display + headline: <code>line-height: 1.06</code>, tracking <code>0.005em</code>. Body: <code>line-height: 1.65</code>. Eyebrow: tracking <code>0.22em</code>, uppercase. Fraunces variable axes: <code>opsz 9–144</code>, <code>SOFT 0–100</code>. Larger displays use higher SOFT for warmth.</p>
+  </section>
+
+  <!-- =========================================================
+       SECTION 3 — Foundations: Spacing, radius, shadow
+       ========================================================= -->
+  <section class="ds-section" id="space">
+    <div class="eyebrow">03 · Foundations</div>
+    <h2>Spacing, radius, shadow</h2>
+    <p class="ds-section-lede">4px-base spacing scale (s-1 = 4px through s-11 = 160px). Radius is restrained — small for inputs, medium for cards, no chips beyond the search/pill primary. Shadow is subtle; the editorial direction relies on borders and rules more than elevation.</p>
+
+    <h3 class="ds-subhead">Spacing scale</h3>
+    <div class="ds-grid ds-grid-6">
+      <div><div style="background:var(--c-brick); height:.25rem; width:.25rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-1 · 4px</small></div>
+      <div><div style="background:var(--c-brick); height:.5rem; width:.5rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-2 · 8px</small></div>
+      <div><div style="background:var(--c-brick); height:.75rem; width:.75rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-3 · 12px</small></div>
+      <div><div style="background:var(--c-brick); height:1rem; width:1rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-4 · 16px</small></div>
+      <div><div style="background:var(--c-brick); height:1.5rem; width:1.5rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-5 · 24px</small></div>
+      <div><div style="background:var(--c-brick); height:2rem; width:2rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-6 · 32px</small></div>
+      <div><div style="background:var(--c-brick); height:3rem; width:3rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-7 · 48px</small></div>
+      <div><div style="background:var(--c-brick); height:4rem; width:4rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-8 · 64px</small></div>
+      <div><div style="background:var(--c-brick); height:6rem; width:6rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-9 · 96px</small></div>
+      <div><div style="background:var(--c-brick); height:8rem; width:8rem;"></div><small style="font-family:ui-monospace,monospace; color:var(--c-text-muted)">--s-10 · 128px</small></div>
+    </div>
+
+    <h3 class="ds-subhead">Radius</h3>
+    <div class="ds-grid ds-grid-4">
+      <div style="background:var(--c-paper); border:1px solid var(--c-rule); border-radius: var(--r-sm); padding: var(--s-5); text-align:center;"><strong>--r-sm</strong><br><small>3px · inputs, buttons</small></div>
+      <div style="background:var(--c-paper); border:1px solid var(--c-rule); border-radius: var(--r-md); padding: var(--s-5); text-align:center;"><strong>--r-md</strong><br><small>6px · cards</small></div>
+      <div style="background:var(--c-paper); border:1px solid var(--c-rule); border-radius: var(--r-lg); padding: var(--s-5); text-align:center;"><strong>--r-lg</strong><br><small>12px · large containers</small></div>
+      <div style="background:var(--c-paper); border:1px solid var(--c-rule); border-radius: var(--r-pill); padding: var(--s-5); text-align:center;"><strong>--r-pill</strong><br><small>999px · search, q-tab</small></div>
+    </div>
+
+    <h3 class="ds-subhead">Shadow</h3>
+    <div class="ds-grid ds-grid-4">
+      <div style="background:var(--c-paper); border-radius: var(--r-md); padding: var(--s-5); box-shadow: var(--sh-sm); text-align:center;"><strong>--sh-sm</strong><br><small>subtle outline lift</small></div>
+      <div style="background:var(--c-paper); border-radius: var(--r-md); padding: var(--s-5); box-shadow: var(--sh-card); text-align:center;"><strong>--sh-card</strong><br><small>default card</small></div>
+      <div style="background:var(--c-paper); border-radius: var(--r-md); padding: var(--s-5); box-shadow: var(--sh-md); text-align:center;"><strong>--sh-md</strong><br><small>hover lift</small></div>
+      <div style="background:var(--c-paper); border-radius: var(--r-md); padding: var(--s-5); box-shadow: var(--sh-lg); text-align:center;"><strong>--sh-lg</strong><br><small>floating quote card, q-tab</small></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 4 — Primitives: Buttons
+       ========================================================= -->
+  <section class="ds-section" id="buttons">
+    <div class="eyebrow">04 · Primitives</div>
+    <h2>Buttons</h2>
+    <p class="ds-section-lede">Primary = brick (most CTAs). Secondary = spruce (info/about). Outline for top-of-page CTAs in the header. Ghost for inline "Learn more" affordances.</p>
+
+    <h3 class="ds-subhead">Variants</h3>
+    <div class="btn-row">
+      <button class="btn btn-primary">Get a free quote</button>
+      <button class="btn btn-secondary">Contact us</button>
+      <button class="btn btn-outline">Sale buildings</button>
+      <button class="btn btn-ghost">Read more</button>
+    </div>
+
+    <h3 class="ds-subhead">Sizes</h3>
+    <div class="btn-row">
+      <button class="btn btn-primary btn-sm">Small</button>
+      <button class="btn btn-primary">Default</button>
+      <button class="btn btn-primary btn-lg">Large</button>
+    </div>
+
+    <h3 class="ds-subhead">On dark surface</h3>
+    <div style="background:var(--c-spruce); padding: var(--s-5); border-radius: var(--r-md);">
+      <div class="btn-row">
+        <button class="btn btn-primary">Get a free quote</button>
+        <button class="btn btn-outline-on-dark">Sale buildings</button>
+        <a class="btn-ghost" style="color: var(--c-brass-soft);">Watch the build</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 5 — Primitives: Eyebrow + ornament + dividers
+       ========================================================= -->
+  <section class="ds-section" id="eyebrow">
+    <div class="eyebrow">05 · Primitives</div>
+    <h2>Eyebrows &amp; ornaments</h2>
+    <p class="ds-section-lede">Brass eyebrow with leading rule is the editorial signature. A diamond-ornament divider replaces site 3's faint-star motif (which would be too on-the-nose if we copied it).</p>
+
+    <div class="ds-grid ds-grid-3">
+      <div><div class="eyebrow">Buildings since 1962</div></div>
+      <div><div class="eyebrow">Made in Aliquippa</div></div>
+      <div><div class="eyebrow">Engineered to your site</div></div>
+    </div>
+
+    <div class="divider-ornament"><span></span></div>
+
+    <div class="ds-note"><strong>Pattern motif decision:</strong> Site 3 uses repeating Statue of Liberty silhouettes in the footer. Mock C uses a repeating diamond/rivet halftone instead (visible in the footer below) — heritage-feeling without copying the reference. Flag if you want a different motif (oak leaf, star, anchor, etc.).</div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 6 — Primitives: Form fields
+       ========================================================= -->
+  <section class="ds-section" id="forms">
+    <div class="eyebrow">06 · Primitives</div>
+    <h2>Form fields</h2>
+    <p class="ds-section-lede">Inputs use 3px-radius small corners, focused brass ring. Width / Length / Height sit in a 3-up <code>input-row</code>. The phone field has a country-flag selector.</p>
+
+    <div style="background:var(--c-paper); border:1px solid var(--c-rule); border-radius: var(--r-md); padding: var(--s-6); max-width: 720px;">
+      <div class="ds-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="field"><label>First name</label><input class="input" value="Marcus" /></div>
+        <div class="field"><label>Last name</label><input class="input" value="Larkin" /></div>
+      </div>
+      <div class="ds-grid" style="grid-template-columns: 1fr 1fr; margin-top: var(--s-4);">
+        <div class="field"><label>Email</label><input class="input" type="email" value="marcus@example.com" /></div>
+        <div class="field"><label>Phone</label>
+          <div class="phone-with-flag">
+            <span class="flag">+1</span>
+            <input class="input" type="tel" value="(724) 555-0143" />
+          </div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top: var(--s-4);"><label>Questions or comments</label>
+        <textarea class="textarea" rows="3">We're looking at a 60×120 commercial-grade warehouse — can you confirm clear-span heights at 18ft?</textarea>
+      </div>
+
+      <h4 style="margin-top: var(--s-5); margin-bottom: var(--s-3); font-family:var(--f-body); font-size: var(--t-xs); letter-spacing:.16em; text-transform:uppercase; color: var(--c-brass-hover);">Building details</h4>
+      <div class="input-row">
+        <div class="field"><label>Width (ft)</label><input class="input" value="60" /></div>
+        <div class="field"><label>Length (ft)</label><input class="input" value="120" /></div>
+        <div class="field"><label>Height (ft)</label><input class="input" value="18" /></div>
+      </div>
+      <div class="ds-grid" style="grid-template-columns: 2fr 1fr; margin-top: var(--s-4);">
+        <div class="field"><label>State</label>
+          <select class="select"><option>Pennsylvania</option><option>Ohio</option><option>West Virginia</option><option>New York</option></select>
+        </div>
+        <div class="field"><label>Zip code</label><input class="input" value="15001" /></div>
+      </div>
+      <label class="checkbox" style="margin-top: var(--s-5);"><input type="checkbox" checked /> I'd like a follow-up from Bell's engineering team</label>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 7 — Primitive: Quote-form card (overlay)
+       ========================================================= -->
+  <section class="ds-section" id="quote-card">
+    <div class="eyebrow">07 · Primitives</div>
+    <h2>Quote form card</h2>
+    <p class="ds-section-lede">This card overlays the hero photo on the homepage and every use-case detail page — site 3's signature pattern. 3-step progress, brick fill, brass eyebrow, sized to ~420px max-width so it never crowds the headline.</p>
+
+    <div style="background:var(--c-spruce); padding: var(--s-7); border-radius: var(--r-md); display:flex; justify-content:flex-end;">
+      <div class="quote-card">
+        <div class="qc-eyebrow">Price your building</div>
+        <div class="qc-title">Get a free quote in 3 easy steps</div>
+        <div class="progress-meta"><span>Step 1 of 3</span><span>33%</span></div>
+        <div class="progress"><div class="progress-fill"></div></div>
+        <div class="input-row">
+          <div class="field"><label>Width</label><input class="input" placeholder="ft" /></div>
+          <div class="field"><label>Length</label><input class="input" placeholder="ft" /></div>
+          <div class="field"><label>Height</label><input class="input" placeholder="ft" /></div>
+        </div>
+        <button class="btn btn-primary btn-lg" style="margin-top: var(--s-5); width:100%;">Next ›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 8 — Primitive: Utility bar + header + footer
+       ========================================================= -->
+  <section class="ds-section" id="chrome">
+    <div class="eyebrow">08 · Primitives</div>
+    <h2>Site chrome</h2>
+    <p class="ds-section-lede">Utility bar (heritage line + phone + language toggle), sticky main header with brand mark + serif wordmark + text nav + outline/solid CTA buttons, and patterned dark footer in 3 columns.</p>
+
+    <div style="border:1px solid var(--c-rule); border-radius: var(--r-md); overflow:hidden; margin-bottom: var(--s-5);">
+      <!-- utility bar -->
+      <div class="utility-bar">
+        <div class="wrap">
+          <div class="left">Building experts since 1962 · Made in Aliquippa, PA</div>
+          <div class="right">
+            <span>We're here to help — call <a href="tel:18004442525">1-800-444-2525</a></span>
+            <span class="lang">EN · ES</span>
+          </div>
+        </div>
+      </div>
+      <!-- header -->
+      <header class="site-header" style="position:static;">
+        <div class="wrap">
+          <a href="#" class="brand">
+            <span class="brand-mark"></span>
+            <span class="brand-name">Bell Metal Buildings<small>Since 1962</small></span>
+          </a>
+          <nav class="primary-nav">
+            <a href="#">Building Types</a>
+            <a href="#">Options</a>
+            <a href="#">About</a>
+            <a href="#">Resources</a>
+          </nav>
+          <div class="header-cta">
+            <a class="btn btn-outline btn-sm" href="#">Sale buildings</a>
+            <a class="btn btn-secondary btn-sm" href="#">Contact</a>
+            <a class="btn btn-primary btn-sm" href="#">Free quote</a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="ds-note">Header is sticky on real pages with a 1px bottom border on scroll. Mobile: nav collapses to a hamburger; CTAs collapse to a single "Quote" button next to the brand.</div>
+
+    <h3 class="ds-subhead">Footer</h3>
+    <div style="border-radius: var(--r-md); overflow:hidden; border:1px solid var(--c-rule);">
+      <footer class="site-footer" style="padding: var(--s-7) var(--s-5);">
+        <div class="wrap">
+          <div>
+            <div class="foot-h">Additional resources</div>
+            <ul class="foot-list">
+              <li><a href="#">Building types</a></li>
+              <li><a href="#">About Bell</a></li>
+              <li><a href="#">Field journal</a></li>
+              <li><a href="#">Certifications</a></li>
+              <li><a href="#">Warranty</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="foot-h">Get in touch</div>
+            <div class="foot-contact">
+              <div class="row"><span class="icon">☎</span><div>Toll free<br><strong style="color:var(--c-bone)">1-800-444-2525</strong></div></div>
+              <div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001</div></div>
+            </div>
+            <div class="foot-social">
+              <a href="#">f</a><a href="#">in</a><a href="#">ig</a><a href="#">yt</a>
+            </div>
+          </div>
+          <div class="foot-help">
+            <div class="foot-h">How can we help?</div>
+            <a class="btn btn-secondary" href="#">Contact us</a>
+            <a class="btn btn-primary" href="#">Get a free quote</a>
+          </div>
+        </div>
+        <div class="subfooter">© 2026 Bell Metal Buildings Co. All rights reserved. · <a href="#" style="color:inherit;">Privacy policy</a></div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 9 — Primitive: Hero (with overlay form)
+       ========================================================= -->
+  <section class="ds-section" id="hero">
+    <div class="eyebrow">09 · Primitives</div>
+    <h2>Hero with overlaid quote form</h2>
+    <p class="ds-section-lede">Site 3's signature opening. Left column carries the editorial headline + star-bullet list. Right column carries the 3-step quote card overlapping the photo edge.</p>
+
+    <div style="border-radius: var(--r-md); overflow:hidden; border:1px solid var(--c-rule);">
+      <section class="hero">
+        <div class="wrap">
+          <div>
+            <div class="eyebrow on-dark">Heritage since 1962</div>
+            <h1 class="hero-headline">Why choose <em>Bell?</em></h1>
+            <ul class="hero-bullets">
+              <li>Engineered to your site, stamped for your jurisdiction</li>
+              <li>Factory-direct from Aliquippa, Pennsylvania</li>
+              <li>Built once. Stands for generations.</li>
+              <li>40-year limited paint &amp; perforation warranty</li>
+              <li>One project manager from quote to delivery</li>
+            </ul>
+            <div class="btn-row" style="margin-top: var(--s-6);">
+              <a class="btn btn-primary btn-lg" href="#">Get a free quote</a>
+              <a class="btn btn-outline-on-dark btn-lg" href="#">Watch the build (2 min)</a>
+            </div>
+          </div>
+          <div>
+            <div class="quote-card">
+              <div class="qc-eyebrow">Price your building</div>
+              <div class="qc-title">Get a free quote in 3 easy steps</div>
+              <div class="progress-meta"><span>Step 1 of 3</span><span>33%</span></div>
+              <div class="progress"><div class="progress-fill"></div></div>
+              <div class="input-row">
+                <div class="field"><label>Width</label><input class="input" placeholder="ft" /></div>
+                <div class="field"><label>Length</label><input class="input" placeholder="ft" /></div>
+                <div class="field"><label>Height</label><input class="input" placeholder="ft" /></div>
+              </div>
+              <button class="btn btn-primary btn-lg" style="margin-top: var(--s-5); width:100%;">Next ›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 10 — Primitive: Use-case card grid
+       ========================================================= -->
+  <section class="ds-section" id="usecase">
+    <div class="eyebrow">10 · Primitives</div>
+    <h2>Use-case card</h2>
+    <p class="ds-section-lede">Image-top tile-bottom card. 12-card grid on the homepage and the Building Types index — matching site 3's count exactly.</p>
+
+    <div class="uc-grid">
+      <a class="uc-card" href="#"><div class="uc-photo"></div><div class="uc-tile"><span class="uc-title">Garages</span><span class="uc-chev">›</span></div></a>
+      <a class="uc-card" href="#"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.18), rgba(15,39,36,.22)), repeating-linear-gradient(60deg,#bcb29a 0 12px,#aa9f86 12px 24px);"></div><div class="uc-tile"><span class="uc-title">Warehouses</span><span class="uc-chev">›</span></div></a>
+      <a class="uc-card" href="#"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(184,138,59,.18), rgba(15,39,36,.18)), repeating-linear-gradient(-30deg,#cfc7af 0 14px,#c1b89c 14px 28px);"></div><div class="uc-tile"><span class="uc-title">Barndominiums</span><span class="uc-chev">›</span></div></a>
+      <a class="uc-card" href="#"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.30), rgba(168,54,42,.10)), repeating-linear-gradient(90deg,#bdb39b 0 16px,#aea48c 16px 32px);"></div><div class="uc-tile"><span class="uc-title">Workshops</span><span class="uc-chev">›</span></div></a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 11 — Primitive: Feature check grid
+       ========================================================= -->
+  <section class="ds-section" id="featurecheck">
+    <div class="eyebrow">11 · Primitives</div>
+    <h2>Feature check grid</h2>
+    <p class="ds-section-lede">3 × 2 grid of 6 features with brick-circle checkmarks. Used on home, every product detail, and as a closer on Options &amp; Finishes.</p>
+
+    <div class="feature-grid">
+      <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">Engineered to last a lifetime<small>Heavier gauge steel, taller-rated wind &amp; snow loads.</small></div></div>
+      <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">40-year limited rust-through warranty<small>On every galvanized panel and trim run.</small></div></div>
+      <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">40-year limited paint warranty<small>Silicone-polyester finish, 14 standard colors.</small></div></div>
+      <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">Design help from real engineers<small>Not call-center reps reading from a script.</small></div></div>
+      <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">Precision manufacturing<small>Every cut, punch, and bend done in-house.</small></div></div>
+      <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">Continued support after delivery<small>Your project manager doesn't disappear after the kit ships.</small></div></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 12 — Primitive: Photo band
+       ========================================================= -->
+  <section class="ds-section" id="photoband">
+    <div class="eyebrow">12 · Primitives</div>
+    <h2>Photo band (we own the factory)</h2>
+    <p class="ds-section-lede">Full-bleed dark band with overlaid serif type. Used as a credibility anchor across Home, About, every detail page, Warranty, and FAQ.</p>
+
+    <div style="border-radius: var(--r-md); overflow:hidden;">
+      <section class="photo-band">
+        <div class="wrap">
+          <div class="eyebrow on-dark" style="justify-content:center;">From the Bell factory floor</div>
+          <h2>We own the factory.</h2>
+          <p>Our Aliquippa facility cuts, punches, bends, and coats every component you'll see on your jobsite. No drop-shipping. No surprise lead times. Just steel, by us, for you.</p>
+          <div class="btn-row" style="justify-content:center; margin-top: var(--s-5);">
+            <a class="btn btn-primary" href="#">Tour the factory</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 13 — Primitive: Delivery band (US map)
+       ========================================================= -->
+  <section class="ds-section" id="delivery">
+    <div class="eyebrow">13 · Primitives</div>
+    <h2>Delivery band</h2>
+    <p class="ds-section-lede">Light bone band with a stylized US map on the right. The map is a simplified SVG silhouette with brass dot accents — original Mock C drawing, not borrowed from any reference site.</p>
+
+    <div style="border-radius: var(--r-md); overflow:hidden; border:1px solid var(--c-rule);">
+      <section class="delivery-band" style="padding: var(--s-7) var(--s-5);">
+        <div class="wrap">
+          <div>
+            <div class="eyebrow">Delivering nationwide</div>
+            <h2>Steel that reaches every state in the lower 48.</h2>
+            <p>Bell ships completed kits via certified carriers from coast to coast. Alaska, Hawaii, and Canadian provinces are quoted case-by-case. <a href="#"><strong>Request a quote to check delivery times.</strong></a></p>
+          </div>
+          <div class="us-map-wrap">
+            <!-- inline SVG: stylized US silhouette + brass dots -->
+            <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Highly simplified continental outline -->
+              <path d="M40,160 L80,120 L130,110 L180,90 L240,80 L290,75 L330,80 L380,70 L430,75 L470,85 L510,100 L540,130 L555,170 L545,200 L520,225 L490,250 L470,275 L440,295 L400,300 L370,290 L340,295 L320,310 L280,315 L240,310 L200,300 L170,305 L130,300 L100,285 L75,260 L55,225 L45,195 Z"
+                    fill="#dfd6c1" stroke="#a8362a" stroke-width="2" />
+              <!-- HQ marker (Aliquippa PA) -->
+              <circle cx="430" cy="160" r="8" fill="#a8362a" />
+              <circle cx="430" cy="160" r="14" fill="none" stroke="#a8362a" stroke-width="1" opacity=".4"/>
+              <!-- delivery dots -->
+              <circle cx="120" cy="200" r="4" fill="#b88a3b" />
+              <circle cx="190" cy="245" r="4" fill="#b88a3b" />
+              <circle cx="260" cy="280" r="4" fill="#b88a3b" />
+              <circle cx="320" cy="225" r="4" fill="#b88a3b" />
+              <circle cx="380" cy="265" r="4" fill="#b88a3b" />
+              <circle cx="490" cy="200" r="4" fill="#b88a3b" />
+              <text x="445" y="155" font-family="IBM Plex Sans, sans-serif" font-size="11" font-weight="700" fill="#0f2724">HQ · Aliquippa, PA</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 14 — Primitive: Logo wall
+       ========================================================= -->
+  <section class="ds-section" id="logos">
+    <div class="eyebrow">14 · Primitives</div>
+    <h2>Client logo wall</h2>
+    <p class="ds-section-lede">8-tile wall, 4 × 2 grid (site 3 count). Real production replaces these placeholder tiles with permissioned customer marks.</p>
+
+    <div class="logo-wall">
+      <div class="logo-chip">CLIENT MARK</div>
+      <div class="logo-chip">CLIENT MARK</div>
+      <div class="logo-chip">CLIENT MARK</div>
+      <div class="logo-chip">CLIENT MARK</div>
+      <div class="logo-chip">CLIENT MARK</div>
+      <div class="logo-chip">CLIENT MARK</div>
+      <div class="logo-chip">CLIENT MARK</div>
+      <div class="logo-chip">CLIENT MARK</div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 15 — Primitive: Card carousel
+       ========================================================= -->
+  <section class="ds-section" id="carousel">
+    <div class="eyebrow">15 · Primitives</div>
+    <h2>Story card carousel</h2>
+    <p class="ds-section-lede">4-card horizontal carousel with chevron arrows (site 3 homepage pattern). Used for blog spotlights on home and "recent projects" on every detail page.</p>
+
+    <div class="carousel">
+      <button class="chev prev" aria-label="Previous">‹</button>
+      <div class="carousel-track">
+        <div class="story-card"><div class="story-photo"></div><div class="story-body"><div class="story-eyebrow">Field Journal</div><div class="story-title">Buying a steel building in Ohio</div></div></div>
+        <div class="story-card"><div class="story-photo" style="background:linear-gradient(160deg,#1a3a30,#244f42);"></div><div class="story-body"><div class="story-eyebrow">Heritage</div><div class="story-title">Why we still print stamped engineering drawings</div></div></div>
+        <div class="story-card"><div class="story-photo" style="background:linear-gradient(160deg,#22413a,#2b554a);"></div><div class="story-body"><div class="story-eyebrow">Construction</div><div class="story-title">Anchoring a 60×120 on poured slab</div></div></div>
+        <div class="story-card"><div class="story-photo" style="background:linear-gradient(160deg,#1f3934,#2a4d44);"></div><div class="story-body"><div class="story-eyebrow">Color &amp; Finish</div><div class="story-title">Pairing trim to your roof in 14 shades</div></div></div>
+      </div>
+      <button class="chev next" aria-label="Next">›</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 16 — Primitive: Testimonial slider (script italic)
+       ========================================================= -->
+  <section class="ds-section" id="testimonial">
+    <div class="eyebrow">16 · Primitives</div>
+    <h2>Testimonial slider with history column</h2>
+    <p class="ds-section-lede">Two-column band: left brand-history copy with BBB-style badge, right testimonial card with script-Caveat quote and initials. Mirrors site 3's "history of trust" + script-italic pattern, but with our typography.</p>
+
+    <div style="border-radius: var(--r-md); overflow:hidden; border:1px solid var(--c-rule);">
+      <section class="testimonial-band" style="padding: var(--s-7) var(--s-5);">
+        <div class="wrap">
+          <div class="history-col">
+            <div class="eyebrow">A history of trust</div>
+            <h2>Sixty-four years of Bell-stamped buildings.</h2>
+            <p>Bell Metal Buildings has been engineering pre-engineered steel since 1962. Three generations of the Larkin family have run the Aliquippa plant. Our books are open and our warranties are on paper, not in a chatbot.</p>
+            <p>Look us up: better-business-rated, owner-operated, and accountable.</p>
+            <div class="bbb-badge"><span class="seal">A+</span>Better Business Bureau · Accredited since 1989</div>
+          </div>
+          <div>
+            <div class="testimonial">
+              <p class="t-quote">Bell's engineer drove out to look at my site personally before they cut a single panel. You don't get that anywhere else.</p>
+              <div class="t-initials">M. R.</div>
+              <div class="t-meta">60×120 warehouse · Erie, Pennsylvania · 2024</div>
+              <div class="t-dots"><span class="t-dot is-active"></span><span class="t-dot"></span><span class="t-dot"></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 17 — Primitive: Color swatch matrix
+       ========================================================= -->
+  <section class="ds-section" id="swatch">
+    <div class="eyebrow">17 · Primitives</div>
+    <h2>Panel &amp; trim color matrix</h2>
+    <p class="ds-section-lede">Site 3's product-specific swatch chart, matched count-for-count: 13 panel colors and 6 trim colors. Used on every product detail page and Options &amp; Finishes.</p>
+
+    <div class="swatch-matrix">
+      <div class="swatch-group">
+        <h4>Panel colors <small style="color:var(--c-text-muted); font-weight: 400; font-style:italic;">(13 standard)</small></h4>
+        <div class="swatch-row">
+          <div><div class="swatch" style="background:#1d1d1d" title="Onyx"></div><span class="swatch-label">01</span></div>
+          <div><div class="swatch" style="background:#2c3e50" title="Slate Storm"></div><span class="swatch-label">02</span></div>
+          <div><div class="swatch" style="background:#0f2724" title="Bell Spruce"></div><span class="swatch-label">03</span></div>
+          <div><div class="swatch" style="background:#3a5b46" title="Sage Steel"></div><span class="swatch-label">04</span></div>
+          <div><div class="swatch" style="background:#6f7a82" title="Quarry"></div><span class="swatch-label">05</span></div>
+          <div><div class="swatch" style="background:#a4a89a" title="Ridge"></div><span class="swatch-label">06</span></div>
+          <div><div class="swatch is-light" style="background:#dcd2bd" title="Bone"></div><span class="swatch-label">07</span></div>
+          <div><div class="swatch is-light" style="background:#f1ead6" title="Parchment"></div><span class="swatch-label">08</span></div>
+          <div><div class="swatch" style="background:#7d4127" title="Tannery"></div><span class="swatch-label">09</span></div>
+          <div><div class="swatch" style="background:#a8362a" title="Bell Brick"></div><span class="swatch-label">10</span></div>
+          <div><div class="swatch" style="background:#6f2218" title="Oxblood"></div><span class="swatch-label">11</span></div>
+          <div><div class="swatch" style="background:#b88a3b" title="Bell Brass"></div><span class="swatch-label">12</span></div>
+          <div><div class="swatch" style="background:#3f5b32" title="Forest"></div><span class="swatch-label">13</span></div>
+        </div>
+      </div>
+      <div class="swatch-group">
+        <h4>Trim colors <small style="color:var(--c-text-muted); font-weight: 400; font-style:italic;">(6 standard)</small></h4>
+        <div class="swatch-row">
+          <div><div class="swatch is-light" style="background:#fafafa" title="Cloud White"></div><span class="swatch-label">T1</span></div>
+          <div><div class="swatch is-light" style="background:#e8dcc1" title="Bone Trim"></div><span class="swatch-label">T2</span></div>
+          <div><div class="swatch" style="background:#1d1d1d" title="Onyx Trim"></div><span class="swatch-label">T3</span></div>
+          <div><div class="swatch" style="background:#7e6234" title="Aged Bronze"></div><span class="swatch-label">T4</span></div>
+          <div><div class="swatch" style="background:#5a463a" title="Cypress"></div><span class="swatch-label">T5</span></div>
+          <div><div class="swatch" style="background:#a8362a" title="Brick Trim"></div><span class="swatch-label">T6</span></div>
+        </div>
+      </div>
+      <p class="swatch-disclaimer">*Colors subject to availability. Final swatches mailed on request.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 18 — Primitive: Illustrated spec block
+       ========================================================= -->
+  <section class="ds-section" id="spec">
+    <div class="eyebrow">18 · Primitives</div>
+    <h2>Illustrated spec block (alternating)</h2>
+    <p class="ds-section-lede">Stack of 5 alternating image-left/right rows on the Options &amp; Finishes and Warranty pages. The illustration is a labeled line-drawing with brass callouts — site 3's editorial signature, re-drawn in our visual language.</p>
+
+    <div class="spec-block">
+      <div class="spec-illu">
+        <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Roof panel cross-section -->
+          <g fill="none" stroke="#0f2724" stroke-width="1.5">
+            <path d="M20 140 L60 110 L80 140 L120 110 L140 140 L180 110 L200 140 L240 110 L260 140 L300 110 L320 140 L340 130" />
+            <line x1="20" y1="160" x2="340" y2="160" stroke-dasharray="3 3" />
+          </g>
+          <!-- Callout -->
+          <g stroke="#b88a3b" stroke-width="1">
+            <line x1="120" y1="110" x2="120" y2="40" />
+            <circle cx="120" cy="40" r="4" fill="#b88a3b" stroke="none"/>
+          </g>
+          <text x="130" y="44" font-family="IBM Plex Sans, sans-serif" font-size="11" font-weight="700" fill="#a8362a">PBR Profile · 1¼″ rib</text>
+        </svg>
+      </div>
+      <div class="spec-copy">
+        <div class="spec-eyebrow">Feature 01</div>
+        <h3>PBR roof panels</h3>
+        <p>Bell's purlin-bearing-rib profile gives a 1¼-inch major rib for clean fastener seating and a 9-inch on-center pattern that sheds water cleanly. Standard 26-gauge; 24-gauge available on request.</p>
+      </div>
+    </div>
+
+    <div class="spec-block reverse">
+      <div class="spec-illu">
+        <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- I-beam cross section -->
+          <g fill="#0f2724">
+            <rect x="120" y="40" width="120" height="14"/>
+            <rect x="170" y="54" width="20" height="100"/>
+            <rect x="120" y="154" width="120" height="14"/>
+          </g>
+          <g stroke="#b88a3b" stroke-width="1">
+            <line x1="240" y1="104" x2="320" y2="80"/>
+            <circle cx="320" cy="80" r="4" fill="#b88a3b" stroke="none"/>
+          </g>
+          <text x="328" y="84" font-family="IBM Plex Sans, sans-serif" font-size="11" font-weight="700" fill="#a8362a">Web ⅜″</text>
+        </svg>
+      </div>
+      <div class="spec-copy">
+        <div class="spec-eyebrow">Feature 02</div>
+        <h3>I-beam main frame</h3>
+        <p>Every Bell building is built around a hot-rolled I-beam primary frame, engineered for your wind and snow load. Welded in-house and stamped by a P.E. licensed in your state before it ships.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 19 — Primitive: Project / blog card
+       ========================================================= -->
+  <section class="ds-section" id="projcard">
+    <div class="eyebrow">19 · Primitives</div>
+    <h2>Project &amp; blog cards</h2>
+    <p class="ds-section-lede">12-per-page paginated index card (site 3 count). Same primitive for Recent Projects, Testimonials, Blog Index, and Video Library.</p>
+
+    <div class="proj-grid">
+      <article class="proj-card">
+        <div class="proj-photo"></div>
+        <div class="proj-body">
+          <div class="story-eyebrow">Commercial · Pennsylvania</div>
+          <h3 class="proj-title">Game distribution warehouse, Pittsburgh</h3>
+          <p class="proj-teaser">A 100×240 clear-span warehouse with three 14×16 overhead doors, finished and standing in 14 weeks from final drawings.</p>
+          <a href="#" class="proj-readmore">Read the build</a>
+        </div>
+      </article>
+      <article class="proj-card">
+        <div class="proj-photo" style="background:linear-gradient(160deg,#1f3934,#2a4d44);"></div>
+        <div class="proj-body">
+          <div class="story-eyebrow">Residential · West Virginia</div>
+          <h3 class="proj-title">A barndominium in Pocahontas County</h3>
+          <p class="proj-teaser">40×80 metal home with an attached 24×40 workshop wing. Stamped, anchored, dried-in by Thanksgiving.</p>
+          <a href="#" class="proj-readmore">Read the build</a>
+        </div>
+      </article>
+      <article class="proj-card">
+        <div class="proj-photo" style="background:linear-gradient(160deg,#22413a,#2f5648);"></div>
+        <div class="proj-body">
+          <div class="story-eyebrow">Agriculture · Ohio</div>
+          <h3 class="proj-title">Steel cold-storage barn, Wayne County</h3>
+          <p class="proj-teaser">A 60×120 dairy cold-storage with insulated panels and three sliding ventilation bays.</p>
+          <a href="#" class="proj-readmore">Read the build</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 20 — Primitive: Page banner
+       ========================================================= -->
+  <section class="ds-section" id="banner">
+    <div class="eyebrow">20 · Primitives</div>
+    <h2>Page banner</h2>
+    <p class="ds-section-lede">Used at the top of every non-home page: dark spruce band, serif headline, optional subhead, no CTA.</p>
+
+    <div style="border-radius: var(--r-md); overflow:hidden; border:1px solid var(--c-rule);">
+      <section class="page-banner">
+        <div class="wrap">
+          <div class="eyebrow on-dark">Catalog</div>
+          <h1>Building <em>types</em></h1>
+          <p>From garages to barndominiums to clear-span warehouses, every Bell building starts with the same factory-direct kit. Choose your use case to price it.</p>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 21 — Primitive: Search + pagination
+       ========================================================= -->
+  <section class="ds-section" id="searchpag">
+    <div class="eyebrow">21 · Primitives</div>
+    <h2>Search &amp; pagination</h2>
+
+    <h3 class="ds-subhead">Search bar</h3>
+    <form class="searchbar" onsubmit="return false;">
+      <input type="search" placeholder="Search projects, blog, FAQ…" />
+      <button class="btn btn-primary btn-sm">Search</button>
+    </form>
+
+    <h3 class="ds-subhead">Pagination</h3>
+    <nav class="pagination">
+      <a href="#" class="is-active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#" class="next">Next ›</a>
+    </nav>
+  </section>
+
+  <!-- =========================================================
+       SECTION 22 — Primitive: Accordion (FAQ)
+       ========================================================= -->
+  <section class="ds-section" id="accordion">
+    <div class="eyebrow">22 · Primitives</div>
+    <h2>Accordion</h2>
+    <p class="ds-section-lede">Used on FAQ, Warranty TOC, and product detail spec sections.</p>
+
+    <div class="accordion" style="max-width: 760px;">
+      <div class="acc-item is-open">
+        <button class="acc-head" type="button" aria-expanded="true"><span>What size building do I actually need?</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div>The most common Bell builds are 30×40 garages and 60×120 warehouses. Use the quote wizard with your intended use (vehicles, equipment, livestock, retail floor) and we'll back-calculate the right footprint and clear-span height with you on a call.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" type="button" aria-expanded="false"><span>Do you handle permitting?</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div>Bell provides stamped engineering drawings signed by a P.E. licensed in your state. You or your contractor pull the local permit using our drawings as the engineering basis.</div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" type="button" aria-expanded="false"><span>How long from quote to delivery?</span><span class="acc-icon">+</span></button>
+        <div class="acc-body"><div>Typical lead time is 6–10 weeks from signed drawings, depending on building size, finish color, and current factory queue. Your project manager gives you a hard ship date in writing.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 23 — Primitive: Floating Q-tab + promo strip + stats
+       ========================================================= -->
+  <section class="ds-section" id="misc">
+    <div class="eyebrow">23 · Primitives</div>
+    <h2>Promo strip, stats strip, Q-tab</h2>
+
+    <h3 class="ds-subhead">Promo strip (top of every page)</h3>
+    <div style="border-radius: var(--r-md); overflow:hidden; border:1px solid var(--c-rule);">
+      <div class="promo">Spring clearance · save up to 35% on stocked inventory — <a href="#">view buildings</a></div>
+    </div>
+
+    <h3 class="ds-subhead">Stats strip</h3>
+    <div style="border-radius: var(--r-md); overflow:hidden; border:1px solid var(--c-rule);">
+      <section class="stats-strip" style="padding: var(--s-6) var(--s-5);">
+        <div class="wrap">
+          <div><div class="stat-n">64<span style="font-size:.5em;">yrs</span></div><div class="stat-l">In business</div></div>
+          <div><div class="stat-n">42k<span style="font-size:.5em;">+</span></div><div class="stat-l">Buildings shipped</div></div>
+          <div><div class="stat-n">48</div><div class="stat-l">States delivered</div></div>
+          <div><div class="stat-n">A+</div><div class="stat-l">BBB rating</div></div>
+        </div>
+      </section>
+    </div>
+
+    <h3 class="ds-subhead">Floating "Questions?" tab</h3>
+    <div style="background:var(--c-bone-2); border-radius: var(--r-md); padding: var(--s-7); position:relative; min-height: 120px;">
+      <div class="q-tab" style="position:absolute; right: var(--s-5); bottom: var(--s-5);">Questions? Let's talk</div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 24 — Open assumptions
+       ========================================================= -->
+  <section class="ds-section" id="assumptions">
+    <div class="eyebrow">99 · Notes</div>
+    <h2>Assumptions &amp; open questions for client</h2>
+    <p class="ds-section-lede">Carrying assumptions through from the plan-approval step. Each <span class="todo">todo</span> chip on the build pages corresponds to one of these.</p>
+
+    <ul style="display:grid; gap: var(--s-3); list-style: none; padding: 0; margin: 0;">
+      <li><span class="todo">brand</span><strong> Logo:</strong> single-letter "B" inside a brass-spot spruce square is a placeholder mark — needs a real Bell wordmark / glyph from the client brand assets.</li>
+      <li><span class="todo">copy</span><strong> Tagline:</strong> "Built once. Stands for generations." is invented. Confirm or replace.</li>
+      <li><span class="todo">phone</span><strong> Phone &amp; address:</strong> 1-800-444-2525 and 2200 Furnace Road, Aliquippa PA 15001 are placeholders.</li>
+      <li><span class="todo">photos</span><strong> Imagery:</strong> all photos rendered as CSS gradient stand-ins. Production needs ~80–100 real Bell photos (hero, 12 use cases, projects, factory, founder, before/after, blog).</li>
+      <li><span class="todo">history</span><strong> Founding year:</strong> "Since 1962" and "64 years" are working assumptions. Confirm real founding year + founder name.</li>
+      <li><span class="todo">products</span><strong> Use-case set:</strong> 12 categories will mirror site 3's count — Garages, Workshops, Storage, Commercial, Industrial, Barns &amp; Farming, Aircraft Hangars, Warehouses, Horse Arenas, Mini-Storage, Barndominiums, Sheds. Confirm Bell actually offers each.</li>
+      <li><span class="todo">colors</span><strong> Color matrix:</strong> 13 panel + 6 trim are placeholder values. Need Bell's actual SKU swatches and names.</li>
+      <li><span class="todo">warranty</span><strong> Warranty durations:</strong> 40-year paint and rust-through are modeled on industry norms. Confirm Bell's actual warranty document.</li>
+      <li><span class="todo">testimonials</span><strong> Testimonial copy &amp; initials:</strong> placeholder. Need permissioned customer quotes.</li>
+      <li><span class="todo">stats</span><strong> 42k buildings, 48 states, A+ BBB:</strong> placeholder claims. Replace with defensible numbers.</li>
+      <li><span class="todo">script</span><strong> Pattern motif:</strong> chose repeating brass-dot halftone for the footer instead of copying site 3's Statue of Liberty silhouettes. Flag if you want a different motif.</li>
+    </ul>
+  </section>
+
+  <footer style="margin-top: var(--s-10); padding-top: var(--s-6); border-top: 2px solid var(--c-brass); color: var(--c-text-muted); font-size: var(--t-sm);">
+    Mock C · Design system reference · Bell Metal Buildings Co. · 2026-05-11
+  </footer>
+
+</div>
+
+<script>
+  // Light interactivity: accordion toggle (used on real pages but useful here for review)
+  document.querySelectorAll('.acc-head').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.acc-item');
+      item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', item.classList.contains('is-open'));
+    });
+  });
+</script>
+
+</body>
+</html>
+     

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bell Metal Buildings — Mock A Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   BELL METAL BUILDINGS — MOCK A — DESIGN SYSTEM
+   Reference: site 1 (Toro Steel Buildings) structural patterns
+   PURPOSE: Show two candidate palettes side by side. Pick one,
+   and all subsequent page artifacts will use it.
+   ========================================================= */
+
+/* ---------- Shared tokens (palette-agnostic) ---------- */
+:root {
+  /* Spacing scale (8px base) */
+  --s-0: 0;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+
+  /* Radius */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.14);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+
+  /* Type families */
+  --font-display: 'Oswald', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+
+  /* Type scale */
+  --t-display-1: clamp(40px, 6vw, 72px);
+  --t-display-2: clamp(32px, 4.5vw, 56px);
+  --t-h1: clamp(28px, 3.5vw, 44px);
+  --t-h2: clamp(22px, 2.6vw, 32px);
+  --t-h3: 20px;
+  --t-h4: 16px;
+  --t-body: 16px;
+  --t-body-sm: 14px;
+  --t-caption: 12px;
+
+  /* Line heights */
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-body: 1.6;
+
+  /* Neutrals (shared) */
+  --white: #ffffff;
+  --gray-50: #f7f7f8;
+  --gray-100: #ececef;
+  --gray-200: #d8d8de;
+  --gray-300: #b9b9c1;
+  --gray-400: #8e8e98;
+  --gray-500: #66666f;
+  --gray-600: #4a4a52;
+  --gray-700: #34343a;
+  --gray-800: #1f1f24;
+  --gray-900: #111114;
+
+  /* Semantic */
+  --success: #2f8a4a;
+  --warning: #c87b00;
+  --danger: #b8302a;
+}
+
+/* ---------- Palette A: CHARCOAL + BRONZE ---------- */
+.palette-a {
+  --p-primary: #18181b;      /* charcoal, body of brand */
+  --p-primary-hover: #2a2a30;
+  --p-primary-ink: #ffffff;  /* text on primary surfaces */
+
+  --p-accent: #b87333;       /* bronze/copper, headlines + CTAs */
+  --p-accent-hover: #9a5e25;
+  --p-accent-ink: #18181b;   /* dark text on bronze */
+
+  --p-surface: #ffffff;
+  --p-surface-alt: #f4f3f1;  /* warm off-white */
+  --p-surface-deep: #14141a; /* near-black for trust bands */
+  --p-surface-deep-ink: #f4f3f1;
+
+  --p-rule: #ddd9d1;
+  --p-check: #b87333;        /* orange-check equivalent in bronze */
+  --p-promo: #6f2622;        /* deep burgundy promo strip */
+  --p-promo-ink: #f8e9d6;
+}
+
+/* ---------- Palette B: SLATE + AMBER ---------- */
+.palette-b {
+  --p-primary: #1f2a3a;      /* deep cool slate */
+  --p-primary-hover: #2e3c52;
+  --p-primary-ink: #ffffff;
+
+  --p-accent: #e08a3c;       /* warm amber */
+  --p-accent-hover: #c2731f;
+  --p-accent-ink: #1f2a3a;
+
+  --p-surface: #ffffff;
+  --p-surface-alt: #f1f3f6;
+  --p-surface-deep: #131b27;
+  --p-surface-deep-ink: #ffffff;
+
+  --p-rule: #d4dae3;
+  --p-check: #e08a3c;
+  --p-promo: #8a1f24;
+  --p-promo-ink: #fef5e7;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--gray-900);
+  background: var(--gray-50);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: var(--lh-tight); letter-spacing: 0.02em; margin: 0; text-transform: uppercase; }
+p { margin: 0 0 var(--s-4); }
+
+/* ---------- Page chrome ---------- */
+.ds-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-5);
+}
+.ds-header {
+  border-bottom: 1px solid var(--gray-200);
+  padding-bottom: var(--s-5);
+  margin-bottom: var(--s-7);
+}
+.ds-kicker {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: var(--t-caption);
+  color: var(--gray-500);
+  font-weight: 600;
+}
+.ds-title { font-size: var(--t-display-2); }
+.ds-lede { font-size: 18px; color: var(--gray-600); max-width: 64ch; }
+.ds-section { margin-top: var(--s-9); }
+.ds-section-title {
+  font-size: var(--t-h1);
+  margin-bottom: var(--s-2);
+  display: flex; align-items: baseline; gap: var(--s-3);
+}
+.ds-section-title::before {
+  content: "";
+  display: inline-block;
+  width: 28px; height: 4px;
+  background: var(--gray-900);
+}
+.ds-section-sub {
+  color: var(--gray-600);
+  margin-bottom: var(--s-6);
+  max-width: 72ch;
+}
+.ds-todo {
+  display: inline-block;
+  background: #fff5cc;
+  border: 1px dashed #c89a00;
+  color: #6b4d00;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* ---------- Palette compare grid ---------- */
+.palette-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-6);
+}
+@media (max-width: 900px) { .palette-grid { grid-template-columns: 1fr; } }
+.palette-card {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--p-surface);
+}
+.palette-banner {
+  padding: var(--s-5);
+  background: var(--p-primary);
+  color: var(--p-primary-ink);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.palette-banner h3 {
+  font-size: 22px; color: var(--p-accent);
+}
+.palette-banner-tag {
+  font-family: var(--font-body); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  background: var(--p-accent); color: var(--p-accent-ink);
+  padding: 4px 10px; border-radius: var(--r-pill); font-weight: 700;
+}
+.swatch-row {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+.swatch {
+  height: 88px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: var(--s-2) var(--s-3);
+  font-family: var(--font-body); font-size: 11px; line-height: 1.3;
+  font-weight: 600;
+}
+.swatch span { display: block; opacity: 0.85; font-weight: 500; }
+.palette-body { padding: var(--s-5); }
+.palette-vignette {
+  border: 1px solid var(--p-rule);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  background: var(--p-surface-alt);
+}
+.palette-vignette h4 {
+  color: var(--p-accent);
+  font-size: 26px;
+  margin-bottom: var(--s-2);
+}
+.palette-vignette p { color: var(--gray-700); font-size: 14px; margin: 0 0 var(--s-4); }
+
+/* ---------- Type scale demo ---------- */
+.type-row {
+  display: grid; grid-template-columns: 160px 1fr; gap: var(--s-5);
+  align-items: baseline;
+  border-bottom: 1px solid var(--gray-200);
+  padding: var(--s-4) 0;
+}
+.type-row code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px; color: var(--gray-500);
+}
+.type-d1 { font: 600 var(--t-display-1)/var(--lh-tight) var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; }
+.type-d2 { font: 600 var(--t-display-2)/var(--lh-tight) var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; }
+.type-h1 { font: 600 var(--t-h1)/var(--lh-snug) var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; }
+.type-h2 { font: 600 var(--t-h2)/var(--lh-snug) var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; }
+.type-h3 { font: 600 var(--t-h3)/var(--lh-snug) var(--font-body); }
+.type-body { font: 400 var(--t-body)/var(--lh-body) var(--font-body); }
+.type-body-sm { font: 400 var(--t-body-sm)/var(--lh-body) var(--font-body); color: var(--gray-600); }
+.type-caption { font: 600 var(--t-caption)/1.4 var(--font-body); text-transform: uppercase; letter-spacing: 0.18em; color: var(--gray-500); }
+
+/* ---------- Token tables ---------- */
+.token-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--s-3);
+}
+.token {
+  border: 1px solid var(--gray-200); border-radius: var(--r-md);
+  padding: var(--s-3);
+  background: white;
+}
+.token-name { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--gray-700); }
+.token-val { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--gray-500); margin-top: 2px; }
+.token-preview-spacing { background: var(--gray-900); height: 16px; margin-top: 8px; border-radius: 2px; }
+.token-preview-radius { background: var(--gray-900); height: 40px; margin-top: 8px; }
+.token-preview-shadow { background: white; height: 44px; margin-top: 8px; border: 1px solid var(--gray-100); border-radius: 4px; }
+
+/* =========================================================
+   COMPONENT PRIMITIVES
+   Rendered once per palette via .palette-a / .palette-b wrapper
+   ========================================================= */
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 14px; letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border-radius: var(--r-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.05s;
+  line-height: 1;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--p-primary); color: var(--p-primary-ink); }
+.btn-primary:hover { background: var(--p-primary-hover); }
+.btn-accent { background: var(--p-accent); color: var(--p-accent-ink); }
+.btn-accent:hover { background: var(--p-accent-hover); }
+.btn-outline { background: transparent; color: var(--p-primary); border-color: var(--p-primary); }
+.btn-outline:hover { background: var(--p-primary); color: var(--p-primary-ink); }
+.btn-ghost { background: transparent; color: var(--p-primary); }
+.btn-ghost:hover { background: var(--gray-100); }
+.btn-phone {
+  background: var(--p-primary); color: var(--p-primary-ink);
+  padding: 10px 18px; font-size: 13px;
+}
+.btn-lg { padding: 16px 30px; font-size: 16px; }
+.btn-sm { padding: 8px 14px; font-size: 12px; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+
+/* Promo strip */
+.promo-strip {
+  background: var(--p-promo); color: var(--p-promo-ink);
+  text-align: center;
+  padding: 10px var(--s-4);
+  font-family: var(--font-body);
+  font-weight: 600; font-size: 14px;
+  letter-spacing: 0.03em;
+}
+
+/* Header / Nav */
+.site-header {
+  background: var(--p-surface);
+  border-bottom: 1px solid var(--p-rule);
+  padding: var(--s-3) var(--s-5);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s-5);
+}
+.brand-mark {
+  display: flex; align-items: center; gap: var(--s-3);
+}
+.brand-mark-glyph {
+  width: 40px; height: 40px; border-radius: var(--r-sm);
+  background: var(--p-primary);
+  color: var(--p-accent);
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 22px;
+  line-height: 1;
+}
+.brand-mark-word {
+  font-family: var(--font-display); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  font-size: 20px; color: var(--p-primary);
+  line-height: 1;
+}
+.brand-mark-word small {
+  display: block; font-family: var(--font-body); font-size: 10px;
+  letter-spacing: 0.22em; color: var(--gray-500);
+  text-transform: uppercase; font-weight: 600; margin-top: 2px;
+}
+.nav-row { display: flex; gap: var(--s-5); align-items: center; }
+.nav-row a {
+  font-size: 13px; color: var(--p-primary); text-decoration: none;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.nav-row a:hover { color: var(--p-accent-hover); }
+.nav-caret::after { content: " \25BE"; }
+
+/* Hero (vignette) */
+.hero {
+  position: relative;
+  background: linear-gradient(120deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25)), var(--p-primary);
+  color: var(--p-primary-ink);
+  padding: var(--s-9) var(--s-7);
+  overflow: hidden;
+}
+.hero::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 28px;
+  background: var(--p-surface);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 80%);
+}
+.hero-inner { max-width: 580px; position: relative; z-index: 1; }
+.hero-eyebrow {
+  font-family: var(--font-body); font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; font-weight: 700; color: var(--p-accent);
+  margin-bottom: var(--s-3);
+}
+.hero-title {
+  font-family: var(--font-display); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.02em;
+  font-size: clamp(36px, 5vw, 60px); line-height: 1.02;
+  color: var(--p-accent);
+  margin: 0 0 var(--s-3);
+}
+.hero-sub {
+  font-size: 18px; color: var(--p-primary-ink); opacity: 0.92; margin-bottom: var(--s-5);
+}
+
+/* Building-type / category card */
+.cat-card {
+  position: relative; aspect-ratio: 4/3;
+  border-radius: var(--r-md); overflow: hidden;
+  background: var(--gray-300);
+  display: block; text-decoration: none;
+  isolation: isolate;
+}
+.cat-card-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.cat-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.05) 60%);
+}
+.cat-card-label {
+  position: absolute; left: var(--s-4); right: var(--s-4); bottom: var(--s-4);
+  color: white;
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; font-size: 18px; z-index: 1;
+}
+.cat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4);
+}
+@media (max-width: 900px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Testimonial card */
+.testimonial-card {
+  background: var(--p-surface);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--p-rule);
+}
+.testimonial-photo {
+  aspect-ratio: 16/10; background: var(--gray-300);
+  background-size: cover; background-position: center;
+}
+.testimonial-body { padding: var(--s-4); }
+.testimonial-stars { color: var(--p-accent); letter-spacing: 2px; margin-bottom: var(--s-2); }
+.testimonial-quote { font-size: 14px; color: var(--gray-700); margin-bottom: var(--s-3); }
+.testimonial-name { font-weight: 700; font-size: 14px; color: var(--p-primary); margin-bottom: var(--s-2); }
+.verified-pill {
+  display: inline-block; background: var(--p-primary); color: var(--p-primary-ink);
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+  padding: 4px 10px; border-radius: var(--r-pill);
+}
+
+/* Dark testimonial pull-quote (per Garages page) */
+.pullquote-card {
+  background: var(--p-surface-deep);
+  color: var(--p-surface-deep-ink);
+  padding: var(--s-6) var(--s-6);
+  border-radius: var(--r-md);
+  position: relative;
+}
+.pullquote-card::before {
+  content: "\201C";
+  font-family: Georgia, serif;
+  font-size: 88px;
+  line-height: 0.6;
+  color: var(--p-accent);
+  position: absolute; left: 24px; top: 36px;
+}
+.pullquote-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  margin: 0 0 var(--s-4) 64px;
+}
+.pullquote-attrib { font-family: var(--font-body); color: var(--p-accent); font-weight: 700; margin-left: 64px; }
+
+/* Clearance product card */
+.clear-card {
+  background: var(--p-surface);
+  border: 1px solid var(--p-rule);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.clear-card-img {
+  aspect-ratio: 4/3; background: var(--gray-200);
+  background-size: cover; background-position: center;
+}
+.clear-card-body { padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); flex: 1; }
+.clear-card-title {
+  font-family: var(--font-display); font-weight: 700;
+  text-transform: uppercase; font-size: 18px;
+  color: var(--p-primary);
+}
+.clear-card-desc { font-size: 13px; color: var(--gray-600); margin: 0; }
+.clear-card-prices { margin-top: auto; padding-top: var(--s-2); }
+.was-price { color: var(--danger); text-decoration: line-through; font-size: 13px; font-weight: 600; }
+.sale-price { color: var(--gray-900); font-size: 22px; font-family: var(--font-display); font-weight: 700; }
+.clear-card-ctas { display: flex; flex-direction: column; gap: 8px; padding: 0 var(--s-4) var(--s-4); }
+
+/* Orange-checkmark feature list (in palette accent) */
+.check-list { list-style: none; padding: 0; margin: 0; }
+.check-list li {
+  position: relative; padding-left: 36px;
+  margin-bottom: var(--s-3);
+  font-size: 15px; color: var(--gray-800);
+  line-height: 1.5;
+}
+.check-list li::before {
+  content: "\2713"; position: absolute; left: 0; top: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--p-check); color: white;
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 700;
+}
+
+/* Form fields */
+.field { display: block; margin-bottom: var(--s-4); }
+.field-label {
+  display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 700; color: var(--gray-700); margin-bottom: 6px;
+}
+.field-input, .field-select, .field-textarea {
+  width: 100%; padding: 12px 14px;
+  border: 1px solid var(--p-rule); border-radius: var(--r-sm);
+  font-family: var(--font-body); font-size: 14px;
+  background: white;
+}
+.field-input:focus, .field-select:focus, .field-textarea:focus {
+  outline: 2px solid var(--p-accent); outline-offset: 1px; border-color: var(--p-accent);
+}
+.field-textarea { min-height: 100px; resize: vertical; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+
+/* Multi-step quote wizard preview */
+.wizard {
+  background: var(--p-surface-alt);
+  border-radius: var(--r-md);
+  padding: var(--s-6);
+  border: 1px solid var(--p-rule);
+}
+.wizard-progress {
+  height: 8px; background: var(--gray-200); border-radius: var(--r-pill); overflow: hidden;
+  margin-bottom: var(--s-4);
+}
+.wizard-progress-bar { height: 100%; width: 30%; background: var(--p-accent); }
+.wizard-title { font-family: var(--font-display); font-size: 22px; text-transform: uppercase; color: var(--p-primary); margin-bottom: var(--s-3); }
+.wizard-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-2); margin-bottom: var(--s-4); }
+@media (max-width: 600px) { .wizard-options { grid-template-columns: repeat(2, 1fr); } }
+.wizard-option {
+  background: white;
+  border: 2px solid var(--p-rule);
+  border-radius: var(--r-sm);
+  padding: var(--s-3);
+  text-align: center;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer;
+}
+.wizard-option.active { border-color: var(--p-accent); background: var(--p-accent); color: var(--p-accent-ink); }
+
+/* Accordion / FAQ */
+.faq-row {
+  border-bottom: 1px solid var(--p-rule);
+  padding: var(--s-4) 0;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer;
+}
+.faq-q {
+  font-weight: 700; color: var(--p-primary); font-size: 15px;
+}
+.faq-toggle {
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--p-primary);
+  color: var(--p-primary); display: grid; place-items: center;
+  font-weight: 700; font-size: 18px; line-height: 1;
+}
+
+/* Filter chips */
+.chip-row { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-5); }
+.chip {
+  padding: 8px 14px; border-radius: var(--r-pill);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: white; border: 1px solid var(--p-rule);
+  color: var(--p-primary);
+  cursor: pointer;
+}
+.chip.active { background: var(--p-accent); color: var(--p-accent-ink); border-color: var(--p-accent); }
+
+/* Footer */
+.site-footer {
+  background: var(--p-surface-deep);
+  color: var(--p-surface-deep-ink);
+  padding: var(--s-7) var(--s-5) var(--s-5);
+}
+.footer-cols {
+  display: grid; grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: var(--s-5);
+  max-width: 1280px; margin: 0 auto;
+}
+@media (max-width: 900px) { .footer-cols { grid-template-columns: 1fr 1fr; } }
+.footer-col h5 {
+  font-family: var(--font-display); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 14px; color: var(--p-accent); margin: 0 0 var(--s-3);
+  padding-bottom: 6px; border-bottom: 2px solid var(--p-accent);
+  display: inline-block;
+}
+.footer-col a {
+  display: block; color: var(--p-surface-deep-ink); opacity: 0.78;
+  text-decoration: none; font-size: 13px; margin-bottom: 6px;
+}
+.footer-col a:hover { opacity: 1; color: var(--p-accent); }
+.footer-contact { font-size: 13px; line-height: 1.7; }
+.footer-socials { display: flex; gap: var(--s-2); margin-top: var(--s-3); }
+.footer-socials span {
+  width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08);
+  display: grid; place-items: center; font-weight: 700; font-size: 12px;
+}
+.footer-base {
+  border-top: 1px solid rgba(255,255,255,0.12); margin-top: var(--s-6); padding-top: var(--s-4);
+  text-align: center; font-size: 12px; opacity: 0.65;
+}
+
+/* Floating Quote Pill */
+.quote-pill-demo {
+  position: relative; height: 80px;
+  background: var(--gray-100); border-radius: var(--r-md);
+  display: grid; place-items: center;
+  color: var(--gray-500); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em;
+}
+.quote-pill {
+  position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%);
+  background: var(--p-primary); color: var(--p-primary-ink);
+  padding: 14px 26px; border-radius: var(--r-pill);
+  font-family: var(--font-body); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; font-size: 13px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Diagonal divider demo */
+.diag-divider {
+  position: relative;
+  height: 120px;
+  background: var(--p-surface-deep);
+}
+.diag-divider::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 30px;
+  background: var(--gray-50);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 20%);
+}
+.diag-divider::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 30px;
+  background: var(--gray-50);
+  clip-path: polygon(0 80%, 100% 100%, 100% 100%, 0 100%);
+}
+.diag-divider-label {
+  color: var(--p-surface-deep-ink); position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.12em; font-size: 14px;
+  opacity: 0.6;
+}
+
+/* Section sub-headers inside palette demos */
+.demo-h {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gray-500); margin: var(--s-6) 0 var(--s-3);
+  border-top: 1px solid var(--gray-200); padding-top: var(--s-3);
+}
+
+/* Two-column demo grid inside each palette */
+.demo-stack > * + * { margin-top: var(--s-3); }
+.demo-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+.demo-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+@media (max-width: 700px) {
+  .demo-grid-3 { grid-template-columns: 1fr; }
+  .demo-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* Trust band example */
+.trust-band {
+  background: var(--p-primary); color: var(--p-primary-ink);
+  padding: var(--s-6); border-radius: var(--r-md); text-align: center;
+}
+.trust-band h3 { color: var(--p-accent); font-size: 22px; margin-bottom: var(--s-3); }
+.trust-stats { display: flex; justify-content: center; gap: var(--s-6); flex-wrap: wrap; }
+.trust-stat strong { display: block; color: var(--p-accent); font-family: var(--font-display); font-size: 32px; line-height: 1; }
+.trust-stat span { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; }
+</style>
+</head>
+<body>
+<div class="ds-page">
+
+  <header class="ds-header">
+    <div class="ds-kicker">Mock A · Design System · v0.1</div>
+    <h1 class="ds-title">Bell Metal Buildings <span class="ds-todo">TODO: confirm legal name</span></h1>
+    <p class="ds-lede">Foundation for Mock A — closest in structure to reference site 1 (Toro Steel Buildings). This document shows two palette directions side-by-side, the type scale, and every component primitive that will appear across the page artifacts. Pick a palette and we move on to the homepage.</p>
+  </header>
+
+  <!-- =======================  PALETTES  ======================= -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Palette options</h2>
+    <p class="ds-section-sub">Pick one. Both are deliberately distinct from site 1's navy + lemon-yellow signature so we're not echoing a competitor. The same components are rendered under each so you can compare in context.</p>
+
+    <div class="palette-grid">
+
+      <!-- ============ PALETTE A ============ -->
+      <article class="palette-card palette-a">
+        <header class="palette-banner">
+          <h3>Option A · Charcoal + Bronze</h3>
+          <span class="palette-banner-tag">Heritage / industrial</span>
+        </header>
+        <div class="swatch-row">
+          <div class="swatch" style="background:#18181b;color:#fff">Primary<span>#18181B</span></div>
+          <div class="swatch" style="background:#b87333;color:#18181b">Accent<span>#B87333</span></div>
+          <div class="swatch" style="background:#14141a;color:#f4f3f1">Deep<span>#14141A</span></div>
+          <div class="swatch" style="background:#f4f3f1;color:#18181b">Surface alt<span>#F4F3F1</span></div>
+          <div class="swatch" style="background:#6f2622;color:#f8e9d6">Promo<span>#6F2622</span></div>
+          <div class="swatch" style="background:#ffffff;color:#18181b;border-right:1px solid #ddd9d1">Surface<span>#FFFFFF</span></div>
+        </div>
+
+        <div class="palette-body">
+          <div class="palette-vignette">
+            <h4>Built honestly. Built to last.</h4>
+            <p>Bronze headlines on warm off-white evoke forged metal and craftsmanship — softer, more residential-friendly than primary colors.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary">Request a Quote</a>
+              <a class="btn btn-accent">Build in 3D</a>
+              <a class="btn btn-outline">Learn More</a>
+            </div>
+          </div>
+
+          <div class="demo-h">Header + Promo strip</div>
+          <div class="promo-strip">Clearance Event — Save up to 40% on in-stock kits  <span class="ds-todo">TODO: confirm offer</span></div>
+          <header class="site-header">
+            <div class="brand-mark">
+              <div class="brand-mark-glyph">B</div>
+              <div class="brand-mark-word">Bell Metal<small>Buildings Co.</small></div>
+            </div>
+            <nav class="nav-row">
+              <a class="nav-caret">Buildings</a>
+              <a>Clearance</a>
+              <a class="nav-caret">Options</a>
+              <a>About</a>
+              <a class="btn btn-phone">+1-800-555-0100</a>
+            </nav>
+          </header>
+
+          <div class="demo-h">Hero</div>
+          <div class="hero">
+            <div class="hero-inner">
+              <div class="hero-eyebrow">Pre-engineered metal buildings</div>
+              <h2 class="hero-title">Built once. Stands for generations.</h2>
+              <p class="hero-sub">Factory-direct steel kits engineered for your site, your code, and your timeline. <span class="ds-todo">TODO: replace with brief copy</span></p>
+              <div class="btn-row">
+                <a class="btn btn-accent btn-lg">Price My Building →</a>
+                <a class="btn btn-outline btn-lg" style="color:#fff;border-color:#fff">3D Builder</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-h">Trust band + diagonal divider</div>
+          <div class="trust-band">
+            <h3>40+ years engineering steel that stands up</h3>
+            <div class="trust-stats">
+              <div class="trust-stat"><strong>40+</strong><span>Years <span class="ds-todo">TODO</span></span></div>
+              <div class="trust-stat"><strong>65k+</strong><span>Buildings <span class="ds-todo">TODO</span></span></div>
+              <div class="trust-stat"><strong>4.9★</strong><span>Google rating <span class="ds-todo">TODO</span></span></div>
+            </div>
+          </div>
+          <div class="diag-divider"><div class="diag-divider-label">Slanted section break</div></div>
+
+          <div class="demo-h">Building-type cards (8 on home)</div>
+          <div class="cat-grid">
+            <a class="cat-card"><div class="cat-card-img" style="background-image:linear-gradient(135deg,#3a3a3e,#6b6b73)"></div><div class="cat-card-label">Garages</div></a>
+            <a class="cat-card"><div class="cat-card-img" style="background-image:linear-gradient(135deg,#5b443b,#8a6b54)"></div><div class="cat-card-label">Workshops</div></a>
+            <a class="cat-card"><div class="cat-card-img" style="background-image:linear-gradient(135deg,#3f4a3b,#677a5e)"></div><div class="cat-card-label">Barndominiums</div></a>
+            <a class="cat-card"><div class="cat-card-img" style="background-image:linear-gradient(135deg,#2c3848,#52677c)"></div><div class="cat-card-label">Quonset Huts</div></a>
+          </div>
+
+          <div class="demo-h">Testimonial card + dark pull-quote</div>
+          <div class="demo-grid-2">
+            <div class="testimonial-card">
+              <div class="testimonial-photo" style="background-image:linear-gradient(135deg,#857055,#aa8b6b)"></div>
+              <div class="testimonial-body">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"The crew was on time, the kit fit together exactly to the drawings, and the structure has handled two winters without an issue."</p>
+                <div class="testimonial-name">[TODO: customer name]</div>
+                <span class="verified-pill">Verified Customer</span>
+              </div>
+            </div>
+            <div class="pullquote-card">
+              <p class="pullquote-text">"Bell's engineers walked us through every snow-load and wind-load calc. We knew exactly what we were buying."</p>
+              <div class="pullquote-attrib">[TODO: name, city]</div>
+            </div>
+          </div>
+
+          <div class="demo-h">Clearance product card</div>
+          <div class="demo-grid-2">
+            <div class="clear-card">
+              <div class="clear-card-img" style="background-image:linear-gradient(135deg,#5b443b,#aa8b6b)"></div>
+              <div class="clear-card-body">
+                <h4 class="clear-card-title">40' × 60' × 16' Workshop</h4>
+                <p class="clear-card-desc">Straight-wall, single overhead door, color: forge bronze.</p>
+                <div class="clear-card-prices">
+                  <span class="was-price">Was: $48,900</span><br>
+                  <span class="sale-price">Sale: $34,250</span> <span class="ds-todo">TODO: real pricing</span>
+                </div>
+              </div>
+              <div class="clear-card-ctas">
+                <a class="btn btn-outline btn-sm">View Drawing</a>
+                <a class="btn btn-primary btn-sm">Make an Offer</a>
+                <a class="btn btn-accent btn-sm">Call for Faster Response</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="demo-h" style="margin-top:0;border-top:none;padding-top:0">Orange-check feature list</div>
+              <ul class="check-list">
+                <li>Factory-direct pricing — no dealer markup.</li>
+                <li>Project-specific engineering stamped to your local code.</li>
+                <li>50-year rust-perforation warranty on all panels.</li>
+                <li>Clear-span design — no interior columns.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="demo-h">Quote wizard</div>
+          <div class="wizard">
+            <div class="wizard-progress"><div class="wizard-progress-bar"></div></div>
+            <div class="wizard-title">Step 1 of 4 — What's it for?</div>
+            <div class="wizard-options">
+              <div class="wizard-option active">Garage</div>
+              <div class="wizard-option">Workshop</div>
+              <div class="wizard-option">Barn</div>
+              <div class="wizard-option">Commercial</div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label class="field-label">ZIP code</label><input class="field-input" placeholder="00000" /></div>
+              <div class="field"><label class="field-label">Your name</label><input class="field-input" placeholder="Name" /></div>
+            </div>
+            <a class="btn btn-accent btn-lg">Continue →</a>
+          </div>
+
+          <div class="demo-h">FAQ accordion + filter chips</div>
+          <div class="chip-row">
+            <span class="chip active">All</span>
+            <span class="chip">Pricing</span>
+            <span class="chip">Engineering</span>
+            <span class="chip">Delivery</span>
+            <span class="chip">Warranty</span>
+          </div>
+          <div>
+            <div class="faq-row"><div class="faq-q">How long does delivery take?</div><div class="faq-toggle">+</div></div>
+            <div class="faq-row"><div class="faq-q">Do I need a foundation before delivery?</div><div class="faq-toggle">+</div></div>
+            <div class="faq-row"><div class="faq-q">Is the kit certified for my local snow load?</div><div class="faq-toggle">+</div></div>
+          </div>
+
+          <div class="demo-h">Floating quote pill (sticky on real pages)</div>
+          <div class="quote-pill-demo">
+            <span>Page content area</span>
+            <a class="quote-pill">Get a Quote →</a>
+          </div>
+
+          <div class="demo-h">Footer</div>
+          <footer class="site-footer" style="padding:24px 16px">
+            <div class="footer-cols" style="grid-template-columns:1.4fr repeat(3,1fr)">
+              <div class="footer-col">
+                <div class="brand-mark" style="margin-bottom:12px">
+                  <div class="brand-mark-glyph">B</div>
+                  <div class="brand-mark-word" style="color:#fff">Bell Metal<small style="color:#b87333">Buildings Co.</small></div>
+                </div>
+                <div class="footer-contact">
+                  +1-800-555-0100 <span class="ds-todo">TODO</span><br>
+                  hello@bellmetal.example<br>
+                  123 Industrial Way, Anytown, US
+                </div>
+                <div class="footer-socials"><span>f</span><span>x</span><span>in</span><span>ig</span></div>
+              </div>
+              <div class="footer-col">
+                <h5>Buildings</h5>
+                <a>Garages</a><a>Workshops</a><a>Barndominiums</a><a>Quonset</a>
+              </div>
+              <div class="footer-col">
+                <h5>Resources</h5>
+                <a>FAQs</a><a>Videos</a><a>Brochures</a><a>Blog</a>
+              </div>
+              <div class="footer-col">
+                <h5>Legal</h5>
+                <a>Privacy</a><a>Warranty</a><a>Sitemap</a>
+              </div>
+            </div>
+            <div class="footer-base">© 2026 Bell Metal Buildings Co. <span class="ds-todo" style="background:#3a2a18;border-color:#b87333;color:#f4f3f1">TODO: legal entity</span></div>
+          </footer>
+        </div>
+      </article>
+
+      <!-- ============ PALETTE B ============ -->
+      <article class="palette-card palette-b">
+        <header class="palette-banner">
+          <h3>Option B · Slate + Amber</h3>
+          <span class="palette-banner-tag">Trust / commercial</span>
+        </header>
+        <div class="swatch-row">
+          <div class="swatch" style="background:#1f2a3a;color:#fff">Primary<span>#1F2A3A</span></div>
+          <div class="swatch" style="background:#e08a3c;color:#1f2a3a">Accent<span>#E08A3C</span></div>
+          <div class="swatch" style="background:#131b27;color:#fff">Deep<span>#131B27</span></div>
+          <div class="swatch" style="background:#f1f3f6;color:#1f2a3a">Surface alt<span>#F1F3F6</span></div>
+          <div class="swatch" style="background:#8a1f24;color:#fef5e7">Promo<span>#8A1F24</span></div>
+          <div class="swatch" style="background:#ffffff;color:#1f2a3a;border-right:1px solid #d4dae3">Surface<span>#FFFFFF</span></div>
+        </div>
+
+        <div class="palette-body">
+          <div class="palette-vignette">
+            <h4>Engineered for your site.</h4>
+            <p>Slate + amber reads as serious and commercial — closer in energy to site 1, but warmer (amber > yellow) and cooler (slate > pure navy) so it stands on its own.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary">Request a Quote</a>
+              <a class="btn btn-accent">Build in 3D</a>
+              <a class="btn btn-outline">Learn More</a>
+            </div>
+          </div>
+
+          <div class="demo-h">Header + Promo strip</div>
+          <div class="promo-strip">Clearance Event — Save up to 40% on in-stock kits  <span class="ds-todo">TODO: confirm offer</span></div>
+          <header class="site-header">
+            <div class="brand-mark">
+              <div class="brand-mark-glyph">B</div>
+              <div class="brand-mark-word">Bell Metal<small>Buildings Co.</small></div>
+            </div>
+            <nav class="nav-row">
+              <a class="nav-caret">Buildings</a>
+              <a>Clearance</a>
+              <a class="nav-caret">Options</a>
+              <a>About</a>
+              <a class="btn btn-phone">+1-800-555-0100</a>
+            </nav>
+          </header>
+
+          <div class="demo-h">Hero</div>
+          <div class="hero">
+            <div class="hero-inner">
+              <div class="hero-eyebrow">Pre-engineered metal buildings</div>
+              <h2 class="hero-title">Built once. Stands for generations.</h2>
+              <p class="hero-sub">Factory-direct steel kits engineered for your site, your code, and your timeline. <span class="ds-todo">TODO: replace with brief copy</span></p>
+              <div class="btn-row">
+                <a class="btn btn-accent btn-lg">Price My Building →</a>
+                <a class="btn btn-outline btn-lg" style="color:#fff;border-color:#fff">3D Builder</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-h">Trust band + diagonal divider</div>
+          <div class="trust-band">
+            <h3>40+ years engineering steel that stands up</h3>
+            <div class="trust-stats">
+              <div class="trust-stat"><strong>40+</strong><span>Years <span class="ds-todo">TODO</span></span></div>
+              <div class="trust-stat"><strong>65k+</strong><span>Buildings <span class="ds-todo">TODO</span></span></div>
+              <div class="trust-stat"><strong>4.9★</strong><span>Google rating <span class="ds-todo">TODO</span></span></div>
+            </div>
+          </div>
+          <div class="diag-divider"><div class="diag-divider-label">Slanted section break</div></div>
+
+          <div class="demo-h">Building-type cards (8 on home)</div>
+          <div class="cat-grid">
+            <a class="cat-card"><div class="cat-card-img" style="background-image:linear-gradient(135deg,#2c3848,#52677c)"></div><div class="cat-card-label">Garages</div></a>
+            <a class="cat-card"><div class="cat-card-img" style="background-image:linear-gradient(135deg,#7a5430,#b97a3f)"></div><div class="cat-card-label">Workshops</div></a>
+            <a class="cat-card"><div class="cat-card-img" style="background-image:linear-gradient(135deg,#4a5a3a,#8aa05c)"></div><div class="cat-card-label">Barndominiums</div></a>
+            <a class="cat-card"><div class="cat-card-img" style="background-image:linear-gradient(135deg,#1f2a3a,#3a4a5e)"></div><div class="cat-card-label">Quonset Huts</div></a>
+          </div>
+
+          <div class="demo-h">Testimonial card + dark pull-quote</div>
+          <div class="demo-grid-2">
+            <div class="testimonial-card">
+              <div class="testimonial-photo" style="background-image:linear-gradient(135deg,#384a60,#7191b3)"></div>
+              <div class="testimonial-body">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"The crew was on time, the kit fit together exactly to the drawings, and the structure has handled two winters without an issue."</p>
+                <div class="testimonial-name">[TODO: customer name]</div>
+                <span class="verified-pill">Verified Customer</span>
+              </div>
+            </div>
+            <div class="pullquote-card">
+              <p class="pullquote-text">"Bell's engineers walked us through every snow-load and wind-load calc. We knew exactly what we were buying."</p>
+              <div class="pullquote-attrib">[TODO: name, city]</div>
+            </div>
+          </div>
+
+          <div class="demo-h">Clearance product card</div>
+          <div class="demo-grid-2">
+            <div class="clear-card">
+              <div class="clear-card-img" style="background-image:linear-gradient(135deg,#7a5430,#d8a96b)"></div>
+              <div class="clear-card-body">
+                <h4 class="clear-card-title">40' × 60' × 16' Workshop</h4>
+                <p class="clear-card-desc">Straight-wall, single overhead door, color: amber sand.</p>
+                <div class="clear-card-prices">
+                  <span class="was-price">Was: $48,900</span><br>
+                  <span class="sale-price">Sale: $34,250</span> <span class="ds-todo">TODO: real pricing</span>
+                </div>
+              </div>
+              <div class="clear-card-ctas">
+                <a class="btn btn-outline btn-sm">View Drawing</a>
+                <a class="btn btn-primary btn-sm">Make an Offer</a>
+                <a class="btn btn-accent btn-sm">Call for Faster Response</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="demo-h" style="margin-top:0;border-top:none;padding-top:0">Amber-check feature list</div>
+              <ul class="check-list">
+                <li>Factory-direct pricing — no dealer markup.</li>
+                <li>Project-specific engineering stamped to your local code.</li>
+                <li>50-year rust-perforation warranty on all panels.</li>
+                <li>Clear-span design — no interior columns.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="demo-h">Quote wizard</div>
+          <div class="wizard">
+            <div class="wizard-progress"><div class="wizard-progress-bar"></div></div>
+            <div class="wizard-title">Step 1 of 4 — What's it for?</div>
+            <div class="wizard-options">
+              <div class="wizard-option active">Garage</div>
+              <div class="wizard-option">Workshop</div>
+              <div class="wizard-option">Barn</div>
+              <div class="wizard-option">Commercial</div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label class="field-label">ZIP code</label><input class="field-input" placeholder="00000" /></div>
+              <div class="field"><label class="field-label">Your name</label><input class="field-input" placeholder="Name" /></div>
+            </div>
+            <a class="btn btn-accent btn-lg">Continue →</a>
+          </div>
+
+          <div class="demo-h">FAQ accordion + filter chips</div>
+          <div class="chip-row">
+            <span class="chip active">All</span>
+            <span class="chip">Pricing</span>
+            <span class="chip">Engineering</span>
+            <span class="chip">Delivery</span>
+            <span class="chip">Warranty</span>
+          </div>
+          <div>
+            <div class="faq-row"><div class="faq-q">How long does delivery take?</div><div class="faq-toggle">+</div></div>
+            <div class="faq-row"><div class="faq-q">Do I need a foundation before delivery?</div><div class="faq-toggle">+</div></div>
+            <div class="faq-row"><div class="faq-q">Is the kit certified for my local snow load?</div><div class="faq-toggle">+</div></div>
+          </div>
+
+          <div class="demo-h">Floating quote pill (sticky on real pages)</div>
+          <div class="quote-pill-demo">
+            <span>Page content area</span>
+            <a class="quote-pill">Get a Quote →</a>
+          </div>
+
+          <div class="demo-h">Footer</div>
+          <footer class="site-footer" style="padding:24px 16px">
+            <div class="footer-cols" style="grid-template-columns:1.4fr repeat(3,1fr)">
+              <div class="footer-col">
+                <div class="brand-mark" style="margin-bottom:12px">
+                  <div class="brand-mark-glyph">B</div>
+                  <div class="brand-mark-word" style="color:#fff">Bell Metal<small style="color:#e08a3c">Buildings Co.</small></div>
+                </div>
+                <div class="footer-contact">
+                  +1-800-555-0100 <span class="ds-todo">TODO</span><br>
+                  hello@bellmetal.example<br>
+                  123 Industrial Way, Anytown, US
+                </div>
+                <div class="footer-socials"><span>f</span><span>x</span><span>in</span><span>ig</span></div>
+              </div>
+              <div class="footer-col">
+                <h5>Buildings</h5>
+                <a>Garages</a><a>Workshops</a><a>Barndominiums</a><a>Quonset</a>
+              </div>
+              <div class="footer-col">
+                <h5>Resources</h5>
+                <a>FAQs</a><a>Videos</a><a>Brochures</a><a>Blog</a>
+              </div>
+              <div class="footer-col">
+                <h5>Legal</h5>
+                <a>Privacy</a><a>Warranty</a><a>Sitemap</a>
+              </div>
+            </div>
+            <div class="footer-base">© 2026 Bell Metal Buildings Co. <span class="ds-todo" style="background:#2a1f12;border-color:#e08a3c;color:#fef5e7">TODO: legal entity</span></div>
+          </footer>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =======================  TYPE SCALE  ======================= -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Type scale</h2>
+    <p class="ds-section-sub">Oswald (condensed display) for headlines, mirroring site 1's condensed slab/sans display family without copying its exact face. Inter for body — neutral, highly readable, available everywhere.</p>
+
+    <div class="type-row">
+      <div><code>--t-display-1</code><div class="type-caption">Hero</div></div>
+      <div class="type-d1">Built once. Stands for generations.</div>
+    </div>
+    <div class="type-row">
+      <div><code>--t-display-2</code><div class="type-caption">Section header</div></div>
+      <div class="type-d2">Popular building types</div>
+    </div>
+    <div class="type-row">
+      <div><code>--t-h1</code><div class="type-caption">Page heading</div></div>
+      <div class="type-h1">Why choose steel</div>
+    </div>
+    <div class="type-row">
+      <div><code>--t-h2</code><div class="type-caption">Sub-section</div></div>
+      <div class="type-h2">Engineering & code</div>
+    </div>
+    <div class="type-row">
+      <div><code>--t-h3</code><div class="type-caption">Card title</div></div>
+      <div class="type-h3">Faster construction timelines</div>
+    </div>
+    <div class="type-row">
+      <div><code>--t-body</code><div class="type-caption">Default body</div></div>
+      <div class="type-body">Factory-direct pricing means we don't markup through dealers. Every quote includes engineering stamped for your local code.</div>
+    </div>
+    <div class="type-row">
+      <div><code>--t-body-sm</code><div class="type-caption">Captions, meta</div></div>
+      <div class="type-body-sm">Published April 12, 2026 · Categories: Engineering</div>
+    </div>
+    <div class="type-row">
+      <div><code>--t-caption</code><div class="type-caption">Eyebrow / label</div></div>
+      <div class="type-caption">Latest from the field</div>
+    </div>
+  </section>
+
+  <!-- =======================  TOKEN TABLES  ======================= -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Tokens — spacing</h2>
+    <p class="ds-section-sub">8px-based scale. Use spacing tokens for all margin/padding instead of arbitrary px.</p>
+    <div class="token-grid">
+      <div class="token"><div class="token-name">--s-1</div><div class="token-val">4px</div><div class="token-preview-spacing" style="width:4px"></div></div>
+      <div class="token"><div class="token-name">--s-2</div><div class="token-val">8px</div><div class="token-preview-spacing" style="width:8px"></div></div>
+      <div class="token"><div class="token-name">--s-3</div><div class="token-val">12px</div><div class="token-preview-spacing" style="width:12px"></div></div>
+      <div class="token"><div class="token-name">--s-4</div><div class="token-val">16px</div><div class="token-preview-spacing" style="width:16px"></div></div>
+      <div class="token"><div class="token-name">--s-5</div><div class="token-val">24px</div><div class="token-preview-spacing" style="width:24px"></div></div>
+      <div class="token"><div class="token-name">--s-6</div><div class="token-val">32px</div><div class="token-preview-spacing" style="width:32px"></div></div>
+      <div class="token"><div class="token-name">--s-7</div><div class="token-val">48px</div><div class="token-preview-spacing" style="width:48px"></div></div>
+      <div class="token"><div class="token-name">--s-8</div><div class="token-val">64px</div><div class="token-preview-spacing" style="width:64px"></div></div>
+      <div class="token"><div class="token-name">--s-9</div><div class="token-val">96px</div><div class="token-preview-spacing" style="width:96px"></div></div>
+    </div>
+  </section>
+
+  <section class="ds-section">
+    <h2 class="ds-section-title">Tokens — radius</h2>
+    <div class="token-grid">
+      <div class="token"><div class="token-name">--r-sm</div><div class="token-val">4px</div><div class="token-preview-radius" style="border-radius:4px"></div></div>
+      <div class="token"><div class="token-name">--r-md</div><div class="token-val">8px</div><div class="token-preview-radius" style="border-radius:8px"></div></div>
+      <div class="token"><div class="token-name">--r-lg</div><div class="token-val">14px</div><div class="token-preview-radius" style="border-radius:14px"></div></div>
+      <div class="token"><div class="token-name">--r-pill</div><div class="token-val">999px</div><div class="token-preview-radius" style="border-radius:999px"></div></div>
+    </div>
+  </section>
+
+  <section class="ds-section">
+    <h2 class="ds-section-title">Tokens — shadow</h2>
+    <div class="token-grid">
+      <div class="token"><div class="token-name">--shadow-sm</div><div class="token-val">subtle</div><div class="token-preview-shadow" style="box-shadow:0 1px 2px rgba(0,0,0,.05)"></div></div>
+      <div class="token"><div class="token-name">--shadow-card</div><div class="token-val">card lift</div><div class="token-preview-shadow" style="box-shadow:0 2px 8px rgba(0,0,0,.06)"></div></div>
+      <div class="token"><div class="token-name">--shadow-md</div><div class="token-val">hover</div><div class="token-preview-shadow" style="box-shadow:0 4px 12px rgba(0,0,0,.08)"></div></div>
+      <div class="token"><div class="token-name">--shadow-lg</div><div class="token-val">floating</div><div class="token-preview-shadow" style="box-shadow:0 12px 32px rgba(0,0,0,.14)"></div></div>
+    </div>
+  </section>
+
+  <!-- =======================  GAPS & FLAGS  ======================= -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Open assumptions & flagged gaps</h2>
+    <p class="ds-section-sub">Every <span class="ds-todo">TODO</span> in this artifact (and every page that follows) marks something I'm guessing about. Confirm or correct any of these:</p>
+    <ul class="check-list">
+      <li><strong>Brand name:</strong> using "Bell Metal Buildings Co." from the workspace folder. Confirm legal name / DBA / preferred capitalization.</li>
+      <li><strong>Logo:</strong> placeholder is a single-letter "B" glyph + wordmark. Will substitute when a real logo is supplied.</li>
+      <li><strong>Tagline:</strong> "Built once. Stands for generations." is invented as a placeholder. Replace with brief copy.</li>
+      <li><strong>Contact info:</strong> phone, email, mailing address are dummy values.</li>
+      <li><strong>Stats numbers:</strong> "40+ years", "65k+ buildings", "4.9★" are inherited from the inventory's structural pattern. Replace with the client's real stats — these must be truthful claims.</li>
+      <li><strong>Product lineup:</strong> using 8 industry-standard categories (Garages, Workshops, Barndominiums, Quonset Huts, Carports, Container Covers, Commercial, Storage). Confirm which the client actually offers.</li>
+      <li><strong>Pricing on clearance:</strong> all dollar values are placeholders.</li>
+      <li><strong>Testimonials, customer logos, leadership name for "From the Desk of…":</strong> all placeholders.</li>
+      <li><strong>Photography:</strong> CSS gradients stand in for hero/category/product photos. Will need a real photo library, or AI-generated original imagery, for handoff.</li>
+      <li><strong>Geographic service area:</strong> US-only assumed (single-country footer/locations). Confirm.</li>
+    </ul>
+  </section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Blog — Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+.blog-head{ padding:var(--s-8) 24px var(--s-6); border-bottom:1px solid var(--b-rule) }
+.blog-head h1{ font-size:var(--t-d2); text-transform:uppercase; margin-bottom:.4em }
+.blog-head .lede{ max-width:60ch }
+.filter-bar{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; padding:var(--s-5) 0 }
+.filter-bar .lbl{ font-family:var(--f-display); font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:.78rem; color:var(--b-text-muted); margin-right:6px }
+
+.post-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
+@media (max-width:900px){ .post-grid{ grid-template-columns:1fr } }
+.post-card{
+  display:flex; flex-direction:column; background:#fff;
+  border:1px solid var(--b-rule); border-radius:var(--r-md); overflow:hidden;
+  text-decoration:none; color:var(--b-text);
+}
+.post-card:hover{ box-shadow:var(--sh-md); text-decoration:none }
+.post-card .photo{ aspect-ratio:16/9 }
+.post-card .photo.a{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.35)), linear-gradient(160deg, #2c4361, #0e1a2b) }
+.post-card .photo.b{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.35)), linear-gradient(160deg, #c47b40, #4d2b13) }
+.post-card .photo.c{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.35)), linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.post-card .photo.d{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.35)), linear-gradient(160deg, #5a6470, #1d2530) }
+.post-card .photo.e{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.35)), linear-gradient(160deg, #8a4f6e, #2b1d36) }
+.post-card .photo.f{ background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.35)), linear-gradient(160deg, #5e8aae, #1f3a55) }
+.post-card .body{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:8px; flex:1 }
+.post-card h3{ font-size:1.1rem; text-transform:uppercase; letter-spacing:.02em; line-height:1.2 }
+.post-card .meta{ font-size:.78rem; color:var(--b-text-muted); margin-top:auto; padding-top:8px; border-top:1px dashed var(--b-rule) }
+</style>
+</head>
+<body>
+
+<header class="nav-solid">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+    <div class="nav-links"><a class="nav-link" href="./03-building-types.html">Buildings</a><a class="nav-link" href="./15-true-pricing.html">Pricing</a><a class="nav-link" href="./17-resources-hub.html">Resources</a><a class="nav-link" href="./11-testimonials.html">Reviews</a></div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<section class="blog-head">
+  <div class="container">
+    <h1>Bell Metal Blog</h1>
+    <p class="lede">Plain-language guides on pricing, permitting, foundations, and the small choices that make a big building feel right.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="filter-bar">
+      <span class="lbl">Filter by topic</span>
+      <div class="chip-row">
+        <button class="chip is-active">All topics</button>
+        <button class="chip">Construction</button>
+        <button class="chip">DIY</button>
+        <button class="chip">Design &amp; Budgeting</button>
+        <button class="chip">News &amp; Trends</button>
+        <button class="chip">Steel Buildings 101</button>
+        <button class="chip">Tips &amp; Advice</button>
+      </div>
+    </div>
+
+    <div class="post-grid">
+      <a class="post-card" href="./10-blog-post.html"><div class="photo a"></div><div class="body"><span class="tag blue">DIY</span><h3>How to build a steel building on a budget</h3><p class="muted" style="font-size:.92rem; margin:0">Six places to spend, three places not to.</p><span class="meta">Apr 18, 2026 · 7 min read</span></div></a>
+      <a class="post-card" href="./10-blog-post.html"><div class="photo b"></div><div class="body"><span class="tag blue">Design &amp; Budgeting</span><h3>What actually determines your steel price</h3><p class="muted" style="font-size:.92rem; margin:0">Hot-rolled-coil, snow zones, openings — the five variables.</p><span class="meta">Apr 11, 2026 · 9 min read</span></div></a>
+      <a class="post-card" href="./10-blog-post.html"><div class="photo c"></div><div class="body"><span class="tag blue">Construction</span><h3>Foundations 101 for first-time builders</h3><p class="muted" style="font-size:.92rem; margin:0">Slab vs. pier vs. floating, decided.</p><span class="meta">Apr 4, 2026 · 11 min read</span></div></a>
+      <a class="post-card" href="./10-blog-post.html"><div class="photo d"></div><div class="body"><span class="tag blue">Steel Buildings 101</span><h3>Red iron vs. cold-formed framing</h3><p class="muted" style="font-size:.92rem; margin:0">Where each one wins, where each one loses.</p><span class="meta">Mar 28, 2026 · 8 min read</span></div></a>
+      <a class="post-card" href="./10-blog-post.html"><div class="photo e"></div><div class="body"><span class="tag blue">Tips &amp; Advice</span><h3>Why the cheapest quote is usually the most expensive</h3><p class="muted" style="font-size:.92rem; margin:0">Hidden costs that surface mid-build.</p><span class="meta">Mar 21, 2026 · 6 min read</span></div></a>
+      <a class="post-card" href="./10-blog-post.html"><div class="photo f"></div><div class="body"><span class="tag blue">Construction</span><h3>Why data centers are turning to pre-engineered</h3><p class="muted" style="font-size:.92rem; margin:0">Scale, speed, and cost predictability.</p><span class="meta">Mar 14, 2026 · 10 min read</span></div></a>
+      <a class="post-card" href="./10-blog-post.html"><div class="photo a"></div><div class="body"><span class="tag blue">Design &amp; Budgeting</span><h3>Insulation packages, simplified</h3><p class="muted" style="font-size:.92rem; margin:0">R-13 vs R-19 vs R-25 vs R-30 — when each makes sense.</p><span class="meta">Mar 7, 2026 · 7 min read</span></div></a>
+      <a class="post-card" href="./10-blog-post.html"><div class="photo b"></div><div class="body"><span class="tag blue">News &amp; Trends</span><h3>The 2026 steel market — what to watch</h3><p class="muted" style="font-size:.92rem; margin:0">HRC index swings, lead times, and quote-hold windows.</p><span class="meta">Feb 28, 2026 · 8 min read</span></div></a>
+      <a class="post-card" href="./10-blog-post.html"><div class="photo c"></div><div class="body"><span class="tag blue">DIY</span><h3>Self-erecting a Bell kit: the honest weekend timeline</h3><p class="muted" style="font-size:.92rem; margin:0">What two people, three friends, and one truck really takes.</p><span class="meta">Feb 21, 2026 · 12 min read</span></div></a>
+    </div>
+
+    <div class="center" style="margin-top:var(--s-7)">
+      <button class="btn btn-ghost">Load more posts</button>
+    </div>
+  </div>
+</section>
+
+<section class="phone-band">
+  <div class="phone-band-inner">
+    <div class="lead">Got a question we should write about?<small>Tell us what you'd want to read.</small></div>
+    <a class="btn btn-ghost on-dark" href="./08-contact.html">Contact us</a>
+    <a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col"><a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a><p class="blurb">Pre-engineered steel buildings shipped to the lower 48.</p><div class="social-row"><a href="#">f</a><a href="#">◧</a><a href="#">▷</a><a href="#">in</a></div></div>
+      <div><h4>Buildings</h4><ul><li><a href="./04-garages-detail.html">Garages</a></li><li><a href="./03-building-types.html">All types</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="./17-resources-hub.html">Resources</a></li><li><a href="./12-faq-resources.html">FAQs</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="./07-about.html">About</a></li><li><a href="./13-warranty.html">Warranty</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="./08-contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-legal"><span>© 2026 Bell Metal Buildings Co.</span><ul><li><a href="./14-privacy.html">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="util-bar"><div class="util-bar-inner"><span class="lead">Done reading? <em>Price your building in minutes</em></span><a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a></div></div>
+
+<script>
+document.querySelectorAll('.chip-row').forEach(row => row.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { row.querySelectorAll('.chip').forEach(x => x.classList.remove('is-active')); c.classList.add('is-active'); })));
+</script>
+</body>
+</html>

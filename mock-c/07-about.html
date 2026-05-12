@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>About Bell Metal Buildings</title>
+<meta name="description" content="Three generations of Larkin family steel building engineering in Aliquippa, Pennsylvania. Read about Bell's heritage, founder, and factory." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .founder-band{ padding: var(--s-9) var(--s-5); background: var(--c-paper); position:relative; overflow:hidden; }
+  .founder-band::before{
+    content:""; position:absolute; right:-80px; top:80px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(184,138,59,.10) 0 30%, transparent 31%),
+                radial-gradient(circle, rgba(184,138,59,.06) 0 40%, transparent 41%);
+    background-size: 96px 96px; background-position: 0 0, 48px 48px;
+    pointer-events:none;
+  }
+  .founder-band .wrap{
+    position:relative; max-width: var(--container); margin:0 auto;
+    display:grid; grid-template-columns: 1.4fr 1fr; gap: var(--s-8); align-items:center;
+  }
+  @media (max-width:900px){ .founder-band .wrap{ grid-template-columns: 1fr; } }
+  .founder-portrait{
+    width: 100%; max-width: 380px; aspect-ratio: 4/5; margin: 0 auto;
+    border-radius: var(--r-md); border: 8px solid var(--c-paper); box-shadow: var(--sh-md);
+    background:
+      radial-gradient(circle at 50% 30%, rgba(184,138,59,.18), transparent 50%),
+      linear-gradient(160deg, #2c3e3a, #1a2b27);
+    position:relative;
+  }
+  .founder-portrait::after{
+    content:""; position:absolute; inset:0;
+    border: 1px solid var(--c-brass-soft); border-radius: calc(var(--r-md) - 4px); pointer-events:none;
+  }
+  .founder-caption{
+    text-align:center; margin-top: var(--s-3);
+    font:600 var(--t-xs)/1.4 var(--f-body); letter-spacing:.16em; text-transform:uppercase; color: var(--c-brass-hover);
+  }
+  .closing-band{ padding: var(--s-9) var(--s-5); background: var(--c-bone); }
+  .closing-band .container{ max-width: var(--container-prose); }
+  .closing-band p{ font-size: 1.0625rem; color: var(--c-text); }
+  .closing-band p:first-letter{ font-family: var(--f-display); font-weight:700; font-size: 3rem; color: var(--c-brick); float:left; line-height:.9; margin-right:.5rem; padding-top:.25rem; font-variation-settings:"opsz" 144, "SOFT" 50; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="left">Building experts since 1962 · Made in Aliquippa, PA</div>
+    <div class="right">
+      <span>We're here to help — call <a href="tel:18004442525">1-800-444-2525</a></span>
+      <span class="lang">EN · <a href="#" style="color: var(--c-bone);">ES</a></span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="02-homepage.html" class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">Bell Metal Buildings<small>Since 1962</small></span>
+    </a>
+    <nav class="primary-nav">
+      <a href="03-building-types.html">Building Types</a>
+      <a href="06-options-finishes.html">Options &amp; Finishes</a>
+      <a href="07-about.html" class="is-active">About</a>
+      <a href="17-resources-hub.html">Resources</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-outline btn-sm" href="05-clearance-inventory.html">Sale buildings</a>
+      <a class="btn btn-secondary btn-sm" href="08-contact.html">Contact</a>
+      <a class="btn btn-primary btn-sm" href="02-homepage.html#hero-quote">Free quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-banner">
+    <div class="wrap">
+      <div class="eyebrow on-dark">Our story</div>
+      <h1>About Bell <em>Metal Buildings</em></h1>
+      <p>We're more than a building company. We're a steel-town factory run by people whose grandfathers worked the same floor.</p>
+    </div>
+  </section>
+
+  <section class="founder-band">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">American values · Legendary founder</div>
+        <h2 style="font-size: var(--t-d2); font-variation-settings:'opsz' 144, 'SOFT' 30; margin: var(--s-3) 0 var(--s-5);">A factory you can call by name.</h2>
+        <p>In 1962, William "Bell" Larkin <span class="todo">founder</span> opened a small fabrication shop in Aliquippa, Pennsylvania — a Beaver County town built on Jones &amp; Laughlin steel. He'd spent the previous decade welding I-beams for Bethlehem, and he was sure that a smaller factory, run with his own hands, could turn out a better pre-engineered building than the volume shops of the day.</p>
+        <p>Sixty-four years later, three generations of Larkins still run the floor. The principles haven't changed: heavier gauge than the spec calls for, stamped engineering signed by a P.E. who actually walked your jurisdiction, and a project manager who picks up the phone after the kit ships.</p>
+        <p>What's grown is the work. Bell ships kits to all 48 contiguous states. We've stamped buildings for hangars in Alaska, mini-storage in Texas, barndominiums in Tennessee, and a riding arena that sits on the same hillside Bell's first metal Quonset was raised on in '64.</p>
+        <p>Still, the answer to "who builds these?" is the same as it was the day Bell opened: <strong>we do.</strong> In Aliquippa.</p>
+      </div>
+      <div>
+        <div class="founder-portrait"></div>
+        <div class="founder-caption">William "Bell" Larkin · Founder, 1962 <span class="todo">portrait</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="stats-strip">
+    <div class="wrap">
+      <div><div class="stat-n">64<span style="font-size:.5em;">yrs</span></div><div class="stat-l">In business</div></div>
+      <div><div class="stat-n">42k<span style="font-size:.5em;">+</span></div><div class="stat-l">Buildings shipped <span class="todo">stats</span></div></div>
+      <div><div class="stat-n">48</div><div class="stat-l">States delivered</div></div>
+      <div><div class="stat-n">A+</div><div class="stat-l">BBB rating</div></div>
+    </div>
+  </section>
+
+  <!-- We own the factory band -->
+  <section class="photo-band" id="factory">
+    <div class="wrap">
+      <div class="eyebrow on-dark center">From the Bell factory floor</div>
+      <h2>We own the factory.</h2>
+      <p>The Aliquippa plant runs three lines: primary frame welding, secondary cold-roll, and panel coating. Every component of every Bell building passes through our hands before it sees a truck. Take a tour — qualified buyers can walk the floor with a project manager by appointment.</p>
+      <div class="btn-row" style="justify-content:center; margin-top: var(--s-5);">
+        <a class="btn btn-primary" href="08-contact.html">Schedule a tour</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality lives on closing -->
+  <section class="closing-band">
+    <div class="container">
+      <div class="eyebrow center">Bell's quality lives on</div>
+      <h2 style="font-size: var(--t-d2); text-align:center; font-variation-settings:'opsz' 144, 'SOFT' 30; margin: var(--s-3) auto var(--s-6);">A building you'll still be standing under in 2080.</h2>
+      <p>Bell's first sale was a 30×60 metal Quonset for a Beaver Falls farmer in 1962. It's still standing. The roof has been re-coated twice. The frame has never been touched. That's the standard we still hold every kit to: built once, stands for generations.</p>
+      <p>If you want a building that does the same — for a garage, a warehouse, a barndominium, a hangar — <a href="02-homepage.html#hero-quote">request a free quote</a> or call us at <a href="tel:18004442525">1-800-444-2525</a>. We'll send a sealed engineering package, a fixed price, and a real ship date.</p>
+      <p style="text-align:center; margin-top: var(--s-7);"><a class="btn btn-primary btn-lg" href="02-homepage.html#hero-quote">Get a free quote</a> <a class="btn btn-outline btn-lg" href="08-contact.html">Contact us</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="foot-h">Additional resources</div>
+      <ul class="foot-list">
+        <li><a href="03-building-types.html">Building types</a></li>
+        <li><a href="07-about.html">About Bell</a></li>
+        <li><a href="09-blog-index.html">Field journal</a></li>
+        <li><a href="17-resources-hub.html">Certifications &amp; resources</a></li>
+        <li><a href="13-warranty.html">Warranty</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Get in touch</div>
+      <div class="foot-contact">
+        <div class="row"><span class="icon">☎</span><div>Toll free<br><strong style="color:var(--c-bone)"><a href="tel:18004442525" style="color:inherit;">1-800-444-2525</a></strong></div></div>
+        <div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001</div></div>
+      </div>
+      <div class="foot-social"><a href="#">f</a><a href="#">ig</a><a href="#">in</a><a href="#">yt</a></div>
+    </div>
+    <div class="foot-help">
+      <div class="foot-h">How can we help?</div>
+      <a class="btn btn-secondary" href="08-contact.html">Contact us</a>
+      <a class="btn btn-primary" href="02-homepage.html#hero-quote">Get a free quote</a>
+    </div>
+  </div>
+  <div class="subfooter">© 2026 Bell Metal Buildings Co. · All rights reserved · <a href="14-privacy.html" style="color:inherit;">Privacy policy</a></div>
+</footer>
+
+<a class="q-tab" href="08-contact.html">Questions? Let's talk</a>
+
+</body>
+</html>

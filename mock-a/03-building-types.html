@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Building Types — Bell Metal Buildings</title>
+<meta name="description" content="Pre-engineered metal building types — explore all 10 categories Bell engineers and ships factory-direct." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Bell Metal Buildings — Mock A — Building Types (PLP equivalent) */
+:root {
+  --p-primary: #18181b; --p-primary-hover: #2a2a30; --p-primary-ink: #ffffff;
+  --p-accent: #b87333; --p-accent-hover: #9a5e25; --p-accent-ink: #18181b;
+  --p-surface: #ffffff; --p-surface-alt: #f4f3f1; --p-surface-deep: #14141a; --p-surface-deep-ink: #f4f3f1;
+  --p-rule: #ddd9d1; --p-check: #b87333;
+  --p-promo: #6f2622; --p-promo-ink: #f8e9d6;
+  --p-wizard-bg: #eef0f4;
+  --gray-50:#f7f7f8;--gray-100:#ececef;--gray-200:#d8d8de;--gray-300:#b9b9c1;--gray-400:#8e8e98;--gray-500:#66666f;--gray-600:#4a4a52;--gray-700:#34343a;--gray-800:#1f1f24;--gray-900:#111114;
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;--s-9:96px;
+  --r-sm:4px;--r-md:8px;--r-lg:14px;--r-pill:999px;
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.18);
+  --font-display: 'Oswald','Arial Narrow',system-ui,sans-serif;
+  --font-body: 'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  --container: 1280px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--gray-900); background: white; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--s-5); }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.05; margin: 0; }
+.todo { display:inline-block; background:#fff5cc; border:1px dashed #c89a00; color:#6b4d00; padding:1px 6px; font-size:11px; font-family:var(--font-body); font-weight:600; text-transform:none; letter-spacing:0; border-radius:3px; }
+.todo.inline-dark { background:#2a1f12; border-color:#b87333; color:#f4f3f1; }
+
+/* Promo */
+.promo-strip { background: var(--p-promo); color: var(--p-promo-ink); text-align: center; padding: 10px var(--s-4); font-weight: 600; font-size: 14px; letter-spacing: 0.03em; }
+
+/* Header */
+.site-header { background: white; border-bottom: 1px solid var(--p-rule); position: sticky; top: 0; z-index: 50; }
+.header-inner { max-width: var(--container); margin: 0 auto; padding: var(--s-3) var(--s-5); display: flex; align-items: center; gap: var(--s-5); }
+.brand-mark { display: flex; align-items: center; gap: var(--s-3); text-decoration: none; }
+.brand-mark-glyph { width: 44px; height: 44px; border-radius: var(--r-sm); background: var(--p-primary); color: var(--p-accent); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1; }
+.brand-mark-word { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 20px; color: var(--p-primary); line-height: 1; }
+.brand-mark-word small { display: block; font-family: var(--font-body); font-size: 10px; letter-spacing: 0.22em; color: var(--gray-500); margin-top: 3px; text-transform: uppercase; font-weight: 600; }
+.nav-row { display: flex; gap: var(--s-5); align-items: center; margin-left: auto; }
+.nav-row a { font-size: 13px; color: var(--p-primary); text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+.nav-row a:hover { color: var(--p-accent-hover); }
+.nav-caret::after { content: " \25BE"; opacity: 0.6; }
+.lang-select { background: transparent; border: 1px solid var(--p-rule); border-radius: var(--r-sm); padding: 6px 8px; font-size: 12px; font-weight: 600; }
+.btn-phone { background: var(--p-primary); color: var(--p-primary-ink); padding: 10px 18px; font-size: 13px; border-radius: var(--r-pill); text-decoration: none; font-family: var(--font-body); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.menu-toggle { display: none; }
+@media (max-width: 900px) { .nav-row { display: none; } .menu-toggle { display: grid; place-items: center; width: 44px; height: 44px; margin-left: auto; background: var(--p-primary); color: white; border: none; border-radius: var(--r-sm); font-size: 22px; } }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; padding: 13px 24px; border-radius: var(--r-pill); border: 2px solid transparent; cursor: pointer; text-decoration: none; transition: background 0.15s, color 0.15s, border-color 0.15s; line-height: 1; }
+.btn-primary { background: var(--p-primary); color: var(--p-primary-ink); }
+.btn-primary:hover { background: var(--p-primary-hover); }
+.btn-accent { background: var(--p-accent); color: var(--p-accent-ink); }
+.btn-accent:hover { background: var(--p-accent-hover); color: white; }
+.btn-outline-light { background: transparent; color: white; border-color: white; }
+.btn-outline-light:hover { background: white; color: var(--p-primary); }
+.btn-outline-dark { background: transparent; color: var(--p-primary); border-color: var(--p-primary); }
+.btn-outline-dark:hover { background: var(--p-primary); color: white; }
+.btn-lg { padding: 16px 30px; font-size: 16px; }
+.btn-sm { padding: 9px 16px; font-size: 12px; }
+
+/* Hero */
+.page-hero {
+  position: relative;
+  min-height: 440px;
+  background:
+    linear-gradient(110deg, rgba(20,20,26,0.72) 0%, rgba(20,20,26,0.38) 60%, rgba(20,20,26,0.10) 100%),
+    radial-gradient(at 30% 80%, rgba(184,115,51,0.28), transparent 60%),
+    linear-gradient(135deg, #1f1f24 0%, #5b443b 60%, #b87333 100%);
+  color: white;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.page-hero::after { content: ""; position: absolute; bottom: -1px; left: 0; right: 0; height: 40px; background: white; clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 70%); }
+.page-hero-inner { max-width: 620px; padding: var(--s-9) var(--s-5); position: relative; z-index: 1; }
+.page-hero-eyebrow { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 700; color: var(--p-accent); margin-bottom: var(--s-3); }
+.page-hero-title { font-size: clamp(36px, 5vw, 64px); color: var(--p-accent); margin-bottom: var(--s-3); line-height: 1; }
+.page-hero-sub { font-size: 20px; font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; }
+.breadcrumb { font-family: var(--font-body); font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(255,255,255,0.65); margin-bottom: var(--s-3); }
+.breadcrumb a { color: var(--p-accent); text-decoration: none; }
+
+/* Intro band */
+.intro-band { background: white; padding: var(--s-8) 0; text-align: center; }
+.intro-band h2 { font-size: clamp(28px, 3.2vw, 40px); color: var(--p-primary); }
+.intro-band p { max-width: 720px; margin: var(--s-4) auto 0; color: var(--gray-600); font-size: 17px; }
+
+/* Category rows */
+.cat-rows { background: var(--gray-50); padding: var(--s-8) 0; }
+.cat-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8);
+  align-items: center;
+  background: white;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--s-6);
+}
+@media (max-width: 900px) { .cat-row { grid-template-columns: 1fr; gap: 0; } }
+.cat-row.reverse .cat-photo { order: 2; }
+@media (max-width: 900px) { .cat-row.reverse .cat-photo { order: 0; } }
+
+.cat-photo {
+  position: relative; min-height: 360px;
+  background-size: cover; background-position: center;
+}
+.cat-photo .arrows {
+  position: absolute; top: 50%; left: 0; right: 0;
+  display: flex; justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 var(--s-3);
+  pointer-events: none;
+}
+.cat-photo .arrow {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(0,0,0,0.55); color: white; border: none;
+  font-size: 18px; pointer-events: auto;
+  display: grid; place-items: center;
+}
+.cat-photo-counter {
+  position: absolute; bottom: var(--s-3); right: var(--s-3);
+  background: rgba(0,0,0,0.6); color: white;
+  font-size: 11px; padding: 4px 8px; border-radius: var(--r-sm);
+  font-family: var(--font-body); letter-spacing: 0.1em; font-weight: 600;
+}
+
+.cat-text { padding: var(--s-7) var(--s-7); }
+.cat-text h3 {
+  font-size: clamp(22px, 2.6vw, 32px);
+  color: var(--p-primary);
+  margin-bottom: var(--s-3);
+}
+.cat-text p { color: var(--gray-700); margin: 0 0 var(--s-3); }
+.cat-text .tags { display: flex; gap: var(--s-2); flex-wrap: wrap; margin-bottom: var(--s-4); }
+.cat-tag {
+  background: var(--p-surface-alt); color: var(--p-primary);
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 4px 10px; border-radius: var(--r-pill); border: 1px solid var(--p-rule);
+}
+@media (max-width: 900px) { .cat-text { padding: var(--s-6); } }
+
+/* FAQ */
+.faq-section { background: white; padding: var(--s-9) 0; }
+.faq-section h2 { text-align: center; color: var(--p-primary); font-size: clamp(26px, 3vw, 36px); }
+.faq-list { max-width: 880px; margin: var(--s-6) auto 0; }
+.faq-row { border-bottom: 1px solid var(--p-rule); padding: var(--s-4) 0; cursor: pointer; }
+.faq-row-top { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); }
+.faq-q { font-weight: 700; color: var(--p-primary); font-size: 16px; }
+.faq-toggle { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--p-primary); color: var(--p-primary); display: grid; place-items: center; font-weight: 700; font-size: 20px; line-height: 1; flex-shrink: 0; transition: transform 0.2s, background 0.2s, color 0.2s; }
+.faq-row[aria-expanded="true"] .faq-toggle { background: var(--p-primary); color: var(--p-accent); transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; color: var(--gray-700); font-size: 15px; }
+.faq-row[aria-expanded="true"] .faq-a { max-height: 280px; padding-top: var(--s-3); }
+
+/* Inline quote wizard band */
+.wizard-band {
+  background: var(--p-wizard-bg);
+  padding: var(--s-9) 0;
+  background-image: linear-gradient(180deg, var(--p-wizard-bg) 0%, #e2e5ec 100%);
+}
+.wizard-shell {
+  max-width: 920px; margin: 0 auto;
+  background: white; border-radius: var(--r-md);
+  padding: var(--s-7);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--p-rule);
+}
+.wizard-head { text-align: center; margin-bottom: var(--s-5); }
+.wizard-head h2 { font-size: clamp(24px, 2.8vw, 34px); color: var(--p-primary); }
+.wizard-head p { color: var(--gray-600); margin: var(--s-2) 0 0; }
+.wizard-progress { height: 8px; background: var(--gray-100); border-radius: var(--r-pill); overflow: hidden; margin-bottom: var(--s-3); }
+.wizard-progress-bar { height: 100%; width: 4%; background: var(--p-accent); transition: width 0.3s; }
+.wizard-step-label { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray-500); text-align: center; margin-bottom: var(--s-5); }
+
+.wiz-q-title { font-family: var(--font-display); font-size: 20px; color: var(--p-primary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: var(--s-3); }
+.wizard-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-2); margin-bottom: var(--s-5); }
+@media (max-width: 600px) { .wizard-options { grid-template-columns: repeat(2, 1fr); } }
+.wizard-option {
+  background: white; border: 2px solid var(--p-rule);
+  border-radius: var(--r-sm);
+  padding: var(--s-4) var(--s-3);
+  text-align: center; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background 0.15s, border-color 0.15s;
+}
+.wizard-option:hover { border-color: var(--p-accent); }
+.wizard-option.active { border-color: var(--p-accent); background: var(--p-accent); color: var(--p-accent-ink); }
+.wizard-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--s-3); margin-bottom: var(--s-5); }
+@media (max-width: 700px) { .wizard-grid { grid-template-columns: 1fr; } }
+.field-label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--gray-700); margin-bottom: 6px; }
+.field-input, .field-select { width: 100%; padding: 12px 14px; border: 1px solid var(--p-rule); border-radius: var(--r-sm); font-family: var(--font-body); font-size: 14px; background: white; }
+.field-input:focus, .field-select:focus { outline: 2px solid var(--p-accent); outline-offset: 1px; border-color: var(--p-accent); }
+.wiz-final-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-bottom: var(--s-5); }
+@media (max-width: 600px) { .wiz-final-grid { grid-template-columns: 1fr; } }
+.wiz-submit-row { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+.wizard-note { font-size: 12px; color: var(--gray-500); }
+
+/* Footer */
+.site-footer { background: var(--p-surface-deep); color: var(--p-surface-deep-ink); padding: var(--s-8) 0 var(--s-5); position: relative; }
+.site-footer::before { content: ""; position: absolute; inset: 0; background: radial-gradient(at 20% 30%, rgba(184,115,51,0.08), transparent 50%), repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 18px); pointer-events: none; }
+.footer-inner { position: relative; max-width: var(--container); margin: 0 auto; padding: 0 var(--s-5); }
+.footer-cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; gap: var(--s-6); }
+@media (max-width: 1000px) { .footer-cols { grid-template-columns: 1fr 1fr; gap: var(--s-5); } }
+.footer-col h5 { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 14px; color: var(--p-accent); margin: 0 0 var(--s-3); padding-bottom: 6px; border-bottom: 2px solid var(--p-accent); display: inline-block; }
+.footer-col a { display: block; color: rgba(244,243,241,0.75); text-decoration: none; font-size: 13px; margin-bottom: 6px; }
+.footer-col a:hover { color: var(--p-accent); }
+.footer-contact { font-size: 13px; line-height: 1.7; opacity: 0.85; }
+.footer-contact strong { display: block; color: var(--p-accent); margin-top: var(--s-2); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
+.footer-socials { display: flex; gap: var(--s-2); margin-top: var(--s-3); }
+.footer-socials a { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.07); display: grid; place-items: center; font-weight: 700; font-size: 12px; text-decoration: none; color: white; }
+.footer-base { border-top: 1px solid rgba(255,255,255,0.12); margin-top: var(--s-7); padding-top: var(--s-4); text-align: center; font-size: 12px; opacity: 0.65; }
+
+/* Floating pill */
+.floating-quote { position: fixed; bottom: var(--s-5); left: 50%; transform: translateX(-50%); background: var(--p-primary); color: var(--p-primary-ink); padding: 14px 26px; border-radius: var(--r-pill); font-family: var(--font-body); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 13px; box-shadow: var(--shadow-lg); text-decoration: none; z-index: 40; border: 2px solid var(--p-accent); }
+.floating-quote:hover { background: var(--p-accent); color: var(--p-primary); }
+
+/* Placeholder gradients */
+.bg-ag { background-image: linear-gradient(135deg, #3f4a3b, #8a9e64); }
+.bg-arena { background-image: linear-gradient(135deg, #2c3848, #5670a3); }
+.bg-av { background-image: linear-gradient(135deg, #1f1f24, #6b5740); }
+.bg-cp { background-image: linear-gradient(135deg, #4a4a52, #8e8e98); }
+.bg-com { background-image: linear-gradient(135deg, #34343a, #b87333); }
+.bg-cc { background-image: linear-gradient(135deg, #5b443b, #18181b); }
+.bg-gar { background-image: linear-gradient(135deg, #2a2826, #5b443b); }
+.bg-roof { background-image: linear-gradient(135deg, #4a3d2f, #b87333); }
+.bg-stor { background-image: linear-gradient(135deg, #66666f, #2a2826); }
+.bg-work { background-image: linear-gradient(135deg, #1f1f24, #b87333); }
+</style>
+</head>
+<body>
+
+<div class="promo-strip">Clearance Event — Save up to 40% on in-stock kits. <span class="todo">TODO: confirm offer</span></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="brand-mark">
+      <div class="brand-mark-glyph" aria-hidden="true">B</div>
+      <div class="brand-mark-word">Bell Metal<small>Buildings Co.</small></div>
+    </a>
+    <nav class="nav-row" aria-label="Primary">
+      <a href="#" class="nav-caret">Buildings</a>
+      <a href="#">Clearance</a>
+      <a href="#" class="nav-caret">Options &amp; Finishes</a>
+      <a href="#">Resources</a>
+      <a href="#">Blog</a>
+      <a href="#" class="nav-caret">About</a>
+      <select class="lang-select" aria-label="Language"><option>EN</option><option>ES</option><option>FR</option></select>
+      <a href="tel:+18005550100" class="btn-phone">📞 +1-800-555-0100</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<section class="page-hero" aria-labelledby="ph-title">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="#">Home</a> / Building Types</nav>
+    <div class="page-hero-eyebrow">Catalog</div>
+    <h1 id="ph-title" class="page-hero-title">Types of steel buildings</h1>
+    <div class="page-hero-sub">Pick your shape. We engineer the rest.</div>
+  </div>
+</section>
+
+<section class="intro-band">
+  <div class="container">
+    <h2>Choosing your steel building</h2>
+    <p>Bell engineers ten distinct building types — from arch-roof Quonset huts to clear-span commercial halls. Every type below is available factory-direct, stamped to your local code, and shipped on a calendar window you set. Start with the type that matches your use case, or talk to a rep about a hybrid. <span class="todo">TODO: confirm catalog scope</span></p>
+  </div>
+</section>
+
+<section class="cat-rows">
+  <div class="container">
+
+    <!-- Row 1: Agricultural -->
+    <article class="cat-row">
+      <div class="cat-photo bg-ag" role="img" aria-label="Agricultural steel building">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 6</div>
+      </div>
+      <div class="cat-text">
+        <h3>Agricultural</h3>
+        <div class="tags"><span class="cat-tag">Hay storage</span><span class="cat-tag">Livestock</span><span class="cat-tag">Equipment</span></div>
+        <p>Wide clear-spans for tractors and round bales, ventilation packages tuned for livestock, and roof loads engineered to your county's snow map. From 40-foot loafing sheds to 100-foot machine shops, our ag kits ship pre-cut and ready to bolt up.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 2: Arenas & Recreational -->
+    <article class="cat-row reverse">
+      <div class="cat-photo bg-arena" role="img" aria-label="Recreational arena building">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 5</div>
+      </div>
+      <div class="cat-text">
+        <h3>Arenas &amp; Recreational</h3>
+        <div class="tags"><span class="cat-tag">Riding arenas</span><span class="cat-tag">Indoor courts</span><span class="cat-tag">Event halls</span></div>
+        <p>Clear-span widths up to 200 feet, no posts in the middle of your ring or court. We engineer eave heights for headroom, add daylight louver systems, and spec acoustic panels for indoor sports. Insulated packages keep year-round programs comfortable.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 3: Aviation -->
+    <article class="cat-row">
+      <div class="cat-photo bg-av" role="img" aria-label="Aviation hangar">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 4</div>
+      </div>
+      <div class="cat-text">
+        <h3>Aviation</h3>
+        <div class="tags"><span class="cat-tag">Hangars</span><span class="cat-tag">Bifold doors</span><span class="cat-tag">FBO</span></div>
+        <p>From single-aircraft hangars to corporate FBO facilities, Bell engineers wide-opening bifold-door spans, reinforced jambs, and FAA-friendly clear heights. We coordinate with door manufacturers (Schweiss, PowerLift) on lift specs so the building is right the first time.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 4: Carports -->
+    <article class="cat-row reverse">
+      <div class="cat-photo bg-cp" role="img" aria-label="Steel carport">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 7</div>
+      </div>
+      <div class="cat-text">
+        <h3>Carports</h3>
+        <div class="tags"><span class="cat-tag">Single bay</span><span class="cat-tag">RV cover</span><span class="cat-tag">Combo garage</span></div>
+        <p>Steel carports cover your vehicle without committing to a fully enclosed garage. We engineer single-bay covers for sedans, taller RV bays with 14-foot eaves, and combo packages that mate an open carport to an enclosed workshop bay. 50-year rust-perforation warranty on all panels.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 5: Commercial -->
+    <article class="cat-row">
+      <div class="cat-photo bg-com" role="img" aria-label="Commercial steel building">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 6</div>
+      </div>
+      <div class="cat-text">
+        <h3>Commercial</h3>
+        <div class="tags"><span class="cat-tag">Warehouses</span><span class="cat-tag">Showrooms</span><span class="cat-tag">Mini-storage</span></div>
+        <p>Whether you need 10,000 square feet of distribution warehouse or a 4,000-square-foot retail showroom, our commercial kits arrive engineering-stamped to IBC. Add insulated wall panels for tenant comfort, dock-height knockouts for loading bays, and translucent panels for daylighting.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 6: Container Covers -->
+    <article class="cat-row reverse">
+      <div class="cat-photo bg-cc" role="img" aria-label="Shipping container cover">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 4</div>
+      </div>
+      <div class="cat-text">
+        <h3>Container Covers</h3>
+        <div class="tags"><span class="cat-tag">Shipping containers</span><span class="cat-tag">Arch roof</span><span class="cat-tag">Modular</span></div>
+        <p>An arch-roof steel cover spans two, three, or four shipping containers and turns them into permanent enclosed workspace. We engineer the cover; you supply the containers. Standard configurations roll out in under a week from order to delivery. <span class="todo">TODO: confirm we offer this category</span></p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 7: Garages -->
+    <article class="cat-row">
+      <div class="cat-photo bg-gar" role="img" aria-label="Steel garage">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 8</div>
+      </div>
+      <div class="cat-text">
+        <h3>Garages</h3>
+        <div class="tags"><span class="cat-tag">Residential</span><span class="cat-tag">Detached</span><span class="cat-tag">3+ bay</span></div>
+        <p>From two-car detached garages to four-bay shop buildings with a finished mezzanine, Bell garage kits come pre-cut and ready to bolt up. Pick your overhead door size, walk-door placement, color, and trim package. Stamped drawings ship within 7–10 business days of order.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 8: Roofing Systems -->
+    <article class="cat-row reverse">
+      <div class="cat-photo bg-roof" role="img" aria-label="Steel roofing system">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 5</div>
+      </div>
+      <div class="cat-text">
+        <h3>Roofing Systems</h3>
+        <div class="tags"><span class="cat-tag">Standing seam</span><span class="cat-tag">R-panel</span><span class="cat-tag">Re-roof</span></div>
+        <p>Replace an aging asphalt or membrane roof with our standing-seam or R-panel steel systems. We engineer overlay packages that mount to your existing structure and ship matched flashings, ridge caps, and gutter details. 40-year paint warranty on premium finishes.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 9: Storage -->
+    <article class="cat-row">
+      <div class="cat-photo bg-stor" role="img" aria-label="Storage building">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 6</div>
+      </div>
+      <div class="cat-text">
+        <h3>Storage</h3>
+        <div class="tags"><span class="cat-tag">Mini-storage</span><span class="cat-tag">Self-storage</span><span class="cat-tag">Climate-controlled</span></div>
+        <p>From single-tenant farm storage to multi-unit self-storage developments, Bell engineers the building shell, the divider walls, and the door layout to spec. Add climate-control insulation, partition framing, and Trachte-compatible roll-up door openings on request.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+    <!-- Row 10: Workshops -->
+    <article class="cat-row reverse">
+      <div class="cat-photo bg-work" role="img" aria-label="Steel workshop">
+        <div class="arrows"><button class="arrow" aria-label="Previous photo">‹</button><button class="arrow" aria-label="Next photo">›</button></div>
+        <div class="cat-photo-counter">1 / 7</div>
+      </div>
+      <div class="cat-text">
+        <h3>Workshops</h3>
+        <div class="tags"><span class="cat-tag">Hobby</span><span class="cat-tag">Production</span><span class="cat-tag">Welding bay</span></div>
+        <p>A workshop with clear-span overhead, heavy electrical infrastructure, and an insulated envelope that holds heat through a winter weld project. We size doors and eaves around your equipment list — tell us what's going in and we'll engineer around it.</p>
+        <a href="#" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="faq-section" aria-labelledby="faq-title">
+  <div class="container">
+    <h2 id="faq-title">Frequently asked — building selection</h2>
+    <div class="faq-list">
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">How do I pick between a straight-wall building and a Quonset hut?</div><div class="faq-toggle">+</div></div><div class="faq-a">Straight-wall is best when you want vertical walls for shelving, doors, or windows. Quonset is best when raw cost-per-square-foot matters most and the arch shape doesn't get in your way.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Can I combine two building types in one kit?</div><div class="faq-toggle">+</div></div><div class="faq-a">Yes — garage+carport combos and workshop+storage combos are common. We engineer the shared wall and roof transition as one kit.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">What's the largest building Bell will engineer?</div><div class="faq-toggle">+</div></div><div class="faq-a">Our standard commercial program runs up to 200 feet clear-span and 40-foot eave heights. Larger projects are quoted on a custom engineering basis.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Can I see drawings before I commit?</div><div class="faq-toggle">+</div></div><div class="faq-a">Every Bell quote comes with a preliminary set of drawings (footprint, elevations, accessory locations) so you can verify everything before signing.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Do you ship to my state?</div><div class="faq-toggle">+</div></div><div class="faq-a">We ship to all 48 contiguous states. AK, HI, and Canada are quoted case-by-case.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">What's the difference between a kit price and an "installed" price?</div><div class="faq-toggle">+</div></div><div class="faq-a">Bell sells the kit (steel + drawings + accessories). Installation is sold separately and varies by region; we'll connect you with a vetted regional erector if you need one.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">How long is a typical Bell quote good for?</div><div class="faq-toggle">+</div></div><div class="faq-a">Steel quotes are firm for 30 days. After that we re-pull current mill pricing — usually a small change, but we'd rather requote than surprise you.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Do you offer doors and windows as part of the kit?</div><div class="faq-toggle">+</div></div><div class="faq-a">Yes. Overhead doors, walk doors, windows, ridge vents, skylights, gutters, and insulation are all available as line items on the same engineering package.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Can I add to my building later?</div><div class="faq-toggle">+</div></div><div class="faq-a">Yes. Most Bell buildings can be lengthened by adding bays. We engineer the addition to match the original kit's loads and finishes.</div></div>
+      <div class="faq-row" aria-expanded="false" tabindex="0"><div class="faq-row-top"><div class="faq-q">Do you supply foundation drawings?</div><div class="faq-toggle">+</div></div><div class="faq-a">Yes — anchor-bolt layout and reaction loads come with every engineering package. Your local foundation contractor uses those numbers to spec the slab.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Inline quote wizard band (sitewide) -->
+<section class="wizard-band" aria-labelledby="wiz-title">
+  <div class="container">
+    <div class="wizard-shell">
+      <div class="wizard-head">
+        <h2 id="wiz-title">Let us help you every step of the way</h2>
+        <p>Five quick questions. A real engineered quote in your inbox in 24 hours — not a "starting at" number.</p>
+      </div>
+      <div class="wizard-progress" aria-hidden="true"><div class="wizard-progress-bar"></div></div>
+      <div class="wizard-step-label">Step 1 of 5 · 4% complete</div>
+
+      <div class="wiz-q-title">What are you building?</div>
+      <div class="wizard-options" role="radiogroup" aria-label="Building use">
+        <button class="wizard-option active">Garage</button>
+        <button class="wizard-option">Workshop</button>
+        <button class="wizard-option">Barn / ag</button>
+        <button class="wizard-option">Commercial</button>
+        <button class="wizard-option">Carport</button>
+        <button class="wizard-option">Container cover</button>
+        <button class="wizard-option">Quonset</button>
+        <button class="wizard-option">Storage</button>
+      </div>
+
+      <div class="wiz-q-title">Dimensions (approximate)</div>
+      <div class="wizard-grid">
+        <div><label class="field-label" for="wid">Width</label><select class="field-select" id="wid"><option>20'</option><option>30'</option><option selected>40'</option><option>50'</option><option>60'</option><option>80'</option></select></div>
+        <div><label class="field-label" for="len">Length</label><select class="field-select" id="len"><option>30'</option><option>40'</option><option selected>60'</option><option>80'</option><option>100'</option><option>120'</option></select></div>
+        <div><label class="field-label" for="eav">Eave height</label><select class="field-select" id="eav"><option>10'</option><option>12'</option><option selected>14'</option><option>16'</option><option>20'</option></select></div>
+      </div>
+
+      <div class="wiz-q-title">Where's it going?</div>
+      <div class="wiz-final-grid">
+        <div><label class="field-label" for="zip">ZIP code</label><input class="field-input" id="zip" placeholder="00000" /></div>
+        <div><label class="field-label" for="nm">Your name</label><input class="field-input" id="nm" placeholder="Name" /></div>
+        <div><label class="field-label" for="em">Email</label><input class="field-input" id="em" type="email" placeholder="you@example.com" /></div>
+        <div><label class="field-label" for="ph">Phone</label><input class="field-input" id="ph" type="tel" placeholder="(000) 000-0000" /></div>
+      </div>
+
+      <div class="wiz-submit-row">
+        <div class="wizard-note">We'll never sell your data. By submitting you agree to our privacy policy. <span class="todo">TODO: confirm consent text</span></div>
+        <a href="#" class="btn btn-accent btn-lg">Get my quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="brand-mark" style="margin-bottom:var(--s-4)">
+          <div class="brand-mark-glyph" aria-hidden="true">B</div>
+          <div class="brand-mark-word" style="color:white">Bell Metal<small style="color:var(--p-accent)">Buildings Co.</small></div>
+        </div>
+        <div class="footer-contact">
+          <strong>Contact Us</strong>
+          +1-800-555-0100<br>
+          hello@bellmetal.example<br>
+          123 Industrial Way, Anytown, US <span class="todo inline-dark">TODO</span>
+          <strong>Follow us</strong>
+          <div class="footer-socials"><a href="#">f</a><a href="#">x</a><a href="#">in</a><a href="#">ig</a></div>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Buildings</h5><a href="#">Garages</a><a href="#">Workshops</a><a href="#">Barndominiums</a><a href="#">Quonset</a><a href="#">Carports</a><a href="#">Container Covers</a><a href="#">Commercial</a><a href="#">Storage</a></div>
+      <div class="footer-col"><h5>Options</h5><a href="#">Foundation</a><a href="#">Doors</a><a href="#">Windows</a><a href="#">Insulation</a><a href="#">Trims</a><a href="#">Skylights</a></div>
+      <div class="footer-col"><h5>Resources</h5><a href="#">FAQs</a><a href="#">Video Library</a><a href="#">Brochures</a><a href="#">Blog</a><a href="#">True Pricing</a></div>
+      <div class="footer-col"><h5>Company</h5><a href="#">About</a><a href="#">Contact</a><a href="#">Testimonials</a><a href="#">Privacy</a><a href="#">Warranty</a></div>
+    </div>
+    <div class="footer-base">© 2026 Bell Metal Buildings Co. <span class="todo inline-dark">TODO: legal entity</span></div>
+  </div>
+</footer>
+
+<a href="#" class="floating-quote">Get a Quote →</a>
+
+<script>
+document.querySelectorAll('.faq-row').forEach(row => {
+  const toggle = () => {
+    const open = row.getAttribute('aria-expanded') === 'true';
+    row.setAttribute('aria-expanded', open ? 'false' : 'true');
+    row.querySelector('.faq-toggle').textContent = open ? '+' : '×';
+  };
+  row.addEventListener('click', toggle);
+  row.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+});
+document.querySelectorAll('.wizard-option').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.wizard-option').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

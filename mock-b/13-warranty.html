@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Warranty — Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+.warranty-body{ max-width:80ch; margin:var(--s-7) auto 0 }
+.warranty-body h2{
+  text-transform:uppercase; letter-spacing:.02em; margin:var(--s-7) 0 var(--s-3);
+  border-bottom:3px solid var(--b-ember); padding-bottom:6px; display:inline-block;
+}
+.warranty-body p{ font-size:1.02rem; margin-bottom:1em }
+.warranty-toc{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  padding:var(--s-5); margin-top:var(--s-6);
+}
+.warranty-toc summary{ cursor:pointer; font-family:var(--f-display); text-transform:uppercase; letter-spacing:.04em; font-weight:600 }
+.warranty-toc ul{ list-style:none; padding:0; margin:14px 0 0; display:flex; flex-direction:column; gap:6px }
+.warranty-toc a{ color:var(--b-conduit); font-size:.95rem }
+
+.warranty-split{ display:grid; grid-template-columns:1fr 1fr; gap:var(--s-5); margin-top:var(--s-5) }
+@media (max-width:700px){ .warranty-split{ grid-template-columns:1fr } }
+.warranty-card{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md); padding:var(--s-6); display:flex; flex-direction:column; gap:10px;
+}
+.warranty-card h3{ text-transform:uppercase; letter-spacing:.02em }
+.warranty-card .term{ font-family:var(--f-display); font-weight:700; font-size:2.4rem; color:var(--b-ember); line-height:1; letter-spacing:.01em }
+.warranty-card ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px }
+.warranty-card li{ display:flex; gap:8px; align-items:flex-start; font-size:.92rem }
+.warranty-card li::before{ content:"✓"; color:var(--b-success); font-weight:700 }
+.warranty-card li small{ display:block; color:var(--b-text-muted); font-weight:400; margin-top:2px }
+</style>
+</head>
+<body>
+
+<header class="nav-solid">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+    <div class="nav-links"><a class="nav-link" href="./03-building-types.html">Buildings</a><a class="nav-link" href="./15-true-pricing.html">Pricing</a><a class="nav-link" href="./17-resources-hub.html">Resources</a><a class="nav-link" href="./11-testimonials.html">Reviews</a></div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<!-- Rounded inset hero (Complete Guide pattern) -->
+<section class="banner banner-rounded">
+  <div class="banner-inner">
+    <h1>Bell Metal Warranty — The Complete Reference</h1>
+    <p class="lede">Every Bell Metal building ships with a layered warranty: material, paint, fastener, painted-accessories, and erection-period coverage. This page walks through every line, broken out by straight-wall and arch (Quonset) profiles.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#chapters">Jump to warranty profiles</a>
+      <a class="btn btn-ghost on-dark" href="./19-brochure.html">Download warranty PDF</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="warranty-body">
+    <details class="warranty-toc" open>
+      <summary>Explore the guide</summary>
+      <ul>
+        <li><a href="#what-covered">1 · What's covered</a></li>
+        <li><a href="#straight-wall">2 · Straight-wall warranty profile</a></li>
+        <li><a href="#arch">3 · Arch (Quonset) warranty profile</a></li>
+        <li><a href="#exclusions">4 · Exclusions and edge cases</a></li>
+        <li><a href="#claim">5 · How to file a claim</a></li>
+        <li><a href="#service">6 · Service line</a></li>
+      </ul>
+    </details>
+
+    <h2 id="what-covered">What's covered</h2>
+    <p>Bell Metal carries a tiered warranty across the four major component groups of a steel building: the structural frame, the roof and wall panels, the factory paint finish, and the accessory hardware (doors, windows, vents, fasteners). Each tier has its own coverage window and its own claim procedure. <span class="todo">All warranty terms in this document are subject to confirmation against Bell's actual warranty document — currently using industry-typical values.</span></p>
+
+    <h2 id="straight-wall" style="scroll-margin-top:24px">Straight-wall warranty profile</h2>
+    <div class="warranty-split">
+      <div class="warranty-card">
+        <h3>Material &amp; workmanship</h3>
+        <div class="term">50 years</div>
+        <ul>
+          <li>Primary red-iron frame<small>Rust-perforation, structural integrity, weld joints. Covered against factory defects.</small></li>
+          <li>Secondary cold-formed members<small>Galvanized purlins, girts, eave struts.</small></li>
+          <li>Galvalume roof &amp; wall panels<small>26-gauge PBR or R-panel. Coverage starts at the panel core, before paint.</small></li>
+          <li>Sealants &amp; closures<small>Manufacturer-supplied sealants. <span class="todo">confirm duration</span></small></li>
+        </ul>
+      </div>
+      <div class="warranty-card">
+        <h3>Paint &amp; finish</h3>
+        <div class="term">40 years</div>
+        <ul>
+          <li>Factory paint on roof &amp; wall panels<small>Against chalk, fade, peel, blister. Pro-rated after year 20.</small></li>
+          <li>Factory paint on standard trim<small>Eave, gable, base, corner trim — matches panel coverage.</small></li>
+          <li>14 standard finish colors<small>Custom colors covered with the same terms, subject to factory match.</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warranty-split">
+      <div class="warranty-card">
+        <h3>Painted accessories</h3>
+        <div class="term">25 years</div>
+        <ul>
+          <li>Roll-up, sliding, bifold, walk doors<small>Factory paint and frame.</small></li>
+          <li>Window frames<small>Factory-finished surfaces.</small></li>
+          <li>Cupolas, vents, skylights<small>Factory paint and seal.</small></li>
+        </ul>
+      </div>
+      <div class="warranty-card">
+        <h3>Fasteners &amp; erection</h3>
+        <div class="term">20 years</div>
+        <ul>
+          <li>Bell-supplied screws and bolts<small>Stainless or zinc-coated. Against failure under design loads.</small></li>
+          <li>Erection-period defects<small>One-year period from delivery — Bell will replace any panel that arrives misfabricated.</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="arch">Arch (Quonset) warranty profile</h2>
+    <div class="warranty-split">
+      <div class="warranty-card">
+        <h3>Material &amp; workmanship</h3>
+        <div class="term">40 years</div>
+        <ul>
+          <li>Arch panels (S, P, Q models)<small>Cold-formed galvanized steel. Rust-perforation and shape integrity.</small></li>
+          <li>End-wall frames<small>If purchased with the kit. Otherwise covered under straight-wall terms.</small></li>
+          <li>Sealants &amp; closures<small>Matches straight-wall terms.</small></li>
+        </ul>
+      </div>
+      <div class="warranty-card">
+        <h3>Paint &amp; finish</h3>
+        <div class="term">35 years</div>
+        <ul>
+          <li>Factory paint on arch panels<small>Against chalk, fade, peel, blister. Slightly shorter than straight-wall due to curved-panel coating physics.</small></li>
+          <li>End-wall panel finish<small>Matches straight-wall terms.</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="exclusions">Exclusions and edge cases</h2>
+    <p>Standard exclusions: damage from acts of God beyond the design loads we engineered to; chemical attack from agricultural runoff or industrial fumes (covered with the optional marine/agricultural coating); cosmetic dents from hail (covered separately by the homeowner's insurance, typically); modifications made by anyone other than Bell to the structural frame after delivery.</p>
+
+    <h2 id="claim">How to file a claim</h2>
+    <p>Call us. The fastest path is a phone call — we'll send a Bell engineer or a recommended local inspector to confirm the issue, and we'll route the warranty claim through the right factory queue. There is no online claim form because we'd rather a human eyes-on your situation than a checkbox.</p>
+
+    <h2 id="service">Service line</h2>
+    <p>The Bell service line is open for the life of the building. If you have a question 15 years from now — about a replacement part, a re-paint, a re-roof, an addition — we're still here. <span class="todo">Confirm that's still operationally true; many manufacturers wind down support for sold-out product lines.</span></p>
+
+    <div style="margin-top:var(--s-6)">
+      <a class="btn btn-primary btn-lg" href="#">Get a quote with warranty included <span class="arrow">›</span></a>
+    </div>
+  </div>
+</div>
+
+<section class="phone-band" style="margin-top:var(--s-9)">
+  <div class="phone-band-inner">
+    <div class="lead">Questions about warranty coverage?<small>Talk to a real human before you order.</small></div>
+    <div class="phone"><div class="phone-icon">📞</div><a class="phone-num" href="tel:+15555550199">(555) 555-0199</a></div>
+    <a class="btn btn-ghost on-dark" href="./19-brochure.html">Warranty PDF</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col"><a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a><p class="blurb">Pre-engineered steel buildings shipped to the lower 48.</p><div class="social-row"><a href="#">f</a><a href="#">◧</a><a href="#">▷</a><a href="#">in</a></div></div>
+      <div><h4>Buildings</h4><ul><li><a href="./04-garages-detail.html">Garages</a></li><li><a href="./03-building-types.html">All types</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="./17-resources-hub.html">Resources</a></li><li><a href="./12-faq-resources.html">FAQs</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="./07-about.html">About</a></li><li><a href="./13-warranty.html">Warranty</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="./08-contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-legal"><span>© 2026 Bell Metal Buildings Co.</span><ul><li><a href="./14-privacy.html">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="util-bar"><div class="util-bar-inner"><span class="lead">Backed for decades. <em>Start your build now.</em></span><a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a></div></div>
+
+</body>
+</html>

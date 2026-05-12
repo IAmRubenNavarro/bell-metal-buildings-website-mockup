@@ -1,0 +1,1754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bell Metal Buildings — Mock B Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   MOCK B — DESIGN SYSTEM
+   Bell Metal Buildings Co. (working name)
+   Lead-gen / quote-flow orientation (site-2 pattern)
+   ========================================================= */
+
+:root{
+  /* ---------- Color ---------- */
+  --b-ink:        #0e1a2b;   /* Anthracite Indigo — primary dark surface */
+  --b-ink-2:      #15243a;   /* one step lighter for layered dark */
+  --b-ink-deep:   #08111c;   /* deepest, footer */
+  --b-ink-line:   #20334f;   /* hairline on dark */
+  --b-ink-soft:   #1a2a44;
+
+  --b-paper:      #ffffff;
+  --b-paper-2:    #f5f6f8;   /* off-white panel */
+  --b-paper-3:    #ebeef2;
+  --b-rule:       #d8dde4;
+
+  --b-ember:        #e26432; /* primary CTA */
+  --b-ember-hover:  #c25022;
+  --b-ember-ink:    #ffffff;
+
+  --b-conduit:        #2a7fd4; /* secondary info CTA */
+  --b-conduit-hover:  #1f64ad;
+  --b-conduit-ink:    #ffffff;
+  --b-conduit-soft:   #e8f1fb;
+
+  --b-emerald:        #16a34a; /* phone-pill CTA */
+  --b-emerald-hover:  #11873c;
+
+  --b-gold:       #f5b50a;   /* star rating */
+  --b-burgundy:   #7a1f1f;   /* promo / urgency */
+  --b-burgundy-ink:#f8e2c8;
+
+  --b-danger:     #b8302a;
+  --b-success:    #16a34a;
+
+  --b-text:           #0e1a2b;
+  --b-text-muted:     #5b6878;
+  --b-text-faint:     #8a96a6;
+  --b-text-invert:    #ffffff;
+  --b-text-invert-2:  #b9c3d1;
+
+  /* ---------- Type ---------- */
+  --f-display: "Barlow Condensed", system-ui, sans-serif;
+  --f-body:    "Source Sans 3", system-ui, sans-serif;
+  --t-d1:  clamp(2.75rem, 5vw + 1rem, 5rem);     /* 44 → 80 */
+  --t-d2:  clamp(2.25rem, 3.5vw + 1rem, 3.75rem); /* 36 → 60 */
+  --t-h1:  clamp(1.875rem, 1.5vw + 1.25rem, 2.5rem);
+  --t-h2:  clamp(1.375rem, 1vw + 1rem, 1.875rem);
+  --t-h3:  1.25rem;
+  --t-h4:  1.0625rem;
+  --t-body:1rem;
+  --t-sm:  .875rem;
+  --t-xs:  .75rem;
+  --lh-tight:1.04;
+  --lh-snug:1.2;
+  --lh-body:1.6;
+  --tr-display:.01em;
+  --tr-eyebrow:.16em;
+
+  /* ---------- Spacing (4px base) ---------- */
+  --s-1: .25rem;  --s-2: .5rem;   --s-3: .75rem;  --s-4: 1rem;
+  --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;
+  --s-9: 6rem;    --s-10: 8rem;
+
+  /* ---------- Radius ---------- */
+  --r-sm: 4px;
+  --r-md: 10px;
+  --r-lg: 18px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ---------- Shadow ---------- */
+  --sh-sm:    0 1px 2px rgba(14,26,43,.08);
+  --sh-card:  0 2px 10px rgba(14,26,43,.08);
+  --sh-md:    0 6px 18px rgba(14,26,43,.12);
+  --sh-lg:    0 18px 38px rgba(14,26,43,.22);
+
+  /* ---------- Layout ---------- */
+  --container: 1240px;
+  --container-narrow: 880px;
+}
+
+/* =========================================================
+   Base reset / typographic defaults
+   ========================================================= */
+*,*::before,*::after{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth }
+body{
+  margin:0;
+  font-family:var(--f-body);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--b-text);
+  background:var(--b-paper);
+}
+h1,h2,h3,h4{ font-family:var(--f-display); font-weight:700; line-height:var(--lh-snug); margin:0; letter-spacing:var(--tr-display) }
+h1{font-size:var(--t-h1)} h2{font-size:var(--t-h2)} h3{font-size:var(--t-h3)} h4{font-size:var(--t-h4)}
+p{margin:0 0 .85em}
+a{color:var(--b-conduit); text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%; display:block}
+code{font:600 .85rem/1.4 ui-monospace,Menlo,Consolas,monospace; background:var(--b-paper-3); padding:2px 6px; border-radius:4px; color:var(--b-ink)}
+hr{border:0; height:1px; background:var(--b-rule); margin:var(--s-7) 0}
+
+/* =========================================================
+   Design-system page chrome (this file only)
+   ========================================================= */
+.ds-top{
+  position:sticky; top:0; z-index:50;
+  background:var(--b-ink); color:var(--b-text-invert);
+  border-bottom:1px solid var(--b-ink-line);
+}
+.ds-top-inner{
+  max-width:var(--container); margin:0 auto; padding:14px 24px;
+  display:flex; align-items:center; gap:24px;
+}
+.ds-top .crumb{
+  font-family:var(--f-display); font-weight:700; font-size:1.05rem;
+  text-transform:uppercase; letter-spacing:var(--tr-eyebrow);
+}
+.ds-top nav{display:flex; gap:18px; flex-wrap:wrap; font-size:.85rem}
+.ds-top nav a{color:var(--b-text-invert-2)}
+.ds-top nav a:hover{color:#fff; text-decoration:none}
+
+.ds-page{
+  max-width:var(--container); margin:0 auto; padding:var(--s-8) 24px var(--s-9);
+}
+.ds-section{ padding-block:var(--s-8) }
+.ds-section + .ds-section{ border-top:1px solid var(--b-rule) }
+.ds-eyebrow{
+  display:inline-block; font-family:var(--f-display); font-weight:700;
+  letter-spacing:var(--tr-eyebrow); text-transform:uppercase;
+  color:var(--b-ember); font-size:.85rem; margin-bottom:.5rem;
+}
+.ds-title{ font-size:var(--t-d2); line-height:var(--lh-tight); margin:0 0 .35em; text-transform:uppercase }
+.ds-lede{ font-size:1.1rem; color:var(--b-text-muted); max-width:60ch; margin-bottom:var(--s-6) }
+.ds-grid{ display:grid; gap:var(--s-5) }
+.ds-grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ds-grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ds-grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ds-grid.cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media (max-width:900px){
+  .ds-grid.cols-3,.ds-grid.cols-4,.ds-grid.cols-6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .ds-grid.cols-2,.ds-grid.cols-3,.ds-grid.cols-4,.ds-grid.cols-6{grid-template-columns:1fr}
+}
+.ds-stack > * + *{ margin-top:var(--s-5) }
+.ds-callout{
+  background:var(--b-paper-2);
+  border:1px solid var(--b-rule);
+  border-radius:var(--r-md);
+  padding:var(--s-5);
+}
+
+/* =========================================================
+   Swatches
+   ========================================================= */
+.swatch{
+  border:1px solid var(--b-rule);
+  border-radius:var(--r-md);
+  overflow:hidden; background:#fff;
+  display:flex; flex-direction:column;
+}
+.swatch .chip{ height:88px }
+.swatch .meta{ padding:12px 14px; display:flex; justify-content:space-between; align-items:baseline; gap:8px }
+.swatch .meta strong{ font-family:var(--f-display); font-size:1rem; letter-spacing:.02em }
+.swatch .hex{ font:600 .8rem/1 ui-monospace,Menlo,Consolas,monospace; color:var(--b-text-muted) }
+.swatch .role{ font-size:.78rem; color:var(--b-text-muted); padding:0 14px 12px }
+
+/* =========================================================
+   Type specimen
+   ========================================================= */
+.spec{ display:grid; grid-template-columns:120px 1fr; gap:var(--s-4); align-items:baseline; padding:14px 0; border-top:1px dashed var(--b-rule) }
+.spec:first-child{border-top:0}
+.spec code{font-size:.78rem}
+.spec .sample-d1{ font:700 var(--t-d1)/var(--lh-tight) var(--f-display); text-transform:uppercase; letter-spacing:var(--tr-display) }
+.spec .sample-d2{ font:700 var(--t-d2)/var(--lh-tight) var(--f-display); text-transform:uppercase; letter-spacing:var(--tr-display) }
+.spec .sample-h1{ font:700 var(--t-h1)/var(--lh-snug) var(--f-display); text-transform:uppercase }
+.spec .sample-h2{ font:700 var(--t-h2)/var(--lh-snug) var(--f-display); text-transform:uppercase }
+.spec .sample-h3{ font:700 var(--t-h3)/var(--lh-snug) var(--f-display) }
+.spec .sample-body{ font:400 var(--t-body)/var(--lh-body) var(--f-body) }
+.spec .sample-sm{ font:400 var(--t-sm)/var(--lh-body) var(--f-body) }
+.spec .sample-eyebrow{
+  font:700 .85rem/1.2 var(--f-display); text-transform:uppercase;
+  letter-spacing:var(--tr-eyebrow); color:var(--b-ember);
+}
+
+/* =========================================================
+   Spacing scale
+   ========================================================= */
+.sp-row{display:flex; align-items:center; gap:14px; padding:8px 0; border-top:1px dashed var(--b-rule)}
+.sp-row:first-child{border-top:0}
+.sp-row .bar{ height:14px; background:var(--b-ember); border-radius:2px }
+.sp-row code{min-width:96px}
+.sp-row .px{font-size:.85rem; color:var(--b-text-muted); min-width:60px}
+
+/* =========================================================
+   Radius / Shadow demo
+   ========================================================= */
+.demo-box{
+  background:#fff; border:1px solid var(--b-rule);
+  padding:14px; min-height:96px; display:flex; flex-direction:column; justify-content:center; gap:6px;
+  font-size:.85rem; color:var(--b-text-muted);
+}
+.demo-box strong{font-family:var(--f-display); color:var(--b-ink); font-size:.95rem}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn{
+  display:inline-flex; align-items:center; gap:.6em; justify-content:center;
+  padding:.85em 1.45em; border-radius:var(--r-pill); border:0;
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:var(--tr-display); font-size:.95rem; line-height:1;
+  cursor:pointer; transition:background .15s, color .15s, transform .05s, box-shadow .15s;
+  text-decoration:none;
+}
+.btn:active{transform:translateY(1px)}
+.btn .arrow{
+  display:inline-grid; place-items:center; width:1.5em; height:1.5em;
+  border-radius:999px; background:#fff; color:var(--b-ink);
+  font-size:.8em;
+}
+.btn-primary{ background:var(--b-ember); color:var(--b-ember-ink) }
+.btn-primary:hover{ background:var(--b-ember-hover); color:#fff; text-decoration:none }
+.btn-secondary{ background:var(--b-conduit); color:var(--b-conduit-ink) }
+.btn-secondary:hover{ background:var(--b-conduit-hover); color:#fff; text-decoration:none }
+.btn-ghost{ background:transparent; color:var(--b-ink); border:2px solid var(--b-ink); padding-block:calc(.85em - 2px) }
+.btn-ghost:hover{ background:var(--b-ink); color:#fff; text-decoration:none }
+.btn-ghost.on-dark{ color:#fff; border-color:#fff }
+.btn-ghost.on-dark:hover{ background:#fff; color:var(--b-ink) }
+.btn-phone{ background:var(--b-emerald); color:#fff }
+.btn-phone:hover{ background:var(--b-emerald-hover); color:#fff; text-decoration:none }
+.btn-link{ background:transparent; color:var(--b-conduit); padding:.5em 0; border-radius:0; text-transform:none; font-family:var(--f-body); font-weight:600 }
+.btn-link:hover{ color:var(--b-conduit-hover); text-decoration:underline }
+.btn-sm{ font-size:.82rem; padding:.7em 1.1em }
+.btn-lg{ font-size:1.05rem; padding:1em 1.7em }
+.btn[disabled]{ opacity:.5; cursor:not-allowed }
+
+/* =========================================================
+   Form primitives
+   ========================================================= */
+.field{ display:flex; flex-direction:column; gap:6px }
+.field label{ font-family:var(--f-display); font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:.78rem; color:var(--b-ink) }
+.field .hint{ font-size:.78rem; color:var(--b-text-muted) }
+.input, .textarea, .select{
+  font:400 1rem/1.4 var(--f-body); color:var(--b-text);
+  background:#fff; border:1px solid var(--b-rule);
+  border-radius:var(--r-sm); padding:12px 14px; outline:none;
+  transition:border-color .15s, box-shadow .15s;
+}
+.input:focus, .textarea:focus, .select:focus{
+  border-color:var(--b-conduit);
+  box-shadow:0 0 0 3px rgba(42,127,212,.18);
+}
+.textarea{ min-height:120px; resize:vertical }
+.field.error .input,.field.error .textarea,.field.error .select{ border-color:var(--b-danger) }
+.field.error .hint{ color:var(--b-danger) }
+.check, .radio{ display:flex; align-items:flex-start; gap:10px; cursor:pointer; font-size:.95rem }
+.check input, .radio input{ margin-top:3px; accent-color:var(--b-conduit) }
+
+/* =========================================================
+   NAV (site header — two states)
+   ========================================================= */
+.nav-transparent, .nav-solid{ position:relative; z-index:20 }
+.nav-transparent{
+  background:transparent; color:#fff;
+}
+.nav-transparent .nav-link, .nav-transparent .brand{ color:#fff }
+.nav-solid{
+  background:#fff; color:var(--b-ink);
+  border-bottom:1px solid var(--b-rule);
+}
+.nav-inner{
+  max-width:var(--container); margin:0 auto; padding:18px 24px;
+  display:flex; align-items:center; gap:24px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  font-family:var(--f-display); font-weight:800; text-transform:uppercase;
+  letter-spacing:var(--tr-eyebrow); font-size:1.1rem; line-height:1;
+  color:var(--b-ink); text-decoration:none;
+}
+.brand-mark{
+  width:38px; height:38px; border-radius:8px;
+  background:var(--b-ember); color:#fff;
+  display:grid; place-items:center;
+  font-family:var(--f-display); font-weight:900; font-size:1.4rem;
+  letter-spacing:0;
+}
+.brand-stack{ display:flex; flex-direction:column; line-height:1.05; gap:2px }
+.brand-stack small{ font-size:.62rem; letter-spacing:var(--tr-eyebrow); opacity:.7 }
+.nav-links{ display:flex; gap:22px; margin-left:auto; align-items:center }
+.nav-link{
+  font-family:var(--f-display); font-weight:600; text-transform:uppercase;
+  letter-spacing:.06em; font-size:.92rem; color:var(--b-ink);
+  text-decoration:none; padding:8px 2px;
+}
+.nav-link:hover{ color:var(--b-ember); text-decoration:none }
+.nav-cta{ margin-left:8px }
+@media (max-width:900px){
+  .nav-links{ display:none }
+  .nav-cta{ display:none }
+}
+
+/* =========================================================
+   Navy banner (recurring interior-page banner)
+   ========================================================= */
+.banner{
+  background:var(--b-ink); color:#fff;
+  padding:var(--s-8) 24px var(--s-9);
+}
+.banner-inner{ max-width:var(--container); margin:0 auto }
+.banner h1{
+  font-size:var(--t-d2); line-height:var(--lh-tight);
+  text-transform:uppercase; margin-bottom:.35em;
+}
+.banner .lede{
+  font-size:1.05rem; max-width:60ch; color:var(--b-text-invert-2);
+  margin-bottom:var(--s-5);
+}
+.banner .cta-row{ display:flex; gap:14px; flex-wrap:wrap }
+.banner.banner-rounded{
+  background:transparent; padding:var(--s-7) 24px;
+}
+.banner.banner-rounded .banner-inner{
+  background:var(--b-ink); color:#fff; border-radius:var(--r-xl);
+  padding:var(--s-8);
+}
+
+/* =========================================================
+   Sticky bottom utility bar
+   ========================================================= */
+.util-bar{
+  position:sticky; bottom:0; z-index:30;
+  background:var(--b-ink-deep); color:#fff;
+  border-top:1px solid var(--b-ink-line);
+}
+.util-bar-inner{
+  max-width:var(--container); margin:0 auto; padding:12px 24px;
+  display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+}
+.util-bar .lead{
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:.04em; font-size:.95rem;
+}
+.util-bar .lead em{ color:var(--b-ember); font-style:normal }
+
+/* =========================================================
+   Phone CTA band (blue full-width)
+   ========================================================= */
+.phone-band{
+  background:var(--b-conduit); color:#fff;
+  padding:var(--s-7) 24px;
+}
+.phone-band-inner{
+  max-width:var(--container); margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between; gap:var(--s-6); flex-wrap:wrap;
+}
+.phone-band .lead{
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:.03em; font-size:1.15rem; line-height:1.2;
+}
+.phone-band .lead small{ display:block; text-transform:none; font-weight:500; font-size:.85rem; opacity:.85; letter-spacing:0; font-family:var(--f-body) }
+.phone-band .phone{
+  display:flex; align-items:center; gap:14px;
+}
+.phone-band .phone-icon{
+  width:42px; height:42px; border-radius:999px; background:var(--b-ember);
+  display:grid; place-items:center; font-size:1.2rem;
+}
+.phone-band .phone-num{
+  font-family:var(--f-display); font-weight:700; font-size:1.65rem; letter-spacing:.02em; color:#fff;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer{ background:var(--b-ink-deep); color:var(--b-text-invert-2) }
+.footer-inner{ max-width:var(--container); margin:0 auto; padding:var(--s-9) 24px var(--s-6) }
+.footer-grid{ display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:var(--s-6) }
+.footer h4{ color:#fff; font-size:.95rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px }
+.footer ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px }
+.footer a{ color:var(--b-text-invert-2) }
+.footer a:hover{ color:#fff; text-decoration:none }
+.footer .brand{ color:#fff; margin-bottom:12px }
+.footer .brand .brand-stack small{ color:var(--b-text-invert-2) }
+.footer .blurb{ font-size:.9rem; color:var(--b-text-invert-2); max-width:34ch }
+.social-row{ display:flex; gap:10px; margin-top:14px; justify-content:center }
+.social-row a{
+  width:38px; height:38px; border-radius:999px; background:var(--b-ink);
+  display:grid; place-items:center; color:#fff; font-size:.95rem;
+  border:1px solid var(--b-ink-line);
+}
+.social-row a:hover{ background:var(--b-ember); border-color:var(--b-ember); text-decoration:none }
+.footer-legal{
+  border-top:1px solid var(--b-ink-line); margin-top:var(--s-6); padding-top:var(--s-4);
+  display:flex; justify-content:space-between; gap:var(--s-4); flex-wrap:wrap; font-size:.8rem;
+}
+.footer-legal ul{ flex-direction:row; gap:18px; flex-wrap:wrap }
+@media (max-width:900px){
+  .footer-grid{ grid-template-columns:repeat(2,1fr) }
+  .footer-grid .brand-col{ grid-column:span 2 }
+}
+@media (max-width:560px){
+  .footer-grid{ grid-template-columns:1fr }
+  .footer-grid .brand-col{ grid-column:auto }
+}
+
+/* =========================================================
+   Cards — image card, icon card, project card, testimonial card
+   ========================================================= */
+.card{
+  background:#fff; border:1px solid var(--b-rule);
+  border-radius:var(--r-md); overflow:hidden; box-shadow:var(--sh-card);
+  display:flex; flex-direction:column;
+}
+.card .photo{
+  aspect-ratio: 4 / 3;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.06), rgba(0,0,0,.18)),
+    linear-gradient(160deg, #2c4361, #0e1a2b);
+  position:relative; overflow:hidden;
+}
+.card .photo.warm{
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.04), rgba(0,0,0,.28)),
+    linear-gradient(160deg, #c47b40, #4d2b13);
+}
+.card .photo.field{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)),
+    linear-gradient(160deg, #6e8b4a, #2b3a1a);
+}
+.card .body{ padding:18px 18px 22px }
+.card h3{ font-size:1.1rem; text-transform:uppercase; letter-spacing:.02em; margin-bottom:6px }
+.card p{ font-size:.92rem; color:var(--b-text-muted); margin:0 }
+.card .link{
+  margin-top:14px; display:inline-flex; gap:6px; align-items:center;
+  color:var(--b-conduit); font-weight:600; font-size:.9rem;
+}
+.card .link::after{ content:"›"; font-weight:700 }
+
+.icon-card{
+  background:#fff; border:1px solid var(--b-rule);
+  border-radius:var(--r-md); padding:24px 22px; text-align:left;
+  display:flex; flex-direction:column; gap:10px;
+}
+.icon-card .ic{
+  width:56px; height:56px; border-radius:14px;
+  background:var(--b-conduit-soft); color:var(--b-conduit);
+  display:grid; place-items:center; font-size:1.4rem;
+  border:1px solid #cfe1f4;
+}
+.icon-card h3{ font-size:1.1rem; text-transform:uppercase }
+.icon-card p{ color:var(--b-text-muted); font-size:.92rem; margin:0 }
+
+.project-card{
+  background:#fff; border:1px solid var(--b-rule);
+  border-radius:var(--r-md); overflow:hidden;
+}
+.project-card .photo{ aspect-ratio: 5 / 3 }
+.project-card .body{ padding:16px 18px 20px }
+.project-card .nickname{
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:.02em; font-size:1.05rem; margin-bottom:4px; line-height:1.15;
+}
+.project-card .pull{ font-size:.9rem; color:var(--b-text-muted); margin:0 0 10px }
+.project-card .link{ font-size:.85rem; color:var(--b-conduit); font-weight:600 }
+
+.tcard{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  overflow:hidden; display:flex; flex-direction:column;
+}
+.tcard .photo{ aspect-ratio: 5 / 3 }
+.tcard .body{ padding:18px 18px 20px; display:flex; flex-direction:column; gap:10px; flex:1 }
+.stars{ color:var(--b-gold); letter-spacing:2px; font-size:.95rem }
+.tcard .quote{ font-size:.92rem; color:var(--b-ink); line-height:1.55; margin:0 }
+.tcard .who{ font-size:.85rem; color:var(--b-text-muted); margin-top:auto }
+.tcard .who strong{ color:var(--b-ink) }
+.verified{
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--b-ink); color:#fff;
+  font-family:var(--f-display); font-weight:600; text-transform:uppercase;
+  letter-spacing:.08em; font-size:.7rem; padding:6px 12px; border-radius:var(--r-pill);
+}
+.verified::before{ content:"✓"; color:var(--b-gold) }
+
+/* =========================================================
+   Tag / pill / chip
+   ========================================================= */
+.tag{
+  display:inline-block; padding:5px 11px; border-radius:var(--r-pill);
+  background:var(--b-paper-3); color:var(--b-ink);
+  font-family:var(--f-display); font-weight:600; text-transform:uppercase;
+  letter-spacing:.06em; font-size:.72rem;
+}
+.tag.solid{ background:var(--b-ink); color:#fff }
+.tag.ember{ background:var(--b-ember); color:#fff }
+.tag.blue{ background:var(--b-conduit-soft); color:var(--b-conduit) }
+
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:9px 16px; border-radius:var(--r-pill);
+  background:#fff; color:var(--b-ink);
+  border:1.5px solid var(--b-rule);
+  font-family:var(--f-display); font-weight:600; text-transform:uppercase;
+  letter-spacing:.04em; font-size:.78rem; cursor:pointer;
+  transition:background .15s, color .15s, border-color .15s;
+}
+.chip:hover{ border-color:var(--b-ink) }
+.chip.is-active{ background:var(--b-ink); color:#fff; border-color:var(--b-ink) }
+.chip-row{ display:flex; flex-wrap:wrap; gap:8px }
+
+/* =========================================================
+   Spec accordion (recurring product data sheet)
+   ========================================================= */
+.spec-accordion{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  overflow:hidden;
+}
+.spec-tabs{
+  display:flex; flex-wrap:wrap; gap:0; background:var(--b-paper-2);
+  border-bottom:1px solid var(--b-rule);
+}
+.spec-tab{
+  flex:1 1 auto; min-width:120px;
+  padding:14px 16px; background:transparent; border:0; cursor:pointer;
+  font-family:var(--f-display); font-weight:600; text-transform:uppercase;
+  letter-spacing:.04em; font-size:.82rem; color:var(--b-text-muted);
+  border-bottom:3px solid transparent;
+}
+.spec-tab:hover{ color:var(--b-ink) }
+.spec-tab.is-active{ color:var(--b-ink); border-bottom-color:var(--b-ember); background:#fff }
+.spec-panel{ padding:24px; display:none }
+.spec-panel.is-active{ display:block }
+.spec-rows{ display:grid; grid-template-columns:1fr 2fr; gap:12px 24px }
+.spec-rows dt{
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:.04em; font-size:.85rem; color:var(--b-ink-2);
+}
+.spec-rows dd{ margin:0; color:var(--b-text); font-size:.95rem }
+.spec-rows dt, .spec-rows dd{ padding:10px 0; border-bottom:1px dashed var(--b-rule) }
+.spec-rows dt:last-of-type, .spec-rows dd:last-of-type{ border-bottom:0 }
+
+/* FAQ accordion (collapsible) */
+.faq{ border-top:1px solid var(--b-rule) }
+.faq-item{ border-bottom:1px solid var(--b-rule) }
+.faq-q{
+  width:100%; text-align:left; padding:18px 4px;
+  background:transparent; border:0; cursor:pointer;
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  font-family:var(--f-display); font-weight:600; text-transform:uppercase;
+  letter-spacing:.02em; font-size:1.02rem; color:var(--b-ink);
+}
+.faq-q::after{ content:"+"; font-weight:700; color:var(--b-ember); font-size:1.4rem; line-height:1 }
+.faq-item.is-open .faq-q::after{ content:"–" }
+.faq-a{ max-height:0; overflow:hidden; transition:max-height .25s ease }
+.faq-a-inner{ padding:0 4px 18px; color:var(--b-text-muted); font-size:.95rem }
+
+/* =========================================================
+   Left-rail "guide" nav (About / Marketing / Pillar pages)
+   ========================================================= */
+.guide-layout{
+  display:grid; grid-template-columns:260px 1fr; gap:var(--s-7);
+}
+.guide-rail{
+  border:1px solid var(--b-rule); border-radius:var(--r-md);
+  padding:18px; background:#fff; align-self:start; position:sticky; top:96px;
+}
+.guide-rail h4{
+  font-size:.8rem; text-transform:uppercase; letter-spacing:var(--tr-eyebrow);
+  color:var(--b-text-muted); margin-bottom:8px;
+}
+.guide-rail ul{
+  list-style:none; padding:0; margin:0 0 14px;
+  display:flex; flex-direction:column; gap:2px;
+}
+.guide-rail a{
+  display:block; padding:8px 10px; border-radius:6px;
+  font-size:.92rem; color:var(--b-ink); text-decoration:none;
+}
+.guide-rail a:hover{ background:var(--b-paper-2); text-decoration:none }
+.guide-rail a.is-active{ background:var(--b-ink); color:#fff }
+.guide-rail .group + .group{ margin-top:12px; padding-top:12px; border-top:1px dashed var(--b-rule) }
+@media (max-width:900px){
+  .guide-layout{ grid-template-columns:1fr }
+  .guide-rail{ position:static }
+}
+
+/* =========================================================
+   Big pill selector grid ("What best describes your building?")
+   ========================================================= */
+.bigpill-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+}
+@media (max-width:900px){ .bigpill-grid{ grid-template-columns:repeat(2,1fr) } }
+.bigpill{
+  display:flex; align-items:center; justify-content:center;
+  padding:22px 18px; border-radius:var(--r-pill);
+  background:var(--b-conduit); color:#fff;
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:.04em; font-size:1.05rem; text-align:center;
+  cursor:pointer; border:0; transition:background .15s, transform .05s;
+}
+.bigpill:hover{ background:var(--b-conduit-hover) }
+.bigpill:active{ transform:translateY(1px) }
+.bigpill.is-active{ background:var(--b-ember) }
+
+/* =========================================================
+   Numbered "arrow bullet" callout card
+   (Rising Steel Prices "What Determines My Price?")
+   ========================================================= */
+.arrow-card{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  padding:var(--s-6);
+}
+.arrow-card h3{
+  text-transform:uppercase; letter-spacing:.02em; margin-bottom:10px;
+  border-bottom:3px solid var(--b-ember); padding-bottom:8px; display:inline-block;
+}
+.arrow-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px }
+.arrow-list li{
+  display:flex; align-items:flex-start; gap:14px;
+  padding:14px; border:1px solid var(--b-rule); border-radius:var(--r-md);
+}
+.arrow-list .num{
+  width:38px; height:38px; flex:0 0 38px; border-radius:999px;
+  background:var(--b-conduit); color:#fff;
+  display:grid; place-items:center; font-family:var(--f-display); font-weight:700;
+  font-size:1.05rem;
+}
+.arrow-list .num::after{ content:"›"; margin-left:1px }
+.arrow-list h4{ margin:0 0 2px; text-transform:uppercase; letter-spacing:.02em }
+.arrow-list p{ margin:0; color:var(--b-text-muted); font-size:.9rem }
+
+/* =========================================================
+   Reviews stats card (overlaps banner)
+   ========================================================= */
+.stats-card{
+  margin:-44px auto 0; max-width:1080px; position:relative; z-index:10;
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  box-shadow:var(--sh-md);
+  display:grid; grid-template-columns:repeat(3,1fr) auto; gap:0;
+}
+.stats-card .stat{ padding:22px 24px; border-right:1px solid var(--b-rule); display:flex; flex-direction:column; justify-content:center; gap:4px }
+.stats-card .stat:last-of-type{ border-right:0 }
+.stats-card .stat strong{
+  font-family:var(--f-display); font-weight:700; font-size:1.5rem; color:var(--b-ink);
+  text-transform:uppercase; letter-spacing:.02em;
+}
+.stats-card .stat span{ font-size:.85rem; color:var(--b-text-muted) }
+.stats-card .stat .stars{ font-size:1.1rem }
+.stats-card .end{ padding:22px 24px; display:flex; align-items:center }
+@media (max-width:900px){
+  .stats-card{ grid-template-columns:1fr 1fr; margin:-32px 16px 0 }
+  .stats-card .stat{ border-right:0; border-bottom:1px solid var(--b-rule) }
+  .stats-card .end{ grid-column:span 2; justify-content:center }
+}
+
+/* =========================================================
+   Help Desk action tiles
+   ========================================================= */
+.helpdesk-panel{
+  background:var(--b-conduit); color:#fff;
+  padding:var(--s-8) 24px;
+}
+.helpdesk-inner{ max-width:var(--container); margin:0 auto }
+.helpdesk-tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:var(--s-6) }
+@media (max-width:900px){ .helpdesk-tiles{ grid-template-columns:1fr } }
+.helpdesk-tile{
+  background:#fff; color:var(--b-ink); border-radius:var(--r-md);
+  padding:22px; display:flex; flex-direction:column; gap:6px;
+  border:0; text-align:left; cursor:pointer; text-decoration:none;
+  transition:transform .1s, box-shadow .15s;
+}
+.helpdesk-tile:hover{ transform:translateY(-2px); box-shadow:var(--sh-md); text-decoration:none }
+.helpdesk-tile h3{ font-size:1.05rem; text-transform:uppercase }
+.helpdesk-tile p{ font-size:.88rem; color:var(--b-text-muted); margin:0 }
+.helpdesk-tile.is-warn{ background:var(--b-burgundy); color:#fff }
+.helpdesk-tile.is-warn p{ color:var(--b-burgundy-ink) }
+
+/* =========================================================
+   Reviews / typographic review list
+   ========================================================= */
+.review-list{ display:flex; flex-direction:column }
+.review-row{ padding:24px 0; border-bottom:1px solid var(--b-rule) }
+.review-row .who{
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  letter-spacing:.04em; font-size:1rem; color:var(--b-ink); margin:8px 0 6px;
+}
+.review-row .who small{ font-family:var(--f-body); font-weight:500; text-transform:none; letter-spacing:0; color:var(--b-text-muted); margin-left:8px }
+.review-row p{ margin:0; color:var(--b-text); font-size:.95rem; max-width:78ch }
+
+/* =========================================================
+   Hero patterns
+   ========================================================= */
+.hero{ position:relative; min-height:560px; color:#fff; overflow:hidden }
+.hero-photo{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(110deg, rgba(8,17,28,.78) 0%, rgba(8,17,28,.35) 55%, rgba(8,17,28,0) 78%),
+    linear-gradient(160deg, #6d3d1c, #1f1f24);
+  z-index:0;
+}
+.hero-inner{
+  position:relative; z-index:1; max-width:var(--container); margin:0 auto;
+  padding:var(--s-9) 24px var(--s-9);
+  display:grid; grid-template-columns:1.2fr 1fr; gap:var(--s-7);
+  align-items:center;
+}
+.hero h1{
+  font-size:var(--t-d1); text-transform:uppercase; line-height:.95;
+  letter-spacing:.01em; margin-bottom:.3em;
+}
+.hero .sub{
+  font-family:var(--f-display); font-weight:500; text-transform:uppercase;
+  letter-spacing:.06em; font-size:1.1rem; color:var(--b-text-invert-2);
+  margin-bottom:1em;
+}
+.hero .body{ max-width:48ch; margin-bottom:var(--s-5); color:var(--b-text-invert-2); font-size:1.05rem }
+.hero .ctas{ display:flex; gap:14px; flex-wrap:wrap }
+.hero-testimonial{
+  background:rgba(8,17,28,.7); backdrop-filter:blur(6px);
+  border:1px solid var(--b-ink-line); border-radius:var(--r-md);
+  padding:22px; color:#fff;
+}
+.hero-testimonial .photo{
+  width:84px; height:84px; border-radius:999px; background:linear-gradient(160deg,#8aa1c2,#2c4361);
+  margin-bottom:12px;
+}
+.hero-testimonial .quote{ font-size:.95rem; color:var(--b-text-invert-2); margin:6px 0 12px }
+.hero-testimonial .who{ font-family:var(--f-display); font-weight:700; text-transform:uppercase; letter-spacing:.04em; font-size:.95rem }
+.hero-testimonial .where{ font-size:.8rem; color:var(--b-text-invert-2); margin-bottom:10px }
+@media (max-width:900px){
+  .hero-inner{ grid-template-columns:1fr; padding-block:var(--s-7) }
+  .hero{ min-height:auto }
+}
+
+/* =========================================================
+   Reviews band (dark band with stats)
+   ========================================================= */
+.reviews-band{
+  background:var(--b-ink); color:#fff;
+  padding:var(--s-8) 24px;
+  text-align:center;
+}
+.reviews-band-inner{ max-width:var(--container); margin:0 auto }
+.reviews-band h2{
+  font-size:var(--t-d2); text-transform:uppercase; margin-bottom:var(--s-5);
+}
+.reviews-band h2 em{ color:var(--b-conduit); font-style:normal }
+.reviews-band-stats{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-6);
+  align-items:center; max-width:920px; margin:0 auto;
+}
+.reviews-band-stats .stat{ display:flex; flex-direction:column; gap:4px; align-items:center }
+.reviews-band-stats .big{
+  font-family:var(--f-display); font-weight:700; font-size:2.2rem; color:var(--b-ember);
+  letter-spacing:.01em; line-height:1;
+}
+.reviews-band-stats .label{ color:var(--b-text-invert-2); font-size:.9rem }
+.reviews-band-stats .gold-stars{ color:var(--b-gold); font-size:1.6rem; letter-spacing:4px; line-height:1 }
+@media (max-width:900px){ .reviews-band-stats{ grid-template-columns:1fr } }
+
+/* =========================================================
+   "Steel vs Conventional" comparison split (homepage)
+   ========================================================= */
+.vs-block{
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--s-7); align-items:stretch;
+}
+@media (max-width:900px){ .vs-block{ grid-template-columns:1fr } }
+.vs-card{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
+  padding:var(--s-6); display:grid; grid-template-columns:1fr 1fr; gap:var(--s-5);
+}
+.vs-col h4{ text-transform:uppercase; letter-spacing:.02em; margin-bottom:10px; font-size:1rem }
+.vs-col ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px }
+.vs-col li{ display:flex; align-items:flex-start; gap:8px; font-size:.92rem; color:var(--b-text) }
+.vs-col li::before{
+  content:"✓"; color:var(--b-success); font-weight:700; flex:0 0 18px; line-height:1.4;
+}
+.vs-col.bad li::before{ content:"✗"; color:var(--b-danger) }
+.vs-photo{
+  border-radius:var(--r-md); background:
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.25)),
+    linear-gradient(160deg, #b87333, #4a3219);
+  min-height:360px;
+}
+
+/* =========================================================
+   TODO chip (flagged assumptions)
+   ========================================================= */
+.todo{
+  display:inline-flex; align-items:center; gap:6px;
+  background:#fff7cf; color:#7a5a00;
+  border:1px dashed #cda727; border-radius:var(--r-pill);
+  padding:3px 10px; font-size:.72rem; font-weight:600; letter-spacing:.02em;
+}
+.todo::before{ content:"⚑" }
+
+/* =========================================================
+   Utility helpers
+   ========================================================= */
+.on-dark{ background:var(--b-ink); color:#fff; padding:var(--s-6); border-radius:var(--r-md) }
+.on-paper{ background:var(--b-paper-2); padding:var(--s-6); border-radius:var(--r-md) }
+.mt-2{margin-top:8px} .mt-4{margin-top:16px} .mt-6{margin-top:32px}
+.center{text-align:center}
+.muted{color:var(--b-text-muted)}
+.row-center{ display:flex; justify-content:center }
+
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     Design-system top bar
+     ========================================================= -->
+<header class="ds-top">
+  <div class="ds-top-inner">
+    <div class="crumb">Bell Metal · Mock B · Design System</div>
+    <nav aria-label="Design system sections">
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#radius">Radius/Shadow</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#forms">Forms</a>
+      <a href="#nav">Nav</a>
+      <a href="#banner">Banner</a>
+      <a href="#bars">Bars</a>
+      <a href="#cards">Cards</a>
+      <a href="#accordion">Accordions</a>
+      <a href="#rail">Guide rail</a>
+      <a href="#pills">Big pills</a>
+      <a href="#arrow">Arrow card</a>
+      <a href="#stats">Stats card</a>
+      <a href="#help">Help desk</a>
+      <a href="#hero">Hero</a>
+      <a href="#reviews">Reviews band</a>
+      <a href="#vs">VS block</a>
+      <a href="#footer">Footer</a>
+    </nav>
+  </div>
+</header>
+
+<main class="ds-page">
+
+  <!-- ============ INTRO ============ -->
+  <section class="ds-section" id="intro" style="padding-top:var(--s-4)">
+    <span class="ds-eyebrow">Mock B · Working file</span>
+    <h1 class="ds-title">Built Right. Quoted Fast.</h1>
+    <p class="ds-lede">
+      Visual + structural design system for <strong>Mock B</strong> — Bell Metal Buildings Co.
+      Lead-gen / quote-flow orientation (mapped from <code>site2-inventory.md</code>: navy banners,
+      sticky bottom "Get My Price" bar, spec accordion, left-rail guide nav, big pill selector grid,
+      filterable review list, Help Desk action tiles). Distinct from Mock A's charcoal+bronze
+      e-commerce-flavored direction.
+    </p>
+    <div class="ds-callout">
+      <strong style="font-family:var(--f-display); text-transform:uppercase; letter-spacing:.04em">How this file is used</strong>
+      <p class="muted" style="margin:.4em 0 0">
+        Tokens declared on <code>:root</code> are duplicated inline in every Mock B page until production
+        consolidates them to one <code>tokens.css</code>. Component primitives below are reused verbatim.
+        Any assumption shown with a <span class="todo">TODO</span> chip must be confirmed by the client.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section class="ds-section" id="color">
+    <span class="ds-eyebrow">01 — Color</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Palette tokens</h2>
+    <p class="ds-lede">
+      Anthracite Indigo grounds the page. Ember Orange is the only saturated CTA hue (used sparingly so it stays loud).
+      Conduit Blue is the info / "learn / browse" voice. Gold for trust accents (stars, verified badge). Burgundy reserved
+      for urgency strips so it never competes with Ember.
+    </p>
+
+    <div class="ds-grid cols-4">
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-ink)"></div>
+        <div class="meta"><strong>Ink (Anthracite)</strong><span class="hex">#0e1a2b</span></div>
+        <div class="role">--b-ink · primary dark surface, banner, footer base</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-ink-2)"></div>
+        <div class="meta"><strong>Ink 2</strong><span class="hex">#15243a</span></div>
+        <div class="role">--b-ink-2 · raised dark surface</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-ink-deep)"></div>
+        <div class="meta"><strong>Ink Deep</strong><span class="hex">#08111c</span></div>
+        <div class="role">--b-ink-deep · footer, sticky bottom bar</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-ink-line)"></div>
+        <div class="meta"><strong>Ink Line</strong><span class="hex">#20334f</span></div>
+        <div class="role">--b-ink-line · hairline on dark</div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-ember)"></div>
+        <div class="meta"><strong>Ember</strong><span class="hex">#e26432</span></div>
+        <div class="role">--b-ember · primary CTA, accents</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-ember-hover)"></div>
+        <div class="meta"><strong>Ember Hover</strong><span class="hex">#c25022</span></div>
+        <div class="role">--b-ember-hover</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-conduit)"></div>
+        <div class="meta"><strong>Conduit Blue</strong><span class="hex">#2a7fd4</span></div>
+        <div class="role">--b-conduit · secondary CTA, info links, big-pill selector</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-conduit-soft)"></div>
+        <div class="meta"><strong>Conduit Soft</strong><span class="hex">#e8f1fb</span></div>
+        <div class="role">--b-conduit-soft · icon-card chip background</div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-emerald)"></div>
+        <div class="meta"><strong>Emerald</strong><span class="hex">#16a34a</span></div>
+        <div class="role">--b-emerald · phone pill</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-gold)"></div>
+        <div class="meta"><strong>Gold</strong><span class="hex">#f5b50a</span></div>
+        <div class="role">--b-gold · star rating, verified accent</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-burgundy)"></div>
+        <div class="meta"><strong>Burgundy</strong><span class="hex">#7a1f1f</span></div>
+        <div class="role">--b-burgundy · promo / urgency only</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-danger)"></div>
+        <div class="meta"><strong>Danger</strong><span class="hex">#b8302a</span></div>
+        <div class="role">--b-danger · form errors, "vs conventional" red X</div>
+      </div>
+
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-paper); border-bottom:1px solid var(--b-rule)"></div>
+        <div class="meta"><strong>Paper</strong><span class="hex">#ffffff</span></div>
+        <div class="role">--b-paper · default page background</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-paper-2)"></div>
+        <div class="meta"><strong>Paper 2</strong><span class="hex">#f5f6f8</span></div>
+        <div class="role">--b-paper-2 · off-white panel</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-paper-3)"></div>
+        <div class="meta"><strong>Paper 3</strong><span class="hex">#ebeef2</span></div>
+        <div class="role">--b-paper-3 · code, accordion header bg</div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:var(--b-rule)"></div>
+        <div class="meta"><strong>Rule</strong><span class="hex">#d8dde4</span></div>
+        <div class="role">--b-rule · hairline borders on light</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section class="ds-section" id="type">
+    <span class="ds-eyebrow">02 — Type</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Typography</h2>
+    <p class="ds-lede">
+      <strong>Display:</strong> Barlow Condensed (700/800/900), uppercase, +.01em tracking — industrial, dense, structural.
+      <strong>Body:</strong> Source Sans 3 (400/500/600/700) — humanist, open. Together they read as "field-spec sheet meets approachable salesperson."
+    </p>
+    <div>
+      <div class="spec"><code>--t-d1</code><div class="sample-d1">Built Right.</div></div>
+      <div class="spec"><code>--t-d2</code><div class="sample-d2">Pre-engineered. Bolt-together.</div></div>
+      <div class="spec"><code>--t-h1</code><div class="sample-h1">Steel Building Kits</div></div>
+      <div class="spec"><code>--t-h2</code><div class="sample-h2">Choose your building type</div></div>
+      <div class="spec"><code>--t-h3</code><div class="sample-h3">Why steel beats stick-built</div></div>
+      <div class="spec"><code>--t-body</code><div class="sample-body">Bell Metal designs and supplies pre-engineered steel building kits — from compact garages to commercial warehouses — that ship flat, bolt together, and stand for generations. Every quote is engineered, every panel is American-rolled steel, and a real human picks up the phone.</div></div>
+      <div class="spec"><code>--t-sm</code><div class="sample-sm">Helper text · captions · review meta lines · footer link rows.</div></div>
+      <div class="spec"><code>eyebrow</code><div class="sample-eyebrow">Step 01 — Configure your build</div></div>
+    </div>
+  </section>
+
+  <!-- ============ SPACING ============ -->
+  <section class="ds-section" id="spacing">
+    <span class="ds-eyebrow">03 — Spacing</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Spacing scale (4px base)</h2>
+    <p class="ds-lede">Modular scale, double-step from <code>--s-2</code> upward where useful. Page section padding lands at <code>--s-8</code> / <code>--s-9</code>.</p>
+    <div>
+      <div class="sp-row"><code>--s-1</code><span class="px">4 px</span><div class="bar" style="width:4px"></div></div>
+      <div class="sp-row"><code>--s-2</code><span class="px">8 px</span><div class="bar" style="width:8px"></div></div>
+      <div class="sp-row"><code>--s-3</code><span class="px">12 px</span><div class="bar" style="width:12px"></div></div>
+      <div class="sp-row"><code>--s-4</code><span class="px">16 px</span><div class="bar" style="width:16px"></div></div>
+      <div class="sp-row"><code>--s-5</code><span class="px">24 px</span><div class="bar" style="width:24px"></div></div>
+      <div class="sp-row"><code>--s-6</code><span class="px">32 px</span><div class="bar" style="width:32px"></div></div>
+      <div class="sp-row"><code>--s-7</code><span class="px">48 px</span><div class="bar" style="width:48px"></div></div>
+      <div class="sp-row"><code>--s-8</code><span class="px">64 px</span><div class="bar" style="width:64px"></div></div>
+      <div class="sp-row"><code>--s-9</code><span class="px">96 px</span><div class="bar" style="width:96px"></div></div>
+      <div class="sp-row"><code>--s-10</code><span class="px">128 px</span><div class="bar" style="width:128px"></div></div>
+    </div>
+  </section>
+
+  <!-- ============ RADIUS / SHADOW ============ -->
+  <section class="ds-section" id="radius">
+    <span class="ds-eyebrow">04 — Radius &amp; Shadow</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Corners + elevation</h2>
+    <div class="ds-grid cols-4">
+      <div class="demo-box" style="border-radius:var(--r-sm)"><strong>--r-sm · 4px</strong><span>Inputs, tags, small chips</span></div>
+      <div class="demo-box" style="border-radius:var(--r-md)"><strong>--r-md · 10px</strong><span>Cards, panels, banners default</span></div>
+      <div class="demo-box" style="border-radius:var(--r-lg)"><strong>--r-lg · 18px</strong><span>Large containers, callouts</span></div>
+      <div class="demo-box" style="border-radius:var(--r-xl)"><strong>--r-xl · 28px</strong><span>Inset rounded banner (Complete Guide pattern)</span></div>
+      <div class="demo-box" style="border-radius:var(--r-pill); width:fit-content; padding:14px 24px"><strong>--r-pill · 999px</strong><span>Buttons, chips, big pills</span></div>
+    </div>
+    <div class="ds-grid cols-4 mt-6">
+      <div class="demo-box" style="box-shadow:var(--sh-sm)"><strong>--sh-sm</strong><span>Subtle outline lift</span></div>
+      <div class="demo-box" style="box-shadow:var(--sh-card)"><strong>--sh-card</strong><span>Default card resting state</span></div>
+      <div class="demo-box" style="box-shadow:var(--sh-md)"><strong>--sh-md</strong><span>Hover-card lift, stats overlap card</span></div>
+      <div class="demo-box" style="box-shadow:var(--sh-lg)"><strong>--sh-lg</strong><span>Floating elements (modals, alerts)</span></div>
+    </div>
+  </section>
+
+  <!-- ============ BUTTONS ============ -->
+  <section class="ds-section" id="buttons">
+    <span class="ds-eyebrow">05 — Buttons</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Pill buttons + variants</h2>
+    <p class="ds-lede">Every CTA in Mock B is a pill. Primary (Ember) for the conversion path. Secondary (Conduit) for "Learn / Browse / Designer." Ghost for tertiary actions. Phone for the always-on phone CTA. Sizes <code>sm / md / lg</code>.</p>
+
+    <div class="on-paper">
+      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center">
+        <button class="btn btn-primary">Get My Price <span class="arrow">›</span></button>
+        <button class="btn btn-secondary">3D Designer <span class="arrow" style="background:var(--b-ink); color:#fff">›</span></button>
+        <button class="btn btn-ghost">Browse Buildings</button>
+        <a class="btn btn-phone" href="tel:+15555550199">📞 (555) 555-0199</a>
+        <a class="btn-link" href="#">View customer stories ›</a>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-top:18px">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Medium (default)</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="on-dark mt-6">
+      <p style="color:var(--b-text-invert-2); margin-bottom:14px">Same buttons on dark surface (banner, footer):</p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center">
+        <button class="btn btn-primary">Get My Price <span class="arrow">›</span></button>
+        <button class="btn btn-secondary">3D Designer</button>
+        <button class="btn btn-ghost on-dark">Browse Buildings</button>
+        <a class="btn btn-phone" href="tel:+15555550199">📞 (555) 555-0199</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FORMS ============ -->
+  <section class="ds-section" id="forms">
+    <span class="ds-eyebrow">06 — Forms</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Form primitives</h2>
+    <p class="ds-lede">Used on Contact, Brochure (gated download), and inside the Get-My-Price modal flow. Quote modal itself uses the <a href="#pills">big-pill selector grid</a> as Step 1.</p>
+
+    <div class="ds-grid cols-2">
+      <div class="field">
+        <label for="ds-name">Full name</label>
+        <input class="input" id="ds-name" type="text" placeholder="Jane Doe">
+        <span class="hint">As you'd like it on your quote.</span>
+      </div>
+      <div class="field">
+        <label for="ds-email">Email</label>
+        <input class="input" id="ds-email" type="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="ds-phone">Phone</label>
+        <input class="input" id="ds-phone" type="tel" placeholder="(555) 555-0199">
+      </div>
+      <div class="field">
+        <label for="ds-state">State / region</label>
+        <select class="select" id="ds-state">
+          <option>Select…</option>
+          <option>Texas</option><option>Colorado</option><option>Ohio</option>
+        </select>
+      </div>
+      <div class="field" style="grid-column:span 2">
+        <label for="ds-msg">Tell us about your project</label>
+        <textarea class="textarea" id="ds-msg" placeholder="40×60 workshop with two roll-up doors, slab already poured…"></textarea>
+      </div>
+      <div class="field error" style="grid-column:span 2">
+        <label for="ds-bad">Field in error state</label>
+        <input class="input" id="ds-bad" value="not-an-email">
+        <span class="hint">Please enter a valid email address.</span>
+      </div>
+      <label class="check"><input type="checkbox" checked> I'd like to receive build tips and clearance alerts (about 1/month).</label>
+      <label class="radio"><input type="radio" name="ds-r" checked> I own the land.</label>
+    </div>
+  </section>
+
+  <!-- ============ NAV ============ -->
+  <section class="ds-section" id="nav">
+    <span class="ds-eyebrow">07 — Nav (site header)</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Header — two states</h2>
+    <p class="ds-lede">Transparent over hero (homepage), solid white on every interior page. Sticky in production. Mobile collapses to hamburger + brand + phone pill (mobile state not shown statically here).</p>
+
+    <div style="background:#1f2939; border-radius:var(--r-md); overflow:hidden">
+      <div class="nav-transparent">
+        <div class="nav-inner">
+          <a class="brand" href="#">
+            <span class="brand-mark">B</span>
+            <span class="brand-stack">Bell Metal<small>Buildings Co.</small></span>
+          </a>
+          <div class="nav-links">
+            <a class="nav-link" href="#">Buildings</a>
+            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="#">Resources</a>
+            <a class="nav-link" href="#">Reviews</a>
+          </div>
+          <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+        </div>
+      </div>
+      <div style="height:120px; background:linear-gradient(180deg, transparent, rgba(255,255,255,.04))"></div>
+    </div>
+
+    <div class="mt-6">
+      <div class="nav-solid">
+        <div class="nav-inner">
+          <a class="brand" href="#">
+            <span class="brand-mark">B</span>
+            <span class="brand-stack">Bell Metal<small>Buildings Co.</small></span>
+          </a>
+          <div class="nav-links">
+            <a class="nav-link" href="#">Buildings</a>
+            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="#">Resources</a>
+            <a class="nav-link" href="#">Reviews</a>
+          </div>
+          <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NAVY BANNER ============ -->
+  <section class="ds-section" id="banner">
+    <span class="ds-eyebrow">08 — Page banner (navy)</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Interior page banner — two variants</h2>
+    <p class="ds-lede">Full-bleed navy banner is the standard interior-page header (Buildings index, Contact, About, all PDPs). Rounded inset variant is used on the long-form guide page (Resources, Warranty).</p>
+
+    <div class="banner" style="border-radius:var(--r-md); padding-inline:var(--s-6)">
+      <div class="banner-inner">
+        <h1>Commercial Steel Buildings</h1>
+        <p class="lede">Pre-engineered warehouses, retail shells, and light-industrial buildings — engineered to your snow, wind, and seismic loads and shipped flat in 6–10 weeks.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary">Get My Price <span class="arrow">›</span></button>
+          <button class="btn btn-secondary">3D Designer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner banner-rounded mt-6" style="padding-inline:0">
+      <div class="banner-inner">
+        <h1>Steel Buildings: The Complete Guide</h1>
+        <p class="lede">A long-form reference for first-time buyers — frame types, foundations, financing, insulation, codes, and what actually determines your price.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary">Get My Price</button>
+          <button class="btn btn-ghost on-dark">Jump to chapters</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STICKY BAR + PHONE BAND ============ -->
+  <section class="ds-section" id="bars">
+    <span class="ds-eyebrow">09 — Bars</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Sticky bottom utility bar + phone CTA band</h2>
+    <p class="ds-lede">The sticky bar persists on every page (replaces Mock A's floating quote pill). The phone band sits above the footer on every page.</p>
+
+    <div class="util-bar" style="border-radius:var(--r-md); position:static">
+      <div class="util-bar-inner">
+        <span class="lead">Start here: <em>Price your building in minutes</em></span>
+        <button class="btn btn-primary">Get My Price <span class="arrow">›</span></button>
+      </div>
+    </div>
+
+    <div class="phone-band mt-6" style="border-radius:var(--r-md); padding-inline:var(--s-6)">
+      <div class="phone-band-inner">
+        <div class="lead">Call Now To Speak With A Building Consultant<small>Real human, no phone tree.</small></div>
+        <div class="phone">
+          <div class="phone-icon">📞</div>
+          <a class="phone-num" href="tel:+15555550199">(555) 555-0199</a>
+        </div>
+        <button class="btn btn-ghost on-dark">Get My Free Quote</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARDS ============ -->
+  <section class="ds-section" id="cards">
+    <span class="ds-eyebrow">10 — Cards</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Card primitives</h2>
+    <p class="ds-lede">Four flavors. Image cards on building-type grids. Icon cards in Resources Hub + Options. Project cards in the 12-tile featured-projects grid on every PDP. Testimonial cards in homepage carousel.</p>
+
+    <h3 style="margin:var(--s-5) 0 var(--s-3); font-size:1rem; text-transform:uppercase; letter-spacing:.04em; color:var(--b-text-muted)">Image card (building type)</h3>
+    <div class="ds-grid cols-4">
+      <div class="card">
+        <div class="photo"></div>
+        <div class="body">
+          <h3>Garages</h3>
+          <p>1- to 4-car garages, attached or detached, with optional lean-tos.</p>
+          <a class="link" href="#">Garage building kits</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="photo warm"></div>
+        <div class="body">
+          <h3>Workshops</h3>
+          <p>Insulated workshops with roll-up doors and clear-span interiors.</p>
+          <a class="link" href="#">Workshop kits</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="photo field"></div>
+        <div class="body">
+          <h3>Agricultural</h3>
+          <p>Hay barns, equipment storage, livestock shelters — 30–80′ widths.</p>
+          <a class="link" href="#">Ag kits</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="photo"></div>
+        <div class="body">
+          <h3>Commercial</h3>
+          <p>Warehouses, retail shells, light-industrial up to 200′ clear-span.</p>
+          <a class="link" href="#">Commercial kits</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin:var(--s-6) 0 var(--s-3); font-size:1rem; text-transform:uppercase; letter-spacing:.04em; color:var(--b-text-muted)">Icon card (Resources Hub)</h3>
+    <div class="ds-grid cols-3">
+      <a class="icon-card" href="#">
+        <div class="ic">⊞</div>
+        <h3>Coverage Map</h3>
+        <p>See where Bell Metal ships, lead times by region, and on-the-ground crews.</p>
+        <span class="btn-link">Read more ›</span>
+      </a>
+      <a class="icon-card" href="#">
+        <div class="ic">◢</div>
+        <h3>3D Designer</h3>
+        <p>Drag, size, and skin a building in your browser — then send the spec straight to a quote.</p>
+        <span class="btn-link">Launch designer ›</span>
+      </a>
+      <a class="icon-card" href="#">
+        <div class="ic">▣</div>
+        <h3>Brochures</h3>
+        <p>Catalog, color chart, doors/windows, warranty terms — all PDF, all free.</p>
+        <span class="btn-link">Download ›</span>
+      </a>
+    </div>
+
+    <h3 style="margin:var(--s-6) 0 var(--s-3); font-size:1rem; text-transform:uppercase; letter-spacing:.04em; color:var(--b-text-muted)">Featured Project card (PDP grid · 12 per page)</h3>
+    <div class="ds-grid cols-3">
+      <div class="project-card">
+        <div class="photo"></div>
+        <div class="body">
+          <p class="nickname">Cedar Ridge Workshop</p>
+          <p class="pull">"Bell's engineer caught a snow-load miss in our county code that would've cost us a re-permit."</p>
+          <a class="link" href="#">Read this build ›</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="photo warm"></div>
+        <div class="body">
+          <p class="nickname">Marshall Hangar 02</p>
+          <p class="pull">"35×50 with a 14′ bifold door. Came in under-budget; PM stayed with us all the way through inspection."</p>
+          <a class="link" href="#">Read this build ›</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="photo field"></div>
+        <div class="body">
+          <p class="nickname">Two Forks Equipment Barn</p>
+          <p class="pull">"50×100 ag building, no center post — fits all our equipment side-by-side with room to spare."</p>
+          <a class="link" href="#">Read this build ›</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin:var(--s-6) 0 var(--s-3); font-size:1rem; text-transform:uppercase; letter-spacing:.04em; color:var(--b-text-muted)">Testimonial card (homepage carousel)</h3>
+    <div class="ds-grid cols-3">
+      <div class="tcard">
+        <div class="photo warm"></div>
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Quote was clear, panels showed up clean, and the bolts lined up the first try. That doesn't happen."</p>
+          <div class="who"><strong>Rosa M.</strong> — Garage, Pueblo CO</div>
+          <span class="verified">Verified Customer</span>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="photo"></div>
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Got three quotes; Bell was the only one who asked about my soil and snow zone before pricing."</p>
+          <div class="who"><strong>D. Patel</strong> — Workshop, Boise ID</div>
+          <span class="verified">Verified Customer</span>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="photo field"></div>
+        <div class="body">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Hay barn went up in a long weekend with three friends. Engineering drawings were spot-on."</p>
+          <div class="who"><strong>Wes B.</strong> — Ag building, Stillwater OK</div>
+          <span class="verified">Verified Customer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACCORDIONS ============ -->
+  <section class="ds-section" id="accordion">
+    <span class="ds-eyebrow">11 — Accordions</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Spec accordion + FAQ accordion</h2>
+    <p class="ds-lede">Spec accordion is the recurring "product data sheet" on every PDP and the Buildings index. Standard FAQ accordion is for support pages and pillar content.</p>
+
+    <h3 style="margin:var(--s-4) 0 var(--s-3); font-size:1rem; text-transform:uppercase; letter-spacing:.04em; color:var(--b-text-muted)">Spec accordion (interactive)</h3>
+    <div class="spec-accordion" data-spec>
+      <div class="spec-tabs" role="tablist">
+        <button class="spec-tab is-active" data-tab="spec">Spec</button>
+        <button class="spec-tab" data-tab="why">Why Bell</button>
+        <button class="spec-tab" data-tab="adv">Advantages</button>
+        <button class="spec-tab" data-tab="faq">FAQs</button>
+        <button class="spec-tab" data-tab="cust">Customizations</button>
+        <button class="spec-tab" data-tab="war">Warranties &amp; Service</button>
+      </div>
+      <div class="spec-panel is-active" data-panel="spec">
+        <dl class="spec-rows">
+          <dt>Brand</dt><dd>Bell Metal Buildings Co.</dd>
+          <dt>Available products</dt><dd>Straight-wall &amp; arch buildings, 12′–200′ widths</dd>
+          <dt>Frame steel</dt><dd>Red iron primary frame, secondary cold-formed steel <span class="todo">confirm grade</span></dd>
+          <dt>Roof &amp; wall panels</dt><dd>26-gauge PBR or R-panel, Galvalume-coated, 14 standard colors</dd>
+          <dt>Rust-perforation warranty</dt><dd>50 years <span class="todo">confirm terms</span></dd>
+          <dt>Paint warranty</dt><dd>40 years</dd>
+          <dt>Included with kit</dt><dd>Engineered drawings · anchor-bolt plan · erection manual · dedicated project manager through delivery</dd>
+        </dl>
+      </div>
+      <div class="spec-panel" data-panel="why">
+        <p>What sets Bell Metal apart: in-house engineering, fixed-price quoting (no surprise change-orders), and a project manager who stays on your job from quote to anchor-bolt set.</p>
+      </div>
+      <div class="spec-panel" data-panel="adv">
+        <p>Faster than stick-built. Clear-span interiors. No load-bearing interior walls. Roll-up door pre-cuts engineered in. Insulation packages spec'd to your climate zone.</p>
+      </div>
+      <div class="spec-panel" data-panel="faq">
+        <p>The 8 most-asked questions about this building type render here. Linked to the full FAQ resources page below.</p>
+      </div>
+      <div class="spec-panel" data-panel="cust">
+        <p>Doors, windows, wainscot, overhangs, lean-tos, cupolas, insulation, ridge venting, sky lights — all spec'd at quote time.</p>
+      </div>
+      <div class="spec-panel" data-panel="war">
+        <p>Material, paint, fastener, and erection-period warranties; service line for the life of the building. <span class="todo">Warranty doc must be confirmed against Bell's actual program.</span></p>
+      </div>
+    </div>
+
+    <h3 style="margin:var(--s-6) 0 var(--s-3); font-size:1rem; text-transform:uppercase; letter-spacing:.04em; color:var(--b-text-muted)">FAQ accordion (interactive)</h3>
+    <div class="faq" data-faq>
+      <div class="faq-item">
+        <button class="faq-q">What if I'm not sure what type of building I need?</button>
+        <div class="faq-a"><div class="faq-a-inner">Start the Get-My-Price flow and pick the use case closest to yours — our consultants reshape it from there. Or call (555) 555-0199 and we'll work through it on the phone in five minutes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will my building meet local building codes?</button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Every Bell building is engineered to your county's specific snow, wind, and seismic loads. We provide sealed drawings for permitting.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Who erects the building?</button>
+        <div class="faq-a"><div class="faq-a-inner">Your choice. Bell sells the engineered kit; you can self-erect with friends, hire a local contractor, or ask us to recommend an erection crew working in your region.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long until my building ships?</button>
+        <div class="faq-a"><div class="faq-a-inner">Typical lead time is 6–10 weeks from contract to truck. <span class="todo">Confirm Bell's true lead-time bands.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEFT-RAIL GUIDE NAV ============ -->
+  <section class="ds-section" id="rail">
+    <span class="ds-eyebrow">12 — Left-rail guide nav</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Guide-page layout</h2>
+    <p class="ds-lede">Used on About, True Pricing, Our Advantage, Resources sub-pages, Newsroom — anywhere there's a multi-page narrative with a sidebar TOC.</p>
+
+    <div class="guide-layout">
+      <aside class="guide-rail">
+        <div class="group">
+          <h4>Steel Building Guide</h4>
+          <ul>
+            <li><a href="#" class="is-active">Why a steel building?</a></li>
+            <li><a href="#">First-time builders</a></li>
+            <li><a href="#">Rising steel prices</a></li>
+            <li><a href="#">Purchasing options</a></li>
+            <li><a href="#">Why choose Bell?</a></li>
+            <li><a href="#">Lock in your order</a></li>
+            <li><a href="#">Things to remember</a></li>
+            <li><a href="#">The buying process</a></li>
+            <li><a href="#">Price a building today</a></li>
+          </ul>
+          <button class="btn btn-primary btn-sm" style="width:100%">Start your quote</button>
+        </div>
+        <div class="group">
+          <h4>Building with steel</h4>
+          <ul>
+            <li><a href="#">Foundations 101</a></li>
+            <li><a href="#">Insulation packages</a></li>
+            <li><a href="#">Color &amp; finish guide</a></li>
+          </ul>
+        </div>
+        <div class="group">
+          <h4>Additional services</h4>
+          <ul>
+            <li><a href="#">Doors &amp; windows</a></li>
+            <li><a href="#">Accessories catalog</a></li>
+          </ul>
+        </div>
+      </aside>
+      <div>
+        <h2 style="text-transform:uppercase; margin-bottom:.6em">Why a steel building?</h2>
+        <p>Stick-built construction was the standard for a century — but pre-engineered steel has overtaken it for almost every use case where you need a wide, clear-span interior in less time and at a fixed price.</p>
+        <p>This is the body-column content area. Use it for long-form copy, embedded videos, callout cards, and inline images. The rail to the left stays sticky on scroll.</p>
+        <p class="todo" style="display:inline-flex">Body content here is placeholder until the client's voice is locked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BIG PILLS ============ -->
+  <section class="ds-section" id="pills">
+    <span class="ds-eyebrow">13 — Big-pill selector grid</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">"What best describes your building?"</h2>
+    <p class="ds-lede">Quote-flow entry point on every pillar/marketing page. Click triggers the Get-My-Price wizard pre-populated with the selected use case. Eight categories matching Bell's product roster + a "Not sure" tile + a "Custom" tile (10 total). Active state shown on Workshop.</p>
+
+    <div class="bigpill-grid">
+      <button class="bigpill">Garage</button>
+      <button class="bigpill is-active">Workshop</button>
+      <button class="bigpill">Barndominium</button>
+      <button class="bigpill">Quonset</button>
+      <button class="bigpill">Carport</button>
+      <button class="bigpill">Container Cover</button>
+      <button class="bigpill">Commercial</button>
+      <button class="bigpill">Storage</button>
+      <button class="bigpill">Not sure — help me</button>
+      <button class="bigpill">Custom build</button>
+    </div>
+    <p class="muted" style="margin-top:14px; font-size:.85rem">
+      <span class="todo">Confirm Bell's actual 8 product categories</span> — current list mirrors Mock A.
+    </p>
+  </section>
+
+  <!-- ============ ARROW CARD ============ -->
+  <section class="ds-section" id="arrow">
+    <span class="ds-eyebrow">14 — Arrow-bullet callout</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">"What determines my price?"</h2>
+    <p class="ds-lede">Sits inside True Pricing (Site-2 "Rising Steel Prices" pattern). Numbered bullets with a circle-arrow numeral.</p>
+    <div class="arrow-card" style="max-width:720px">
+      <h3>What determines my price</h3>
+      <ol class="arrow-list">
+        <li><span class="num">1</span><div><h4>Building size &amp; clear-span</h4><p>Wider/longer clear-spans need heavier primary framing, which drives the steel-by-weight cost.</p></div></li>
+        <li><span class="num">2</span><div><h4>Snow, wind &amp; seismic loads</h4><p>Your county's loads drive the engineering. A high-wind coastal site costs more than an inland low-snow site.</p></div></li>
+        <li><span class="num">3</span><div><h4>Doors, windows &amp; openings</h4><p>Every opening needs reinforced framing. Two roll-ups cost more than one — but cheaper than adding one later.</p></div></li>
+        <li><span class="num">4</span><div><h4>Insulation &amp; finish package</h4><p>R-value, wainscot, color, trim, and ridge vent options all live here.</p></div></li>
+        <li><span class="num">5</span><div><h4>Current steel market</h4><p>We hold your quote price for 30 days; after that the global hot-rolled-coil index resets it.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ STATS CARD ============ -->
+  <section class="ds-section" id="stats">
+    <span class="ds-eyebrow">15 — Stats card (overlaps banner)</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Reviews-page overlap card</h2>
+    <p class="ds-lede">The stats card overlaps the bottom edge of a navy page banner — a signature Site-2 pattern used on Reviews and Customer Stories pages.</p>
+
+    <div class="banner" style="border-radius:var(--r-md); padding-bottom:var(--s-9); padding-inline:var(--s-6)">
+      <div class="banner-inner">
+        <h1>Bell Metal Customer Reviews</h1>
+        <p class="lede">Real owners, real photos, real builds — filtered by building type and state.</p>
+      </div>
+    </div>
+    <div class="stats-card">
+      <div class="stat"><strong>Thousands of</strong><span>Happy customers</span></div>
+      <div class="stat"><strong>98%</strong><span>Would recommend</span></div>
+      <div class="stat"><div class="stars">★★★★★</div><span>4.9 average — <span class="todo">confirm rating source</span></span></div>
+      <div class="end"><button class="btn btn-ghost">Read customer stories</button></div>
+    </div>
+  </section>
+
+  <!-- ============ HELP DESK ============ -->
+  <section class="ds-section" id="help">
+    <span class="ds-eyebrow">16 — Help-desk action tiles</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Bell Help Desk panel</h2>
+    <p class="ds-lede">Saturated Conduit-blue full-bleed panel + white action tiles. The "File a complaint" tile is rendered in burgundy — the only place urgency-red appears in the system.</p>
+
+    <div class="helpdesk-panel" style="border-radius:var(--r-md); padding-inline:var(--s-6)">
+      <div class="helpdesk-inner">
+        <h2 style="text-transform:uppercase">Bell Metal Help Desk</h2>
+        <p style="max-width:48ch; color:#fff">Pick the door that fits — every request hits the right inbox within an hour during business days.</p>
+        <div class="helpdesk-tiles">
+          <a class="helpdesk-tile" href="#"><h3>Ask a question</h3><p>Get a human reply within a business day.</p></a>
+          <a class="helpdesk-tile" href="#"><h3>Give feedback</h3><p>Love it or hate it — we read every note.</p></a>
+          <a class="helpdesk-tile" href="#"><h3>Technical feedback</h3><p>Drawing issue? Spec question? Send it here.</p></a>
+          <a class="helpdesk-tile" href="#"><h3>Request pricing</h3><p>Skip the form — request a price directly.</p></a>
+          <a class="helpdesk-tile" href="#"><h3>Status of my order</h3><p>Already a customer? Track delivery here.</p></a>
+          <a class="helpdesk-tile is-warn" href="#"><h3>File a complaint</h3><p>Goes straight to the GM, not the queue.</p></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HERO ============ -->
+  <section class="ds-section" id="hero">
+    <span class="ds-eyebrow">17 — Hero pattern (homepage)</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Full-bleed hero with overlay testimonial card</h2>
+    <p class="ds-lede">Signature Site-2 homepage hero. Transparent header sits over the photo. Left column: H1, sub-line, body, two CTAs. Right column: floating dark testimonial card with photo, quote, name, location, verified pill, and a "Get a quote" link.</p>
+
+    <div class="hero" style="border-radius:var(--r-md)">
+      <div class="hero-photo"></div>
+      <div class="nav-transparent" style="position:absolute; top:0; left:0; right:0">
+        <div class="nav-inner">
+          <a class="brand" href="#"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+          <div class="nav-links">
+            <a class="nav-link" href="#">Buildings</a><a class="nav-link" href="#">Pricing</a><a class="nav-link" href="#">Resources</a><a class="nav-link" href="#">Reviews</a>
+          </div>
+          <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+        </div>
+      </div>
+      <div class="hero-inner">
+        <div>
+          <h1>Steel Building Kits</h1>
+          <p class="sub">Pre-engineered · Bolt-together · Built to your county's codes</p>
+          <p class="body">From compact garages to commercial warehouses, Bell Metal ships engineered steel building kits anywhere in the lower 48. Quoted in minutes. Built to last generations.</p>
+          <div class="ctas">
+            <button class="btn btn-primary">Get My Price <span class="arrow">›</span></button>
+            <button class="btn btn-secondary">3D Designer</button>
+          </div>
+        </div>
+        <div class="hero-testimonial">
+          <div class="photo"></div>
+          <div class="who">Rosa M.</div>
+          <div class="where">Garage — Pueblo, CO</div>
+          <span class="verified">Verified Customer</span>
+          <p class="quote" style="margin-top:10px">"Quote was clear, panels showed up clean, and the bolts lined up the first try. That doesn't happen."</p>
+          <a class="btn-link" href="#" style="color:#fff">Get a quote ›</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS BAND ============ -->
+  <section class="ds-section" id="reviews">
+    <span class="ds-eyebrow">18 — Reviews band</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Dark band with stat trio</h2>
+    <p class="ds-lede">Site-2 signature: dark navy band, headline with one word in Conduit blue, three large stats side-by-side.</p>
+    <div class="reviews-band" style="border-radius:var(--r-md)">
+      <div class="reviews-band-inner">
+        <h2>See why we're rated <em>(almost)</em> 5-stars!</h2>
+        <div class="reviews-band-stats">
+          <div class="stat"><span class="big">12,400+</span><span class="label"><span class="todo">verify count</span> · customers</span></div>
+          <div class="stat"><div class="gold-stars">★★★★★</div><span class="label">4.9 out of 5</span></div>
+          <div class="stat"><button class="btn btn-ghost on-dark">Read our reviews</button><span class="label" style="margin-top:8px">Or browse customer stories</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VS BLOCK ============ -->
+  <section class="ds-section" id="vs">
+    <span class="ds-eyebrow">19 — Steel vs Conventional</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Comparison split (homepage)</h2>
+    <p class="ds-lede">Left: white card with two-column comparison (green checks vs red X). Right: photo block. Used on homepage just below the building-type grid.</p>
+    <div class="vs-block">
+      <div class="vs-card">
+        <div class="vs-col">
+          <h4>Bell Metal building system</h4>
+          <ul>
+            <li>Engineered for your county's loads</li>
+            <li>Fixed-price quote — no change-order surprises</li>
+            <li>Bolt-together — self-erect with friends or pro crew</li>
+            <li>50-year rust / 40-year paint warranty <span class="todo">confirm</span></li>
+            <li>Clear-span interior up to 200′</li>
+            <li>Dedicated project manager through delivery</li>
+          </ul>
+        </div>
+        <div class="vs-col bad">
+          <h4>Conventional stick-built</h4>
+          <ul>
+            <li>Site-cut framing — weather delays</li>
+            <li>T&amp;M pricing common — change orders pile up</li>
+            <li>Load-bearing interior walls limit span</li>
+            <li>Often no manufacturer warranty</li>
+            <li>Wood frame — termite, rot, fire vulnerability</li>
+            <li>No factory engineering review</li>
+          </ul>
+        </div>
+      </div>
+      <div class="vs-photo"></div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <section class="ds-section" id="footer">
+    <span class="ds-eyebrow">20 — Footer</span>
+    <h2 class="ds-title" style="font-size:var(--t-h1)">Site footer</h2>
+    <p class="ds-lede">Five columns: brand+blurb · Buildings · Resources · Company · Connect. Social row centered below. Bottom legal strip.</p>
+    <footer class="footer" style="border-radius:var(--r-md)">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="brand-col">
+            <a class="brand" href="#"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+            <p class="blurb">Pre-engineered steel buildings shipped to the lower 48. American steel. Sealed drawings. Real people on the phone.</p>
+            <p class="blurb"><a href="tel:+15555550199" style="color:#fff; font-family:var(--f-display); font-weight:700; font-size:1.1rem; letter-spacing:.02em">📞 (555) 555-0199</a></p>
+          </div>
+          <div>
+            <h4>Buildings</h4>
+            <ul>
+              <li><a href="#">Garages</a></li>
+              <li><a href="#">Workshops</a></li>
+              <li><a href="#">Barndominiums</a></li>
+              <li><a href="#">Quonset</a></li>
+              <li><a href="#">Commercial</a></li>
+              <li><a href="#">All building types</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Complete guide</a></li>
+              <li><a href="#">3D Designer</a></li>
+              <li><a href="#">Brochures</a></li>
+              <li><a href="#">Video library</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Bell</a></li>
+              <li><a href="#">Our advantage</a></li>
+              <li><a href="#">Warranty</a></li>
+              <li><a href="#">True pricing</a></li>
+              <li><a href="#">Customer stories</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Help desk</a></li>
+              <li><a href="#">Newsroom</a></li>
+              <li><a href="#">Brand center</a></li>
+            </ul>
+            <div class="social-row" style="justify-content:flex-start">
+              <a href="#" aria-label="Facebook">f</a>
+              <a href="#" aria-label="Instagram">◧</a>
+              <a href="#" aria-label="YouTube">▷</a>
+              <a href="#" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-legal">
+          <span>© 2026 Bell Metal Buildings Co. <span class="todo">confirm legal entity</span></span>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+</main>
+
+<!-- Sticky bottom utility bar (live, for design-system context) -->
+<div class="util-bar">
+  <div class="util-bar-inner">
+    <span class="lead">Start here: <em>Price your building in minutes</em></span>
+    <button class="btn btn-primary">Get My Price <span class="arrow">›</span></button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   Component primitives — minimal JS
+   ========================================================= */
+
+// Spec accordion: tab switching
+document.querySelectorAll('[data-spec]').forEach(root => {
+  root.querySelectorAll('.spec-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      root.querySelectorAll('.spec-tab').forEach(b => b.classList.toggle('is-active', b === btn));
+      root.querySelectorAll('.spec-panel').forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
+    });
+  });
+});
+
+// FAQ accordion: open/close with max-height
+document.querySelectorAll('[data-faq]').forEach(root => {
+  root.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const a = item.querySelector('.faq-a');
+      const open = item.classList.toggle('is-open');
+      a.style.maxHeight = open ? a.scrollHeight + 'px' : '0';
+    });
+  });
+});
+
+// Big-pill active toggle
+document.querySelectorAll('.bigpill-grid').forEach(grid => {
+  grid.querySelectorAll('.bigpill').forEach(p => {
+    p.addEventListener('click', () => {
+      grid.querySelectorAll('.bigpill').forEach(x => x.classList.remove('is-active'));
+      p.classList.add('is-active');
+    });
+  });
+});
+
+// Filter-chip active toggle (single-select demo)
+document.querySelectorAll('.chip-row').forEach(row => {
+  row.querySelectorAll('.chip').forEach(c => {
+    c.addEventListener('click', () => {
+      row.querySelectorAll('.chip').forEach(x => x.classList.remove('is-active'));
+      c.classList.add('is-active');
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bell Metal Buildings — Steel buildings, factory-direct from Pennsylvania</title>
+<meta name="description" content="Bell Metal Buildings has been engineering pre-engineered steel buildings in Aliquippa, Pennsylvania since 1962. Quote your garage, warehouse, or barndominium in three steps." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  /* Page-only refinements */
+  .home-hero .hero-headline em{ display:block; }
+  .uses-band{ padding: var(--s-9) var(--s-5); background: var(--c-bone); }
+  .uses-band .section-head h2 em{ font-style:italic; color: var(--c-brick); font-variation-settings:"opsz" 144, "SOFT" 100; }
+  .features-band{ padding: var(--s-9) var(--s-5); background: var(--c-paper); }
+  .features-band .section-head{ margin-bottom: var(--s-7); }
+  .blog-band{ padding: var(--s-9) var(--s-5); background: var(--c-bone); }
+  .blog-band .carousel-track .story-card{ background: var(--c-paper); }
+  .logo-band{ padding: var(--s-8) var(--s-5); background: var(--c-paper); border-top: 1px solid var(--c-rule-soft); border-bottom: 1px solid var(--c-rule-soft); }
+  .logo-band .footnote{ text-align:center; margin-top: var(--s-5); font-size: var(--t-sm); color: var(--c-text-muted); }
+  .logo-band .footnote a{ font-weight:600; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- 1. Utility bar -->
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="left">Building experts since 1962 · Made in Aliquippa, PA</div>
+    <div class="right">
+      <span>We're here to help — call <a href="tel:18004442525">1-800-444-2525</a></span>
+      <span class="lang">EN · <a href="#" style="color: var(--c-bone);">ES</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Sticky header -->
+<header class="site-header">
+  <div class="wrap">
+    <a href="02-homepage.html" class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">Bell Metal Buildings<small>Since 1962</small></span>
+    </a>
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="03-building-types.html" class="is-active">Building Types</a>
+      <a href="06-options-finishes.html">Options &amp; Finishes</a>
+      <a href="07-about.html">About</a>
+      <a href="17-resources-hub.html">Resources</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-outline btn-sm" href="05-clearance-inventory.html">Sale buildings</a>
+      <a class="btn btn-secondary btn-sm" href="08-contact.html">Contact</a>
+      <a class="btn btn-primary btn-sm" href="#hero-quote">Free quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 3. Hero with overlaid quote form -->
+  <section class="hero home-hero" aria-labelledby="hero-h1">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow on-dark">Heritage since 1962</div>
+        <h1 class="hero-headline" id="hero-h1">Why choose <em>Bell?</em></h1>
+        <ul class="hero-bullets">
+          <li>Custom-engineered to your site &amp; stamped for your jurisdiction</li>
+          <li>Factory-direct from Aliquippa, Pennsylvania — no middlemen</li>
+          <li>Built once. Stands for generations.</li>
+          <li>40-year limited paint &amp; rust-through warranty on every kit</li>
+          <li>One project manager from quote to delivery</li>
+        </ul>
+        <div class="btn-row" style="margin-top: var(--s-6);">
+          <a class="btn btn-primary btn-lg" href="#hero-quote">Get a free quote</a>
+          <a class="btn btn-outline-on-dark btn-lg" href="18-video-library.html">Watch the build (2 min)</a>
+        </div>
+      </div>
+      <div id="hero-quote">
+        <form class="quote-card" onsubmit="event.preventDefault(); alert('Production: posts to CRM.');">
+          <div class="qc-eyebrow">Price your building</div>
+          <div class="qc-title">Get a free quote in 3 easy steps</div>
+          <div class="progress-meta"><span>Step 1 of 3</span><span>33%</span></div>
+          <div class="progress"><div class="progress-fill"></div></div>
+          <div class="input-row">
+            <div class="field"><label for="w">Width</label><input id="w" class="input" placeholder="ft" /></div>
+            <div class="field"><label for="l">Length</label><input id="l" class="input" placeholder="ft" /></div>
+            <div class="field"><label for="h">Height</label><input id="h" class="input" placeholder="ft" /></div>
+          </div>
+          <button class="btn btn-primary btn-lg" type="submit" style="margin-top: var(--s-5); width:100%;">Next ›</button>
+          <p style="font-size: var(--t-xs); color: var(--c-text-muted); margin-top: var(--s-3); text-align:center; margin-bottom: 0;">No spam. We respond in one business day.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Buildings for every use — 12-card grid -->
+  <section class="uses-band" aria-labelledby="uses-h2">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow center">Catalog</div>
+        <h2 id="uses-h2">Buildings for <em>every</em> use</h2>
+        <p>Twelve common builds — each a different starting point for the same Bell kit. Tell us what you're building, and we'll size and price it.</p>
+      </div>
+
+      <div class="uc-grid">
+        <a class="uc-card" href="03-building-types.html#industrial"><div class="uc-photo"></div><div class="uc-tile"><span class="uc-title">Industrial</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="04-garages-detail.html"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.18), rgba(15,39,36,.22)), repeating-linear-gradient(60deg,#bcb29a 0 12px,#aa9f86 12px 24px);"></div><div class="uc-tile"><span class="uc-title">Garages</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="03-building-types.html#commercial"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(184,138,59,.18), rgba(15,39,36,.18)), repeating-linear-gradient(-30deg,#cfc7af 0 14px,#c1b89c 14px 28px);"></div><div class="uc-tile"><span class="uc-title">Commercial</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="03-building-types.html#workshops"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.30), rgba(168,54,42,.10)), repeating-linear-gradient(90deg,#bdb39b 0 16px,#aea48c 16px 32px);"></div><div class="uc-tile"><span class="uc-title">Workshops</span><span class="uc-chev">›</span></div></a>
+
+        <a class="uc-card" href="03-building-types.html#storage"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.22), rgba(184,138,59,.18)), repeating-linear-gradient(135deg,#c5bba2 0 12px,#b8af96 12px 24px);"></div><div class="uc-tile"><span class="uc-title">Storage</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="03-building-types.html#agriculture"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.20), rgba(15,39,36,.20)), repeating-linear-gradient(45deg,#cfc4a8 0 14px,#bfb595 14px 28px);"></div><div class="uc-tile"><span class="uc-title">Barns &amp; Farming</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="03-building-types.html#ministorage"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(184,138,59,.20), rgba(15,39,36,.16)), repeating-linear-gradient(-60deg,#cabf9f 0 12px,#b9b08e 12px 24px);"></div><div class="uc-tile"><span class="uc-title">Mini-Storage</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="03-building-types.html#warehouses"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.30), rgba(168,54,42,.16)), repeating-linear-gradient(75deg,#c2b89c 0 16px,#b3aa8b 16px 32px);"></div><div class="uc-tile"><span class="uc-title">Warehouses</span><span class="uc-chev">›</span></div></a>
+
+        <a class="uc-card" href="03-building-types.html#arenas"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.14), rgba(15,39,36,.26)), repeating-linear-gradient(15deg,#c8be9f 0 12px,#b6ad8d 12px 24px);"></div><div class="uc-tile"><span class="uc-title">Horse Riding Arenas</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="03-building-types.html#hangars"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(184,138,59,.14), rgba(15,39,36,.24)), repeating-linear-gradient(-15deg,#c0b698 0 14px,#aea58a 14px 28px);"></div><div class="uc-tile"><span class="uc-title">Aircraft Hangars</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="03-building-types.html#barndo"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(168,54,42,.18), rgba(184,138,59,.14)), repeating-linear-gradient(120deg,#ccc2a6 0 12px,#b8b094 12px 24px);"></div><div class="uc-tile"><span class="uc-title">Barndominiums</span><span class="uc-chev">›</span></div></a>
+        <a class="uc-card" href="03-building-types.html#sheds"><div class="uc-photo" style="background:linear-gradient(135deg, rgba(15,39,36,.22), rgba(184,138,59,.18)), repeating-linear-gradient(165deg,#bfb597 0 12px,#aea48a 12px 24px);"></div><div class="uc-tile"><span class="uc-title">Sheds</span><span class="uc-chev">›</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Delivering nationwide -->
+  <section class="delivery-band" aria-labelledby="delivery-h2">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Delivering nationwide</div>
+        <h2 id="delivery-h2">Steel that reaches every state in the lower 48.</h2>
+        <p>Bell ships completed kits via certified carriers from coast to coast. Alaska, Hawaii, and Canadian provinces are quoted case-by-case. Most builds leave the Aliquippa plant within 8 weeks of signed drawings.</p>
+        <p><a href="#hero-quote"><strong>Request a quote to check delivery times.</strong></a></p>
+      </div>
+      <div class="us-map-wrap">
+        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M40,160 L80,120 L130,110 L180,90 L240,80 L290,75 L330,80 L380,70 L430,75 L470,85 L510,100 L540,130 L555,170 L545,200 L520,225 L490,250 L470,275 L440,295 L400,300 L370,290 L340,295 L320,310 L280,315 L240,310 L200,300 L170,305 L130,300 L100,285 L75,260 L55,225 L45,195 Z"
+                fill="#dfd6c1" stroke="#a8362a" stroke-width="2" />
+          <circle cx="430" cy="160" r="8" fill="#a8362a" />
+          <circle cx="430" cy="160" r="14" fill="none" stroke="#a8362a" stroke-width="1" opacity=".4"/>
+          <circle cx="120" cy="200" r="4" fill="#b88a3b" />
+          <circle cx="190" cy="245" r="4" fill="#b88a3b" />
+          <circle cx="260" cy="280" r="4" fill="#b88a3b" />
+          <circle cx="320" cy="225" r="4" fill="#b88a3b" />
+          <circle cx="380" cy="265" r="4" fill="#b88a3b" />
+          <circle cx="490" cy="200" r="4" fill="#b88a3b" />
+          <text x="445" y="155" font-family="IBM Plex Sans, sans-serif" font-size="11" font-weight="700" fill="#0f2724">HQ · Aliquippa, PA</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. All Bell buildings feature — 6-check grid -->
+  <section class="features-band" aria-labelledby="features-h2">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow center">What every Bell kit ships with</div>
+        <h2 id="features-h2">All Bell steel buildings feature</h2>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">Engineered to last a lifetime<small>Heavier gauge steel, taller wind &amp; snow load ratings.</small></div></div>
+        <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">40-year limited rust-through warranty<small>On every galvanized panel and trim run we cut.</small></div></div>
+        <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">40-year limited paint warranty<small>Silicone-polyester finish, 14 standard colors.</small></div></div>
+        <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">Design help from real engineers<small>Not call-center reps reading from a script.</small></div></div>
+        <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">Precision in-house manufacturing<small>Every cut, punch, weld, and bend done by Bell.</small></div></div>
+        <div class="feature-item"><div class="feature-check">✓</div><div class="feature-text">Continued support after delivery<small>Your project manager doesn't disappear once the kit ships.</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. We own the factory — full-bleed dark photo band -->
+  <section class="photo-band" aria-labelledby="factory-h2">
+    <div class="wrap">
+      <div class="eyebrow on-dark center">From the Bell factory floor</div>
+      <h2 id="factory-h2">We own the factory.</h2>
+      <p>Our Aliquippa plant cuts, punches, welds, bends, and coats every component you'll see on your jobsite. No drop-shipping. No surprise lead times. Real factory-direct pricing — save time and money with Bell.</p>
+      <div class="btn-row" style="justify-content:center; margin-top: var(--s-6);">
+        <a class="btn btn-primary" href="07-about.html#factory">Tour the factory</a>
+        <a class="btn btn-outline-on-dark" href="18-video-library.html">Watch a build (2 min)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Our clients include — 8-logo wall -->
+  <section class="logo-band" aria-labelledby="clients-h2">
+    <div class="container">
+      <div class="section-head" style="margin-bottom: var(--s-5);">
+        <div class="eyebrow center">Trusted at scale</div>
+        <h2 id="clients-h2" style="font-size: var(--t-h1); font-variation-settings:'opsz' 96, 'SOFT' 30;">Our clients include</h2>
+      </div>
+      <div class="logo-wall">
+        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+      </div>
+      <p class="footnote">We take on projects of any size. <a href="08-contact.html">Tell us about yours.</a></p>
+    </div>
+  </section>
+
+  <!-- 9. Simple & efficient construction — text + video -->
+  <section class="cons-band" aria-labelledby="cons-h2">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Simple &amp; efficient construction</div>
+        <h2 id="cons-h2">A kit that goes up like a dovetail joint.</h2>
+        <p>Bell buildings ship as a complete pre-engineered kit: pre-cut frames, pre-drilled panels, pre-matched fasteners, pre-stamped drawings for your jurisdiction. Your contractor (or our recommended crew) erects the shell in days, not months. No mid-build redesigns. No "we forgot to ship that piece."</p>
+        <p>Every kit includes step-by-step assembly drawings and a direct phone line back to the engineer who stamped your plans. <a href="08-contact.html">Contact us</a> to walk through your build.</p>
+      </div>
+      <div class="video-thumb" role="button" aria-label="Watch the Bell building animation">
+        <span class="todo" style="position:absolute; bottom: var(--s-4); left: var(--s-4); z-index: 2;">video</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Steel building tips, trends & inspiration — 4-card carousel -->
+  <section class="blog-band" aria-labelledby="blog-h2">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow center">Field Journal</div>
+        <h2 id="blog-h2">Steel building tips, trends &amp; inspiration</h2>
+        <p>Original writing from Bell engineers and project managers — sizing, sourcing, finish selection, anchoring, and what to ask before you sign a contract.</p>
+      </div>
+
+      <div class="carousel" id="blog-carousel">
+        <button class="chev prev" aria-label="Previous">‹</button>
+        <div class="carousel-track">
+          <a class="story-card" href="10-blog-post.html">
+            <div class="story-photo"></div>
+            <div class="story-body">
+              <div class="story-eyebrow">Regional · Pennsylvania</div>
+              <div class="story-title">Buying a steel building in Pennsylvania</div>
+            </div>
+          </a>
+          <a class="story-card" href="10-blog-post.html">
+            <div class="story-photo" style="background:linear-gradient(160deg,#1a3a30,#244f42);"></div>
+            <div class="story-body">
+              <div class="story-eyebrow">Heritage</div>
+              <div class="story-title">Why we still print stamped engineering drawings</div>
+            </div>
+          </a>
+          <a class="story-card" href="10-blog-post.html">
+            <div class="story-photo" style="background:linear-gradient(160deg,#22413a,#2b554a);"></div>
+            <div class="story-body">
+              <div class="story-eyebrow">Construction</div>
+              <div class="story-title">Anchoring a 60×120 on poured slab</div>
+            </div>
+          </a>
+          <a class="story-card" href="10-blog-post.html">
+            <div class="story-photo" style="background:linear-gradient(160deg,#1f3934,#2a4d44);"></div>
+            <div class="story-body">
+              <div class="story-eyebrow">Color &amp; Finish</div>
+              <div class="story-title">Pairing trim to your roof in 14 shades</div>
+            </div>
+          </a>
+        </div>
+        <button class="chev next" aria-label="Next">›</button>
+      </div>
+      <div style="text-align:center; margin-top: var(--s-5);">
+        <a class="btn-ghost" href="09-blog-index.html">Visit the field journal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. History of trust + testimonial slider -->
+  <section class="testimonial-band" aria-labelledby="history-h2">
+    <div class="wrap">
+      <div class="history-col">
+        <div class="eyebrow">A history of trust</div>
+        <h2 id="history-h2">Sixty-four years of Bell-stamped buildings.</h2>
+        <p>Bell Metal Buildings has been engineering pre-engineered steel since 1962 <span class="todo">history</span>. Three generations of the Larkin family <span class="todo">family</span> have run the Aliquippa plant. Our books are open and our warranties are on paper, not in a chatbot.</p>
+        <p>Look us up: better-business-rated, owner-operated, accountable. The factory tour is open to qualified clients by appointment.</p>
+        <div class="bbb-badge"><span class="seal">A+</span>Better Business Bureau · Accredited since 1989 <span class="todo">bbb</span></div>
+      </div>
+      <div id="testimonial-slider" aria-live="polite">
+        <article class="testimonial" data-i="0">
+          <p class="t-quote">Bell's engineer drove out to look at my site personally before they cut a single panel. You don't get that anywhere else.</p>
+          <div class="t-initials">M. R.</div>
+          <div class="t-meta">60×120 warehouse · Erie, Pennsylvania · 2024 <span class="todo">testimonial</span></div>
+          <div class="t-dots" role="tablist">
+            <button class="t-dot is-active" data-i="0" aria-label="Testimonial 1"></button>
+            <button class="t-dot" data-i="1" aria-label="Testimonial 2"></button>
+            <button class="t-dot" data-i="2" aria-label="Testimonial 3"></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. (folded into footer) -->
+</main>
+
+<!-- 12. Site footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <div>
+      <div class="foot-h">Additional resources</div>
+      <ul class="foot-list">
+        <li><a href="03-building-types.html">Building types</a></li>
+        <li><a href="07-about.html">About Bell</a></li>
+        <li><a href="09-blog-index.html">Field journal</a></li>
+        <li><a href="17-resources-hub.html">Certifications &amp; resources</a></li>
+        <li><a href="13-warranty.html">Warranty</a></li>
+        <li><a href="15-true-pricing.html">True pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Get in touch</div>
+      <div class="foot-contact">
+        <div class="row"><span class="icon">☎</span><div>Toll free<br><strong style="color:var(--c-bone)"><a href="tel:18004442525" style="color:inherit;">1-800-444-2525</a></strong></div></div>
+        <div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001 <span class="todo">address</span></div></div>
+      </div>
+      <div class="foot-social" aria-label="Bell on social media">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="YouTube">yt</a>
+      </div>
+    </div>
+    <div class="foot-help">
+      <div class="foot-h">How can we help?</div>
+      <a class="btn btn-secondary" href="08-contact.html">Contact us</a>
+      <a class="btn btn-primary" href="#hero-quote">Get a free quote</a>
+    </div>
+  </div>
+  <!-- 13. Sub-footer -->
+  <div class="subfooter">© 2026 Bell Metal Buildings Co. <span class="todo">legal entity</span> · All rights reserved · <a href="14-privacy.html" style="color:inherit;">Privacy policy</a></div>
+</footer>
+
+<!-- 14. Floating Q-tab -->
+<a class="q-tab" href="08-contact.html" aria-label="Open contact">Questions? Let's talk</a>
+
+<script>
+  // Accordion (none on home, but keep ready for nav-loaded fragments)
+  document.querySelectorAll('.acc-head').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.acc-item');
+      item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', item.classList.contains('is-open'));
+    });
+  });
+
+  // Testimonial slider (3 slides, dot-driven, with auto-rotate)
+  (function(){
+    const slides = [
+      {q:"Bell's engineer drove out to look at my site personally before they cut a single panel. You don't get that anywhere else.", i:"M. R.", m:"60×120 warehouse · Erie, Pennsylvania · 2024"},
+      {q:"Twelve weeks from signed drawing to dried-in barndominium. They hit the date they wrote on paper.", i:"T. &amp; J. K.", m:"40×80 barndominium · Beaver County, Pennsylvania · 2024"},
+      {q:"We asked for a clear-span hangar with a 24-foot eave and got engineering back the next day. Stamped. Sealed. Done.", i:"D. Y.", m:"80×100 aircraft hangar · Athens, Ohio · 2023"}
+    ];
+    const card = document.querySelector('.testimonial');
+    const dots = document.querySelectorAll('.t-dot');
+    if(!card) return;
+    const quote = card.querySelector('.t-quote');
+    const ini = card.querySelector('.t-initials');
+    const meta = card.querySelector('.t-meta');
+    let idx = 0, timer;
+    function show(i){
+      idx = (i + slides.length) % slides.length;
+      quote.innerHTML = slides[idx].q;
+      ini.innerHTML = slides[idx].i;
+      meta.innerHTML = slides[idx].m + ' <span class="todo">testimonial</span>';
+      dots.forEach((d,j)=>d.classList.toggle('is-active', j===idx));
+    }
+    dots.forEach(d => d.addEventListener('click', () => { show(parseInt(d.dataset.i,10)); restart(); }));
+    function tick(){ show(idx+1); }
+    function restart(){ clearInterval(timer); timer = setInterval(tick, 6500); }
+    restart();
+  })();
+
+  // Blog carousel (horizontal scroll on click)
+  (function(){
+    const carousel = document.getElementById('blog-carousel');
+    if(!carousel) return;
+    const track = carousel.querySelector('.carousel-track');
+    const prev = carousel.querySelector('.chev.prev');
+    const next = carousel.querySelector('.chev.next');
+    function step(dir){
+      const w = track.clientWidth;
+      // since track is grid, no actual scroll — simulate with opacity shift
+      const cards = track.querySelectorAll('.story-card');
+      cards.forEach((c,i)=>{
+        const o = parseFloat(c.dataset.o||1);
+        const n = Math.max(0.55, Math.min(1, o + (dir>0?-.1:.1)));
+        c.dataset.o = n; c.style.opacity = n;
+      });
+    }
+    prev && prev.addEventListener('click', ()=>step(-1));
+    next && next.addEventListener('click', ()=>step(1));
+  })();
+</script>
+
+</body>
+</html>

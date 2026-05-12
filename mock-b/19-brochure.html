@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Brochures — Bell Metal Buildings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./_shared.css">
+<style>
+.bro-layout{ display:grid; grid-template-columns:1.4fr 1fr; gap:var(--s-7); align-items:start }
+@media (max-width:1000px){ .bro-layout{ grid-template-columns:1fr } }
+
+.bro-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px }
+@media (max-width:600px){ .bro-grid{ grid-template-columns:1fr } }
+.bro-card{
+  background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md); overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.bro-cover{
+  aspect-ratio: 3/4; position:relative; display:flex; flex-direction:column; justify-content:space-between;
+  padding:22px; color:#fff;
+  background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.7)), linear-gradient(160deg, #2c4361, #0e1a2b);
+}
+.bro-cover.a{ background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.7)), linear-gradient(160deg, #c47b40, #4d2b13) }
+.bro-cover.b{ background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.7)), linear-gradient(160deg, #6e8b4a, #2b3a1a) }
+.bro-cover.c{ background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.7)), linear-gradient(160deg, #5a6470, #1d2530) }
+.bro-cover .kicker{
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase; letter-spacing:var(--tr-eyebrow);
+  font-size:.78rem; color:var(--b-ember);
+}
+.bro-cover h3{ font-size:1.4rem; text-transform:uppercase; letter-spacing:.02em; line-height:1.1 }
+.bro-card .body{ padding:16px 18px 20px; display:flex; flex-direction:column; gap:8px }
+.bro-card .meta{ font-size:.82rem; color:var(--b-text-muted) }
+
+.gate{
+  background:var(--b-ink); color:#fff; border-radius:var(--r-md); padding:var(--s-6); position:sticky; top:24px;
+}
+.gate h3{ text-transform:uppercase; letter-spacing:.02em; color:#fff; font-size:1.25rem; margin-bottom:6px }
+.gate p{ color:var(--b-text-invert-2); font-size:.92rem }
+.gate .field{ margin-bottom:14px }
+.gate .field label{ color:#fff }
+.gate .field .hint{ color:var(--b-text-invert-2) }
+.gate .input, .gate .select{ background:rgba(255,255,255,.06); border-color:var(--b-ink-line); color:#fff }
+.gate .input::placeholder{ color:var(--b-text-invert-2) }
+.gate .check{ color:#fff; font-size:.85rem; margin-bottom:14px }
+.gate .check small{ color:var(--b-text-invert-2); display:block }
+.gate .legal{ font-size:.78rem; color:var(--b-text-invert-2); margin-top:14px }
+@media (max-width:1000px){ .gate{ position:static } }
+</style>
+</head>
+<body>
+
+<header class="nav-solid">
+  <div class="nav-inner">
+    <a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a>
+    <div class="nav-links"><a class="nav-link" href="./03-building-types.html">Buildings</a><a class="nav-link" href="./15-true-pricing.html">Pricing</a><a class="nav-link" href="./17-resources-hub.html">Resources</a><a class="nav-link" href="./11-testimonials.html">Reviews</a></div>
+    <a class="btn btn-phone nav-cta" href="tel:+15555550199">📞 (555) 555-0199</a>
+  </div>
+</header>
+
+<section class="banner">
+  <div class="banner-inner">
+    <h1>Bell Metal Brochures</h1>
+    <p class="lede">Four PDFs that cover everything from the building catalog to the color chart and warranty terms. Free, no signup walls — just drop your email and we'll send the bundle.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="bro-layout">
+      <div>
+        <span class="eyebrow">Four brochures</span>
+        <h2 style="text-transform:uppercase; margin-bottom:var(--s-5)">What's in the bundle</h2>
+        <div class="bro-grid">
+          <article class="bro-card">
+            <div class="bro-cover">
+              <span class="kicker">Catalog</span>
+              <h3>Bell Metal Building Catalog</h3>
+            </div>
+            <div class="body">
+              <p>All 8 building categories, every standard size, every roof pitch. 64 pages.</p>
+              <span class="meta">PDF · 14.2 MB · v2026.05 <span class="todo">placeholder</span></span>
+            </div>
+          </article>
+          <article class="bro-card">
+            <div class="bro-cover a">
+              <span class="kicker">Accessories</span>
+              <h3>Doors, Windows &amp; Trim Guide</h3>
+            </div>
+            <div class="body">
+              <p>Every door type, every window option, every wainscot pattern. Sizing tables included.</p>
+              <span class="meta">PDF · 8.4 MB · v2026.04</span>
+            </div>
+          </article>
+          <article class="bro-card">
+            <div class="bro-cover b">
+              <span class="kicker">Finishes</span>
+              <h3>Color &amp; Finish Chart</h3>
+            </div>
+            <div class="body">
+              <p>14 standard colors with the 40-year paint warranty. Roof / wall / trim combinations.</p>
+              <span class="meta">PDF · 6.8 MB · v2026.04</span>
+            </div>
+          </article>
+          <article class="bro-card">
+            <div class="bro-cover c">
+              <span class="kicker">Warranty</span>
+              <h3>Warranty Terms &amp; Coverage</h3>
+            </div>
+            <div class="body">
+              <p>50-yr rust, 40-yr paint, 25-yr accessories — broken out by straight-wall and arch profiles.</p>
+              <span class="meta">PDF · 4.1 MB · v2026.05 <span class="todo">confirm</span></span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Gated form -->
+      <aside class="gate">
+        <h3>Get the brochure bundle</h3>
+        <p>Drop your email and we'll send all four PDFs as a single download. No spam, no follow-up calls unless you want them.</p>
+        <hr style="border:0; border-top:1px solid var(--b-ink-line); margin:14px 0">
+        <div class="field"><label for="b-name">Full name</label><input class="input" id="b-name" type="text" placeholder="Jane Doe"></div>
+        <div class="field"><label for="b-email">Email</label><input class="input" id="b-email" type="email" placeholder="you@example.com"></div>
+        <div class="field"><label for="b-state">State</label><select class="select" id="b-state"><option>Select…</option><option>Alabama</option><option>… (50 states)</option></select></div>
+        <div class="field"><label for="b-type">Building type</label><select class="select" id="b-type"><option>Garage</option><option>Workshop</option><option>Barndominium</option><option>Quonset</option><option>Carport</option><option>Container cover</option><option>Commercial</option><option>Storage</option><option>Not sure yet</option></select></div>
+        <label class="check"><input type="checkbox" checked> <span>Send me build tips and clearance alerts. <small>About one a month. Unsubscribe any time.</small></span></label>
+        <a class="btn btn-primary" href="#" style="width:100%">Send me the bundle <span class="arrow">›</span></a>
+        <p class="legal">By submitting, you agree to Bell's <a href="./14-privacy.html" style="color:#fff; text-decoration:underline">privacy policy</a>. We don't sell your info, ever.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="phone-band">
+  <div class="phone-band-inner">
+    <div class="lead">Prefer to skip the PDFs and talk?<small>A Bell PM will walk you through the same content in five minutes.</small></div>
+    <div class="phone"><div class="phone-icon">📞</div><a class="phone-num" href="tel:+15555550199">(555) 555-0199</a></div>
+    <a class="btn btn-ghost on-dark" href="#">Get My Free Quote</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="brand-col"><a class="brand" href="./02-homepage.html"><span class="brand-mark">B</span><span class="brand-stack">Bell Metal<small>Buildings Co.</small></span></a><p class="blurb">Pre-engineered steel buildings shipped to the lower 48.</p><div class="social-row"><a href="#">f</a><a href="#">◧</a><a href="#">▷</a><a href="#">in</a></div></div>
+      <div><h4>Buildings</h4><ul><li><a href="./04-garages-detail.html">Garages</a></li><li><a href="./03-building-types.html">All types</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="./17-resources-hub.html">Resources</a></li><li><a href="./19-brochure.html">Brochures</a></li><li><a href="./12-faq-resources.html">FAQs</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="./07-about.html">About</a></li><li><a href="./13-warranty.html">Warranty</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="./08-contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-legal"><span>© 2026 Bell Metal Buildings Co.</span><ul><li><a href="./14-privacy.html">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="util-bar"><div class="util-bar-inner"><span class="lead">Got the brochures? <em>Now get a price.</em></span><a class="btn btn-primary" href="#">Get My Price <span class="arrow">›</span></a></div></div>
+
+</body>
+</html>
