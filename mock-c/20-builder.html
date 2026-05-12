@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bell Metal Buildings — 3D Builder</title>
+<meta name="description" content="Design your steel building in 3D. Drag, size, color, and price your kit in real time — no quote form, no back-and-forth." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+	/* --- Builder page (page-only) --- */
+	.builder-hero{ padding-bottom: var(--s-8); }
+	.builder-hero .wrap{ display:block; padding-block: var(--s-9); }
+	.builder-hero .hero-headline{ margin-bottom: var(--s-4); }
+	.builder-hero .sub{ color: var(--c-bone-2); font-size:1.0625rem; max-width: 60ch; margin: 0 0 var(--s-6); }
+	.builder-hero .btn-row{ margin-top: var(--s-3); }
+
+	/* Faux 3D builder UI */
+	.builder-band{ background: var(--c-bone); padding: var(--s-9) var(--s-5); }
+	.builder-shell{
+		max-width: var(--container); margin: 0 auto;
+		background: var(--c-paper);
+		border: 1px solid var(--c-rule);
+		border-radius: var(--r-lg);
+		box-shadow: var(--sh-md);
+		overflow: hidden;
+		display: grid;
+		grid-template-columns: minmax(280px, 32%) 1fr;
+	}
+	@media (max-width: 900px){ .builder-shell{ grid-template-columns: 1fr; } }
+
+	.builder-panel{
+		background: var(--c-bone-2);
+		border-right: 1px solid var(--c-rule);
+		padding: var(--s-6);
+		display: flex; flex-direction: column; gap: var(--s-5);
+	}
+	@media (max-width: 900px){ .builder-panel{ border-right: 0; border-bottom: 1px solid var(--c-rule); } }
+	.panel-title{
+		font-family: var(--f-display); font-weight: 700; font-size: 1.25rem;
+		color: var(--c-spruce); margin: 0;
+		font-variation-settings: "opsz" 96, "SOFT" 30;
+		padding-bottom: var(--s-3);
+		border-bottom: 1px solid var(--c-rule);
+		display: flex; align-items: center; justify-content: space-between;
+	}
+	.panel-title .panel-script{
+		font-family: var(--f-script); font-weight: 500; font-size: 1rem;
+		color: var(--c-brick); letter-spacing: .01em; text-transform: none;
+	}
+	.panel-section{ display: flex; flex-direction: column; gap: var(--s-3); }
+	.panel-section h4{
+		font: 700 var(--t-eyebrow)/1 var(--f-body);
+		letter-spacing: var(--tr-eyebrow); text-transform: uppercase;
+		color: var(--c-brass-hover); margin: 0;
+	}
+	.dim-row{ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--s-3); }
+	.dim-field label{
+		font: 600 var(--t-xs)/1.2 var(--f-body); letter-spacing: .1em;
+		text-transform: uppercase; color: var(--c-spruce); display: block;
+		margin-bottom: 4px;
+	}
+	.dim-field .dim-input{
+		display: flex; align-items: baseline; gap: 4px;
+		background: var(--c-paper); border: 1px solid var(--c-rule);
+		border-radius: var(--r-sm); padding: .55rem .7rem;
+		font-family: var(--f-display); font-weight: 700;
+		font-size: 1.1rem; color: var(--c-spruce);
+		font-variation-settings: "opsz" 36;
+	}
+	.dim-input .unit{
+		font-family: var(--f-body); font-weight: 500; font-size: .75rem;
+		color: var(--c-text-muted); letter-spacing: .04em;
+	}
+	.pitch-select{
+		background: var(--c-paper); border: 1px solid var(--c-rule);
+		border-radius: var(--r-sm); padding: .65rem .85rem;
+		display: flex; align-items: center; justify-content: space-between;
+		font-family: var(--f-display); font-weight: 700; color: var(--c-spruce);
+		font-variation-settings: "opsz" 36;
+	}
+	.pitch-select::after{
+		content: "⌄"; color: var(--c-brass-hover); font-size: 1.1rem;
+		line-height: 0; transform: translateY(-2px);
+	}
+
+	.swatch-strip{ display: flex; flex-wrap: wrap; gap: 10px; }
+	.b-swatch{
+		width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+		box-shadow: inset 0 0 0 1px rgba(15,39,36,.20), 0 1px 2px rgba(15,39,36,.10);
+		transition: transform .12s;
+	}
+	.b-swatch:hover{ transform: scale(1.08); }
+	.b-swatch.is-active{ box-shadow: inset 0 0 0 1px rgba(15,39,36,.20), 0 0 0 3px var(--c-brick); }
+	.s-brick{ background: var(--c-brick); }
+	.s-spruce{ background: var(--c-spruce); }
+	.s-spruce-2{ background: var(--c-spruce-2); }
+	.s-bone{ background: var(--c-bone); }
+	.s-bone-3{ background: var(--c-bone-3); }
+	.s-brass{ background: var(--c-brass); }
+	.s-charcoal{ background: #2a2826; }
+	.s-graphite{ background: #5b6660; }
+
+	.counter-row{
+		display: flex; align-items: center; justify-content: space-between;
+		background: var(--c-paper); border: 1px solid var(--c-rule);
+		border-radius: var(--r-sm); padding: .35rem .6rem;
+	}
+	.counter-row .label{
+		font: 600 var(--t-xs)/1 var(--f-body); letter-spacing: .1em;
+		text-transform: uppercase; color: var(--c-spruce);
+	}
+	.counter-row .counter-controls{ display: flex; align-items: center; gap: var(--s-2); }
+	.counter-row .counter-value{
+		font-family: var(--f-display); font-weight: 700; font-size: 1.1rem;
+		color: var(--c-spruce); min-width: 1.2em; text-align: center;
+		font-variation-settings: "opsz" 36;
+	}
+	.counter-row button{
+		width: 28px; height: 28px; border-radius: 50%;
+		background: var(--c-spruce); color: var(--c-cream-ink);
+		border: 0; font-family: var(--f-display); font-weight: 700;
+		font-size: 1rem; line-height: 1; cursor: pointer;
+		display: inline-flex; align-items: center; justify-content: center;
+	}
+	.counter-row button:hover{ background: var(--c-brick); }
+	.counter-row button[disabled]{ opacity: .4; cursor: not-allowed; }
+
+	/* Canvas */
+	.builder-canvas{
+		position: relative;
+		min-height: 460px;
+		aspect-ratio: 5 / 3;
+		background-image:
+			linear-gradient(135deg, rgba(15,39,36,.18), rgba(15,39,36,.32)),
+			url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1400&q=80&auto=format&fit=crop");
+		background-size: cover; background-position: center;
+	}
+	@media (max-width: 900px){ .builder-canvas{ aspect-ratio: 4 / 3; min-height: 300px; } }
+
+	.canvas-badge{
+		position: absolute; top: var(--s-4); left: var(--s-4);
+		background: rgba(245,239,226,.90);
+		color: var(--c-spruce);
+		font: 700 var(--t-eyebrow)/1 var(--f-body);
+		letter-spacing: .22em; text-transform: uppercase;
+		padding: .45rem .75rem;
+		border-radius: var(--r-pill);
+		border: 1px solid var(--c-brass);
+		display: inline-flex; align-items: center; gap: .5rem;
+	}
+	.canvas-badge::before{
+		content: ""; width: 8px; height: 8px; border-radius: 50%;
+		background: var(--c-brick);
+		box-shadow: 0 0 0 3px rgba(168,54,42,.35);
+	}
+
+	.canvas-tools{
+		position: absolute; top: var(--s-4); right: var(--s-4);
+		display: flex; gap: var(--s-2);
+	}
+	.canvas-tool{
+		width: 36px; height: 36px; border-radius: var(--r-sm);
+		background: rgba(15,39,36,.78); color: var(--c-cream-ink);
+		border: 1px solid rgba(245,239,226,.18);
+		font-size: 1rem; line-height: 1; cursor: pointer;
+		display: inline-flex; align-items: center; justify-content: center;
+		backdrop-filter: blur(4px);
+	}
+	.canvas-tool:hover{ background: var(--c-brick); border-color: var(--c-brick); }
+
+	.canvas-price{
+		position: absolute; bottom: var(--s-5); right: var(--s-5);
+		background: var(--c-spruce-deep);
+		color: var(--c-cream-ink);
+		border: 1px solid var(--c-brass);
+		border-radius: var(--r-md);
+		padding: var(--s-4) var(--s-5);
+		box-shadow: var(--sh-md);
+		text-align: right;
+	}
+	.canvas-price .price-label{
+		display: block; font: 600 var(--t-eyebrow)/1 var(--f-body);
+		letter-spacing: var(--tr-eyebrow); text-transform: uppercase;
+		color: var(--c-brass-soft); margin-bottom: var(--s-2);
+	}
+	.canvas-price .price-num{
+		font-family: var(--f-display); font-weight: 800; font-size: 2.25rem;
+		color: var(--c-bone); line-height: 1;
+		font-variation-settings: "opsz" 144, "SOFT" 50;
+	}
+	.canvas-price .price-script{
+		display: block; font-family: var(--f-script); font-weight: 600;
+		color: var(--c-brass-soft); font-size: 1rem; margin-top: 4px;
+	}
+
+	/* How it works */
+	.how-band{ background: var(--c-paper); padding: var(--s-9) var(--s-5); }
+	.how-grid{
+		max-width: var(--container); margin: var(--s-6) auto 0;
+		display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5);
+	}
+	@media (max-width: 900px){ .how-grid{ grid-template-columns: 1fr; } }
+	.how-card{
+		background: var(--c-paper);
+		border: 1px solid var(--c-rule-soft); border-radius: var(--r-md);
+		padding: var(--s-6); box-shadow: var(--sh-card);
+		display: flex; flex-direction: column; gap: var(--s-3);
+	}
+	.how-num{
+		font: 600 var(--t-eyebrow)/1 var(--f-body); letter-spacing: var(--tr-eyebrow);
+		text-transform: uppercase; color: var(--c-brass-hover);
+	}
+	.how-icon{
+		width: 56px; height: 56px; border-radius: var(--r-sm);
+		background: var(--c-bone-2); color: var(--c-brick);
+		display: inline-flex; align-items: center; justify-content: center;
+		font-size: 1.6rem; border: 1px solid var(--c-rule);
+	}
+	.how-card h3{
+		font-size: 1.15rem; color: var(--c-spruce);
+		font-variation-settings: "opsz" 36, "SOFT" 30;
+		text-transform: uppercase; letter-spacing: .02em;
+	}
+	.how-card p{ color: var(--c-text-muted); margin: 0; }
+
+	/* Why this matters */
+	.why-band{ background: var(--c-bone); padding: var(--s-9) var(--s-5); }
+	.why-grid{
+		max-width: var(--container); margin: var(--s-6) auto 0;
+		display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4);
+	}
+	@media (max-width: 1000px){ .why-grid{ grid-template-columns: repeat(2,1fr); } }
+	@media (max-width: 560px){ .why-grid{ grid-template-columns: 1fr; } }
+	.why-card{
+		background: var(--c-paper);
+		border: 1px solid var(--c-rule-soft); border-radius: var(--r-md);
+		padding: var(--s-5); display: flex; gap: var(--s-3); align-items: flex-start;
+	}
+	.why-card .check{
+		flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%;
+		background: var(--c-brick); color: var(--c-cream-ink);
+		display: inline-flex; align-items: center; justify-content: center;
+		font-weight: 700; font-size: .95rem;
+		box-shadow: 0 0 0 3px rgba(168,54,42,.10);
+	}
+	.why-card .why-text{
+		font: 600 1rem/1.4 var(--f-body); color: var(--c-spruce);
+	}
+
+	/* CTA band */
+	.cta-band{
+		background: var(--c-spruce);
+		color: var(--c-cream-ink);
+		padding: var(--s-9) var(--s-5);
+		text-align: center;
+		position: relative; overflow: hidden;
+	}
+	.cta-band::before{
+		content: ""; position: absolute; inset: 0;
+		background:
+			radial-gradient(circle at 25% 30%, rgba(184,138,59,.18), transparent 55%),
+			radial-gradient(circle at 75% 70%, rgba(168,54,42,.20), transparent 55%);
+		pointer-events: none;
+	}
+	.cta-band .wrap{ position: relative; max-width: var(--container-narrow); margin: 0 auto; }
+	.cta-band h2{
+		font-family: var(--f-display); color: var(--c-bone);
+		font-size: var(--t-d2); font-variation-settings: "opsz" 144, "SOFT" 50;
+		margin: var(--s-3) 0 var(--s-5);
+	}
+	.cta-band h2 em{ font-style: italic; color: var(--c-brass-soft); font-variation-settings: "opsz" 144, "SOFT" 100; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- 1. Utility bar -->
+<div class="utility-bar">
+	<div class="wrap">
+		<div class="left">Building experts since 1962 · Made in Aliquippa, PA</div>
+		<div class="right">
+			<span>We're here to help — call <a href="tel:18004442525">1-800-444-2525</a></span>
+			<span class="lang">EN · <a href="#" style="color: var(--c-bone);">ES</a></span>
+		</div>
+	</div>
+</div>
+
+<!-- 2. Sticky header -->
+<header class="site-header">
+	<div class="wrap">
+		<a href="02-homepage.html" class="brand">
+			<span class="brand-mark"></span>
+			<span class="brand-name">Bell Metal Buildings<small>Since 1962</small></span>
+		</a>
+		<nav class="primary-nav" aria-label="Primary">
+			<a href="03-building-types.html">Building Types</a>
+			<a href="06-options-finishes.html">Options &amp; Finishes</a>
+			<a href="07-about.html">About</a>
+			<a href="17-resources-hub.html">Resources</a>
+		</nav>
+		<div class="header-cta">
+			<a class="btn btn-outline btn-sm" href="05-clearance-inventory.html">Sale buildings</a>
+			<a class="btn btn-secondary btn-sm" href="08-contact.html">Contact</a>
+			<a class="btn btn-primary btn-sm" href="08-contact.html">Free quote</a>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+
+	<!-- Hero -->
+	<section class="hero builder-hero" aria-labelledby="builder-h1">
+		<div class="wrap">
+			<div class="eyebrow on-dark">Interactive Configurator</div>
+			<h1 class="hero-headline" id="builder-h1">Design your building <em>in 3D</em></h1>
+			<p class="sub">Drag, size, color, and price your metal building in real time. No quote form. No back-and-forth.</p>
+			<div class="btn-row">
+				<a class="btn btn-primary btn-lg" href="20-builder.html">Open the builder →</a>
+				<a class="btn btn-outline-on-dark btn-lg" href="18-video-library.html">Watch demo (2 min)</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Faux builder UI -->
+	<section class="builder-band" aria-label="Builder preview">
+		<div class="builder-shell">
+			<aside class="builder-panel" aria-label="Configurator controls">
+				<h2 class="panel-title">Your building <span class="panel-script">live preview</span></h2>
+
+				<div class="panel-section">
+					<h4>Dimensions</h4>
+					<div class="dim-row">
+						<div class="dim-field">
+							<label for="b-w">Width</label>
+							<div class="dim-input"><input id="b-w" type="text" value="40" disabled style="width:100%;background:transparent;border:0;outline:none;font:inherit;color:inherit;padding:0;" /><span class="unit">ft</span></div>
+						</div>
+						<div class="dim-field">
+							<label for="b-l">Length</label>
+							<div class="dim-input"><input id="b-l" type="text" value="60" disabled style="width:100%;background:transparent;border:0;outline:none;font:inherit;color:inherit;padding:0;" /><span class="unit">ft</span></div>
+						</div>
+						<div class="dim-field">
+							<label for="b-h">Height</label>
+							<div class="dim-input"><input id="b-h" type="text" value="12" disabled style="width:100%;background:transparent;border:0;outline:none;font:inherit;color:inherit;padding:0;" /><span class="unit">ft</span></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-section">
+					<h4>Roof pitch</h4>
+					<div class="pitch-select" role="button" aria-disabled="true">4:12</div>
+				</div>
+
+				<div class="panel-section">
+					<h4>Colors</h4>
+					<div class="swatch-strip" role="radiogroup" aria-label="Color swatches">
+						<span class="b-swatch s-brick is-active" title="Brick"></span>
+						<span class="b-swatch s-spruce" title="Spruce"></span>
+						<span class="b-swatch s-spruce-2" title="Spruce 2"></span>
+						<span class="b-swatch s-brass" title="Brass"></span>
+						<span class="b-swatch s-bone" title="Bone"></span>
+						<span class="b-swatch s-bone-3" title="Bone deep"></span>
+						<span class="b-swatch s-charcoal" title="Charcoal"></span>
+						<span class="b-swatch s-graphite" title="Graphite"></span>
+					</div>
+				</div>
+
+				<div class="panel-section">
+					<h4>Openings</h4>
+					<div class="counter-row">
+						<span class="label">Doors</span>
+						<div class="counter-controls">
+							<button type="button" disabled aria-label="Decrease doors">−</button>
+							<span class="counter-value">2</span>
+							<button type="button" disabled aria-label="Increase doors">+</button>
+						</div>
+					</div>
+					<div class="counter-row">
+						<span class="label">Windows</span>
+						<div class="counter-controls">
+							<button type="button" disabled aria-label="Decrease windows">−</button>
+							<span class="counter-value">4</span>
+							<button type="button" disabled aria-label="Increase windows">+</button>
+						</div>
+					</div>
+				</div>
+			</aside>
+
+			<div class="builder-canvas" role="img" aria-label="3D preview of your steel building">
+				<div class="canvas-badge">Demo build</div>
+				<div class="canvas-tools" role="toolbar" aria-label="Builder actions">
+					<button class="canvas-tool" type="button" disabled aria-label="Save">⎙</button>
+					<button class="canvas-tool" type="button" disabled aria-label="Share">⤴</button>
+					<button class="canvas-tool" type="button" disabled aria-label="Reset">↺</button>
+				</div>
+				<div class="canvas-price">
+					<span class="price-label">Your build</span>
+					<span class="price-num">$32,450</span>
+					<span class="price-script">stamped &amp; ready</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- How it works -->
+	<section class="how-band" aria-labelledby="how-h2">
+		<div class="container">
+			<div class="section-head">
+				<div class="eyebrow center">Three steps</div>
+				<h2 id="how-h2">How the <em style="font-style:italic;color:var(--c-brick);font-variation-settings:'opsz' 144,'SOFT' 100;">builder</em> works</h2>
+				<p>Open the configurator, shape your kit, and walk away with a real, engineered price — no salesperson required.</p>
+			</div>
+			<div class="how-grid">
+				<article class="how-card">
+					<span class="how-num">Step 01</span>
+					<div class="how-icon">⤧</div>
+					<h3>Size your kit</h3>
+					<p>Type in W × L × H. We snap to standard kit sizes.</p>
+				</article>
+				<article class="how-card">
+					<span class="how-num">Step 02</span>
+					<div class="how-icon">◐</div>
+					<h3>Pick colors &amp; finishes</h3>
+					<p>Match your existing roof, brand, or vibe.</p>
+				</article>
+				<article class="how-card">
+					<span class="how-num">Step 03</span>
+					<div class="how-icon">＄</div>
+					<h3>Get instant pricing</h3>
+					<p>Your build, your price, no quote form.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- Why this matters -->
+	<section class="why-band" aria-labelledby="why-h2">
+		<div class="container">
+			<div class="section-head">
+				<div class="eyebrow center">Why this matters</div>
+				<h2 id="why-h2">Built for <em style="font-style:italic;color:var(--c-brick);font-variation-settings:'opsz' 144,'SOFT' 100;">decisions</em>, not lead capture</h2>
+				<p>Most "free quote" buttons turn into a phone-tag tournament. Our builder skips the form and shows you the real number on every change.</p>
+			</div>
+			<div class="why-grid">
+				<div class="why-card"><span class="check">✓</span><span class="why-text">Real-time pricing as you build</span></div>
+				<div class="why-card"><span class="check">✓</span><span class="why-text">Save &amp; share your config with a link</span></div>
+				<div class="why-card"><span class="check">✓</span><span class="why-text">Stamped drawings included with every order</span></div>
+				<div class="why-card"><span class="check">✓</span><span class="why-text">Try before you talk to sales — no commitment</span></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Bottom CTA band -->
+	<section class="cta-band" aria-labelledby="cta-h2">
+		<div class="wrap">
+			<div class="eyebrow on-dark center">Your move</div>
+			<h2 id="cta-h2">Ready to build <em>yours?</em></h2>
+			<p style="color: var(--c-bone-2); max-width: 56ch; margin: 0 auto var(--s-6);">No form. No callback queue. Just you, the kit, and the price — in your browser.</p>
+			<div class="btn-row" style="justify-content:center;">
+				<a class="btn btn-primary btn-lg" href="20-builder.html">Open the builder →</a>
+				<a class="btn btn-outline-on-dark btn-lg" href="18-video-library.html">Watch demo (2 min)</a>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<!-- Site footer -->
+<footer class="site-footer" role="contentinfo">
+	<div class="wrap">
+		<div>
+			<div class="foot-h">Additional resources</div>
+			<ul class="foot-list">
+				<li><a href="03-building-types.html">Building types</a></li>
+				<li><a href="07-about.html">About Bell</a></li>
+				<li><a href="09-blog-index.html">Field journal</a></li>
+				<li><a href="17-resources-hub.html">Certifications &amp; resources</a></li>
+				<li><a href="13-warranty.html">Warranty</a></li>
+				<li><a href="15-true-pricing.html">True pricing</a></li>
+			</ul>
+		</div>
+		<div>
+			<div class="foot-h">Get in touch</div>
+			<div class="foot-contact">
+				<div class="row"><span class="icon">☎</span><div>Toll free<br><strong style="color:var(--c-bone)"><a href="tel:18004442525" style="color:inherit;">1-800-444-2525</a></strong></div></div>
+				<div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001</div></div>
+			</div>
+			<div class="foot-social" aria-label="Bell on social media">
+				<a href="#" aria-label="Facebook">f</a>
+				<a href="#" aria-label="Instagram">ig</a>
+				<a href="#" aria-label="LinkedIn">in</a>
+				<a href="#" aria-label="YouTube">yt</a>
+			</div>
+		</div>
+		<div class="foot-help">
+			<div class="foot-h">How can we help?</div>
+			<a class="btn btn-secondary" href="08-contact.html">Contact us</a>
+			<a class="btn btn-primary" href="08-contact.html">Get a free quote</a>
+		</div>
+	</div>
+	<div class="subfooter">© 2026 Bell Metal Buildings Co. · All rights reserved · <a href="14-privacy.html" style="color:inherit;">Privacy policy</a></div>
+</footer>
+
+<!-- Floating Q-tab -->
+<a class="q-tab" href="08-contact.html" aria-label="Open contact">Questions? Let's talk</a>
+
+</body>
+</html>
