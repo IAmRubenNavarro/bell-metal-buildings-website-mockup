@@ -895,3 +895,132 @@ hr{ border:0; height:1px; background:var(--d-rule); margin:var(--s-7) 0 }
 	padding:10px 14px; z-index:9999;
 }
 .skip-link:focus{ left:8px; top:8px }
+
+/* =========================================================
+   REAL PHOTOS — overrides placeholder gradients
+   Curated metal-building photography per category. The
+   :has() selectors scope each product card to the category
+   its CTA links to, so homepage + PLP + PDP grids all show
+   their respective category without per-page HTML edits.
+   Fallback variants apply to cards w/o category links
+   (blog, video, design-system).
+   ========================================================= */
+
+.pcard-photo, .cat-tile, .hero-photo, .roof-option .preview {
+	background-size: cover !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+}
+
+/* Hero photo */
+.hero-photo {
+	background-image: linear-gradient(105deg, rgba(15,30,46,.15) 0%, rgba(15,30,46,.40) 60%, rgba(15,30,46,.05) 90%), url("https://images.unsplash.com/photo-1562088997-ed2fbeef1cd6?w=1400&q=80&auto=format&fit=crop") !important;
+}
+
+/* Color-variant fallbacks for cards with no category-link CTA */
+.pcard-photo { background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important; }
+.pcard-photo.warm  { background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.34)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important; }
+.pcard-photo.field { background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.34)), url("https://images.unsplash.com/photo-1742273877541-432d7326b260?w=1400&q=80&auto=format&fit=crop") !important; }
+.pcard-photo.sand  { background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.34)), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important; }
+.pcard-photo.steel { background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.36)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important; }
+.pcard-photo.dusk  { background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.40)), url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1400&q=80&auto=format&fit=crop") !important; }
+
+/* Per-category product photos (scoped via :has() on the card's CTA) */
+.product-card:has([href*="04-carports-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-garages-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1614687851910-31ed1fdfa474?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-barns-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-workshops-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-warehouses-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1514350534070-1a70129314c4?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-commercial-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1763926025678-95d196d0ab28?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-storage-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-sheds-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1742273877541-432d7326b260?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-hangars-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1711931290007-c0dcbd574c7c?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-barndominiums-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-arenas-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1650064175786-601947e1e3ca?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-industrial-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-ministorage-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1650064176407-be3b396fe4ea?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-quonset-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1778131852093-7ae53a3894ad?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-roofing-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1649587597799-4c227640f4f8?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.product-card:has([href*="04-container-covers-detail"]) .pcard-photo {
+	background-image: linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("https://images.unsplash.com/photo-1763926062529-1edf8664c366?w=1400&q=80&auto=format&fit=crop") !important;
+}
+
+/* Per-category large tiles on homepage and building-types page */
+.cat-tile[href*="04-carports-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-garages-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1614687851910-31ed1fdfa474?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-barns-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-workshops-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1518197529634-614c44a6e6a8?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-warehouses-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1514350534070-1a70129314c4?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-commercial-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1763926025678-95d196d0ab28?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-storage-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1581709609058-9f21b0a0e7b5?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-sheds-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1742273877541-432d7326b260?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-hangars-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1711931290007-c0dcbd574c7c?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-barndominiums-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1770501389758-dedc7f5e947b?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-arenas-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1650064175786-601947e1e3ca?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-industrial-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1527335988388-b40ee248d80c?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-ministorage-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1650064176407-be3b396fe4ea?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-quonset-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1778131852093-7ae53a3894ad?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-roofing-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1649587597799-4c227640f4f8?w=1400&q=80&auto=format&fit=crop") !important;
+}
+.cat-tile[href*="04-container-covers-detail"] {
+	background-image: linear-gradient(180deg, rgba(15,30,46,0) 30%, rgba(15,30,46,.78) 100%), url("https://images.unsplash.com/photo-1763926062529-1edf8664c366?w=1400&q=80&auto=format&fit=crop") !important;
+}
