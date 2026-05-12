@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Design System — Bell Metal Buildings · Direction E</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+	.ds-section{ padding-block:var(--s-6); border-bottom:1px solid var(--e-rule) }
+	.ds-section h2{ margin-bottom:var(--s-3) }
+	.ds-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:var(--s-3) }
+	.swatch{ display:flex; flex-direction:column; gap:6px; padding:10px; background:var(--e-paper); border:1px solid var(--e-rule); border-radius:var(--r-md) }
+	.swatch .chip{ height:60px; border-radius:var(--r-sm); border:1px solid var(--e-rule-soft) }
+	.swatch code{ font:600 .72rem/1.2 ui-monospace, monospace; color:var(--e-text-muted) }
+	.swatch strong{ font-family:var(--f-display); font-weight:700; font-size:.85rem; color:var(--e-slate) }
+	.type-row{ padding:var(--s-3) 0; border-bottom:1px dashed var(--e-rule); display:flex; gap:var(--s-4); align-items:baseline; flex-wrap:wrap }
+	.type-row code{ font:600 .72rem/1.2 ui-monospace, monospace; color:var(--e-text-muted); min-width:90px }
+	.demo-card{ background:var(--e-paper); border:1px solid var(--e-rule); border-radius:var(--r-md); padding:var(--s-4) }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="util-top">
+	<div class="util-top-inner">
+		<form class="util-search" role="search" onsubmit="return false">
+			<input type="search" placeholder="Search…" aria-label="Search">
+			<button type="submit" aria-label="Submit">⌕</button>
+		</form>
+		<nav class="util-links" aria-label="Utility">
+			<a class="util-link" href="05-clearance-inventory.html"><strong>Shop</strong> Now</a>
+			<a class="util-link" href="20-builder.html">3D Designer</a>
+			<a class="util-link" href="tel:+18005551234"><span class="ico">☎</span> (800) 555-1234</a>
+		</nav>
+	</div>
+</div>
+
+<header class="site-header nav-solid">
+	<div class="header-inner">
+		<a class="brand" href="02-homepage.html">
+			<span class="brand-mark">B</span>
+			<span class="brand-stack"><span>Bell Metal Buildings</span><small>Design System · Direction E</small></span>
+		</a>
+		<nav class="nav-links" aria-label="Primary">
+			<a class="nav-link nav-caret" href="03-building-types.html">Buildings</a>
+			<a class="nav-link" href="05-clearance-inventory.html">Clearance</a>
+			<a class="nav-link nav-caret" href="06-options-finishes.html">Options &amp; Finishes</a>
+			<a class="nav-link nav-caret" href="07-about.html">About</a>
+			<a class="nav-link nav-caret" href="17-resources-hub.html">Resources</a>
+			<a class="btn btn-primary btn-sm" href="20-builder.html">Free Quote</a>
+		</nav>
+	</div>
+</header>
+
+<main id="main" class="container">
+	<div class="ds-section">
+		<span class="eyebrow">Direction E · Sunshine catalog</span>
+		<h1>Design system</h1>
+		<p class="lede">Every primitive used in mock-d in one place. If a page looks off, this is the page to compare against.</p>
+	</div>
+
+	<section class="ds-section" aria-labelledby="ds-color">
+		<h2 id="ds-color">Color tokens</h2>
+		<p class="muted">Sunshine palette — sun-orange CTAs over cream paper, sky-blue accents, slate ink. Trust/status tokens (grass, flag, gold) used sparingly.</p>
+		<div class="ds-grid" style="margin-top:var(--s-4)">
+			<div class="swatch"><div class="chip" style="background:var(--e-slate)"></div><strong>Slate</strong><code>--e-slate · #0f1e2e</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-slate-2)"></div><strong>Slate 2</strong><code>--e-slate-2 · #1c2e44</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-cream)"></div><strong>Cream</strong><code>--e-cream · #fff8ec</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-cream-2)"></div><strong>Cream 2</strong><code>--e-cream-2 · #fcefd5</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-paper); border:1px solid var(--e-rule)"></div><strong>Paper</strong><code>--e-paper · #ffffff</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-rule)"></div><strong>Rule</strong><code>--e-rule · #e7dec6</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-sun)"></div><strong>Sun</strong><code>--e-sun · #f7941d</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-sun-hover)"></div><strong>Sun hover</strong><code>--e-sun-hover · #d97a06</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-sun-soft)"></div><strong>Sun soft</strong><code>--e-sun-soft · #fde2bf</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-sky)"></div><strong>Sky</strong><code>--e-sky · #1a8fd6</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-sky-hover)"></div><strong>Sky hover</strong><code>--e-sky-hover · #1474b2</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-sky-soft)"></div><strong>Sky soft</strong><code>--e-sky-soft · #e1f1fb</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-grass)"></div><strong>Grass</strong><code>--e-grass · #3aa552</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-flag)"></div><strong>Flag</strong><code>--e-flag · #c0392b</code></div>
+			<div class="swatch"><div class="chip" style="background:var(--e-gold)"></div><strong>Gold</strong><code>--e-gold · #f0b500</code></div>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-type">
+		<h2 id="ds-type">Type scale</h2>
+		<p class="muted">Display: Mulish (800/900). Body: DM Sans (400/500/600/700).</p>
+		<div class="type-row"><code>--t-d1</code><span style="font-family:var(--f-display); font-weight:800; font-size:var(--t-d1); line-height:1.05">Display 1 · Hero</span></div>
+		<div class="type-row"><code>--t-d2</code><span style="font-family:var(--f-display); font-weight:800; font-size:var(--t-d2); line-height:1.1">Display 2 · Section banner</span></div>
+		<div class="type-row"><code>--t-h1</code><h1 style="margin:0">H1 · Page title</h1></div>
+		<div class="type-row"><code>--t-h2</code><h2 style="margin:0">H2 · Section heading</h2></div>
+		<div class="type-row"><code>--t-h3</code><h3 style="margin:0">H3 · Card title</h3></div>
+		<div class="type-row"><code>--t-h4</code><h4 style="margin:0">H4 · Sub-card title</h4></div>
+		<div class="type-row"><code>--t-body</code><span>Body — 1rem DM Sans for paragraphs, descriptions, and most surface text.</span></div>
+		<div class="type-row"><code>--t-sm</code><span style="font-size:.9375rem">Small — used for card descriptions and meta lines.</span></div>
+		<div class="type-row"><code>--t-eyebrow</code><span class="eyebrow" style="margin:0">Eyebrow · uppercase 12px Mulish 700</span></div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-buttons">
+		<h2 id="ds-buttons">Buttons</h2>
+		<div class="row" style="margin-top:var(--s-3)">
+			<button class="btn btn-primary">Primary</button>
+			<button class="btn btn-secondary">Secondary</button>
+			<button class="btn btn-ghost">Ghost</button>
+			<button class="btn btn-phone">☎ (800) 555-1234</button>
+			<a class="btn btn-link" href="#">Link button ›</a>
+		</div>
+		<div class="row" style="margin-top:var(--s-3)">
+			<button class="btn btn-primary btn-sm">Small</button>
+			<button class="btn btn-primary">Default</button>
+			<button class="btn btn-primary btn-lg">Large</button>
+			<button class="btn btn-primary" disabled>Disabled</button>
+		</div>
+		<div class="row" style="margin-top:var(--s-3); padding:var(--s-4); background:var(--e-slate); border-radius:var(--r-md)">
+			<button class="btn btn-primary">Primary on dark</button>
+			<button class="btn btn-ghost on-dark">Ghost on dark</button>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-forms">
+		<h2 id="ds-forms">Forms</h2>
+		<div class="demo-card" style="max-width:560px">
+			<div class="form-row">
+				<div class="field"><label for="d-first">First name</label><input id="d-first" class="input" placeholder="First"></div>
+				<div class="field"><label for="d-last">Last name</label><input id="d-last" class="input" placeholder="Last"></div>
+			</div>
+			<div class="field"><label for="d-email">Email</label><input id="d-email" class="input" type="email" placeholder="you@example.com"></div>
+			<div class="field"><label for="d-state">State</label><select id="d-state" class="select"><option>Florida</option><option>Georgia</option><option>Alabama</option></select></div>
+			<div class="field"><label for="d-msg">Message</label><textarea id="d-msg" class="textarea" placeholder="Tell us about your build…"></textarea></div>
+			<button class="btn btn-primary" style="margin-top:var(--s-3)">Submit ›</button>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-tags">
+		<h2 id="ds-tags">Tags &amp; pills</h2>
+		<div class="row" style="margin-top:var(--s-3)">
+			<span class="tag">Default</span>
+			<span class="tag sun">Sun</span>
+			<span class="tag sky">Sky</span>
+			<span class="tag grass">Grass</span>
+			<span class="tag flag">Flag</span>
+			<span class="hero-tag">No sales calls</span>
+			<span class="todo">TODO · client copy</span>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-card">
+		<h2 id="ds-card">Product card</h2>
+		<div style="max-width:300px; margin-top:var(--s-3)">
+			<article class="product-card">
+				<div class="pcard-media">
+					<div class="pcard-photo"></div>
+					<span class="pcard-code">BM-186</span>
+					<button class="pcard-compare">＋ Compare</button>
+					<div class="pcard-arrows"><button>‹</button><button>›</button></div>
+				</div>
+				<div class="pcard-body">
+					<h3 class="pcard-title">30×40 Vertical Roof Carport</h3>
+					<ul class="pcard-feats"><li>Financing options available</li><li>Free delivery &amp; installation</li></ul>
+					<a class="pcard-cta" href="#">Explore this building ›</a>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-trust">
+		<h2 id="ds-trust">Trust strip item</h2>
+		<div style="background:var(--e-paper); border:1px solid var(--e-rule); border-radius:var(--r-md); padding:var(--s-4); margin-top:var(--s-3); max-width:340px">
+			<div class="trust-item">
+				<span class="trust-icon">★</span>
+				<div class="trust-text"><strong>FREE</strong>Delivery &amp; installation</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-tile">
+		<h2 id="ds-tile">Category tile</h2>
+		<div style="max-width:260px; margin-top:var(--s-3)">
+			<a class="cat-tile" href="#">
+				<h3>Garages</h3>
+				<span class="arrow">›</span>
+			</a>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-faq">
+		<h2 id="ds-faq">FAQ row</h2>
+		<div class="faq-list" style="margin-top:var(--s-3); max-width:680px">
+			<div class="faq-item is-open">
+				<button class="faq-q" type="button">Open question (accordion variant)</button>
+				<div class="faq-a"><div class="faq-a-inner">Answer text — used on PLP and FAQ pages.</div></div>
+			</div>
+			<div class="faq-item">
+				<button class="faq-q" type="button">Closed question (accordion variant)</button>
+				<div class="faq-a"><div class="faq-a-inner">Hidden until the question is clicked.</div></div>
+			</div>
+		</div>
+		<div class="faq-flat" style="margin-top:var(--s-5); max-width:680px">
+			<div class="qa"><h3>Flat-list variant (probuilt FAQ pattern)</h3><p class="muted">On 12-faq-resources we use a flat layout — every Q+A always visible — so visitors can skim the whole list and Ctrl-F to find what they need.</p></div>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-stars">
+		<h2 id="ds-stars">Testimonial card</h2>
+		<div style="max-width:360px; margin-top:var(--s-3)">
+			<div class="tcard">
+				<div class="stars">★★★★★</div>
+				<p>"Bell delivered our 40×60 garage two weeks ahead of schedule. The install crew was professional, and the price never moved."</p>
+				<div class="who"><strong>James R.</strong> · Tallahassee, FL</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-pillar">
+		<h2 id="ds-pillar">Pillar card &amp; numbered step</h2>
+		<div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--s-4); margin-top:var(--s-3); max-width:680px">
+			<div class="pillar">
+				<div class="ic">★</div>
+				<h3>Free delivery</h3>
+				<p>From our Lake City, FL factory to your slab — delivery, installation, and anchoring included.</p>
+			</div>
+			<div class="step">
+				<h4>Choose your style</h4>
+				<p>Pick a building type and roof style. We'll guide you the rest of the way.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-kit">
+		<h2 id="ds-kit">Kit components block</h2>
+		<div class="kit-block" style="margin-top:var(--s-3)">
+			<ul class="kit-list">
+				<li><strong>Base rails</strong>14-gauge galvanized.</li>
+				<li><strong>Framing</strong>14- or 12-gauge steel.</li>
+				<li><strong>Panels</strong>29-gauge Galvalume.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="ds-section" aria-labelledby="ds-cta">
+		<h2 id="ds-cta">CTA band</h2>
+		<div class="cta-band" style="margin-block:var(--s-3)">
+			<div class="cta-band-inner">
+				<div>
+					<span class="eyebrow" style="color:var(--e-sun)">Design &amp; planning</span>
+					<h2 style="margin:.2em 0">Design Your Building in 3D</h2>
+					<p class="lede">See your custom building come to life — and see the price in real time.</p>
+				</div>
+				<div class="ctas">
+					<a class="btn btn-primary btn-lg" href="20-builder.html">Open Designer ›</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer class="footer">
+	<div class="footer-inner">
+		<div class="footer-legal" style="border-top:0; padding-top:0">
+			<div>© 2026 Bell Metal Buildings Co. · Design System</div>
+			<div class="social-row"><a href="#">▶</a><a href="#">f</a><a href="#">◉</a><a href="#">P</a></div>
+		</div>
+	</div>
+</footer>
+
+<script src="../_nav.js" defer></script>
+<script>
+	document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('is-open')));
+</script>
+</body>
+</html>
