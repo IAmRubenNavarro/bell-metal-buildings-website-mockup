@@ -35,6 +35,8 @@
   }
 
   .form-card{ background: var(--c-paper); border:1px solid var(--c-rule); border-radius: var(--r-md); padding: var(--s-7); box-shadow: var(--sh-card); }
+  /* Phones: shrink the form-card padding so inputs aren't cramped */
+  @media (max-width:600px){ .form-card{ padding: var(--s-4) var(--s-3); } }
   .form-card .intro-h{
     font:600 var(--t-eyebrow)/1.2 var(--f-body); letter-spacing:.16em; text-transform:uppercase;
     color: var(--c-spruce); margin-bottom: var(--s-2);
