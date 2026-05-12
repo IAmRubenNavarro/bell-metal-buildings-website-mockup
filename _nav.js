@@ -103,11 +103,20 @@ function _normLabel(text) {
 				font-size:22px;
 				cursor:pointer;
 				margin-left:auto;
+				/* position:relative is required for z-index to take effect — without it
+				   the open drawer (z:1000) covers the toggle and users can't tap ✕ to close */
+				position:relative;
 				z-index:1001;
 				transition:background .15s, color .15s;
 			}
+			.menu-toggle.is-open{
+				/* Solid backing when the drawer is open so the ✕ stays legible
+				   against whatever drawer content sits under it */
+				background:#18181b;
+				color:#fff;
+				border-color:rgba(255,255,255,.5);
+			}
 			.menu-toggle:hover{ background:rgba(255,255,255,.08); }
-			.menu-toggle.is-open{ background:rgba(0,0,0,.06); }
 			@media (max-width: 900px){
 				.menu-toggle{ display:inline-flex; }
 				header .nav-row, header .nav-links, header .primary-nav{
@@ -296,9 +305,13 @@ function _normLabel(text) {
 						color:#ffb96a !important;
 						border-bottom:1px solid rgba(255,255,255,.18) !important;
 					}
-					a.nav-caret.is-open::after,
-					a.nav-caret.has-sub.is-open::after{
-						transform:rotate(180deg);
+					/* Drawer rows already have a dedicated .caret-expand chevron button;
+					   suppress the page's built-in .nav-caret::after chevron so we don't
+					   show two ▾ chevrons side-by-side on each parent item. */
+					header .nav-row a.nav-caret::after,
+					header .nav-links a.nav-caret::after,
+					header .primary-nav a.nav-caret::after{
+						content:none !important;
 					}
 				}
 				a.nav-caret.has-sub{ cursor:pointer; }
