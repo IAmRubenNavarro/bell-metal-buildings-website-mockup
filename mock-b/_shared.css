@@ -354,28 +354,40 @@ hr{border:0; height:1px; background:var(--b-rule); margin:var(--s-7) 0}
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
-.card .photo, .project-card .photo, .tcard .photo {
+.card .photo, .project-card .photo, .tcard .photo, .blog-card .photo {
   background-image: linear-gradient(135deg, rgba(0,0,0,.18), rgba(0,0,0,.45)), url("https://images.unsplash.com/photo-1562088997-ed2fbeef1cd6?w=1400&q=80&auto=format&fit=crop") !important;
 }
-.card .photo.warm, .project-card .photo.warm, .tcard .photo.warm,
+.card .photo.warm, .project-card .photo.warm, .tcard .photo.warm, .blog-card .photo.warm,
 .type-tile.warm {
   background-image: linear-gradient(135deg, rgba(0,0,0,.2), rgba(0,0,0,.55)), url("https://images.unsplash.com/photo-1606172745561-07a214874f18?w=1400&q=80&auto=format&fit=crop") !important;
 }
-.card .photo.field, .project-card .photo.field, .tcard .photo.field,
+.card .photo.field, .project-card .photo.field, .tcard .photo.field, .blog-card .photo.field,
 .type-tile.field {
   background-image: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.7) 100%), url("https://images.unsplash.com/photo-1742273877541-432d7326b260?w=1400&q=80&auto=format&fit=crop") !important;
 }
-.card .photo.sky, .project-card .photo.sky, .tcard .photo.sky,
+.card .photo.sky, .project-card .photo.sky, .tcard .photo.sky, .blog-card .photo.sky,
 .type-tile.sky {
   background-image: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.7) 100%), url("https://images.unsplash.com/photo-1649587345666-0f4ad68aa723?w=1400&q=80&auto=format&fit=crop") !important;
 }
-.card .photo.dusk, .project-card .photo.dusk, .tcard .photo.dusk,
+.card .photo.dusk, .project-card .photo.dusk, .tcard .photo.dusk, .blog-card .photo.dusk,
 .type-tile.dusk {
   background-image: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.75) 100%), url("https://images.unsplash.com/photo-1763926025477-423847028860?w=1400&q=80&auto=format&fit=crop") !important;
 }
-.card .photo.iron, .project-card .photo.iron, .tcard .photo.iron,
+.card .photo.iron, .project-card .photo.iron, .tcard .photo.iron, .blog-card .photo.iron,
 .type-tile.iron {
   background-image: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.75) 100%), url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1400&q=80&auto=format&fit=crop") !important;
+}
+/* Unstyled .type-tile rows (Garages / Commercial) — match by href so the
+   homepage and PLP both pick up a real photo without needing markup edits. */
+.type-tile[href*="garages-detail"] {
+  background-image: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.75) 100%), url("https://images.unsplash.com/photo-1676065701768-17185472200c?w=1400&q=80&auto=format&fit=crop") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+.type-tile[href*="commercial-detail"] {
+  background-image: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.75) 100%), url("https://images.unsplash.com/photo-1763926025678-95d196d0ab28?w=1400&q=80&auto=format&fit=crop") !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 /* Hero photo (homepage) — !important beats per-page .home-hero .hero-photo */
 .hero-photo, .home-hero .hero-photo {
