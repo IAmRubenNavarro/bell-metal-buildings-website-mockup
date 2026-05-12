@@ -302,6 +302,43 @@ function _normLabel(text) {
 					}
 				}
 				a.nav-caret.has-sub{ cursor:pointer; }
+				/* Chevron-expand button (mobile drawer only) */
+				.caret-expand{ display:none; }
+				@media (max-width: 900px){
+					.has-submenu{
+						display:flex !important;
+						width:100%;
+						align-items:center;
+						justify-content:space-between;
+						flex-wrap:wrap;
+						gap:0 !important;
+						border-bottom:1px solid rgba(255,255,255,.12);
+					}
+					.has-submenu > a{
+						flex:1 1 auto;
+						border-bottom:0 !important;
+					}
+					.has-submenu .submenu-pop{
+						flex:1 1 100%;
+						width:100%;
+					}
+					.caret-expand{
+						display:inline-flex;
+						align-items:center; justify-content:center;
+						width:44px; height:44px;
+						background:transparent;
+						color:rgba(255,255,255,.7);
+						border:0;
+						font-size:18px;
+						cursor:pointer;
+						transition:transform .2s;
+						flex:0 0 44px;
+					}
+					.has-submenu.is-open > .caret-expand{
+						transform:rotate(180deg);
+						color:#ffb96a;
+					}
+				}
 			`;
 			document.head.appendChild(dd);
 		}
@@ -335,15 +372,24 @@ function _normLabel(text) {
 			});
 			wrap.appendChild(pop);
 
-			// On mobile (no :hover), tap the caret link to toggle the
-			// accordion. On desktop, clicks should navigate normally —
-			// the dropdown reveals on :hover via CSS.
-			link.addEventListener('click', e => {
-				if (!window.matchMedia('(max-width: 900px)').matches) return;
+			// Mobile drawer: add a separate chevron button so the link
+			// text navigates as normal while the chevron expands the
+			// submenu in place. Desktop dropdown still opens on :hover.
+			const expandBtn = document.createElement('button');
+			expandBtn.type = 'button';
+			expandBtn.className = 'caret-expand';
+			expandBtn.setAttribute('aria-label', 'Expand ' + link.textContent.trim() + ' submenu');
+			expandBtn.setAttribute('aria-expanded', 'false');
+			expandBtn.textContent = '▾';
+			expandBtn.addEventListener('click', e => {
 				e.preventDefault();
-				wrap.classList.toggle('is-open');
-				link.classList.toggle('is-open');
+				e.stopPropagation();
+				const isOpen = wrap.classList.toggle('is-open');
+				link.classList.toggle('is-open', isOpen);
+				expandBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 			});
+			// Insert chevron after the link, inside the wrapper
+			link.insertAdjacentElement('afterend', expandBtn);
 		});
 
 		// (Desktop dropdowns auto-close on mouseleave via :hover CSS;
