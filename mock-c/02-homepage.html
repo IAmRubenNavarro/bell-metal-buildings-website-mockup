@@ -192,14 +192,14 @@
         <h2 id="clients-h2" style="font-size: var(--t-h1); font-variation-settings:'opsz' 96, 'SOFT' 30;">Our clients include</h2>
       </div>
       <div class="logo-wall">
-        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
-        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
-        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
-        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
-        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
-        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
-        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
-        <div class="logo-chip">Client Mark <span class="todo">logo</span></div>
+        <div class="logo-chip">Client Mark</div>
+        <div class="logo-chip">Client Mark</div>
+        <div class="logo-chip">Client Mark</div>
+        <div class="logo-chip">Client Mark</div>
+        <div class="logo-chip">Client Mark</div>
+        <div class="logo-chip">Client Mark</div>
+        <div class="logo-chip">Client Mark</div>
+        <div class="logo-chip">Client Mark</div>
       </div>
       <p class="footnote">We take on projects of any size. <a href="08-contact.html">Tell us about yours.</a></p>
     </div>
@@ -215,7 +215,6 @@
         <p>Every kit includes step-by-step assembly drawings and a direct phone line back to the engineer who stamped your plans. <a href="08-contact.html">Contact us</a> to walk through your build.</p>
       </div>
       <div class="video-thumb" role="button" aria-label="Watch the Bell building animation">
-        <span class="todo" style="position:absolute; bottom: var(--s-4); left: var(--s-4); z-index: 2;">video</span>
       </div>
     </div>
   </section>
@@ -275,15 +274,15 @@
       <div class="history-col">
         <div class="eyebrow">A history of trust</div>
         <h2 id="history-h2">Sixty-four years of Bell-stamped buildings.</h2>
-        <p>Bell Metal Buildings has been engineering pre-engineered steel since 1962 <span class="todo">history</span>. Three generations of the Larkin family <span class="todo">family</span> have run the Aliquippa plant. Our books are open and our warranties are on paper, not in a chatbot.</p>
+        <p>Bell Metal Buildings has been engineering pre-engineered steel since 1962. Three generations of the Larkin family have run the Aliquippa plant. Our books are open and our warranties are on paper, not in a chatbot.</p>
         <p>Look us up: better-business-rated, owner-operated, accountable. The factory tour is open to qualified clients by appointment.</p>
-        <div class="bbb-badge"><span class="seal">A+</span>Better Business Bureau · Accredited since 1989 <span class="todo">bbb</span></div>
+        <div class="bbb-badge"><span class="seal">A+</span>Better Business Bureau · Accredited since 1989</div>
       </div>
       <div id="testimonial-slider" aria-live="polite">
         <article class="testimonial" data-i="0">
           <p class="t-quote">Bell's engineer drove out to look at my site personally before they cut a single panel. You don't get that anywhere else.</p>
           <div class="t-initials">M. R.</div>
-          <div class="t-meta">60×120 warehouse · Erie, Pennsylvania · 2024 <span class="todo">testimonial</span></div>
+          <div class="t-meta">60×120 warehouse · Erie, Pennsylvania · 2024</div>
           <div class="t-dots" role="tablist">
             <button class="t-dot is-active" data-i="0" aria-label="Testimonial 1"></button>
             <button class="t-dot" data-i="1" aria-label="Testimonial 2"></button>
@@ -315,7 +314,7 @@
       <div class="foot-h">Get in touch</div>
       <div class="foot-contact">
         <div class="row"><span class="icon">☎</span><div>Toll free<br><strong style="color:var(--c-bone)"><a href="tel:18004442525" style="color:inherit;">1-800-444-2525</a></strong></div></div>
-        <div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001 <span class="todo">address</span></div></div>
+        <div class="row"><span class="icon">⌖</span><div>2200 Furnace Road<br>Aliquippa, PA 15001</div></div>
       </div>
       <div class="foot-social" aria-label="Bell on social media">
         <a href="#" aria-label="Facebook">f</a>
@@ -331,7 +330,7 @@
     </div>
   </div>
   <!-- 13. Sub-footer -->
-  <div class="subfooter">© 2026 Bell Metal Buildings Co. <span class="todo">legal entity</span> · All rights reserved · <a href="14-privacy.html" style="color:inherit;">Privacy policy</a></div>
+  <div class="subfooter">© 2026 Bell Metal Buildings Co. · All rights reserved · <a href="14-privacy.html" style="color:inherit;">Privacy policy</a></div>
 </footer>
 
 <!-- 14. Floating Q-tab -->
@@ -365,7 +364,7 @@
       idx = (i + slides.length) % slides.length;
       quote.innerHTML = slides[idx].q;
       ini.innerHTML = slides[idx].i;
-      meta.innerHTML = slides[idx].m + ' <span class="todo">testimonial</span>';
+      meta.innerHTML = slides[idx].m + '';
       dots.forEach((d,j)=>d.classList.toggle('is-active', j===idx));
     }
     dots.forEach(d => d.addEventListener('click', () => { show(parseInt(d.dataset.i,10)); restart(); }));
