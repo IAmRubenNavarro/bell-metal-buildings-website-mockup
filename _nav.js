@@ -127,7 +127,9 @@ function _normLabel(text) {
 					background:#18181b; color:#fff;
 					display:flex; flex-direction:column;
 					align-items:stretch; justify-content:flex-start;
-					padding:72px 28px 28px;
+					/* top padding clears the sticky header bar (promo strip + brand row + ✕) so
+					   the first drawer row isn't hidden behind the close button */
+					padding:132px 28px 28px;
 					gap:6px;
 					box-shadow:-12px 0 32px rgba(0,0,0,.32);
 					z-index:1000;
@@ -168,6 +170,11 @@ function _normLabel(text) {
 				}
 				/* Prevent body scroll when drawer is open */
 				body.menu-locked{ overflow:hidden; }
+				/* The page header is position:sticky with z-index:50 — that puts the entire
+				   header (drawer + toggle) under the backdrop (z:999) at the root stacking
+				   context. While the drawer is open, lift the header so the drawer and the
+				   ✕ button render above the backdrop. */
+				body.menu-locked header{ z-index:1002 !important; }
 			}
 		`;
 		document.head.appendChild(style);
