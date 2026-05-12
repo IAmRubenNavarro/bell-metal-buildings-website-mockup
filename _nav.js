@@ -335,30 +335,18 @@ function _normLabel(text) {
 			});
 			wrap.appendChild(pop);
 
-			// Tap to toggle (mobile accordion + desktop click-to-open)
+			// On mobile (no :hover), tap the caret link to toggle the
+			// accordion. On desktop, clicks should navigate normally —
+			// the dropdown reveals on :hover via CSS.
 			link.addEventListener('click', e => {
-				// On desktop, allow click-through if already open (so user can navigate)
-				if (window.matchMedia('(max-width: 900px)').matches) {
-					e.preventDefault();
-					wrap.classList.toggle('is-open');
-					link.classList.toggle('is-open');
-				} else if (!wrap.classList.contains('is-open')) {
-					e.preventDefault();
-					// Close other open submenus
-					document.querySelectorAll('.has-submenu.is-open').forEach(w => w.classList.remove('is-open'));
-					wrap.classList.add('is-open');
-				}
-				// Second click on desktop navigates as normal
+				if (!window.matchMedia('(max-width: 900px)').matches) return;
+				e.preventDefault();
+				wrap.classList.toggle('is-open');
+				link.classList.toggle('is-open');
 			});
 		});
 
-		// Click outside closes desktop dropdowns
-		document.addEventListener('click', e => {
-			if (window.matchMedia('(min-width: 901px)').matches) {
-				document.querySelectorAll('.has-submenu.is-open').forEach(w => {
-					if (!w.contains(e.target)) w.classList.remove('is-open');
-				});
-			}
-		});
+		// (Desktop dropdowns auto-close on mouseleave via :hover CSS;
+		// no document-level click handler needed.)
 	}
 })();
