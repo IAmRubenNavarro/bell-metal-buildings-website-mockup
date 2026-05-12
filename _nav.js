@@ -10,6 +10,49 @@
  * Mock C: <header> + .primary-nav  (+ .header-cta)
  */
 
+// Sub-menu data keyed by parent label (normalized lowercase, no punctuation).
+// Used both for desktop hover dropdowns and mobile accordion expansions
+// on any nav link that carries the `.nav-caret` class.
+const SUBMENUS = {
+	'buildings': [
+		{ label: 'All building types', href: '03-building-types.html', strong: true },
+		{ label: 'Garages',         href: '04-garages-detail.html' },
+		{ label: 'Workshops',       href: '04-workshops-detail.html' },
+		{ label: 'Barns & Farming', href: '04-barns-detail.html' },
+		{ label: 'Storage',         href: '04-storage-detail.html' },
+		{ label: 'Commercial',      href: '04-commercial-detail.html' },
+		{ label: 'Hangars',         href: '04-hangars-detail.html' },
+		{ label: 'Quonset Huts',    href: '04-quonset-detail.html' },
+		{ label: 'Carports',        href: '04-carports-detail.html' },
+		{ label: 'Barndominiums',   href: '04-barndominiums-detail.html' },
+		{ label: 'Container Covers',href: '04-container-covers-detail.html' },
+		{ label: 'Roofing Systems', href: '04-roofing-detail.html' },
+		{ label: 'Sheds',           href: '04-sheds-detail.html' },
+	],
+	'optionsfinishes': [
+		{ label: 'Options & Finishes', href: '06-options-finishes.html', strong: true },
+		{ label: 'Foundation',         href: '06-options-finishes.html#foundation' },
+		{ label: 'Doors',              href: '06-options-finishes.html#doors' },
+		{ label: 'Windows',            href: '06-options-finishes.html#windows' },
+		{ label: 'Insulation',         href: '06-options-finishes.html#insulation' },
+		{ label: 'Trims & Flashing',   href: '06-options-finishes.html#trims' },
+		{ label: 'Skylights',          href: '06-options-finishes.html#skylights' },
+		{ label: 'Colors & swatches',  href: '06-options-finishes.html#colors' },
+	],
+	'about': [
+		{ label: 'About Bell',       href: '07-about.html', strong: true },
+		{ label: 'Our advantage',    href: '16-our-advantage.html' },
+		{ label: 'True pricing',     href: '15-true-pricing.html' },
+		{ label: 'Testimonials',     href: '11-testimonials.html' },
+		{ label: 'Warranty',         href: '13-warranty.html' },
+		{ label: 'Contact us',       href: '08-contact.html' },
+	],
+};
+
+function _normLabel(text) {
+	return String(text || '').toLowerCase().replace(/[^a-z]/g, '');
+}
+
 (() => {
 	const header = document.querySelector('header');
 	if (!header) return;
@@ -157,4 +200,165 @@
 	// If viewport widens past breakpoint, force closed
 	const mq = window.matchMedia('(min-width: 901px)');
 	mq.addEventListener('change', e => { if (e.matches) setOpen(false); });
+
+	// ---------------- Submenus on .nav-caret items ----------------
+	const caretLinks = [...nav.querySelectorAll('a.nav-caret, a[class*="nav-caret"]')];
+	if (caretLinks.length) {
+		// Shared dropdown CSS, injected once
+		if (!document.getElementById('_nav-dropdown-css')) {
+			const dd = document.createElement('style');
+			dd.id = '_nav-dropdown-css';
+			dd.textContent = `
+				.has-submenu{ position:relative; }
+				/* Desktop dropdown */
+				.submenu-pop{
+					position:absolute; top:calc(100% + 6px); left:0;
+					min-width:240px;
+					background:#fff; color:#18181b;
+					border:1px solid rgba(0,0,0,.08);
+					border-radius:10px;
+					box-shadow:0 12px 32px rgba(0,0,0,.18);
+					padding:10px 0;
+					opacity:0; pointer-events:none;
+					transform:translateY(-4px);
+					transition:opacity .15s, transform .15s;
+					z-index:200;
+				}
+				.has-submenu.is-open > .submenu-pop,
+				.has-submenu:hover > .submenu-pop,
+				.has-submenu:focus-within > .submenu-pop{
+					opacity:1; pointer-events:auto; transform:translateY(0);
+				}
+				.submenu-pop a{
+					display:block;
+					padding:8px 18px !important;
+					color:#18181b !important;
+					font-size:13px !important;
+					font-family:inherit;
+					font-weight:600 !important;
+					text-transform:none !important;
+					letter-spacing:.01em !important;
+					text-decoration:none;
+					border:0 !important;
+				}
+				.submenu-pop a:hover{
+					background:#f4f3f1;
+					color:#b87333 !important;
+				}
+				.submenu-pop a.is-strong{
+					font-weight:700 !important;
+					color:#b87333 !important;
+					border-bottom:1px solid rgba(0,0,0,.08) !important;
+					margin-bottom:4px;
+					padding-bottom:10px !important;
+				}
+				/* Mobile accordion (inside the drawer) */
+				@media (max-width: 900px){
+					.submenu-pop{
+						position:static;
+						background:transparent !important;
+						color:#fff !important;
+						border:0 !important;
+						box-shadow:none !important;
+						padding:0 0 0 12px !important;
+						margin:0 0 8px !important;
+						min-width:0 !important;
+						opacity:1; pointer-events:auto;
+						transform:none;
+						max-height:0;
+						overflow:hidden;
+						transition:max-height .25s ease-out;
+					}
+					.has-submenu.is-open > .submenu-pop{
+						max-height:600px;
+					}
+					.has-submenu:hover > .submenu-pop,
+					.has-submenu:focus-within > .submenu-pop{
+						/* No hover-open on touch */
+						max-height:0;
+					}
+					.has-submenu.is-open:hover > .submenu-pop,
+					.has-submenu.is-open:focus-within > .submenu-pop{
+						max-height:600px;
+					}
+					.submenu-pop a{
+						color:rgba(255,255,255,.85) !important;
+						background:transparent !important;
+						padding:10px 0 !important;
+						font-size:.95rem !important;
+						border-bottom:1px solid rgba(255,255,255,.06) !important;
+					}
+					.submenu-pop a:hover{
+						color:#ffb96a !important;
+						background:transparent !important;
+					}
+					.submenu-pop a.is-strong{
+						color:#ffb96a !important;
+						border-bottom:1px solid rgba(255,255,255,.18) !important;
+					}
+					a.nav-caret.is-open::after,
+					a.nav-caret.has-sub.is-open::after{
+						transform:rotate(180deg);
+					}
+				}
+				a.nav-caret.has-sub{ cursor:pointer; }
+			`;
+			document.head.appendChild(dd);
+		}
+
+		caretLinks.forEach(link => {
+			const key = _normLabel(link.textContent);
+			const items = SUBMENUS[key];
+			if (!items) return;
+			// Wrap link in a .has-submenu container without breaking layout
+			const wrap = document.createElement('span');
+			wrap.className = 'has-submenu';
+			// Match the nav's flex layout — inline so it sits inline like a link
+			wrap.style.display = 'inline-flex';
+			wrap.style.alignItems = 'center';
+			wrap.style.position = 'relative';
+			link.parentNode.insertBefore(wrap, link);
+			wrap.appendChild(link);
+			link.classList.add('has-sub');
+
+			// Build the submenu list
+			const pop = document.createElement('div');
+			pop.className = 'submenu-pop';
+			pop.setAttribute('role', 'menu');
+			items.forEach(it => {
+				const a = document.createElement('a');
+				a.href = it.href;
+				a.textContent = it.label;
+				a.setAttribute('role', 'menuitem');
+				if (it.strong) a.classList.add('is-strong');
+				pop.appendChild(a);
+			});
+			wrap.appendChild(pop);
+
+			// Tap to toggle (mobile accordion + desktop click-to-open)
+			link.addEventListener('click', e => {
+				// On desktop, allow click-through if already open (so user can navigate)
+				if (window.matchMedia('(max-width: 900px)').matches) {
+					e.preventDefault();
+					wrap.classList.toggle('is-open');
+					link.classList.toggle('is-open');
+				} else if (!wrap.classList.contains('is-open')) {
+					e.preventDefault();
+					// Close other open submenus
+					document.querySelectorAll('.has-submenu.is-open').forEach(w => w.classList.remove('is-open'));
+					wrap.classList.add('is-open');
+				}
+				// Second click on desktop navigates as normal
+			});
+		});
+
+		// Click outside closes desktop dropdowns
+		document.addEventListener('click', e => {
+			if (window.matchMedia('(min-width: 901px)').matches) {
+				document.querySelectorAll('.has-submenu.is-open').forEach(w => {
+					if (!w.contains(e.target)) w.classList.remove('is-open');
+				});
+			}
+		});
+	}
 })();
