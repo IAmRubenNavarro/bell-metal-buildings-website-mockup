@@ -20,6 +20,12 @@
   background:#fff; border:1px solid var(--b-rule); border-radius:var(--r-md);
   padding:var(--s-6); display:flex; flex-direction:column; gap:14px;
 }
+@media(max-width:600px){
+  /* Phones: shrink padding so the 4-input dimensions row has room, and
+     collapse that row to 2x2 instead of 4-up. */
+  .contact-col{ padding:var(--s-4) var(--s-3) !important }
+  div[style*="repeat(4"]{ grid-template-columns:repeat(2,1fr) !important; gap:8px !important }
+}
 .contact-col h3{ text-transform:uppercase; letter-spacing:.02em; font-size:1.1rem }
 .contact-col .row-line{ display:flex; align-items:flex-start; gap:10px; font-size:.95rem }
 .contact-col .row-line .ic{ width:32px; height:32px; flex:0 0 32px; border-radius:8px; background:var(--b-conduit-soft); color:var(--b-conduit); display:grid; place-items:center }
