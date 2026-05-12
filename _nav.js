@@ -47,7 +47,17 @@ const SUBMENUS = {
 		{ label: 'Warranty',         href: '13-warranty.html' },
 		{ label: 'Contact us',       href: '08-contact.html' },
 	],
+	'resources': [
+		{ label: 'Resources hub',    href: '17-resources-hub.html', strong: true },
+		{ label: 'FAQ',              href: '12-faq-resources.html' },
+		{ label: 'Blog',             href: '09-blog-index.html' },
+		{ label: 'Video library',    href: '18-video-library.html' },
+		{ label: 'Brochure',         href: '19-brochure.html' },
+		{ label: 'Warranty',         href: '13-warranty.html' },
+	],
 };
+// Aliases — labels that should map to an existing submenu under a different normalized key
+SUBMENUS['buildingtypes'] = SUBMENUS['buildings'];
 
 function _normLabel(text) {
 	return String(text || '').toLowerCase().replace(/[^a-z]/g, '');
