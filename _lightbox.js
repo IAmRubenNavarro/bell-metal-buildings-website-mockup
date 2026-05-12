@@ -43,7 +43,11 @@
 		const photos = [...document.querySelectorAll('*')].filter(isPhotoEl);
 		if (!photos.length) return;
 
-		const urls = photos.map(extractUrl);
+		// Resolve photo URLs on-demand instead of caching, so in-place carousels
+		// (e.g. _photo-carousel.js cycling .two-col-photo) reflect their *current*
+		// background-image in the lightbox rather than the initial value.
+		const urlAt = i => extractUrl(photos[i]) || '';
+		const total = photos.length;
 
 		const style = document.createElement('style');
 		style.id = '_lightbox-css';
@@ -120,9 +124,9 @@
 		let idx = 0;
 
 		function show(i) {
-			idx = (i + urls.length) % urls.length;
-			stage.style.backgroundImage = 'url("' + urls[idx] + '")';
-			counter.textContent = (idx + 1) + ' / ' + urls.length;
+			idx = (i + total) % total;
+			stage.style.backgroundImage = 'url("' + urlAt(idx) + '")';
+			counter.textContent = (idx + 1) + ' / ' + total;
 		}
 		function openAt(i) {
 			show(i);
