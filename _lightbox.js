@@ -142,10 +142,13 @@
 			el.setAttribute('tabindex', '0');
 			el.setAttribute('aria-label', 'View photo ' + (i + 1) + ' of ' + photos.length + ' larger');
 			el.addEventListener('click', e => {
+				// Let real links/buttons inside the photo still navigate (e.g. CTAs over a hero photo)
+				if (e.target.closest('a, button')) return;
 				e.preventDefault();
 				openAt(i);
 			});
 			el.addEventListener('keydown', e => {
+				if (e.target !== el) return;
 				if (e.key === 'Enter' || e.key === ' ') {
 					e.preventDefault();
 					openAt(i);
