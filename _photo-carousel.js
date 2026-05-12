@@ -16,6 +16,43 @@
 (() => {
 	const _u = id => `https://images.unsplash.com/photo-${id}?w=1400&q=80&auto=format&fit=crop`;
 
+	// Pointer-events swipe helper, works for both touch and mouse.
+	// onSwipe(dir) is called with -1 (left) or +1 (right).
+	// Companion CSS rule sets `touch-action: pan-y` on the target so the browser
+	// keeps vertical scroll but routes horizontal motion here (so iOS Safari
+	// doesn't fire touchcancel before we see the gesture).
+	function wireSwipe(target, onSwipe) {
+		let sx = 0, sy = 0, lx = 0, ly = 0, pid = null;
+		target.addEventListener('pointerdown', e => {
+			if (e.pointerType === 'mouse' && e.button !== 0) return;
+			pid = e.pointerId;
+			sx = lx = e.clientX;
+			sy = ly = e.clientY;
+			try { target.setPointerCapture(pid); } catch {}
+		});
+		target.addEventListener('pointermove', e => {
+			if (e.pointerId !== pid) return;
+			lx = e.clientX;
+			ly = e.clientY;
+		});
+		const end = e => {
+			if (e.pointerId !== pid) return;
+			pid = null;
+			const dx = lx - sx, dy = ly - sy;
+			if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+				onSwipe(dx < 0 ? 1 : -1);
+				// Swallow the synthetic click that follows a mouse-drag, so the
+				// lightbox doesn't open right after the user drags to slide.
+				target.addEventListener('click', ev => {
+					ev.stopPropagation();
+					ev.preventDefault();
+				}, { capture: true, once: true });
+			}
+		};
+		target.addEventListener('pointerup', end);
+		target.addEventListener('pointercancel', end);
+	}
+
 	// Each pool has 6 metal-building photos curated for that building category.
 	const POOLS = {
 		garages: [
@@ -180,23 +217,7 @@
 
 			setPhoto(idx);
 
-			// Touch swipe support on the photo body itself
-			let tx = 0, ty = 0, tracking = false;
-			photo.addEventListener('touchstart', e => {
-				tx = e.touches[0].clientX;
-				ty = e.touches[0].clientY;
-				tracking = true;
-			}, { passive: true });
-			photo.addEventListener('touchend', e => {
-				if (!tracking) return;
-				tracking = false;
-				const dx = e.changedTouches[0].clientX - tx;
-				const dy = e.changedTouches[0].clientY - ty;
-				// Horizontal swipe only, ≥40px, less vertical motion than horizontal
-				if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-					setPhoto(idx + (dx < 0 ? 1 : -1));
-				}
-			}, { passive: true });
+			wireSwipe(photo, dir => setPhoto(idx + dir));
 
 			arrows[0]?.addEventListener('click', e => {
 				e.stopPropagation();
@@ -211,9 +232,59 @@
 		});
 	}
 
+	// Mock-d / mock-e use `.pcard-media` blocks on every product card.
+	// Each card carries a `.pcard-cta` href to its category PDP, which we
+	// use to look up the right photo pool.
+	function initPcard() {
+		const cards = [...document.querySelectorAll('.pcard-media')];
+		if (!cards.length) return;
+
+		cards.forEach((media, cardIdx) => {
+			const photo = media.querySelector('.pcard-photo');
+			const arrows = media.querySelectorAll('.pcard-arrows button');
+			if (!photo || arrows.length < 2) return;
+
+			const parent = media.closest('.product-card') || media.parentElement;
+			const linkEl = parent?.querySelector('a[href*="-detail.html"]');
+			const href = linkEl?.getAttribute('href') || '';
+			const m = href.match(/04-([a-z-]+)-detail\.html/);
+			const pool = (m && POOLS[m[1]]) || DEFAULT_POOL;
+			const total = pool.length;
+
+			// Stagger initial photo by card index so adjacent cards differ
+			let idx = cardIdx % total;
+
+			function setPhoto(i) {
+				idx = (i + total) % total;
+				photo.style.setProperty(
+					'background-image',
+					`linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.32)), url("${pool[idx]}")`,
+					'important'
+				);
+			}
+
+			setPhoto(idx);
+
+			arrows[0].addEventListener('click', e => {
+				e.stopPropagation();
+				e.preventDefault();
+				setPhoto(idx - 1);
+			});
+			arrows[1].addEventListener('click', e => {
+				e.stopPropagation();
+				e.preventDefault();
+				setPhoto(idx + 1);
+			});
+
+			wireSwipe(photo, dir => setPhoto(idx + dir));
+		});
+	}
+
+	function bootAll() { init(); initPcard(); }
+
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', init);
+		document.addEventListener('DOMContentLoaded', bootAll);
 	} else {
-		init();
+		bootAll();
 	}
 })();

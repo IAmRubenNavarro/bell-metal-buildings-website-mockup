@@ -436,6 +436,7 @@ hr{ border:0; height:1px; background:var(--e-rule); margin:var(--s-7) 0 }
 }
 .pcard-photo{
 	position:absolute; inset:0;
+	touch-action:pan-y;
 	background:linear-gradient(135deg, rgba(15,30,46,.06), rgba(15,30,46,.28)),
 		linear-gradient(160deg, #6e8ba5 0%, #1c2e44 100%);
 	background-size:cover; background-position:center;
@@ -464,14 +465,15 @@ hr{ border:0; height:1px; background:var(--e-rule); margin:var(--s-7) 0 }
 }
 .pcard-compare:hover{ background:var(--e-sun-soft); border-color:var(--e-sun) }
 .pcard-arrows{
-	position:absolute; bottom:8px; right:8px;
-	display:flex; gap:4px;
+	position:absolute; bottom:10px; right:10px;
+	display:flex; gap:6px;
 }
 .pcard-arrows button{
-	width:30px; height:30px; border-radius:999px;
-	background:rgba(15,30,46,.55); color:#fff;
-	border:0; cursor:pointer; font-size:1rem;
+	width:38px; height:38px; border-radius:999px;
+	background:rgba(15,30,46,.68); color:#fff;
+	border:0; cursor:pointer; font-size:1.1rem;
 	display:grid; place-items:center;
+	touch-action:manipulation;
 }
 .pcard-arrows button:hover{ background:var(--e-sun); color:var(--e-sun-ink) }
 .pcard-body{
