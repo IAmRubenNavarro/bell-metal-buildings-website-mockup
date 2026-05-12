@@ -191,82 +191,118 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 		sideR.castShadow = true; sideR.receiveShadow = true;
 		buildingGroup.add(sideR);
 
-		// ---- Roof: two sloped planes meeting at ridge ----
-		const slope = Math.hypot(W / 2, ridge);  // slant length from eave to ridge
-		const roofGeo = new THREE.PlaneGeometry(L, slope);
-		const angle = Math.atan2(ridge, W / 2);
+		// ---- Roof: two sloped planes built from explicit 4-vertex quads
+		// so the eaves and ridge land exactly on the gable-wall apex.
+		function makeRoofSlope(p1, p2, p3, p4) {
+			// p1..p4 in CCW order viewed from outside (so face normal points outward)
+			const positions = new Float32Array([
+				p1.x, p1.y, p1.z,  p2.x, p2.y, p2.z,  p3.x, p3.y, p3.z,
+				p1.x, p1.y, p1.z,  p3.x, p3.y, p3.z,  p4.x, p4.y, p4.z,
+			]);
+			const geo = new THREE.BufferGeometry();
+			geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+			geo.computeVertexNormals();
+			return geo;
+		}
+		const eaveOverhang = 0.6;
+		const Le = L / 2 + eaveOverhang;     // roof extends past front/back walls
+		const We = W / 2 + eaveOverhang;     // roof extends past side walls
+		const rOver = ridge + (eaveOverhang * ridge / (W / 2));  // ridge height extends correspondingly
 
-		const roofA = new THREE.Mesh(roofGeo, roofMat);
-		roofA.position.set(-W / 4, H + ridge / 2, 0);
-		roofA.rotation.set(-Math.PI / 2, 0, -angle);
-		roofA.castShadow = true; roofA.receiveShadow = true;
-		buildingGroup.add(roofA);
+		// Left slope (covers -x side). Viewed from -X looking +X, CCW order:
+		//   eave-back → eave-front → ridge-front → ridge-back
+		const v3 = (x, y, z) => new THREE.Vector3(x, y, z);
+		const leftGeo = makeRoofSlope(
+			v3(-We, H, -Le),
+			v3(-We, H, +Le),
+			v3(0,   H + rOver, +Le),
+			v3(0,   H + rOver, -Le),
+		);
+		const leftRoof = new THREE.Mesh(leftGeo, roofMat);
+		leftRoof.castShadow = true; leftRoof.receiveShadow = true;
+		buildingGroup.add(leftRoof);
 
-		const roofB = new THREE.Mesh(roofGeo.clone(), roofMat);
-		roofB.position.set( W / 4, H + ridge / 2, 0);
-		roofB.rotation.set(-Math.PI / 2, 0, angle);
-		// Flip so the visible face points up
-		roofB.rotation.y = Math.PI;
-		buildingGroup.add(roofB);
+		// Right slope (covers +x side). CCW from outside (looking in -X direction):
+		//   eave-front → eave-back → ridge-back → ridge-front
+		const rightGeo = makeRoofSlope(
+			v3(+We, H, +Le),
+			v3(+We, H, -Le),
+			v3(0,   H + rOver, -Le),
+			v3(0,   H + rOver, +Le),
+		);
+		const rightRoof = new THREE.Mesh(rightGeo, roofMat);
+		rightRoof.castShadow = true; rightRoof.receiveShadow = true;
+		buildingGroup.add(rightRoof);
 
 		// ---- Trim along eaves + ridge ----
-		const eaveTrim = new THREE.Mesh(
-			new THREE.BoxGeometry(L + 0.3, 0.6, 0.6),
+		const eaveLeft = new THREE.Mesh(
+			new THREE.BoxGeometry(0.5, 0.4, L + eaveOverhang * 2),
 			trimMat,
 		);
-		eaveTrim.position.set(0, H + 0.05, W / 2 + 0.15);
-		eaveTrim.rotation.y = Math.PI / 2;
-		// Two long eaves + ridge cap
-		const eaveLeft = eaveTrim.clone();
-		eaveLeft.position.set(-W / 2 - 0.05, H, 0);
+		eaveLeft.position.set(-W / 2 - 0.05, H - 0.1, 0);
 		buildingGroup.add(eaveLeft);
-		const eaveRight = eaveTrim.clone();
-		eaveRight.position.set(W / 2 + 0.05, H, 0);
+		const eaveRight = eaveLeft.clone();
+		eaveRight.position.set(W / 2 + 0.05, H - 0.1, 0);
 		buildingGroup.add(eaveRight);
 		const ridgeCap = new THREE.Mesh(
-			new THREE.BoxGeometry(L + 0.4, 0.4, 0.8),
+			new THREE.BoxGeometry(0.8, 0.4, L + eaveOverhang * 2 + 0.2),
 			trimMat,
 		);
-		ridgeCap.position.set(0, H + ridge + 0.2, 0);
-		ridgeCap.rotation.y = Math.PI / 2;
+		ridgeCap.position.set(0, H + ridge + 0.18, 0);
 		buildingGroup.add(ridgeCap);
 
-		// ---- Doors on front face ----
+		// ---- Doors on front face (z = +L/2, slightly proud of the wall) ----
 		const doorW = 4, doorH = Math.min(8, H - 1);
 		const doors = Math.max(0, Math.min(8, state.doors));
 		if (doors > 0) {
 			const spacing = W / (doors + 1);
 			for (let i = 1; i <= doors; i++) {
 				const door = new THREE.Mesh(
-					new THREE.BoxGeometry(doorW, doorH, 0.2),
+					new THREE.BoxGeometry(doorW, doorH, 0.15),
 					doorMat,
 				);
-				door.position.set(-W / 2 + spacing * i, doorH / 2, L / 2 + 0.12);
+				door.position.set(-W / 2 + spacing * i, doorH / 2, L / 2 + 0.08);
 				door.castShadow = true;
 				buildingGroup.add(door);
+				// Door frame trim
+				const frame = new THREE.Mesh(
+					new THREE.BoxGeometry(doorW + 0.4, doorH + 0.2, 0.08),
+					trimMat,
+				);
+				frame.position.set(-W / 2 + spacing * i, doorH / 2 + 0.1, L / 2 + 0.04);
+				buildingGroup.add(frame);
 			}
 		}
 
-		// ---- Windows on long sides ----
+		// ---- Windows on long sides (x = ±W/2, slightly proud of the wall) ----
 		const winW = 3, winH = 3;
 		const wins = Math.max(0, Math.min(12, state.windows));
 		if (wins > 0) {
-			// Split windows between both long sides; mid-height
 			const perSide = Math.ceil(wins / 2);
-			const sideSpacing = L / (perSide + 1);
 			const winY = H * 0.55;
 			for (let side = 0; side < 2; side++) {
-				const offsetX = side === 0 ? -W / 2 - 0.12 : W / 2 + 0.12;
+				const offsetX = side === 0 ? -W / 2 - 0.08 : W / 2 + 0.08;
 				const count = side === 0 ? perSide : wins - perSide;
 				if (count <= 0) continue;
 				const localSpacing = L / (count + 1);
 				for (let i = 1; i <= count; i++) {
 					const win = new THREE.Mesh(
-						new THREE.BoxGeometry(0.2, winH, winW),
+						new THREE.BoxGeometry(0.15, winH, winW),
 						winMat,
 					);
 					win.position.set(offsetX, winY, -L / 2 + localSpacing * i);
 					buildingGroup.add(win);
+					// Window frame trim
+					const frame = new THREE.Mesh(
+						new THREE.BoxGeometry(0.08, winH + 0.2, winW + 0.3),
+						trimMat,
+					);
+					frame.position.set(
+						side === 0 ? offsetX - 0.02 : offsetX + 0.02,
+						winY,
+						-L / 2 + localSpacing * i,
+					);
+					buildingGroup.add(frame);
 				}
 			}
 		}
