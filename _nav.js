@@ -185,6 +185,17 @@ function _normLabel(text) {
 				   context. While the drawer is open, lift the header so the drawer and the
 				   ✕ button render above the backdrop. */
 				body.menu-locked header{ z-index:1002 !important; }
+				/* When the drawer is open, anchor the ✕ to the viewport top-right corner.
+				   This is required for mock-c where the toggle lives inside .header-cta
+				   (a small button cluster) and would otherwise land in the middle of the
+				   drawer content. Mock-a / mock-b already render the toggle at top-right
+				   inside their header flex row — fixed positioning matches that visually. */
+				body.menu-locked .menu-toggle{
+					position: fixed !important;
+					top: max(16px, env(safe-area-inset-top, 16px)) !important;
+					right: 16px !important;
+					z-index: 1003 !important;
+				}
 			}
 		`;
 		document.head.appendChild(style);
