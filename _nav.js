@@ -247,6 +247,14 @@ function _normLabel(text) {
 			dd.id = '_nav-dropdown-css';
 			dd.textContent = `
 				.has-submenu{ position:relative; }
+				/* Invisible 8px hit-area bridging the visual gap between the parent link
+				   and the dropdown card, so the cursor stays inside .has-submenu while
+				   traversing the gap. Without this, :hover flips off mid-traverse and
+				   the dropdown dismisses before the user can click an item. */
+				.has-submenu::after{
+					content:''; position:absolute;
+					left:0; right:0; top:100%; height:8px;
+				}
 				/* Desktop dropdown */
 				.submenu-pop{
 					position:absolute; top:calc(100% + 6px); left:0;
@@ -257,14 +265,13 @@ function _normLabel(text) {
 					box-shadow:0 12px 32px rgba(0,0,0,.18);
 					padding:10px 0;
 					opacity:0; pointer-events:none;
-					transform:translateY(-4px);
-					transition:opacity .15s, transform .15s;
+					transition:opacity .15s;
 					z-index:200;
 				}
 				.has-submenu.is-open > .submenu-pop,
 				.has-submenu:hover > .submenu-pop,
 				.has-submenu:focus-within > .submenu-pop{
-					opacity:1; pointer-events:auto; transform:translateY(0);
+					opacity:1; pointer-events:auto;
 				}
 				.submenu-pop a{
 					display:block;
@@ -291,6 +298,9 @@ function _normLabel(text) {
 				}
 				/* Mobile accordion (inside the drawer) */
 				@media (max-width: 900px){
+					/* Drawer has no visual gap to bridge, and the absolute ::after would
+					   sit on top of the first submenu row and swallow taps. */
+					.has-submenu::after{ display:none; }
 					.submenu-pop{
 						position:static;
 						background:transparent !important;
