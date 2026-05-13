@@ -350,7 +350,7 @@
   (function(){
     const slides = [
       {q:"Bell's engineer drove out to look at my site personally before they cut a single panel. You don't get that anywhere else.", i:"M. R.", m:"60×120 warehouse · Erie, Pennsylvania · 2024"},
-      {q:"Twelve weeks from signed drawing to dried-in barndominium. They hit the date they wrote on paper.", i:"T. &amp; J. K.", m:"40×80 barndominium · Beaver County, Pennsylvania · 2024"},
+      {q:"Twelve weeks from signed drawing to dried-in barndominium. They hit the date they wrote on paper.", i:"T. & J. K.", m:"40×80 barndominium · Beaver County, Pennsylvania · 2024"},
       {q:"We asked for a clear-span hangar with a 24-foot eave and got engineering back the next day. Stamped. Sealed. Done.", i:"D. Y.", m:"80×100 aircraft hangar · Athens, Ohio · 2023"}
     ];
     const card = document.querySelector('.testimonial');
@@ -362,9 +362,9 @@
     let idx = 0, timer;
     function show(i){
       idx = (i + slides.length) % slides.length;
-      quote.innerHTML = slides[idx].q;
-      ini.innerHTML = slides[idx].i;
-      meta.innerHTML = slides[idx].m + '';
+      quote.textContent = slides[idx].q;
+      ini.textContent = slides[idx].i;
+      meta.textContent = slides[idx].m;
       dots.forEach((d,j)=>d.classList.toggle('is-active', j===idx));
     }
     dots.forEach(d => d.addEventListener('click', () => { show(parseInt(d.dataset.i,10)); restart(); }));
